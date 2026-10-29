@@ -464,3 +464,9 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   border: 0 !important;
   box-shadow: none !important;
 }
+
+/* 26. Non-selected Notes cards sit slightly above the page background:
+   90% workspace background + 10% white. Preserve the active blue card. */
+#notes-list-column section > [role="button"]:not([aria-current="true"]) {
+  background-color: color-mix(in srgb, var(--background) 90%, white 10%) !important;
+}
