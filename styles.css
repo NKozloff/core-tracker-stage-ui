@@ -273,3 +273,13 @@ main div:has(> header input[aria-label="Search notes"]) > header + div [data-not
 #notes-rail-body > button:first-of-type[aria-current="page"] > span.tabular-nums {
   display: inline !important;
 }
+
+/* 19. Note-list cards: date is already conveyed by the date-group heading.
+   Keep the timestamp on the first, pinned group; hide only the timestamp
+   at the right of each card title in subsequent date groups.
+   Do not affect date-group headers, note titles or metadata counters. */
+#notes-list-column section:not(:first-of-type)
+  > [role="button"] > div.flex.items-baseline.gap-2
+  > span.shrink-0.text-tertiary-foreground.tabular-nums {
+  display: none !important;
+}
