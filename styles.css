@@ -262,3 +262,14 @@ main div:has(> header input[aria-label="Search notes"]) > header + div [data-not
 #notes-rail-body > div.flex.flex-col > button:has(> svg.lucide-plus) {
   display: none !important;
 }
+
+/* 18. Notes rail counters: only show the All count while All is active.
+   Hide counters in the other filters, folders, templates and tags.
+   Keep the actual label text, icons and row layout intact. */
+#notes-rail-body .tabular-nums {
+  display: none !important;
+}
+
+#notes-rail-body > button:first-of-type[aria-current="page"] > span.tabular-nums {
+  display: inline !important;
+}
