@@ -443,3 +443,24 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     background: var(--background) !important;
   }
 }
+
+/* 25. Notes list is a single visual sequence: dates and note cards are peers.
+   The actual sections remain in the DOM for date grouping, keyboard behavior
+   and existing pinned selectors; display: contents removes only their layout
+   boxes. Every adjacent date or note is spaced by the same 12px. */
+#notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+#notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\\.5 {
+  display: contents !important;
+}
+
+/* Remove the outline/stroke from all note cards (including selected),
+   without changing their fills, rounding or one-line typography. */
+#notes-list-column section > [role="button"] {
+  border: 0 !important;
+  box-shadow: none !important;
+}
