@@ -283,3 +283,110 @@ main div:has(> header input[aria-label="Search notes"]) > header + div [data-not
   > span.shrink-0.text-tertiary-foreground.tabular-nums {
   display: none !important;
 }
+
+/* 20. Notes list: compact cards contain only title + optional single-line
+   subtitle. The pinned group alone retains its right-hand timestamp. */
+#notes-list-column section > div[role="button"] > div.flex.items-center.gap-1\.5 {
+  display: none !important;
+}
+#notes-list-column section:not(:first-of-type) > div[role="button"] > div.flex.items-baseline.gap-2 > span:nth-child(2) {
+  display: none !important;
+}
+#notes-list-column section > div[role="button"] > div.flex.items-baseline.gap-2 > span:first-child,
+#notes-list-column section > div[role="button"] > span.truncate.text-muted-foreground.text-xs {
+  min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Financial-department DEMO text in the All view. This changes only visual
+   presentation; real note contents, search indexes and editor stay intact.
+   Unmatched/new cards preserve their own title/description. */
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:first-of-type > div[role="button"]:nth-of-type(1) { --finance-demo-title:"План платежей на IV квартал"; --finance-demo-summary:"Проверить возможные кассовые разрывы перед бюджетным комитетом."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:nth-of-type(2):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1) { --finance-demo-title:"Контроль оплат на сегодня"; --finance-demo-summary:"Проверить приоритетные платежи и остатки на расчётных счетах."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(1) { --finance-demo-title:"Сверка банковских выписок"; --finance-demo-summary:"Сопоставить операции с реестром поступлений и платежей."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(2) { --finance-demo-title:"Бюджет на ноябрь"; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(1) { --finance-demo-title:"Отчёт о движении денежных средств"; --finance-demo-summary:"Подготовить фактические показатели по операционной деятельности."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(2) { --finance-demo-title:"Дебиторская задолженность"; --finance-demo-summary:"Обновить список просроченных счетов и сроки погашения."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(3) { --finance-demo-title:"Согласование счетов поставщиков"; --finance-demo-summary:"Проверить закрывающие документы перед оплатой."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(4) { --finance-demo-title:"План-факт расходов"; --finance-demo-summary:"Разобрать отклонения по центрам финансовой ответственности."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(5) { --finance-demo-title:"Закрытие сентября"; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(6) { --finance-demo-title:"НДС и первичная документация"; --finance-demo-summary:"Сверить счета-фактуры и акты по контрагентам."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(7) { --finance-demo-title:"Прогноз ликвидности"; --finance-demo-summary:"Учесть ожидаемые платежи и поступления до конца квартала."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(8) { --finance-demo-title:"Финансовые KPI проектов"; --finance-demo-summary:"Актуализировать маржинальность и структуру затрат."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(9) { --finance-demo-title:"Резерв на непредвиденные расходы"; --finance-demo-summary:"Проверить достаточность резервов по текущим обязательствам."; }
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:last-of-type:not(:first-of-type):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1) { --finance-demo-title:"Контроль лимитов подрядчиков"; --finance-demo-summary:"Проверить остатки бюджета и запланированные платежи."; }
+
+:is(
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:first-of-type > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:nth-of-type(2):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(3),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(4),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(5),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(6),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(7),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(8),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(9),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:last-of-type:not(:first-of-type):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1)
+) > div.flex.items-baseline.gap-2 > span:first-child {
+  font-size: 0 !important; line-height: 0 !important;
+}
+:is(
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:first-of-type > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:nth-of-type(2):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(3),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(4),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(5),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(6),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(7),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(8),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(9),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:last-of-type:not(:first-of-type):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1)
+) > div.flex.items-baseline.gap-2 > span:first-child::before {
+  content: var(--finance-demo-title); display: block;
+  font-size: 14px; line-height: 20px; font-weight: 600;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+:is(
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:first-of-type > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:nth-of-type(2):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(3),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(4),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(5),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(6),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(7),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(8),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(9),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:last-of-type:not(:first-of-type):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1)
+) > span.truncate.text-muted-foreground.text-xs { display: none !important; }
+:is(
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:first-of-type > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:nth-of-type(2):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(:has(> div[role="button"]:nth-of-type(3))) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(1),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(2),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(3),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(4),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(5),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(6),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(7),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(8),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:has(> div[role="button"]:nth-of-type(9)) > div[role="button"]:nth-of-type(9),
+body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-list-column section:last-of-type:not(:first-of-type):not(:has(> div[role="button"]:nth-of-type(2))) > div[role="button"]:nth-of-type(1)
+)::after {
+  content: var(--finance-demo-summary,none); display: block;
+  width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap; font-size: 12px; line-height: 18px;
+  color: var(--muted-foreground);
+}
