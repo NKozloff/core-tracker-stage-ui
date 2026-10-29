@@ -125,3 +125,133 @@ main div:has(> header input[aria-label="Search notes"])
 aside.bg-sidebar > div:first-child > button[aria-label="Collapse"] {
   display: none !important;
 }
+
+/* 14. Notes desktop: the page itself is a three-column workspace.
+   No overlay, absolute-positioned controls, or duplicated buttons:
+   display:contents promotes existing elements into a shared CSS grid,
+   preserving their event handlers and individual scroll areas. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
+    display: grid !important;
+    grid-template-columns: 212px 332px minmax(0, 1fr);
+    grid-template-rows: 58px minmax(0, 1fr) 60px;
+    gap: 0 !important;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Expose original header and existing columns as grid items. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > div.ml-auto,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > div.ml-auto > div,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div.flex.min-h-0.flex-1.overflow-hidden,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > nav[aria-label="Notes"],
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > #notes-list-column {
+    display: contents !important;
+  }
+
+  /* Left column: title above the scrollable folders/filters rail. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > h1 {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border-right: 0;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-rail-body {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+  }
+
+  /* Hide obsolete rail/list collapse controls for this layout. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > nav > div:not(#notes-rail-body),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:last-child:not(:first-child) {
+    display: none !important;
+  }
+
+  /* The existing Note button becomes the fixed footer of the first column. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header button:has(svg.lucide-plus) {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: stretch;
+    align-self: center;
+    width: auto;
+    height: 38px;
+    margin: 0 10px 0 0;
+    border-radius: 8px;
+    border: 0;
+  }
+
+  /* Second column: a separately scrollable list plus bottom search. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    min-height: 0;
+    width: 100% !important;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > div.relative:has(input[aria-label="Search notes"]) {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    height: 100%;
+    padding: 9px 12px;
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    background: var(--background);
+    z-index: 1;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header input[aria-label="Search notes"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Search is only present for All; other selections use full list height. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]):not(:has(#notes-rail-body > button:first-of-type[aria-current="page"])) > header > div.relative:has(input[aria-label="Search notes"]) {
+    display: none !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]):not(:has(#notes-rail-body > button:first-of-type[aria-current="page"])) #notes-list-column > div:first-child {
+    grid-row: 1 / 4;
+  }
+
+  /* Third column: full-height editor, with its own native scroll. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col {
+    grid-column: 3;
+    grid-row: 1 / 4;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* 15. Hide voice note recording in the Notes header for now. */
+main header button[aria-label="Record a voice note"] {
+  display: none !important;
+}
+
+/* 16. Remove the previously-added shared Notes card fill and outline.
+   Column layout and original page background remain visible. */
+main div:has(> header input[aria-label="Search notes"]) > header + div.flex.min-h-0.flex-1.overflow-hidden {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+main div:has(> header input[aria-label="Search notes"]) > header + div [data-note-panel] {
+  background-color: var(--background) !important;
+}
