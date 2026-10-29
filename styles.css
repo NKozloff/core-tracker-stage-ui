@@ -420,3 +420,26 @@ aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
     overflow: hidden;
   }
 }
+
+/* 24. Explicit sidebar contrast fix: the preceding color-mix based rule
+   was visually indistinguishable from the page in the live stage theme.
+   Keep the content surface at its original --background, and give both
+   the sidebar and the exposed rounded-corner gutter the same darker fill. */
+html.dark[data-theme="asana"] body aside.bg-sidebar {
+  background: #111214 !important;
+  border-right: 0 !important;
+  border-inline-end: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body
+  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) {
+    background: #111214 !important;
+  }
+
+  html.dark[data-theme="asana"] body
+  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar)
+  > main.flex-1.min-h-0.flex.flex-col {
+    background: var(--background) !important;
+  }
+}
