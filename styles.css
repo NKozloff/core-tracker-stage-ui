@@ -623,3 +623,12 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     flex: 0 0 16px;
   }
 }
+
+/* 31. Selected note card: subtle neutral-grey emphasis instead of blue.
+   Base note cards: #28292B; selected: #303133 (+8 RGB levels).
+   Keep selected note metadata, typography, shape and no-border style. */
+#notes-list-column section > [role="button"][aria-current="true"] {
+  background-color: #303133 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
