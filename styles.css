@@ -1,0 +1,110 @@
+/* CORE TRACKER — Stage UI Overrides
+   Iteration 01: global navigation only.
+   The original application stylesheet is loaded by the website itself.
+   This file contains only the additional rules to avoid duplicating it.
+*/
+
+/* 1. Match the global menu surface to the page background. */
+aside.bg-sidebar {
+  background-color: var(--background) !important;
+}
+
+/* 2. Hide My Actions label and chevron, preserving its three links. */
+aside.bg-sidebar nav > ul > li:has(> button[aria-expanded] + div a[href="/approvals"]) > button {
+  display: none !important;
+}
+
+/* 3. Flatten the expandable wrapper, even if the app collapses its grid. */
+aside.bg-sidebar nav > ul > li:has(> button[aria-expanded] + div a[href="/approvals"]) > div,
+aside.bg-sidebar nav > ul > li:has(> button[aria-expanded] + div a[href="/approvals"]) > div > div,
+aside.bg-sidebar nav > ul > li:has(> button[aria-expanded] + div a[href="/approvals"]) > div > div > ul {
+  display: contents !important;
+}
+
+/* 4. Tasks, Approvals and Financial align with Dashboard and Notes. */
+aside.bg-sidebar nav > ul a[href^="/actions?"],
+aside.bg-sidebar nav > ul a[href="/approvals"],
+aside.bg-sidebar nav > ul a[href="/financial-approvals"] {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+/* 5. Hide Teams & Projects, its descendants and preceding separator. */
+aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]),
+aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
+  display: none !important;
+}
+
+/* 6. Profile email: same muted tone as inactive navigation links. */
+aside.bg-sidebar button[aria-label="Profile"] p.text-muted-foreground {
+  color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
+}
+
+/* 7. Remove numeric counters for Tasks and Financial. */
+aside.bg-sidebar nav > ul a[href^="/actions?"] > :last-child,
+aside.bg-sidebar nav > ul a[href="/financial-approvals"] > :last-child {
+  display: none !important;
+}
+
+/* 8. Turn Approvals counter into a compact blue notification badge. */
+aside.bg-sidebar nav > ul a[href="/approvals"] {
+  position: relative !important;
+  padding-right: 36px !important;
+}
+
+aside.bg-sidebar nav > ul a[href="/approvals"] > :last-child {
+  display: none !important;
+}
+
+aside.bg-sidebar nav > ul a[href="/approvals"]::after {
+  content: "2";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--primary) !important;
+  color: var(--primary-foreground, #fff) !important;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+
+/* 9. Global navigation: increase vertical space between items from 2px to 4px.
+   This overrides Tailwind's space-y-0.5 (2px) on both top-level and
+   flattened My Actions lists, without changing each row's own padding. */
+aside.bg-sidebar nav ul.space-y-0\.5 > li:not(:last-child) {
+  margin-block-end: 4px !important;
+}
+
+/* 10. Notes page heading: remove its leading icon.
+   The flex layout automatically shifts the heading to the left edge. */
+main header:has(> h1) > svg.lucide-notebook-pen {
+  display: none !important;
+}
+
+/* 11. Notes workspace: one shared card for filters, note list and editor.
+   The card is the existing layout row directly after the Notes page header,
+   not a position:absolute overlay. Its start follows the heading's left edge.
+   Reuse the exact sidebar active-item fill token (Notes in global navigation). */
+main div:has(> header input[aria-label="Search notes"])
+  > header + div.flex.min-h-0.flex-1.overflow-hidden {
+  background-color: var(--sidebar-accent) !important;
+  border-radius: 14px !important;
+  box-shadow: inset 0 0 0 1px var(--sidebar-border);
+  /* Existing flex columns, borders and scrolling remain unchanged. */
+}
+
+/* The description toolbar's sticky surface should belong to the same card,
+   rather than revealing the global page background when the editor scrolls. */
+main div:has(> header input[aria-label="Search notes"])
+  > header + div [data-note-panel] {
+  background-color: var(--sidebar-accent) !important;
+}
