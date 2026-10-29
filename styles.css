@@ -108,3 +108,20 @@ main div:has(> header input[aria-label="Search notes"])
   > header + div [data-note-panel] {
   background-color: var(--sidebar-accent) !important;
 }
+
+/* 12. Desktop sidebar: 25% narrower (240px -> 180px).
+   Change the real flex item width so the Notes workspace automatically
+   receives the freed space; do not overlay or reposition content. */
+@media (min-width: 1024px) {
+  aside.bg-sidebar {
+    width: 180px !important;
+    min-width: 180px !important;
+    flex: 0 0 180px !important;
+  }
+}
+
+/* 13. Remove the desktop icon-only sidebar collapse control.
+   Keep the notifications bell and mobile close control untouched. */
+aside.bg-sidebar > div:first-child > button[aria-label="Collapse"] {
+  display: none !important;
+}
