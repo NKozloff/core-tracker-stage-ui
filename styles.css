@@ -752,3 +752,12 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 #notes-rail-body > div.flex.flex-col > [data-slot="context-menu-trigger"] > button:first-child > svg {
   color: inherit !important;
 }
+
+/* 35. Folder items are div[role="group"], not context-menu triggers.
+   Give both their folder icons and names the same muted tone as the
+   other inactive Notes rail entries; keep FOLDERS heading white. */
+#notes-rail-body > div.flex.flex-col > div.group[role="group"] > button:first-child,
+#notes-rail-body > div.flex.flex-col > div.group[role="group"] > button:first-child > svg.lucide-folder,
+#notes-rail-body > div.flex.flex-col > div.group[role="group"] > button:first-child > span:not(.tabular-nums):not(.sr-only) {
+  color: var(--muted-foreground) !important;
+}
