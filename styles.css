@@ -465,11 +465,10 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   box-shadow: none !important;
 }
 
-/* 26. Note cards use the same surface as the description formatting toolbar.
-   Sampled toolbar background in the supplied Stage screenshot: #28292B.
-   Preserve the active blue note selection. */
+/* 26. Unselected Notes cards have NO fill, following the filter-rail
+   pattern: highlight only the item that is actually selected. */
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
-  background-color: #28292b !important;
+  background-color: transparent !important;
 }
 
 /* 27. Full-bleed Notes workspace with independently padded columns.
@@ -628,11 +627,10 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
   }
 }
 
-/* 31. Selected note card: subtle neutral-grey emphasis instead of blue.
-   Base note cards: #28292B; selected: #303133 (+8 RGB levels).
-   Keep selected note metadata, typography, shape and no-border style. */
+/* 31. Selected Notes card matches the selected All tab exactly:
+   #28292B. No blue tint, border or shadow. */
 #notes-list-column section > [role="button"][aria-current="true"] {
-  background-color: #303133 !important;
+  background-color: #28292b !important;
   border-color: transparent !important;
   box-shadow: none !important;
 }
