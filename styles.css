@@ -761,3 +761,32 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 #notes-rail-body > div.flex.flex-col > div.group[role="group"] > button:first-child > span:not(.tabular-nums):not(.sr-only) {
   color: var(--muted-foreground) !important;
 }
+
+/* 36. Search and Notes divider layering.
+   Search is a grid item with a background and z-index:3 in rule 33,
+   while the full-height grid divider pseudo-elements use z-index:2.
+   Raise the divider above the search surface so it stays continuous
+   from the top of the workspace to the bottom. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::after {
+    z-index: 10 !important;
+    pointer-events: none !important;
+  }
+
+  /* Keep search under the divider, without affecting its focus/clicks. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"]) {
+    z-index: 1 !important;
+  }
+
+  /* The original Tailwind -translate-y-1/2 class still sets the
+     individual CSS translate property. Cancel it so top:32px
+     actually centers a 16px icon inside the 32px-tall input. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > svg.lucide-search {
+    translate: none !important;
+    transform: none !important;
+  }
+}
