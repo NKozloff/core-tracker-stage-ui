@@ -4,9 +4,9 @@
    This file contains only the additional rules to avoid duplicating it.
 */
 
-/* 1. Match the global menu surface to the page background. */
+/* 1. Give the global sidebar a subtly darker surface than the app. */
 aside.bg-sidebar {
-  background-color: var(--background) !important;
+  background-color: color-mix(in oklab, var(--background) 88%, black) !important;
 }
 
 /* 2. Hide My Actions label and chevron, preserving its three links. */
@@ -389,4 +389,27 @@ body:has(#notes-rail-body > button:first-of-type[aria-current="page"]) #notes-li
   width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; font-size: 12px; line-height: 18px;
   color: var(--muted-foreground);
+}
+
+/* 21. Sidebar is separated by surface contrast rather than divider lines.
+   Keep the menu width and its existing flex layout unchanged. */
+aside.bg-sidebar {
+  border-right: 0 !important;
+  border-inline-end: 0 !important;
+}
+
+/* Remove the horizontal rule above the account/profile footer. */
+aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
+  border-top: 0 !important;
+}
+
+/* 22. Desktop content inset: precisely 32px on all four sides.
+   Apply it to the existing page layout wrapper (not an absolute overlay).
+   This replaces the native p-4 / sm:p-6 padding without stacking it.
+   All three Notes grid columns continue to share this same container. */
+@media (min-width: 1024px) {
+  main > div.flex-1.min-h-0.overflow-auto > div.flex.h-full.flex-col.gap-4.p-4 {
+    padding: 32px !important;
+    box-sizing: border-box;
+  }
 }
