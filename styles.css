@@ -471,3 +471,97 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
   background-color: #28292b !important;
 }
+
+/* 27. Full-bleed Notes workspace with independently padded columns.
+   The former 24px padding belonged to the entire Notes page. Move
+   that padding INTO its three actual grid columns so the two dividers
+   run uninterrupted from the top of the workspace to the bottom. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
+    --notes-column-padding: 24px;
+    padding: 0 !important;
+    /* Add 48px to each of the old 212px / 332px column tracks, so
+       their usable widths are preserved after 24px inner padding. */
+    grid-template-columns: 260px 380px minmax(0, 1fr) !important;
+    grid-template-rows: 80px minmax(0, 1fr) 86px !important;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  /* Real grid-boundary lines; grid items rather than absolute overlays.
+     Both span ALL THREE rows, including Note and Search footers. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::after {
+    content: "";
+    grid-row: 1 / -1;
+    align-self: stretch;
+    justify-self: end;
+    width: 1px;
+    background-color: var(--border);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before {
+    grid-column: 1;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::after {
+    grid-column: 2;
+  }
+
+  /* First column: Notes heading, filters and fixed Note action. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > h1 {
+    align-self: stretch;
+    padding: 24px 24px 0 !important;
+    box-sizing: border-box;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-rail-body {
+    padding: 0 24px 24px !important;
+    border: 0 !important;
+    box-sizing: border-box;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header button:has(svg.lucide-plus) {
+    align-self: end;
+    justify-self: stretch;
+    margin: 0 24px 24px !important;
+    width: auto !important;
+  }
+
+  /* Second column: independently scrolling list and fixed Search footer. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child {
+    padding: 24px 24px 24px !important;
+    border: 0 !important;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* The original list has its own 12px horizontal padding: replace it
+     to avoid accidentally ending up with 36px on each side. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
+    padding: 0 !important;
+    min-width: 0;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > div.relative:has(input[aria-label="Search notes"]) {
+    align-items: end !important;
+    width: 100%;
+    padding: 0 24px 24px !important;
+    border-right: 0 !important;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Third column: editor gets its own 24px inset on every side.
+     Remove the old additional inner px-6 on the editor's content
+     and attachment footer to avoid double horizontal padding. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col {
+    padding: 24px !important;
+    box-sizing: border-box;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col .max-w-184.px-6 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
