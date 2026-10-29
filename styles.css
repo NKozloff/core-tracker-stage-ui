@@ -413,7 +413,7 @@ aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
     background-color: color-mix(in oklab, var(--background) 88%, black);
   }
 
-  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) > main.flex-1.min-h-0.flex.flex-col {
+  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) > div.flex.flex-1.flex-col.min-w-0 {
     min-width: 0;
     background-color: var(--background);
     border-radius: 32px;
@@ -439,7 +439,7 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 
   html.dark[data-theme="asana"] body
   div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar)
-  > main.flex-1.min-h-0.flex.flex-col {
+  > div.flex.flex-1.flex-col.min-w-0 {
     background: var(--background) !important;
   }
 }
