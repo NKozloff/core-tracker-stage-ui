@@ -588,3 +588,38 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 #notes-rail-body > button:first-of-type[aria-current="page"] > span.tabular-nums {
   color: var(--muted-foreground) !important;
 }
+
+/* 30. Compact Note creation action: 32x32px icon-only button in the
+   lower-left corner of the first Notes grid column, inset by 24px.
+   The original button remains interactive; hiding its text visually
+   does not remove its accessible text from the DOM. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+  > header button:has(svg.lucide-plus) {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    box-sizing: border-box;
+    padding: 0 !important;
+    margin: 0 0 24px 24px !important;
+    justify-self: start !important;
+    align-self: end !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    border-radius: 8px;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+  > header button:has(svg.lucide-plus) > svg.lucide-plus {
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px;
+  }
+}
