@@ -465,8 +465,9 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   box-shadow: none !important;
 }
 
-/* 26. Non-selected Notes cards sit slightly above the page background:
-   90% workspace background + 10% white. Preserve the active blue card. */
+/* 26. Note cards use the same surface as the description formatting toolbar.
+   Sampled toolbar background in the supplied Stage screenshot: #28292B.
+   Preserve the active blue note selection. */
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
-  background-color: color-mix(in srgb, var(--background) 90%, white 10%) !important;
+  background-color: #28292b !important;
 }
