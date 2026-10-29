@@ -255,3 +255,10 @@ main div:has(> header input[aria-label="Search notes"]) > header + div.flex.min-
 main div:has(> header input[aria-label="Search notes"]) > header + div [data-note-panel] {
   background-color: var(--background) !important;
 }
+
+/* 17. Notes filters: hide the two inline creation actions
+   (Create a folder / New template), preserving existing folders,
+   templates, headings and filter buttons. */
+#notes-rail-body > div.flex.flex-col > button:has(> svg.lucide-plus) {
+  display: none !important;
+}
