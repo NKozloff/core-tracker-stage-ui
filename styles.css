@@ -109,14 +109,14 @@ main div:has(> header input[aria-label="Search notes"])
   background-color: var(--sidebar-accent) !important;
 }
 
-/* 12. Desktop sidebar: 25% narrower (240px -> 180px).
+/* 12. Desktop sidebar: 15% wider than previous 180px setting (207px).
    Change the real flex item width so the Notes workspace automatically
    receives the freed space; do not overlay or reposition content. */
 @media (min-width: 1024px) {
   aside.bg-sidebar {
-    width: 180px !important;
-    min-width: 180px !important;
-    flex: 0 0 180px !important;
+    width: 207px !important;
+    min-width: 207px !important;
+    flex: 0 0 207px !important;
   }
 }
 
@@ -480,9 +480,9 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
     --notes-column-padding: 24px;
     padding: 0 !important;
-    /* Add 48px to each of the old 212px / 332px column tracks, so
-       their usable widths are preserved after 24px inner padding. */
-    grid-template-columns: 260px 380px minmax(0, 1fr) !important;
+    /* First Notes column reduced by 20% from 260px to 208px;
+       note list keeps its 380px track and editor gets the remaining space. */
+    grid-template-columns: 208px 380px minmax(0, 1fr) !important;
     grid-template-rows: 80px minmax(0, 1fr) 86px !important;
     min-width: 0;
     min-height: 0;
