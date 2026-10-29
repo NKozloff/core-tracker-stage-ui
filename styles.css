@@ -454,7 +454,7 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   gap: 12px !important;
 }
 
-#notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\\.5 {
+#notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
   display: contents !important;
 }
 
