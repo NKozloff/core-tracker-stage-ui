@@ -662,3 +662,68 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
   -webkit-mask-position: center;
   mask-position: center;
 }
+
+/* 33. Notes search: fix the control layout and dock it ABOVE the
+   card list. It remains always visible because it is a separate
+   CSS-grid item, outside of the vertically scrolling list.
+   The 16px gap under Search is the search item's own padding-bottom. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
+    grid-template-rows: 72px minmax(0, 1fr) 86px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"]) {
+    grid-column: 2;
+    grid-row: 1 !important;
+    position: relative;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: stretch !important;
+    height: 100% !important;
+    width: 100% !important;
+    padding: 24px 24px 16px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    box-sizing: border-box;
+    background: var(--background);
+    z-index: 3;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > input[aria-label="Search notes"] {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: 32px !important;
+    padding-left: 34px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box;
+  }
+
+  /* The original icon was positioned left:10px relative to its
+     old wrapper. Shift it within the wrapper's 24px inset. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > svg.lucide-search {
+    position: absolute !important;
+    left: 34px !important;
+    top: 32px !important;
+    transform: none !important;
+    width: 16px !important;
+    height: 16px !important;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* The list scrolls independently below Search. Its old top padding
+     is removed only for All, letting the Search padding own the 16px
+     gap to PINNED. Other filters still use full-height list layout. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]):has(#notes-rail-body > button:first-of-type[aria-current="page"])
+    #notes-list-column > div:first-child {
+    grid-row: 2 / 4 !important;
+    padding-top: 0 !important;
+  }
+}
