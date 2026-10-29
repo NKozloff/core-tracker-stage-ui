@@ -516,8 +516,12 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     box-sizing: border-box;
   }
 
+  /* Align the actual rail content (icons and section labels) with
+     the static Notes heading. The rail's old 24px left padding plus
+     per-row padding placed its visual content roughly 20px too far
+     right. Keep the heading and fixed create action unchanged. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-rail-body {
-    padding: 0 24px 24px !important;
+    padding: 0 24px 24px 4px !important;
     border: 0 !important;
     box-sizing: border-box;
   }
