@@ -565,3 +565,26 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     padding-right: 0 !important;
   }
 }
+
+/* 28. The active Notes item in the global sidebar uses exactly the
+   same design token as the main Notes workspace surface. */
+aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
+  background-color: var(--background) !important;
+}
+
+/* 29. The selected All filter uses the same neutral surface as the note
+   cards. Remove its blue active tint and make icon + label white.
+   Keep its right-hand count secondary gray. */
+#notes-rail-body > button:first-of-type[aria-current="page"] {
+  background: #28292b !important;
+  color: #fff !important;
+}
+
+#notes-rail-body > button:first-of-type[aria-current="page"] > svg,
+#notes-rail-body > button:first-of-type[aria-current="page"] > span:not(.tabular-nums) {
+  color: #fff !important;
+}
+
+#notes-rail-body > button:first-of-type[aria-current="page"] > span.tabular-nums {
+  color: var(--muted-foreground) !important;
+}
