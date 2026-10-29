@@ -731,3 +731,24 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     padding-top: 0 !important;
   }
 }
+
+/* 34. Notes rail visual hierarchy:
+   section descriptors are primary white, unselected navigation is muted.
+   Keep selected All white and its neutral #28292b fill unchanged. */
+#notes-rail-body > div.flex.flex-col > span.uppercase.tracking-wider {
+  color: var(--foreground) !important;
+}
+
+#notes-rail-body > button:not([aria-current="page"]),
+#notes-rail-body > div.flex.flex-col > button:not([aria-current="page"]),
+#notes-rail-body > div.flex.flex-col > [data-slot="context-menu-trigger"],
+#notes-rail-body > div.flex.flex-col > [data-slot="context-menu-trigger"] > button:first-child {
+  color: var(--muted-foreground) !important;
+}
+
+/* Inherit the muted tone inside nested folder/template row labels and
+   SVG icons, which otherwise retain Tailwind's text-foreground. */
+#notes-rail-body > div.flex.flex-col > [data-slot="context-menu-trigger"] > button:first-child > span:not(.tabular-nums),
+#notes-rail-body > div.flex.flex-col > [data-slot="context-menu-trigger"] > button:first-child > svg {
+  color: inherit !important;
+}
