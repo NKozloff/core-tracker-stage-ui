@@ -403,13 +403,20 @@ aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
   border-top: 0 !important;
 }
 
-/* 22. Desktop content inset: precisely 32px on all four sides.
-   Apply it to the existing page layout wrapper (not an absolute overlay).
-   This replaces the native p-4 / sm:p-6 padding without stacking it.
-   All three Notes grid columns continue to share this same container. */
+/* 22. Desktop: round the FOUR OUTER CORNERS of the main content surface.
+   Restore the application's native page padding (p-4 / sm:p-6);
+   the 32px requested here is a corner radius, NOT a content inset.
+   The surrounding flex row uses the darker sidebar surface so all
+   four clipped corners are actually visible against the contrast. */
 @media (min-width: 1024px) {
-  main > div.flex-1.min-h-0.overflow-auto > div.flex.h-full.flex-col.gap-4.p-4 {
-    padding: 32px !important;
-    box-sizing: border-box;
+  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) {
+    background-color: color-mix(in oklab, var(--background) 88%, black);
+  }
+
+  div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) > main.flex-1.min-h-0.flex.flex-col {
+    min-width: 0;
+    background-color: var(--background);
+    border-radius: 32px;
+    overflow: hidden;
   }
 }
