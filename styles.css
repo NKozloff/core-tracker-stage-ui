@@ -520,7 +520,7 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
      per-row padding placed its visual content roughly 20px too far
      right. Keep the heading and fixed create action unchanged. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-rail-body {
-    padding: 0 24px 24px 4px !important;
+    padding: 0 12px 24px !important;
     border: 0 !important;
     box-sizing: border-box;
   }
@@ -795,5 +795,27 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     > svg.lucide-search {
     translate: none !important;
     transform: none !important;
+  }
+}
+
+/* 37. Notes rail alignment uses the same two-layer inset as card/date
+   alignment in the second column: outer 12px + each item's inner 12px.
+   Text and icons therefore begin 24px from the column boundary. */
+@media (min-width: 1024px) {
+  /* Notes heading is a separate grid item: express the same 12+12 inset
+     without visually moving the heading away from its existing 24px line. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header > h1 {
+    margin-inline: 12px !important;
+    padding: 24px 12px 0 !important;
+  }
+
+  /* Filter buttons, folder/template rows and tags share 12px horizontal
+     inner padding, replacing their Tailwind px-2.5 (10px) and pr-1. */
+  #notes-rail-body > button,
+  #notes-rail-body > div.flex.flex-col > button,
+  #notes-rail-body > div.flex.flex-col > div.group[role="group"],
+  #notes-rail-body > div.flex.flex-col > div[data-slot="context-menu-trigger"],
+  #notes-rail-body > div.flex.flex-col > span.uppercase.tracking-wider {
+    padding-inline: 12px !important;
   }
 }
