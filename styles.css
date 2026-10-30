@@ -1107,7 +1107,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 47. Note editor attachments and title:
    - hide only the bottom Files N popover trigger (not thumbnails,
      the +N overflow tile, or the paperclip in the formatting toolbar);
-   - size thumbnails and +N tile to 42px square (25% smaller than 42px);
+   - size thumbnails and +N tile to 42px square (25% smaller than 56px);
    - remove only the full-width separator below the note title.
    The editor grid and the date-group separators are unaffected. */
 @media (min-width: 1024px) {
@@ -1155,7 +1155,6 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     flex: 0 0 42px !important;
   }
 
-
   /* +N overflow is a plain 42px tile without the dashed border. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
   button[aria-label^="Files ·"] {
@@ -1166,7 +1165,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 
   /* Align the Edited timestamp to the BOTTOM of the 42px preview row. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
-  > div.flex.h-9\\.5.items-center > span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
+  > div.flex.h-9\.5.items-center > span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
     align-self: flex-end !important;
     margin-bottom: 0 !important;
   }
