@@ -1408,3 +1408,105 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     align-items: center !important;
   }
 }
+
+/* 52. Keep the real, live Edited timestamp in the bottom-left of the
+   writing frame, outside the scrolling text content. Use display:contents
+   only on the attachment-footer layout wrappers: its attachment cluster
+   remains in grid row 5, while the original timestamp is projected onto
+   grid row 4 above the writing frame (no duplicate date, no fixed text). */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\.5.items-center {
+    display: contents !important;
+  }
+
+  /* The thumbnail cluster is the ONLY attachment-footer grid item. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\.5.items-center > div.flex.min-w-0.flex-1.items-center {
+    grid-column: 1 / -1 !important;
+    grid-row: 5 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    align-self: end !important;
+    justify-self: stretch !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    margin: 0 24px 24px !important;
+    padding: 0 !important;
+  }
+
+  /* The actual Edited string now sits INSIDE the writing frame.
+     Insets: 24px outer frame + 12px frame padding + 12px text inset,
+     and 12px outer-bottom + 12px inner-bottom + 8px breathing room. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\.5.items-center > span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
+    grid-column: 1 / -1 !important;
+    grid-row: 4 !important;
+    align-self: end !important;
+    justify-self: start !important;
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: calc(100% - 96px) !important;
+    margin: 0 0 32px 48px !important;
+    padding: 0 !important;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Reserve space at the end of the independently scrollable description
+     so its last line does not disappear beneath the pinned Edited label. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col .note-source {
+    padding-bottom: 52px !important;
+  }
+}
+
+/* 53. Toolbar icon buttons: 32px, and blue/white voice entry point.
+   Increase the bar to 40px (32px controls + 4px inner padding each side).
+   Leave textual heading dropdown free to size to its label/chevron.
+   Accent uses the application's primary blue, as the Create button does. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] {
+    flex: 0 0 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 {
+    box-sizing: border-box !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    padding: 4px !important;
+    border-radius: 8px !important;
+    align-items: center !important;
+  }
+
+  /* Real icon actions within the existing formatting toolbar. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 button:has(svg):not(:has(svg.lucide-chevron-down)) {
+    display: inline-flex !important;
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* The recording action is a primary action, not a destructive one. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 button:has(svg[class*="lucide-mic"]) {
+    background: var(--primary, #2f6dd4) !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 button:has(svg[class*="lucide-mic"]) svg {
+    color: #fff !important;
+    stroke: #fff !important;
+  }
+}
