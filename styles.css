@@ -1049,3 +1049,50 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     white-space: nowrap;
   }
 }
+
+/* 43. Real Delete-note control supplied by AutoSync extension v08.
+   Only activates when the content script has added the actual button.
+   It delegates to the native app's Delete menu action, preserving
+   the application's own confirmation/authorization behavior. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]):has(> button.core-note-delete) {
+    grid-template-rows: 72px minmax(0, 1fr) 110px 44px 56px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]):has(> button.core-note-delete)
+  span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
+    grid-row: 5 !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > button.core-note-delete {
+    grid-column: 2;
+    grid-row: 5;
+    align-self: end;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    margin: 0 24px 16px;
+    border: 0;
+    border-radius: 8px;
+    color: #f87171;
+    background: rgba(248, 113, 113, .10);
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > button.core-note-delete:hover {
+    background: rgba(248, 113, 113, .20);
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > button.core-note-delete:focus-visible {
+    outline: 2px solid #f87171;
+    outline-offset: 2px;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > button.core-note-delete:disabled {
+    cursor: wait;
+    opacity: .5;
+  }
+}
