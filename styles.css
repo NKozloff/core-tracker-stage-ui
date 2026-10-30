@@ -1608,7 +1608,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   /* Some recording widgets draw a thin track with a generic utility div;
      exclude descendants of the editable note body. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
-  :is(div.h-1, div.h-0\\.5, div.h-px):not(.note-source *) {
+  :is(div.h-1, div.h-0\.5, div.h-px):not(.note-source *) {
     display: none !important;
   }
 
