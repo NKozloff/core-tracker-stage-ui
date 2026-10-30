@@ -1128,7 +1128,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 
   /* The native attachment footer was previously a fixed 38px row. */
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\\.5.items-center {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\.5.items-center {
     height: auto !important;
     min-height: 56px !important;
   }
