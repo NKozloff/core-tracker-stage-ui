@@ -1767,10 +1767,11 @@ html.dark[data-theme="asana"] {
     background-color: var(--core-notes-surface-plus1) !important;
   }
 
-  /* Prevent an old --background search strip from cutting across the tint. */
+  /* The fixed Search input matches the Folder / Tags metadata chips.
+     The real input stays transparent within this 36px rounded wrapper. */
   html.dark[data-theme="asana"] body
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header > div.relative:has(input[aria-label="Search notes"]) {
-    background-color: var(--core-notes-surface-plus1) !important;
+    background-color: #28292b !important;
   }
 }
