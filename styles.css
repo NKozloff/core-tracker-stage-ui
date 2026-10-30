@@ -1604,7 +1604,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 }
 
 /* 58. Desktop workspace switcher Home: a full-width active-item card.
-   Outer inset: 24px for every sidebar block; Home card padding: 12px.
+   Outer inset: 16px for every sidebar block; Home card padding: 12px.
    Background uses the same var(--background) as the selected Notes
    global navigation item (rule 28). Preserve the purple identity icon.
    Keep the workspace dropdown functional, and dim the chevron to the
@@ -1613,8 +1613,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   aside.bg-sidebar > div:first-child {
     box-sizing: border-box !important;
     width: 100% !important;
-    /* Global sidebar uses a 24px horizontal content inset. */
-    padding: 0 24px 6px !important;
+    /* Global sidebar uses a 16px horizontal content inset. */
+    padding: 0 16px 6px !important;
     gap: 0 !important;
   }
 
@@ -1684,27 +1684,27 @@ aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"
   display: none !important;
 }
 
-/* 60. One 24px outer inset on every side of the DESKTOP global sidebar.
+/* 60. One 16px outer inset on every side of the DESKTOP global sidebar.
    Top/bottom come from the sidebar's real padding; header, Create,
-   navigation, and profile use the same 24px left/right inset.
+   navigation, and profile use the same 16px left/right inset.
    Children keep their existing own internal padding and functionality.
    Leave mobile safe-area and titlebar padding controlled by the app. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body aside.bg-sidebar {
     box-sizing: border-box !important;
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
   }
 
   aside.bg-sidebar > div.px-2.py-1 {
-    padding: 4px 24px !important;
+    padding: 4px 16px !important;
   }
 
   aside.bg-sidebar > nav.flex-1.overflow-y-auto {
-    padding: 8px 24px !important;
+    padding: 8px 16px !important;
   }
 
   aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
-    padding: 0 24px !important;
+    padding: 0 16px !important;
   }
 }
