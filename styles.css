@@ -1370,3 +1370,41 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     background-color: rgba(121, 183, 255, 0.19) !important;
   }
 }
+
+/* 51. Restore formatting toolbar's compact rounded shape.
+   The previous rule 49 painted both the toolbar and the outside sticky
+   wrapper. That wrapper's 12px bottom padding formed a tall square-ended
+   background strip. Keep the outside wrapper transparent and put the
+   page-color surface ONLY on the actual 36px-high rounded controls row.
+   Retain 12px separation from the note body without painting that gap. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] {
+    flex: 0 0 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 0 12px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  /* Actual rounded toolbar: native 28px buttons + 4px top/bottom. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] > div[data-note-panel] > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 {
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    padding: 4px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: var(--background) !important;
+    box-shadow: none !important;
+    align-items: center !important;
+  }
+}
