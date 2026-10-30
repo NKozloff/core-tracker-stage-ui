@@ -1160,3 +1160,65 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     display: none !important;
   }
 }
+
+/* 48. Unified Notes writing frame.
+   The formatting toolbar and the rich-text description share one 16px-radius
+   card using the EXACT global sidebar color token. Only the note body scrolls.
+   The unchanged attachment footer stays in grid row 5, pinned to the bottom
+   of the third column and OUTSIDE the writing frame. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col {
+    grid-column: 1 / -1 !important;
+    grid-row: 4 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-self: stretch !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: 1 1 auto !important;
+    margin: 8px 24px 12px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background-color: var(--sidebar, #111214) !important;
+    overflow: hidden !important;
+  }
+
+  /* The native editor owns the toolbar and text; preserve its DOM and
+     all formatting actions rather than replacing either with a clone. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col > div[data-note-editor] {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  /* Toolbar stays visible at the very top of the common card, and its
+     original muted pill remains the control surface inside that card. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] {
+    position: relative !important;
+    top: auto !important;
+    flex: 0 0 auto !important;
+    padding: 0 0 12px !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  /* Only the actual editable note body scrolls, not the toolbar,
+     properties, title, or bottom attachment strip. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col .note-source {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    overscroll-behavior-y: contain;
+    padding: 8px 12px 16px !important;
+    background: transparent !important;
+  }
+}
