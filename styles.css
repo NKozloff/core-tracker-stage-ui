@@ -1755,7 +1755,11 @@ html.dark[data-theme="asana"] {
   html.dark[data-theme="asana"] body
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div.flex.min-h-0.flex-1.overflow-hidden,
   html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > nav[aria-label="Notes"],
+  html.dark[data-theme="asana"] body
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column,
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child,
   html.dark[data-theme="asana"] body
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
