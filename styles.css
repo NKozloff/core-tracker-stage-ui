@@ -1030,7 +1030,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     margin: 0 24px 0 12px !important;
   }
 
-  /* Second horizontal row: 18px editable title, with 16px below it. */
+  /* Second horizontal row: 18px editable title, with 24px below it. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) textarea[aria-label="Note title"] {
     grid-column: 1 / -1 !important;
     grid-row: 2 !important;
@@ -1040,9 +1040,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     width: calc(100% - 48px) !important;
     max-width: calc(100% - 48px) !important;
     min-width: 0 !important;
-    /* Header controls end at y=56; row 1 ends at y=64.
-       The 8px top margin completes a precise 16px interval. */
-    margin: 8px 24px 16px !important;
+    /* Controls end at y=56; first grid row ends at y=64.
+       The 16px top margin creates a 24px controls-to-title gap.
+       The 24px bottom margin separates the title from the writing frame. */
+    margin: 16px 24px 24px !important;
     font-size: 18px !important;
     line-height: 24px !important;
     font-weight: 600 !important;
@@ -1098,9 +1099,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
    The editor grid and the date-group separators are unaffected. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
-    /* Footer: 42px thumbnails + 24px bottom inset + 4px track air.
-       The writing frame has a 12px bottom margin: 12 + 4 = 16px. */
-    grid-template-rows: minmax(64px, auto) auto 0px minmax(0, 1fr) minmax(70px, auto) !important;
+    /* Footer: 42px thumbnails + 24px bottom inset + 12px track air.
+       Frame's 12px bottom margin + 12px track air = 24px gap. */
+    grid-template-rows: minmax(64px, auto) auto 0px minmax(0, 1fr) minmax(78px, auto) !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])::before {
     content: none !important;
@@ -1181,7 +1182,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     min-height: 0 !important;
     height: auto !important;
     flex: 1 1 auto !important;
-    /* The title already has a 16px bottom margin; no extra top gap. */
+    /* The title already has a 24px bottom margin; no extra top gap. */
     margin: 0 24px 12px !important;
     padding: 12px !important;
     box-sizing: border-box !important;
