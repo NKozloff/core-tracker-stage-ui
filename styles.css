@@ -888,3 +888,31 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 #notes-list-column section > [role="button"] {
   gap: 4px !important;
 }
+
+/* 41. Unified Notes divider token: 5% pure white over each local surface.
+   Use the same relative white contribution on all visible separator lines:
+   two full-height grid dividers, the search divider and the thin separators
+   inside the editor formatting toolbar. Keep non-divider control borders
+   and the intentionally removed sidebar/card outlines untouched. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
+    --core-notes-divider: rgb(255 255 255 / 5%);
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::after {
+    background-color: var(--core-notes-divider) !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+  > header > div.relative:has(> input[aria-label="Search notes"]) {
+    border-bottom-color: var(--core-notes-divider) !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+  span.bg-border.w-px,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+  span.bg-border.h-px {
+    background-color: var(--core-notes-divider) !important;
+  }
+}
