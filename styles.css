@@ -444,13 +444,13 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   }
 }
 
-/* 25. Notes list is a single visual sequence: dates and note cards are peers.
-   Retain original date grouping DOM and note selection behavior.
-   Use a 12px gap between all consecutive items, including date labels. */
+/* 25. Notes list keeps its original continuous vertical rhythm.
+   Date groups remain semantic sections; only non-first groups receive
+   a full-width divider before their date heading (rule 46). */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 0 !important;
 }
 
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
@@ -464,10 +464,10 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   box-shadow: none !important;
 }
 
-/* 26. All note cards share the selected card's neutral gray fill.
-   Rule 31 keeps the active card's existing treatment unchanged. */
+/* 26. Unselected cards return to a transparent background.
+   Selected note keeps its existing #28292B fill from rule 31. */
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
-  background-color: #28292b !important;
+  background-color: transparent !important;
 }
 
 /* 27. Full-bleed Notes workspace with independently padded columns.
@@ -1084,5 +1084,30 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     align-self: end;
     padding: 0 24px 24px !important;
     box-sizing: border-box;
+  }
+}
+
+/* 46. Full-width dividers before later date groups in the Notes list.
+   Every section after the first gets one divider ABOVE its date heading.
+   The scrolling list has 8px horizontal padding, so ::before extends 8px
+   beyond each date label on both sides to cross the entire 323px column.
+   The first (topmost) date group never receives a divider. */
+@media (min-width: 1024px) {
+  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:not(:first-of-type) > span.uppercase.tracking-wider {
+    position: relative !important;
+    margin-top: 12px !important;
+  }
+
+  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:not(:first-of-type) > span.uppercase.tracking-wider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -8px;
+    right: -8px;
+    height: 1px;
+    background-color: var(--core-notes-divider, rgba(255, 255, 255, 0.05));
+    pointer-events: none;
   }
 }
