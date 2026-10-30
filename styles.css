@@ -1540,3 +1540,32 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     --tw-ring-offset-shadow: 0 0 #0000 !important;
   }
 }
+
+/* 54. Notes header actions and attachments polish.
+   Pin / More are spaced by 8px; attachment image previews have no strokes;
+   Folder gets the same pill radius as Tags and Access. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center {
+    column-gap: 8px !important;
+    gap: 8px !important;
+  }
+
+  /* Remove visual outlines only from thumbnail buttons and images.
+     Preserve interactive focus-visible outlines for keyboard users. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button:has(> span.size-7 > img),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button > span.size-7:has(> img),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button > span.size-7 > img {
+    border: 0 !important;
+    outline: 0;
+    box-shadow: none !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button:has(> span.size-7 > img):focus-visible {
+    outline: 2px solid var(--ring, #79b7ff) !important;
+    outline-offset: 2px;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) {
+    border-radius: 9999px !important;
+  }
+}
