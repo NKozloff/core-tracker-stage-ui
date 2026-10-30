@@ -1708,3 +1708,17 @@ aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"
     padding: 0 16px !important;
   }
 }
+
+/* 61. Sidebar navigation item height: 28px -> 32px.
+   Target the native .min-h-7 links inside the global sidebar navigation,
+   including flattened My Actions links. Do not alter Home, Create,
+   section headers, project trees or profile controls.
+   The approved 16px outer sidebar padding remains unchanged. */
+@media (min-width: 1024px) {
+  aside.bg-sidebar > nav.flex-1.overflow-y-auto > ul a.min-h-7 {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+  }
+}
