@@ -1107,7 +1107,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 47. Note editor attachments and title:
    - hide only the bottom Files N popover trigger (not thumbnails,
      the +N overflow tile, or the paperclip in the formatting toolbar);
-   - double thumbnail and +N tile dimensions from 28px to 56px;
+   - size thumbnails and +N tile to 42px square (25% smaller than 42px);
    - remove only the full-width separator below the note title.
    The editor grid and the date-group separators are unaffected. */
 @media (min-width: 1024px) {
@@ -1122,36 +1122,53 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   /* The native attachment footer was previously a fixed 38px row. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.h-9\.5.items-center {
     height: auto !important;
-    min-height: 56px !important;
+    min-height: 42px !important;
+    align-items: flex-end !important;
   }
 
   /* Four image previews, not all buttons across the editor. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
   button:has(> span.size-7 > img) {
-    width: 56px !important;
-    height: 56px !important;
-    flex: 0 0 56px !important;
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
   button > span.size-7:has(> img) {
-    width: 56px !important;
-    height: 56px !important;
-    min-width: 56px !important;
-    min-height: 56px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
   }
 
-  /* The overflow-count tile follows the same 56px square. */
+  /* The overflow-count tile follows the same 42px square. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
   button[aria-label^="Files ·"] {
-    width: 56px !important;
-    min-width: 56px !important;
-    height: 56px !important;
-    min-height: 56px !important;
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
     padding: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    flex: 0 0 56px !important;
+    flex: 0 0 42px !important;
+  }
+
+
+  /* +N overflow is a plain 42px tile without the dashed border. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
+  button[aria-label^="Files ·"] {
+    border: 0 !important;
+    border-style: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Align the Edited timestamp to the BOTTOM of the 42px preview row. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
+  > div.flex.h-9\\.5.items-center > span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
+    align-self: flex-end !important;
+    margin-bottom: 0 !important;
   }
 
   /* The separate "Files 11" control includes a Lucide paperclip. */
