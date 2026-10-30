@@ -1257,12 +1257,31 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     stroke: currentColor !important;
   }
 
-  /* Folder: show just the folder icon, omit the visible '2' counter. */
+  /* Folder: replace the hidden numeric value with a neutral "Folder"
+     label, styled exactly like the "Tags" label next to it. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) {
     font-size: 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 12px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+    border-radius: 8px !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) > span {
     display: none !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1)::after {
+    content: "Folder";
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    white-space: nowrap;
   }
 
   /* Tags: display the generic unselected label instead of a tag value. */
@@ -1307,5 +1326,47 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] .bg-muted:has(svg.lucide-bold),
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] .bg-muted:has(svg.lucide-italic) {
     background-color: var(--background) !important;
+  }
+}
+
+/* 50. Notes editor Pin action — match the light blue in the pinned
+   note card (#79B7FF). In the pinned state the entire 32px button
+   receives a subtle blue fill; unpinned is visually neutral.
+   No other top-row actions (including More) are modified. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center > button:has(svg:is(.lucide-pin,.lucide-pin-off)) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center > button:has(svg:is(.lucide-pin,.lucide-pin-off)) svg:is(.lucide-pin,.lucide-pin-off) {
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    flex: 0 0 16px !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off) {
+    color: #79b7ff !important;
+    background-color: rgba(121, 183, 255, 0.13) !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off) svg.lucide-pin-off {
+    color: #79b7ff !important;
+    stroke: #79b7ff !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off):hover {
+    background-color: rgba(121, 183, 255, 0.19) !important;
   }
 }
