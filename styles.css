@@ -445,12 +445,13 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 }
 
 /* 25. Flatten date sections into one continuous vertical flex list.
-   Every date heading and note card is a peer with the SAME 8px list gap.
-   Retain original date sections in the DOM and keep dividers removed. */
+   Date headings and note cards are peers with zero list gap.
+   Date labels keep their own 12px vertical padding (first PINNED top 0).
+   Retain the date sections in the DOM and keep dividers removed. */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 0 !important;
 }
 
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
@@ -841,7 +842,7 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 }
 
 /* 40. Note card INTERNAL spacing: Tailwind gap-1.5 (6px) -> 4px.
-   The list-level gap is independently 8px (rule 25); card padding
+   The list-level gap is 0px (rule 25); card padding
    and the selected-note appearance remain unchanged. */
 #notes-list-column section > [role="button"] {
   gap: 4px !important;
@@ -1075,7 +1076,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 46. Uniform date headings in the flattened Notes list.
    Every date descriptor has 12px padding above and below, without
    separate margin. Only the first (PINNED) has zero top padding.
-   Space BETWEEN headings and note cards comes solely from rule 25's 8px gap. */
+   There is no additional list-level gap (rule 25). */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section > span.uppercase.tracking-wider {
