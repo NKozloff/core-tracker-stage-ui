@@ -1163,7 +1163,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 
 /* 48. Unified Notes writing frame.
    The formatting toolbar and the rich-text description share one 16px-radius
-   card using the EXACT global sidebar color token. Only the note body scrolls.
+   card using the EXACT #111214 background of the global navigation. Only the note body scrolls.
    The unchanged attachment footer stays in grid row 5, pinned to the bottom
    of the third column and OUTSIDE the writing frame. */
 @media (min-width: 1024px) {
@@ -1182,7 +1182,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     box-sizing: border-box !important;
     border: 0 !important;
     border-radius: 16px !important;
-    background-color: var(--sidebar, #111214) !important;
+    background-color: #111214 !important;
     overflow: hidden !important;
   }
 
