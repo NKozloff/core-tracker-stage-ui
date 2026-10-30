@@ -584,11 +584,11 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
   background-color: var(--background) !important;
 }
 
-/* 29. The selected All filter uses the same neutral surface as the note
-   cards. Remove its blue active tint and make icon + label white.
+/* 29. The selected All filter uses the slightly brighter #303133 accent.
+   No blue tint; keep its icon + label white.
    Keep its right-hand count secondary gray. */
 #notes-rail-body > button:first-of-type[aria-current="page"] {
-  background: #28292b !important;
+  background: #303133 !important;
   color: #fff !important;
 }
 
@@ -637,9 +637,9 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
 }
 
 /* 31. Selected Notes card matches the selected All tab exactly:
-   #28292B. No blue tint, border or shadow. */
+   #303133. Soft accent, no blue tint, border or shadow. */
 #notes-list-column section > [role="button"][aria-current="true"] {
-  background-color: #28292b !important;
+  background-color: #303133 !important;
   border-color: transparent !important;
   box-shadow: none !important;
 }
@@ -1236,5 +1236,76 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     overscroll-behavior-y: contain;
     padding: 8px 12px 16px !important;
     background: transparent !important;
+  }
+}
+
+/* 49. Notes selection states and calmer text-formatting toolbar.
+   Selected Notes navigation + note card: slightly stronger #303133.
+   Folder / Tags: neutral muted surfaces and no displayed selections.
+   Access: the same selected surface with white icon, text and value.
+   All controls retain their original DOM, click handlers and data. */
+@media (min-width: 1024px) {
+  /* Neutral metadata chips, independently of their stored values. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(2) {
+    background-color: #28292b !important;
+    color: var(--muted-foreground) !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) svg,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(2) svg {
+    color: var(--muted-foreground) !important;
+    stroke: currentColor !important;
+  }
+
+  /* Folder: show just the folder icon, omit the visible '2' counter. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) {
+    font-size: 0 !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) > span {
+    display: none !important;
+  }
+
+  /* Tags: display the generic unselected label instead of a tag value. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(2) {
+    font-size: 0 !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(2) > span {
+    display: none !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(2)::after {
+    content: "Tags";
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--muted-foreground);
+    white-space: nowrap;
+  }
+
+  /* Access: the only selected metadata chip in this visual variant. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(3) {
+    background-color: #303133 !important;
+    color: #fff !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(3) svg,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(3) span,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(3) :is(p,small,strong) {
+    color: #fff !important;
+    stroke: currentColor;
+  }
+
+  /* Match the horizontal formatting strip to the actual Notes page
+     background. Its surrounding writing frame remains #18191B. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] {
+    background-color: var(--background) !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] > :first-child,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] > .bg-muted,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] > .bg-secondary,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] > .bg-card {
+    background-color: var(--background) !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] .bg-muted:has(svg.lucide-bold),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col [data-note-panel] .bg-muted:has(svg.lucide-italic) {
+    background-color: var(--background) !important;
   }
 }
