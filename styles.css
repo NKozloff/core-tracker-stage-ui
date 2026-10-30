@@ -1722,3 +1722,50 @@ aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"
     max-height: 32px !important;
   }
 }
+
+/* 62. Unified surface tint: original --background + 3% white.
+   Give Home's workspace card, the selected global Notes tab and
+   the Notes content the exact same subtly brighter surface.
+   Keep the global sidebar (#18191b), note-writing frame (#18191b),
+   selected individual note cards (#303133) and controls unchanged.
+   Scoped to the Notes route for the main content: no changes to
+   Dashboard, Calendar, Tasks or other page backgrounds. */
+html.dark[data-theme="asana"] {
+  --core-notes-surface-plus3: color-mix(in srgb, var(--background) 97%, white 3%);
+}
+
+@media (min-width: 1024px) {
+  /* Workspace identity card and active Notes tab share one surface. */
+  html.dark[data-theme="asana"] body aside.bg-sidebar > div:first-child
+    > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building),
+  html.dark[data-theme="asana"] body aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
+    background-color: var(--core-notes-surface-plus3) !important;
+  }
+
+  /* The rounded main application content shell, only while Notes is open. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar)
+    > div.flex.flex-1.flex-col.min-w-0 {
+    background-color: var(--core-notes-surface-plus3) !important;
+  }
+
+  /* Notes workspace and its three columns; preserve their own overlays. */
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]),
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div.flex.min-h-0.flex-1.overflow-hidden,
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column,
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
+    background-color: var(--core-notes-surface-plus3) !important;
+  }
+
+  /* Prevent an old --background search strip from cutting across the tint. */
+  html.dark[data-theme="asana"] body
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(input[aria-label="Search notes"]) {
+    background-color: var(--core-notes-surface-plus3) !important;
+  }
+}
