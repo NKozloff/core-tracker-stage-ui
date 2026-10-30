@@ -681,8 +681,10 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
    Search is visible only for All (rule 14), with no horizontal divider.
    Its original emphasis comes from a rounded, muted input surface. */
 @media (min-width: 1024px) {
+  /* Match the 72px Notes header track from rule 27:
+     24px top inset + 32px title line + 16px before All. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
-    grid-template-rows: 64px minmax(0, 1fr) 86px !important;
+    grid-template-rows: 72px minmax(0, 1fr) 86px !important;
   }
 
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
