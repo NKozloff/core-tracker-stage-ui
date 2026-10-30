@@ -447,12 +447,11 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 /* 25. Notes list is a single visual sequence: dates and note cards are peers.
    The actual sections remain in the DOM for date grouping, keyboard behavior
    and existing pinned selectors; display: contents removes only their layout
-   boxes. No inter-item gap: cards retain their own 12px top/bottom padding,
-   while date labels receive 12px top/bottom padding. */
+   boxes. Use a 12px gap between consecutive items. */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
-  gap: 0 !important;
+  gap: 12px !important;
 }
 
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
@@ -466,10 +465,10 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   box-shadow: none !important;
 }
 
-/* 26. Unselected Notes cards have NO fill, following the filter-rail
-   pattern: highlight only the item that is actually selected. */
+/* 26. All Notes cards use the same neutral gray fill (#28292B).
+   Preserve the selected-card styling from rule 31 unchanged. */
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
-  background-color: transparent !important;
+  background-color: #28292b !important;
 }
 
 /* 27. Full-bleed Notes workspace with independently padded columns.
