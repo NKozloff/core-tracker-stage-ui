@@ -1078,15 +1078,16 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   /* Date headings after the first: 24px from the divider line
      to the label, matching the 12px date bottom padding plus the
      next card's 12px top padding. */
-  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section:not(:first-of-type) > span.uppercase.tracking-wider {
     position: relative !important;
     margin-top: 12px !important;
     padding-top: 24px !important;
   }
 
-  /* The very first heading (PINNED in the All list) has no top padding. */
-  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+  /* The first group uses exactly the outer list's 24px top inset,
+     without an extra 12px of padding from the generic date-label rule. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section:first-of-type > span.uppercase.tracking-wider {
     padding-top: 0 !important;
   }
@@ -1567,5 +1568,25 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) {
     border-radius: 9999px !important;
+  }
+}
+
+/* 55. Align all three Notes columns to one 24px top inset.
+   Column 1: existing 24px padding on the Notes heading is retained.
+   Column 2: the scroller has 24px top padding; first date has 0px
+   inner padding (see the now sufficiently specific rule 46 above).
+   Column 3: place the actual 32px metadata/action controls 24px
+   below the workspace top, instead of centering them at 16px
+   inside the 64px header row. Do not move title, writing frame,
+   or the 42px bottom attachment thumbnails. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) {
+    align-self: start !important;
+    margin-top: 24px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center {
+    align-self: start !important;
+    margin-top: 24px !important;
   }
 }
