@@ -1445,7 +1445,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     align-self: end !important;
     justify-self: start !important;
     position: relative !important;
-    z-index: 2 !important;
+    /* Overlap above the z-20 writing frame; z-2 was behind it. */
+    z-index: 30 !important;
     max-width: calc(100% - 96px) !important;
     margin: 0 0 32px 48px !important;
     padding: 0 !important;
@@ -1591,34 +1592,23 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 56. Suppress stray recording-track line in the note title area.
-   The static Stage markup has no such line: it is inserted only during
-   voice-recording interaction. Remove the visual progress/range TRACK,
-   not the microphone button, its popover or the text editor. Also
-   suppress native textarea horizontal scrollbars in the note header.
-   Recording and note contents remain untouched. */
+/* 56. Exact unwanted voice-note artifact supplied by the user.
+   Hide only this specific injected audio card, not any generic progress
+   bars, editor text, or future valid controls. CSS does not alter the
+   underlying note data or physically remove React DOM elements. */
 @media (min-width: 1024px) {
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
-  :is(progress, [role="progressbar"], [data-slot="progress"],
-      [data-slot="progress-track"], [data-slot="slider-track"],
-      input[type="range"], [data-recording-progress]) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.not-prose.overflow-hidden.rounded-xl.border.bg-card {
     display: none !important;
   }
+}
 
-  /* Some recording widgets draw a thin track with a generic utility div;
-     exclude descendants of the editable note body. */
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
-  :is(div.h-1, div.h-0\.5, div.h-px):not(.note-source *) {
-    display: none !important;
-  }
-
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) textarea[aria-label="Note title"] {
-    overflow-x: hidden !important;
-    scrollbar-width: none !important;
-  }
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) textarea[aria-label="Note title"]::-webkit-scrollbar {
-    width: 0 !important;
-    height: 0 !important;
+/* 57. Restore Edited visibility and hide the +N attachments overflow.
+   The live Edited timestamp is projected to grid row 4 by rule 52; the
+   editor frame is z-20, so the timestamp now uses z-30 and is visible
+   INSIDE the frame at the bottom left, outside the note's scroll area.
+   Keep the four 42px image previews untouched. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button[aria-label^="Files ·"] {
     display: none !important;
   }
 }
