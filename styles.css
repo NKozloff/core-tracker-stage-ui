@@ -445,13 +445,12 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 }
 
 /* 25. Notes list is a single visual sequence: dates and note cards are peers.
-   The actual sections remain in the DOM for date grouping, keyboard behavior
-   and existing pinned selectors; display: contents removes only their layout
-   boxes. Use a 12px gap between consecutive items. */
+   Retain original date grouping DOM and note selection behavior.
+   No inter-item gap: note cards and date headers own their vertical padding. */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 0 !important;
 }
 
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
@@ -465,10 +464,10 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   box-shadow: none !important;
 }
 
-/* 26. All Notes cards use the same neutral gray fill (#28292B).
-   Preserve the selected-card styling from rule 31 unchanged. */
+/* 26. Unselected Notes cards have no fill; selected note retains
+   the existing #28292B background from rule 31. */
 #notes-list-column section > [role="button"]:not([aria-current="true"]) {
-  background-color: #28292b !important;
+  background-color: transparent !important;
 }
 
 /* 27. Full-bleed Notes workspace with independently padded columns.
@@ -541,13 +540,20 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     min-width: 0;
   }
 
-  /* Date labels: 8px outer inset + 16px inner = 24px from dividers.
-     Add 12px block padding for the same vertical spacing rhythm
-     as cards (whose existing top/bottom padding stays unchanged). */
+  /* Date headers are the new highlighted surfaces. List inset 8px +
+     16px side margin gives a 24px boundary inset on BOTH sides,
+     exactly matching the fixed Search input's 24px side margins.
+     Keep 12px vertical padding and original date labels. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column section > span.uppercase.tracking-wider {
-    padding-inline: 16px !important;
+    width: auto !important;
+    margin-inline: 16px !important;
+    padding-inline: 12px !important;
     padding-block: 12px !important;
     box-sizing: border-box;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background-color: #28292b !important;
+    box-shadow: none !important;
   }
 
   /* The original list has its own 12px horizontal padding: replace it
