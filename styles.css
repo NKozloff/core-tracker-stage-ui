@@ -1723,7 +1723,7 @@ aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"
   }
 }
 
-/* 62. Unified surface tint: original --background + 3% white.
+/* 62. Unified surface tint: original --background + 2% white.
    Give Home's workspace card, the selected global Notes tab and
    the Notes content the exact same subtly brighter surface.
    Keep the global sidebar (#18191b), note-writing frame (#18191b),
@@ -1731,7 +1731,7 @@ aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"
    Scoped to the Notes route for the main content: no changes to
    Dashboard, Calendar, Tasks or other page backgrounds. */
 html.dark[data-theme="asana"] {
-  --core-notes-surface-plus3: color-mix(in srgb, var(--background) 97%, white 3%);
+  --core-notes-surface-plus3: color-mix(in srgb, var(--background) 98%, white 2%);
 }
 
 @media (min-width: 1024px) {
