@@ -975,13 +975,13 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 44. Three-column Notes editor: retain the approved H2-sized 18px
+/* 44. Three-column Notes editor: set the editable title to 20px
    editable note title after reverting the four-column experiment.
    Applies to the actual textarea, without changing its semantics. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
   textarea[aria-label="Note title"] {
-    font-size: 18px !important;
+    font-size: 20px !important;
     line-height: 24px !important;
     font-weight: 600 !important;
   }
@@ -1032,7 +1032,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     margin: 0 24px 0 12px !important;
   }
 
-  /* Second horizontal row: 18px editable title, with 24px below it. */
+  /* Second horizontal row: 20px editable title, with 24px below it. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) textarea[aria-label="Note title"] {
     grid-column: 1 / -1 !important;
     grid-row: 2 !important;
@@ -1046,7 +1046,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
        The 16px top margin creates a 24px controls-to-title gap.
        The 24px bottom margin separates the title from the writing frame. */
     margin: 16px 24px 24px !important;
-    font-size: 18px !important;
+    font-size: 20px !important;
     line-height: 24px !important;
     font-weight: 600 !important;
   }
