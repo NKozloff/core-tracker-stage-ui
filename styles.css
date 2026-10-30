@@ -1606,9 +1606,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 58. Workspace switcher Home identity.
    Match the colored Home icon tile in the existing workspace-dropdown
    overlay; original DOM and dropdown interaction are preserved.
-   Overlay reference: 28px icon tile (56 screenshot pixels at 2x), with
-   #8AA5DB blue fill and the same original Lucide building glyph.
-   Only the collapsed sidebar switcher receives these styles. */
+   Mobile reference: #2A1E43 purple tile with #C2B4FD lilac glyph.
+   The desktop tile uses a slightly brighter #42315F surface for a
+   gently clearer contrast against the #18191B navigation background.
+   Only the collapsed desktop sidebar switcher receives these styles. */
 @media (min-width: 1024px) {
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) {
     display: inline-flex !important;
@@ -1630,8 +1631,14 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     padding: 7px !important;
     border: none !important;
     border-radius: 8px !important;
-    background-color: #8aa5db !important;
-    color: #1d1f21 !important;
+    background-color: #42315f !important;
+    color: #c2b4fd !important;
+    stroke: currentColor !important;
+  }
+
+  /* Keep the switch chevron in the same gentle lilac hue. */
+  aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > svg.lucide-chevrons-up-down {
+    color: #c2b4fd !important;
     stroke: currentColor !important;
   }
 
