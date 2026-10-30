@@ -532,20 +532,19 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     width: auto !important;
   }
 
-  /* Second column: cards start 12px from each divider, while
-     their built-in 16px horizontal padding keeps text comfortably inset.
-     Section date labels receive an extra 12px inside the list below. */
+  /* Second column: cards begin 8px from dividers; their existing 16px
+     internal padding puts their text on the 24px alignment line. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child {
-    padding: 24px 12px 24px !important;
+    padding: 24px 8px 24px !important;
     border: 0 !important;
     box-sizing: border-box;
     min-width: 0;
   }
 
-  /* Date labels sit at 12px list inset + 12px own inset = 24px from
-     the column edge. The transparent note cards start at 12px. */
+  /* Date labels: 8px outer inset + 16px inner = 24px from dividers.
+     Card padding and typography are left untouched. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column section > span.uppercase.tracking-wider {
-    padding-inline: 12px !important;
+    padding-inline: 16px !important;
     box-sizing: border-box;
   }
 
