@@ -1040,7 +1040,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     width: calc(100% - 48px) !important;
     max-width: calc(100% - 48px) !important;
     min-width: 0 !important;
-    margin: 12px 24px 16px !important;
+    /* Header controls end at y=56; row 1 ends at y=64.
+       The 8px top margin completes a precise 16px interval. */
+    margin: 8px 24px 16px !important;
     font-size: 18px !important;
     line-height: 24px !important;
     font-weight: 600 !important;
@@ -1094,7 +1096,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
    The editor grid and the date-group separators are unaffected. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
-    grid-template-rows: minmax(64px, auto) auto 0px minmax(0, 1fr) minmax(96px, auto) !important;
+    /* Footer: 42px thumbnails + 24px bottom inset + 4px track air.
+       The writing frame has a 12px bottom margin: 12 + 4 = 16px. */
+    grid-template-rows: minmax(64px, auto) auto 0px minmax(0, 1fr) minmax(70px, auto) !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])::before {
     content: none !important;
@@ -1175,7 +1179,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     min-height: 0 !important;
     height: auto !important;
     flex: 1 1 auto !important;
-    margin: 8px 24px 12px !important;
+    /* The title already has a 16px bottom margin; no extra top gap. */
+    margin: 0 24px 12px !important;
     padding: 12px !important;
     box-sizing: border-box !important;
     border: 0 !important;
