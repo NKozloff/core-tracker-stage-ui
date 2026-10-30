@@ -445,8 +445,8 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 }
 
 /* 25. Notes list keeps its original continuous vertical rhythm.
-   Date groups remain semantic sections; only non-first groups receive
-   a full-width divider before their date heading (rule 46). */
+   Date groups remain semantic sections; whitespace between groups
+   is preserved without full-width date dividers (rule 46). */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
@@ -1069,39 +1069,20 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 46. Full-width dividers before later date groups in the Notes list.
-   Every section after the first gets one divider ABOVE its date heading.
-   The scrolling list has 8px horizontal padding, so ::before extends 8px
-   beyond each date label on both sides to cross the entire 323px column.
-   The first (topmost) date group never receives a divider. */
+/* 46. Date-group vertical rhythm, without horizontal separators.
+   First group (PINNED): no extra top padding.
+   Later date labels keep their existing 12px margin and 24px top padding
+   so groups remain distinguishable by whitespace alone. */
 @media (min-width: 1024px) {
-  /* Date headings after the first: 24px from the divider line
-     to the label, matching the 12px date bottom padding plus the
-     next card's 12px top padding. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section:not(:first-of-type) > span.uppercase.tracking-wider {
-    position: relative !important;
     margin-top: 12px !important;
     padding-top: 24px !important;
   }
 
-  /* The first group uses exactly the outer list's 24px top inset,
-     without an extra 12px of padding from the generic date-label rule. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section:first-of-type > span.uppercase.tracking-wider {
     padding-top: 0 !important;
-  }
-
-  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
-    > section:not(:first-of-type) > span.uppercase.tracking-wider::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -8px;
-    right: -8px;
-    height: 1px;
-    background-color: var(--core-notes-divider, rgba(255, 255, 255, 0.05));
-    pointer-events: none;
   }
 }
 
@@ -1575,7 +1556,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 55. Align all three Notes columns to one 24px top inset.
    Column 1: existing 24px padding on the Notes heading is retained.
    Column 2: the scroller has 24px top padding; first date has 0px
-   inner padding (see the now sufficiently specific rule 46 above).
+   inner padding (see rule 46 above).
    Column 3: place the actual 32px metadata/action controls 24px
    below the workspace top, instead of centering them at 16px
    inside the 64px header row. Do not move title, writing frame,
