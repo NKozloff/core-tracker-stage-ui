@@ -482,7 +482,8 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
     /* First Notes column: 208px; notes list retains the approved
        323px (-15%) width; editor fills the remaining space. */
     grid-template-columns: 208px 323px minmax(0, 1fr) !important;
-    grid-template-rows: 80px minmax(0, 1fr) 86px !important;
+    /* 24px heading top inset + 32px heading line + 16px to All. */
+    grid-template-rows: 72px minmax(0, 1fr) 86px !important;
     min-width: 0;
     min-height: 0;
   }
