@@ -426,7 +426,7 @@ aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
    Keep the content surface at its original --background, and give both
    the sidebar and the exposed rounded-corner gutter the same darker fill. */
 html.dark[data-theme="asana"] body aside.bg-sidebar {
-  background: #111214 !important;
+  background: #18191b !important;
   border-right: 0 !important;
   border-inline-end: 0 !important;
 }
@@ -434,7 +434,7 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body
   div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) {
-    background: #111214 !important;
+    background: #18191b !important;
   }
 
   html.dark[data-theme="asana"] body
@@ -1163,7 +1163,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 
 /* 48. Unified Notes writing frame.
    The formatting toolbar and the rich-text description share one 16px-radius
-   card using the EXACT #111214 background of the global navigation. Only the note body scrolls.
+   card using the EXACT #18191b background of the global navigation. Only the note body scrolls.
    The unchanged attachment footer stays in grid row 5, pinned to the bottom
    of the third column and OUTSIDE the writing frame. */
 @media (min-width: 1024px) {
@@ -1182,7 +1182,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     box-sizing: border-box !important;
     border: 0 !important;
     border-radius: 16px !important;
-    background-color: #111214 !important;
+    background-color: #18191b !important;
     overflow: hidden !important;
   }
 
