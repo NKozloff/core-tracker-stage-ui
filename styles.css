@@ -1075,10 +1075,20 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
    beyond each date label on both sides to cross the entire 323px column.
    The first (topmost) date group never receives a divider. */
 @media (min-width: 1024px) {
+  /* Date headings after the first: 24px from the divider line
+     to the label, matching the 12px date bottom padding plus the
+     next card's 12px top padding. */
   #notes-list-column > div:first-child > div.flex.flex-col.gap-3
     > section:not(:first-of-type) > span.uppercase.tracking-wider {
     position: relative !important;
     margin-top: 12px !important;
+    padding-top: 24px !important;
+  }
+
+  /* The very first heading (PINNED in the All list) has no top padding. */
+  #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:first-of-type > span.uppercase.tracking-wider {
+    padding-top: 0 !important;
   }
 
   #notes-list-column > div:first-child > div.flex.flex-col.gap-3
