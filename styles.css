@@ -1510,3 +1510,33 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     stroke: #fff !important;
   }
 }
+
+/* 54. Notes polish: two editor actions 8px apart, unframed
+   attachment thumbnails, and Folder radius matching Tags/Access. */
+@media (min-width: 1024px) {
+  /* Pin and More are siblings in the existing right-hand action group. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) span.flex.h-8.shrink-0.items-center {
+    gap: 8px !important;
+    column-gap: 8px !important;
+  }
+
+  /* Keep Folder 32px tall, but use the same fully rounded pill
+     silhouette as Tags and Access instead of the earlier 8px radius. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center) > div.flex.flex-wrap.items-center > button:nth-of-type(1) {
+    border-radius: 9999px !important;
+  }
+
+  /* Photo previews only: eliminate button borders and Tailwind rings,
+     including outlines on their inner thumbnail/image wrappers.
+     Preserve original 42px sizing, object-fit and corner rounding. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button:has(> span.size-7 > img),
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button:has(> span.size-7 > img) > span.size-7,
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button:has(> span.size-7 > img) > span.size-7 > img {
+    border: 0 !important;
+    border-width: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+  }
+}
