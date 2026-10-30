@@ -985,16 +985,14 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 45. Full-width editor header divider.
-   Header: (1) Folder / Tags / Access + Pin / Actions, (2) note title.
-   Divider: a genuine 1px CSS-grid row spanning the ENTIRE third column.
-   Body: existing formatting toolbar / text, followed by attachment footer.
-   No absolute positioning, duplicated controls or horizontal outer padding. */
+/* 45. Notes editor layout: controls, title, text, attachment footer.
+   The former full-width separator below the title has been removed.
+   Two header rows remain; the third grid row has zero height. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto !important;
-    grid-template-rows: minmax(64px, auto) auto 1px minmax(0, 1fr) minmax(72px, auto) !important;
+    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) minmax(72px, auto) !important;
     gap: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -1048,23 +1046,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     font-weight: 600 !important;
   }
 
-  /* Full-bleed separator from left divider to the right frame boundary. */
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])::before {
-    content: "";
-    grid-column: 1 / -1;
-    grid-row: 3;
-    align-self: stretch;
-    justify-self: stretch;
-    display: block;
-    width: 100%;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    background-color: rgba(255, 255, 255, 0.05);
-    pointer-events: none;
-  }
-
-  /* Editing area starts BELOW the line, with its own 24px side insets.
+  /* Editing area starts below the title, with its own 24px side insets.
      The existing formatting toolbar stays above the note body. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) div.relative.z-20.flex.min-h-56.flex-1.flex-col {
     grid-column: 1 / -1 !important;
@@ -1166,5 +1148,47 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background
   button:has(> svg.lucide-paperclip) {
     display: none !important;
+  }
+}
+
+/* 47. Notes footer attachment previews at 2x their original 28px size.
+   Hide only the "Files 11" popover trigger; preserve thumbnail clicks,
+   the +N attachments control and the Edited timestamp. */
+@media (min-width: 1024px) {
+  /* Hide the Files count button, not the attachment preview buttons. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background button[data-popover-trigger]:has(> svg.lucide-paperclip) {
+    display: none !important;
+  }
+
+  /* Each visual preview changes from size-7 (28px) to 56px. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background div.flex.min-w-0.items-center.gap-1\\.5 > button > span.size-7 {
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    min-height: 56px !important;
+  }
+
+  /* Match the "+N" overflow preview tile to the larger thumbnails. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background div.flex.min-w-0.items-center.gap-1\\.5 > button[aria-label^="Files ·"] {
+    width: 56px !important;
+    min-width: 56px !important;
+    height: 56px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+  }
+
+  /* The native footer row is 38px tall; allow 56px previews to fit. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.items-center {
+    height: 56px !important;
+    min-height: 56px !important;
+    align-items: center !important;
+  }
+
+  /* Keep full-size thumbnails accessible at narrower desktop widths. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) > div > div.relative.isolate > div.shrink-0.bg-background > div.flex.items-center > div.flex.min-w-0.flex-1.items-center {
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 }
