@@ -447,11 +447,12 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 /* 25. Notes list is a single visual sequence: dates and note cards are peers.
    The actual sections remain in the DOM for date grouping, keyboard behavior
    and existing pinned selectors; display: contents removes only their layout
-   boxes. Every adjacent date or note is spaced by the same 12px. */
+   boxes. No inter-item gap: cards retain their own 12px top/bottom padding,
+   while date labels receive 12px top/bottom padding. */
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 0 !important;
 }
 
 #notes-list-column > div:first-child > div.flex.flex-col.gap-3 > section.flex.flex-col.gap-1\.5 {
@@ -542,9 +543,11 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
   }
 
   /* Date labels: 8px outer inset + 16px inner = 24px from dividers.
-     Card padding and typography are left untouched. */
+     Add 12px block padding for the same vertical spacing rhythm
+     as cards (whose existing top/bottom padding stays unchanged). */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) #notes-list-column section > span.uppercase.tracking-wider {
     padding-inline: 16px !important;
+    padding-block: 12px !important;
     box-sizing: border-box;
   }
 
