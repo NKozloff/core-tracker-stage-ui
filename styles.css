@@ -819,3 +819,54 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     padding-inline: 12px !important;
   }
 }
+
+/* 38. Minimal search: one full-width separator beneath the fixed search
+   row, ending exactly at the two vertical Notes grid dividers.
+   The field itself is transparent; layout is an icon + plain input,
+   not an absolutely positioned icon over a padded input. */
+@media (min-width: 1024px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"]) {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 24px 24px 16px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--border) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Remove the old position offsets; the icon now participates in
+     flex layout and aligns with the date labels (24px from divider). */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > svg.lucide-search {
+    position: static !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    translate: none !important;
+    transform: none !important;
+    margin: 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > input[aria-label="Search notes"] {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+}
