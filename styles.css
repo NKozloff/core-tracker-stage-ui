@@ -889,14 +889,15 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
   gap: 4px !important;
 }
 
-/* 41. Unified Notes divider token: 5% pure white over each local surface.
-   Use the same relative white contribution on all visible separator lines:
+/* 41. Unified Notes divider token: solid, fully opaque 5%-white
+   grayscale (#0D0D0D = round(255 * 0.05) per channel).
+   Use this one fixed color on all visible separator lines:
    two full-height grid dividers, the search divider and the thin separators
    inside the editor formatting toolbar. Keep non-divider control borders
    and the intentionally removed sidebar/card outlines untouched. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
-    --core-notes-divider: rgb(255 255 255 / 5%);
+    --core-notes-divider: #0d0d0d;
   }
 
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before,
