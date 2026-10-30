@@ -682,7 +682,7 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
    The 16px gap under Search is the search item's own padding-bottom. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]) {
-    grid-template-rows: 72px minmax(0, 1fr) 86px !important;
+    grid-template-rows: 64px minmax(0, 1fr) 86px !important;
   }
 
   main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
@@ -695,7 +695,7 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     justify-content: stretch !important;
     height: 100% !important;
     width: 100% !important;
-    padding: 24px 24px 16px !important;
+    padding: 24px 24px 8px !important;
     margin: 0 !important;
     border: 0 !important;
     box-sizing: border-box;
@@ -834,7 +834,7 @@ aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 12px !important;
-    padding: 24px 24px 16px !important;
+    padding: 24px 24px 8px !important;
     border: 0 !important;
     border-bottom: 1px solid var(--border) !important;
     background: transparent !important;
