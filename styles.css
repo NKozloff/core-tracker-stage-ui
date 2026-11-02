@@ -1384,7 +1384,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     margin: 0 !important;
     border: 0 !important;
     border-radius: 8px !important;
-    background: var(--background) !important;
+    background: var(--core-notes-surface-plus1, #202123) !important;
     box-shadow: none !important;
     align-items: center !important;
   }
