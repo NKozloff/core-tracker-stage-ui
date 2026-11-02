@@ -1692,12 +1692,12 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 @media (min-width: 1024px) {
   aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"]) {
     display: flex !important;
-    flex: 0 0 36px !important;
+    flex: 0 0 32px !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 36px !important;
-    min-width: 36px !important;
-    height: 36px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
     margin: 0 0 0 auto !important;
     padding: 0 !important;
   }
@@ -1712,10 +1712,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     position: relative !important;
     align-items: center !important;
     justify-content: center !important;
-    flex: 0 0 36px !important;
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
     padding: 0 !important;
   }
 
