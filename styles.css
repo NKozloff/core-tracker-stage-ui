@@ -1791,7 +1791,7 @@ html.dark[data-theme="asana"] {
 
 @media (min-width: 1024px) {
   /* Selected Notes tab keeps its +1% surface; the switcher is unframed. */
-  html.dark[data-theme="asana"] body aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
+  html.dark[data-theme="asana"] body aside.bg-sidebar nav a:is([href="/notes"],[href="/dashboard"]).bg-sidebar-accent {
     background-color: var(--core-notes-surface-plus1) !important;
   }
 
@@ -2681,16 +2681,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   }
 }
 
-/* Dashboard analytics — content-sized composition aligned to Figma reference.
-   No fixed heights on analytics frames, numeric rows, or metric pills.
-   Preserve heading 14px and total 28px; use 500 weight for totals,
-   16px/500 for status numbers and 14px for status labels.
-   Title → metrics: 16px. Metrics → 18px bar: 16px.
-   Reorganize only: total and 3 soft pill statuses in one row;
-   three mildly rounded proportional segments on the bottom.
-   DESIGN-ONLY VALUES (underlying app data/ARIA unchanged):
-     My tasks: 45 = 8 active + 4 overdue + 33 completed.
-     Available projects: 16 = 11 active + 3 overdue + 2 completed. */
+/* Dashboard analytics: content-sized KPI cards and segmented bars. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -3643,6 +3634,9 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
    Read the real inline 0% progress width; other values stay unchanged. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 0%"]) > span:first-child {
-    color: var(--tertiary-foreground, var(--muted-foreground)) !important;
+    color: var(--foreground) !important;
   }
 }
+
+/* Dashboard OKR: dates match the white Progress values. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(4) { color: var(--foreground) !important; }
