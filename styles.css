@@ -3013,14 +3013,14 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   padding-bottom: 0 !important;
 }
 
-/* Dashboard: keep OKR then Financial approvals; hide three other blocks.
-   CSS-only visibility, not deletion of application data. */
-@media (min-width:1024px) {
+/* Dashboard: hide My tasks, Habits and Approvals at all widths. */
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
   > div.bg-card:has(>div:first-child h2 a[href^="/actions?"]),
   > div.bg-card:has(>div:first-child h2 a[href="/personal-goals"]),
   > div.bg-card:has(>div:first-child h2 a[href^="/approvals?"]) {display:none!important;}
-
+}
+@media (min-width:1024px) {
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
   > div.bg-card:has(>div:first-child h2 a[href="/financial-approvals"]) {
     box-sizing:border-box!important;
     padding:16px 24px!important;
