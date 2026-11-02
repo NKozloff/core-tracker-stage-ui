@@ -2664,3 +2664,357 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     transition: none !important;
   }
 }
+
+/* Dashboard top analytics cards: Figma-style horizontal KPI row and bars. */
+/* CSS-only illustrative breakdowns, independent of backend/API and aria:
+   My tasks 45 = 8 Active + 4 Overdue + 33 Completed;
+   Available projects 16 = 11 Active + 3 Overdue + 2 Completed.
+   This block supersedes the older vertical / donut prototypes. */
+@media (min-width: 1024px) {
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 24px !important;
+  box-sizing: border-box !important;
+  height: 208px !important;
+  min-height: 208px !important;
+  max-height: 208px !important;
+  padding: 24px !important;
+  overflow: hidden !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:first-child {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex: 0 0 20px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide old large total / donut pseudo-elements on the second card. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2))::before,
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2))::after {
+  content: none !important;
+  display: none !important;
+  background-image: none !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) {
+  --dash-gap-b: 12px !important;
+  --dash-gap-c: 12px !important;
+  --dash-track: calc(100% - var(--dash-gap-b) - var(--dash-gap-c)) !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  align-content: flex-start !important;
+  gap: 8px !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* First flex item is the large total, 12px ahead of the pills. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2)::before {
+  content: "" !important;
+  display: block !important;
+  order: -1 !important;
+  position: static !important;
+  flex: 0 0 auto !important;
+  align-self: center !important;
+  margin: 0 4px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  color: var(--foreground) !important;
+  font-size: 42px !important;
+  font-weight: 700 !important;
+  line-height: 50px !important;
+  letter-spacing: -0.035em !important;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(1) > div:nth-child(2)::before {
+  content: "45" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(2) > div:nth-child(2)::before {
+  content: "16" !important;
+}
+
+/* Remove old "15" total attached to the left card's metrics wrapper. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2)::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Small, softly highlighted pill cards, with maximum rounding. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a {
+  position: static !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  order: 0 !important;
+  gap: 9px !important;
+  box-sizing: border-box !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 10px 14px !important;
+  border: none !important;
+  border-radius: 999px !important;
+  background: var(--dash-kpi-highlight-surface, color-mix(in srgb, var(--secondary) 96%, white 4%)) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* Dot is its own flex item so display order is dot / value / label. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a::after {
+  content: "" !important;
+  display: block !important;
+  position: static !important;
+  order: 0 !important;
+  flex: 0 0 10px !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  background: var(--dash-color) !important;
+  pointer-events: none !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:first-child {
+  order: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:first-child::before {
+  display: inline-block !important;
+  color: var(--foreground) !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  font-variant-numeric: tabular-nums;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:last-child {
+  order: 2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  color: var(--muted-foreground) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  white-space: nowrap !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:last-child::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* The three bars use 12px gaps and a slightly squared 7px radius.
+   They are anchored to the full-width metrics wrapper rather than to pills. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a::before,
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a[aria-label$=": 0"]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: auto !important;
+  bottom: 0 !important;
+  width: calc(var(--dash-track) * var(--dash-width)) !important;
+  height: 26px !important;
+  left: var(--dash-left) !important;
+  margin: 0 !important;
+  border-radius: 7px !important;
+  background: var(--dash-color) !important;
+  pointer-events: none !important;
+}
+
+/* Accurate static proportions for both contrasting design examples. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(1) > div:nth-child(2) {
+  --dash-a: 0.1777777778 !important;
+  --dash-b: 0.0888888889 !important;
+  --dash-c: 0.7333333333 !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(2) > div:nth-child(2) {
+  --dash-a: 0.6875 !important;
+  --dash-b: 0.1875 !important;
+  --dash-c: 0.125 !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a:nth-child(1) {
+  --dash-left: 0px !important;
+  --dash-width: var(--dash-a) !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a:nth-child(2) {
+  --dash-left: calc(var(--dash-track) * var(--dash-a) + var(--dash-gap-b)) !important;
+  --dash-width: var(--dash-b) !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a:nth-child(3) {
+  --dash-left: calc(var(--dash-track) * (var(--dash-a) + var(--dash-b)) + var(--dash-gap-b) + var(--dash-gap-c)) !important;
+  --dash-width: var(--dash-c) !important;
+}
+
+/* Override old demo ::before values (which do not match these mockups). */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(1) > div:nth-child(2) > a:nth-child(1) > span:first-child::before {
+  content: "8" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(1) > div:nth-child(2) > a:nth-child(2) > span:first-child::before {
+  content: "4" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(1) > div:nth-child(2) > a:nth-child(3) > span:first-child::before {
+  content: "33" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(2) > div:nth-child(2) > a:nth-child(1) > span:first-child::before {
+  content: "11" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(2) > div:nth-child(2) > a:nth-child(2) > span:first-child::before {
+  content: "3" !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)):nth-child(2) > div:nth-child(2) > a:nth-child(3) > span:first-child::before {
+  content: "2" !important;
+}
+
+}
+/* Keep every pill on the first row at narrower two-column widths. */
+@media (min-width: 1024px) and (max-width: 1350px) {
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) {
+  gap: 6px !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2)::before {
+  font-size: 34px !important;
+  line-height: 44px !important;
+  margin-right: 3px !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a {
+  height: 42px !important;
+  min-height: 42px !important;
+  gap: 6px !important;
+  padding: 8px 10px !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a::after {
+  flex-basis: 8px !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:first-child::before {
+  font-size: 16px !important;
+  line-height: 22px !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+  > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:last-child {
+  font-size: 12px !important;
+  line-height: 22px !important;
+}
+
+}
