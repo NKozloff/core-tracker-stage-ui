@@ -2570,3 +2570,37 @@ body:has(aside.bg-sidebar nav a[href="/personal-goals"].bg-sidebar-accent)
     --dash-left: calc((var(--dash-a) + var(--dash-b)) * var(--dash-track) + var(--dash-gap-b) + var(--dash-gap-c)) !important;
   }
 }
+
+
+/* Dashboard header surfaces: match Search; selected period matches KPI tiles.
+   Search's original background: bg-muted/50, dark:bg-input/30 (Tailwind).
+   Match those exact theme-aware tokens on the period control, filter button
+   and ONLY the two top analytics cards. Keep the search field's existing style.
+   The three Available projects KPI tiles and the selected period tab share
+   a single +4% white surface, preserving subtle contrast with their parents.
+   Scope to Dashboard so Notes, Personal Goals, etc. are not affected. */
+main:has(h1[data-testid="dashboard-heading"]) {
+  --dash-header-search-surface: color-mix(in oklab, var(--muted) 50%, transparent);
+  --dash-kpi-highlight-surface: color-mix(in srgb, var(--dash-header-search-surface) 96%, white 4%);
+}
+html.dark main:has(h1[data-testid="dashboard-heading"]) {
+  --dash-header-search-surface: color-mix(in oklab, var(--input) 30%, transparent);
+}
+
+main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"],
+main:has(h1[data-testid="dashboard-heading"]) button[aria-label="Configure blocks"],
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary {
+  background-color: var(--dash-header-search-surface) !important;
+}
+
+/* The selection follows aria-selected when Today / Week / Month changes. */
+main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"] > button[role="tab"][aria-selected="true"] {
+  background-color: var(--dash-kpi-highlight-surface) !important;
+}
+
+/* Match the selected tab to the slightly lighter inner KPI cards exactly. */
+main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
+  background-color: var(--dash-kpi-highlight-surface) !important;
+}
