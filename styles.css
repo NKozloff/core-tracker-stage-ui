@@ -2755,7 +2755,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     min-height: 0 !important;
     min-width: 0 !important;
     margin: 0 !important;
-    padding: 0 0 34px !important;
+    padding: 0 0 29.5px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -2883,8 +2883,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     display: none !important;
   }
 
-  /* Half-height bar doubled: 18px, with 16px after the content-sized
-     metric row. 6px segment gaps and 3px corner radius. */
+  /* Segmented bar: 13.5px high (25% less than 18px), 16px below metrics.
+     Preserve 6px gaps; slightly round corners with a 5px radius. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a::before,
@@ -2898,9 +2898,9 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     bottom: 0 !important;
     left: var(--dash-left) !important;
     width: calc(var(--dash-track) * var(--dash-width)) !important;
-    height: 18px !important;
+    height: 13.5px !important;
     margin: 0 !important;
-    border-radius: 3px !important;
+    border-radius: 5px !important;
     background: var(--dash-color) !important;
     pointer-events: none !important;
   }
