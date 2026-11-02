@@ -3416,8 +3416,8 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 }
 
 /* Dashboard OKR / 44px rows and low-contrast column-header band. */
-/* Keep the section-heading divider, but remove every divider that used
-   to separate objectives. Only Dashboard's OKR table is affected. */
+/* Preserve the 44px row height and column alignment while letting
+   the subtle row separators span the full width of the OKR card. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) {
     padding-top: 16px !important;
@@ -3451,9 +3451,12 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
     line-height: 16px !important;
   }
 
-  /* This block is only a row group, not an additional separator. */
+  /* Expand the row group to the card edges. Inset each row's content 24px,
+     exactly matching the descriptor headings above it. */
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) {
-    margin-top: 0 !important;
+    box-sizing: border-box !important;
+    width: calc(100% + 48px) !important;
+    margin: 0 -24px !important;
     padding: 0 !important;
     border: 0 !important;
     border-top: 0 !important;
@@ -3461,14 +3464,15 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
     box-shadow: none !important;
     background-image: none !important;
   }
-  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow,
-  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
     box-sizing: border-box !important;
     height: 44px !important;
     min-height: 44px !important;
     max-height: 44px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     border: 0 !important;
@@ -3479,8 +3483,13 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
     box-shadow: none !important;
     background-image: none !important;
   }
-  /* Reset the CSS separators rather than just the link border:
-     some old themes draw a rule using row pseudo-elements. */
+  /* Only consecutive rows get a full-bleed divider; no line after the
+     descriptor header or after the last row. Maintain 44px border-box rows. */
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
+    border-top: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent) !important;
+  }
+
+  /* Disable old pseudo-element dividers so the border is the only rule. */
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow::before,
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow::after {
     content: none !important;
