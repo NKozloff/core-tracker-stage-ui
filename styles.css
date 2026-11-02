@@ -2617,7 +2617,8 @@ main:has(h1[data-testid="dashboard-heading"])
 /* Dashboard All spaces: render the existing switch as a proper toggle.
    The app already provides role=switch and a real aria-checked state.
    CSS changes its appearance only; it does not force a false data state to
-   true. The track is blue when the actual switch is ON. */
+   true. The track is blue when ON, and when OFF it matches the
+   selected Dashboard period tab surface. */
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"] {
   position: relative !important;
   display: inline-flex !important;
@@ -2625,9 +2626,15 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   gap: 8px !important;
   padding: 0 10px !important;
   min-height: 32px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
   background: transparent !important;
   border-color: transparent !important;
   cursor: pointer !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"] > span {
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"] > svg {
   display: none !important;
@@ -2635,11 +2642,11 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::before {
   content: "" !important;
   display: block !important;
-  flex: 0 0 32px !important;
-  width: 32px !important;
-  height: 18px !important;
+  flex: 0 0 48px !important;
+  width: 48px !important;
+  height: 28px !important;
   border-radius: 999px !important;
-  background-color: #60636a !important;
+  background-color: var(--dash-kpi-highlight-surface) !important;
   transition: background-color 150ms ease !important;
   pointer-events: none !important;
 }
@@ -2648,8 +2655,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   position: absolute !important;
   top: 50% !important;
   left: 13px !important;
-  width: 12px !important;
-  height: 12px !important;
+  width: 22px !important;
+  height: 22px !important;
   border-radius: 50% !important;
   background: #fff !important;
   transform: translateY(-50%) !important;
@@ -2661,7 +2668,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   background-color: #3b82f6 !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"]::after {
-  left: 27px !important;
+  left: 33px !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"] > span {
   color: var(--foreground) !important;
