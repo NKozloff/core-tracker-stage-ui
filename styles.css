@@ -3079,7 +3079,7 @@ html body aside.bg-sidebar nav > div > a[href="/teams-projects"] > svg.lucide-se
 }
 
 /* Keep the original team/project tree visible under the new row. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) > div.group\\/section {
+html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) > div.group\/section {
   display: block !important;
   height: auto !important;
   visibility: visible !important;
@@ -3091,20 +3091,20 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) > div.grou
 /* Remove EVERY separator in this tree, without touching other pages or
    their cards/borders. Also hide any native <hr> separators. */
 html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\\/section :is(div.border-t, hr) {
+  > div.group\/section :is(div.border-t, hr) {
   display: none !important;
 }
 
 /* Hide all project task-progress fractions (e.g., 12/12, 3/3).
    Those are the native tabular-nums spans inside the tree. */
 html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\\/section span.tabular-nums {
+  > div.group\/section span.tabular-nums {
   display: none !important;
 }
 
 /* Hide the "Create Team" footer row; do not hide per-team expand
    controls, actual links, or drag-and-drop project rows. */
 html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\\/section > div.px-1.mt-1:has(> button) {
+  > div.group\/section > div.px-1.mt-1:has(> button) {
   display: none !important;
 }
