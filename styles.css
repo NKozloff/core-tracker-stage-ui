@@ -2975,3 +2975,56 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     gap: 5px !important;
   }
 }
+
+/* Dashboard tables: 24px frame padding and analytics-matching surfaces.
+   Only the two tables immediately following the analytics: OKR and My tasks.
+   Their old px-4 / mx-4 spacing is removed to avoid 24+16px double padding.
+   Keep the existing table grids, row heights and row dividers unchanged. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]),
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) {
+  box-sizing: border-box !important;
+  padding: 24px !important;
+  background-color: var(--dash-header-search-surface) !important;
+}
+
+/* The headings now sit directly on the frame's 24px inset.
+   Retain a 16px vertical separation between heading and column labels. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header,
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) > div:first-child {
+  padding: 0 !important;
+  margin: 0 0 16px !important;
+}
+
+/* Keep dividers aligned with the same 24px frame inset. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div.mx-4,
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) > div.mx-4 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* OKR: no extra 16px left/right inside the column labels or objective rows. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) {
+  padding-bottom: 0 !important;
+}
+
+/* My tasks: the grid, including its sticky column labels, uses the same inset.
+   Its sticky header must inherit the analytics surface to avoid a black band. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) > div:nth-child(3) {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) > div:nth-child(3) > div:first-child {
+  background-color: var(--dash-header-search-surface) !important;
+}
+
+/* The lower pagination/action row is also aligned to 24px. */
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) > div:last-child {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+}
