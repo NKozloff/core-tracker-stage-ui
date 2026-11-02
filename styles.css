@@ -1888,8 +1888,8 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     content: "Available projects";
   }
 
-  /* Position the bars against one common track at the top of the metrics
-     wrapper. The three links form a SEPARATE equal-column legend below. */
+  /* Keep the bars in one shared track. Legend items flow naturally
+     from left to right beneath it, without equal-width columns. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) {
@@ -1897,9 +1897,10 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     --dash-gap-c: 6px;
     --dash-track: calc(100% - 40px - var(--dash-gap-b) - var(--dash-gap-c));
     position: relative !important;
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 10px 22px !important;
     align-items: center;
     padding: 37px 20px 18px !important;
     min-width: 0;
@@ -1987,6 +1988,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     > .rounded-xl.bg-secondary > div:nth-child(2) > a {
     position: static !important; /* segment ::before anchors to wrapper */
     display: flex !important;
+    flex: 0 0 auto !important;
     flex-direction: row !important;
     align-items: center !important;
     min-width: 0;
@@ -2043,7 +2045,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child {
     order: 0;
     display: inline-flex !important;
-    flex: 1 1 auto;
+    flex: 0 0 auto !important;
     align-items: center;
     gap: 7px !important;
     min-width: 0;
@@ -2067,11 +2069,12 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:first-child {
     order: 1;
-    margin-left: auto;
+    flex: 0 0 auto;
+    margin-left: 0 !important;
     color: var(--dash-color) !important;
-    font-size: 18px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
-    line-height: 24px !important;
+    line-height: 20px !important;
   }
 }
 
