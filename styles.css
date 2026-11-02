@@ -2196,11 +2196,12 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
 
 }
 
-/* Dashboard / Available projects: 24px vertical rhythm with horizontal metric tiles.
+/* Dashboard / Available projects: 16px vertical rhythm, equal-width vertical KPI tiles.
    CSS-only mock values: 3 Active + 8 Overdue + 4 Completed = 15 total.
-   Layout math: 24 top + 20 header + 24 gap + 28 total + 24 gap
-   + 36 tile row + 24 bottom = 180px card height.
-   Donut outer rendered diameter: 132px = 180 - 24 - 24.
+   Layout math: 24 top + 20 header + 16 gap + 28 total + 16 gap
+   + 64 tile row + 24 bottom = 192px card height.
+   Tiles 116px wide, fit the longest status Completed.
+   Donut diameter 144px = 192 - 24 - 24.
    Crop SVG viewBox to the actual outer ring bounds so the *visible* ring,
    not only its image element, is exactly 24px from top/right/bottom.
    Only the second Dashboard summary card is affected. */
@@ -2210,14 +2211,14 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary:nth-child(2) {
     display: grid !important;
     box-sizing: border-box !important;
-    grid-template-columns: minmax(0, 1fr) 132px !important;
-    grid-template-rows: 20px 28px 36px !important;
+    grid-template-columns: minmax(0, 1fr) 144px !important;
+    grid-template-rows: 20px 28px 64px !important;
     column-gap: 16px !important;
-    row-gap: 24px !important;
+    row-gap: 16px !important;
     padding: 24px !important;
-    height: 180px !important;
-    min-height: 180px !important;
-    max-height: 180px !important;
+    height: 192px !important;
+    min-height: 192px !important;
+    max-height: 192px !important;
     align-items: stretch !important;
   }
 
@@ -2264,13 +2265,13 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: grid !important;
     grid-column: 1 !important;
     grid-row: 3 !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-rows: 36px !important;
+    grid-template-columns: repeat(3, 116px) !important;
+    grid-template-rows: 64px !important;
     column-gap: 6px !important;
     row-gap: 0 !important;
     width: 100% !important;
-    max-width: 420px !important;
-    height: 36px !important;
+    max-width: 360px !important;
+    height: 64px !important;
     min-width: 0 !important;
     min-height: 0 !important;
     padding: 0 !important;
@@ -2286,8 +2287,9 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     background-image: none !important;
   }
 
-  /* Each tile: dot / gray status / 16px colored number in a single line.
-     Exact internal padding: 12px horizontally and 8px vertically. */
+  /* Each tile: 20px colored number above dot and status. All three tiles
+     share a fixed 116px width sized to fit Completed, the longest label.
+     Preserve 12px horizontal and 8px vertical padding. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
@@ -2295,15 +2297,15 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     grid-column: auto !important;
     grid-row: 1 !important;
     flex: initial !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 6px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    gap: 4px !important;
     box-sizing: border-box !important;
     width: 100% !important;
-    height: 36px !important;
+    height: 64px !important;
     min-width: 0 !important;
-    min-height: 36px !important;
+    min-height: 64px !important;
     padding: 8px 12px !important;
     border: none !important;
     border-radius: 10px !important;
@@ -2320,9 +2322,9 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
-    order: 0 !important;
+    order: 1 !important;
     display: inline-flex !important;
-    flex: 0 1 auto !important;
+    flex: 0 0 auto !important;
     align-items: center !important;
     min-width: 0 !important;
     gap: 5px !important;
@@ -2330,7 +2332,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     color: var(--muted-foreground) !important;
     font-size: 12px !important;
     font-weight: 400 !important;
-    line-height: 20px !important;
+    line-height: 16px !important;
     white-space: nowrap !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
@@ -2343,10 +2345,10 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
-    order: 1 !important;
+    order: 0 !important;
     display: inline-flex !important;
     flex: 0 0 auto !important;
-    min-height: 0 !important;
+    min-height: 26px !important;
     margin: 0 !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
@@ -2354,12 +2356,12 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
     display: inline-block !important;
     color: var(--dash-color) !important;
-    font-size: 16px !important;
+    font-size: 20px !important;
     font-weight: 600 !important;
-    line-height: 20px !important;
+    line-height: 26px !important;
   }
 
-  /* Full-size ring at the far right, exactly 24px from three card edges. */
+  /* Ring stays exactly 24px from the card's top, right and bottom. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2)::after {
@@ -2369,8 +2371,8 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     grid-row: 1 / 4 !important;
     justify-self: center !important;
     align-self: center !important;
-    width: 132px !important;
-    height: 132px !important;
+    width: 144px !important;
+    height: 144px !important;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%227.5%207.5%20105%20105%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
     background-size: contain !important;
     background-position: center !important;
