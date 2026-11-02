@@ -29,16 +29,11 @@ aside.bg-sidebar nav > ul a[href="/financial-approvals"] {
   padding-right: 8px !important;
 }
 
-/* 5. Restore Teams & Projects even if the installed extension's
-   bundled fallback CSS still contains the former display:none rule.
-   Explicit high-specificity visibility wins over that stale override;
-   only the original native section and its preceding separator return.
-   Do not create a decorative copy of the section or replace its links. */
+/* 5. Temporarily hide Teams & Projects as a whole: heading, team/project
+   tree, controls, and its preceding divider. Keep native DOM and data intact. */
 html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]),
 html body aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  display: none !important;
 }
 
 /* 6. Profile email: same muted tone as inactive navigation links. */
@@ -2970,141 +2965,4 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     padding-inline: 8px !important;
     gap: 5px !important;
   }
-}
-
-
-/* 67. Global sidebar Teams and Projects: native project tree as a menu section.
-   The real /teams-projects link is already immediately after the main nav UL
-   (Activity Feed is its last item). Style that native link as an ordinary
-   sidebar row rather than creating a duplicate nonfunctional pseudo-button.
-   Preserve live team/project links and their own native expand actions.
-   The displayed down-chevron indicates the tree's default expanded view;
-   a real section-level toggle requires application/extension JavaScript. */
-
-/* Remove the separator immediately after Activity Feed. The previous
-   high-specificity "restore" selector may still force it to display. */
-html body aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
-  display: none !important;
-}
-
-/* The native section stays after Activity Feed with standard row spacing. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin: 4px 0 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-}
-
-/* Existing heading anchor becomes a regular menu row. */
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"] {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 8px !important;
-  min-width: 0 !important;
-  min-height: 32px !important;
-  height: 32px !important;
-  margin: 0 !important;
-  padding: 4px 8px !important;
-  border: 0 !important;
-  border-radius: 8px !important;
-  background: transparent !important;
-  color: color-mix(in srgb, var(--sidebar-foreground) 60%, transparent) !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 20px !important;
-  text-decoration: none !important;
-}
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"]:hover {
-  background: var(--sidebar-accent) !important;
-  color: var(--sidebar-foreground) !important;
-}
-
-/* Native Lucide Users Round pictogram before the label. */
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"]::before {
-  content: "" !important;
-  display: block !important;
-  flex: 0 0 16px !important;
-  width: 16px !important;
-  height: 16px !important;
-  background: currentColor !important;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M18%2021a8%208%200%200%200-16%200%22%2F%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%228%22%20r%3D%225%22%2F%3E%3Cpath%20d%3D%22M22%2020c0-3.37-2-6.5-4-8a5%205%200%200%200-.45-8.3%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M18%2021a8%208%200%200%200-16%200%22%2F%3E%3Ccircle%20cx%3D%2210%22%20cy%3D%228%22%20r%3D%225%22%2F%3E%3Cpath%20d%3D%22M22%2020c0-3.37-2-6.5-4-8a5%205%200%200%200-.45-8.3%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
-}
-
-/* Down-chevron on the right, matching the menu's subdued icon treatment. */
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"]::after {
-  content: "" !important;
-  display: block !important;
-  flex: 0 0 16px !important;
-  width: 16px !important;
-  height: 16px !important;
-  margin-left: auto !important;
-  background: currentColor !important;
-  opacity: 0.6;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
-}
-
-/* Replace the old uppercase section label, which otherwise retains
-   its own text-xs, tracking and font weight. */
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"] > p {
-  flex: 0 1 auto !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-  letter-spacing: 0 !important;
-  text-transform: none !important;
-  color: inherit !important;
-}
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"] > p::after {
-  content: "Teams and Projects" !important;
-  display: inline-block !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 20px !important;
-  letter-spacing: normal !important;
-  text-transform: none !important;
-  color: inherit !important;
-}
-
-/* Remove the old settings-like glyph in the native header. */
-html body aside.bg-sidebar nav > div > a[href="/teams-projects"] > svg.lucide-settings-2 {
-  display: none !important;
-}
-
-/* Keep the original team/project tree visible under the new row. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) > div.group\/section {
-  display: block !important;
-  height: auto !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Remove EVERY separator in this tree, without touching other pages or
-   their cards/borders. Also hide any native <hr> separators. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\/section :is(div.border-t, hr) {
-  display: none !important;
-}
-
-/* Hide all project task-progress fractions (e.g., 12/12, 3/3).
-   Those are the native tabular-nums spans inside the tree. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\/section span.tabular-nums {
-  display: none !important;
-}
-
-/* Hide the "Create Team" footer row; do not hide per-team expand
-   controls, actual links, or drag-and-drop project rows. */
-html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-  > div.group\/section > div.px-1.mt-1:has(> button) {
-  display: none !important;
 }
