@@ -2677,11 +2677,10 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   }
 }
 
-/* Dashboard analytics — original-size composition aligned to Figma reference.
-   The preceding over-scaled redesign has been removed, not layered.
-   Preserve the established typography and 192px card height:
-   heading 14px, totals 28px, status numbers 20px, captions 12px,
-   and original thin 9px bar (formerly the left-card graph).
+/* Dashboard analytics — content-sized composition aligned to Figma reference.
+   No fixed heights on analytics frames, numeric rows, or metric pills.
+   Preserve heading 14px and total 28px; values 18px and status 14px.
+   Title → metrics: 16px. Metrics → 18px bar: 16px.
    Reorganize only: total and 3 soft pill statuses in one row;
    three mildly rounded proportional segments on the bottom.
    DESIGN-ONLY VALUES (underlying app data/ARIA unchanged):
@@ -2696,9 +2695,9 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     justify-content: flex-start !important;
     box-sizing: border-box !important;
     gap: 16px !important;
-    height: 192px !important;
-    min-height: 192px !important;
-    max-height: 192px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     overflow: hidden !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
@@ -2711,11 +2710,11 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:first-child {
-    flex: 0 0 20px !important;
+    flex: 0 0 auto !important;
     grid-column: auto !important;
     grid-row: auto !important;
-    height: 20px !important;
-    min-height: 20px !important;
+    height: auto !important;
+    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -2739,7 +2738,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     --dash-gap-c: 6px !important;
     --dash-track: calc(100% - var(--dash-gap-b) - var(--dash-gap-c)) !important;
     display: flex !important;
-    flex: 1 1 auto !important;
+    flex: 0 0 auto !important;
     flex-flow: row nowrap !important;
     justify-content: flex-start !important;
     align-items: center !important;
@@ -2755,7 +2754,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     min-height: 0 !important;
     min-width: 0 !important;
     margin: 0 !important;
-    padding: 0 0 25px !important;
+    padding: 0 0 34px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -2813,8 +2812,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     box-sizing: border-box !important;
     width: auto !important;
     min-width: 0 !important;
-    height: 36px !important;
-    min-height: 36px !important;
+    height: auto !important;
+    min-height: 0 !important;
     margin: 0 !important;
     padding: 8px 12px !important;
     border: none !important;
@@ -2856,8 +2855,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:first-child::before {
     display: inline-block !important;
     color: var(--foreground) !important;
-    font-size: 20px !important;
-    line-height: 24px !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
     font-weight: 600 !important;
     font-variant-numeric: tabular-nums;
   }
@@ -2871,7 +2870,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     margin: 0 !important;
     gap: 0 !important;
     color: var(--muted-foreground) !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
     font-weight: 400 !important;
     line-height: 20px !important;
     white-space: nowrap !important;
@@ -2883,8 +2882,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     display: none !important;
   }
 
-  /* Original thin segmented bar, now placed below the metric row on BOTH
-     cards. 6px segment gaps; 3px corner radius (not capsule-shaped). */
+  /* Half-height bar doubled: 18px, with 16px after the content-sized
+     metric row. 6px segment gaps and 3px corner radius. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a::before,
@@ -2898,7 +2897,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     bottom: 0 !important;
     left: var(--dash-left) !important;
     width: calc(var(--dash-track) * var(--dash-width)) !important;
-    height: 9px !important;
+    height: 18px !important;
     margin: 0 !important;
     border-radius: 3px !important;
     background: var(--dash-color) !important;
