@@ -29,12 +29,6 @@ aside.bg-sidebar nav > ul a[href="/financial-approvals"] {
   padding-right: 8px !important;
 }
 
-/* 5. Hide Teams & Projects, its descendants and preceding separator. */
-aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]),
-aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
-  display: none !important;
-}
-
 /* 6. Profile email: same muted tone as inactive navigation links. */
 aside.bg-sidebar button[aria-label="Profile"] p.text-muted-foreground {
   color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
