@@ -2103,3 +2103,56 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   line-height: 20px !important;
   font-weight: 400 !important;
 }
+
+/* Dashboard: prominent total-tasks value above segmented bars.
+   Visual prototype only: "14" is the current example, NOT a live
+   computed total. The three link counters remain live and unchanged. */
+@media (min-width: 1024px) {
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) {
+    /* Reserve a separate row above the track without moving the legend
+       into independently sized bar segments. */
+    padding-top: 87px !important;
+  }
+
+  /* Large white KPI: matches the reference's visual hierarchy. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2)::before {
+    content: "14";
+    position: absolute;
+    top: 4px;
+    left: 20px;
+    color: var(--foreground) !important;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+
+  /* Small adjacent descriptor, not another section heading. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2)::after {
+    content: "всего задач";
+    position: absolute;
+    top: 18px;
+    left: 75px;
+    color: var(--muted-foreground) !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    pointer-events: none;
+  }
+
+  /* Bar remains below the KPI, above the three independent labels. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
+    top: 59px !important;
+  }
+}
