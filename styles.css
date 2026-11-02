@@ -2642,9 +2642,9 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::before {
   content: "" !important;
   display: block !important;
-  flex: 0 0 48px !important;
-  width: 48px !important;
-  height: 28px !important;
+  flex: 0 0 44px !important;
+  width: 44px !important;
+  height: 26px !important;
   border-radius: 999px !important;
   background-color: var(--dash-kpi-highlight-surface) !important;
   transition: background-color 150ms ease !important;
@@ -2655,8 +2655,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   position: absolute !important;
   top: 50% !important;
   left: 13px !important;
-  width: 22px !important;
-  height: 22px !important;
+  width: 20px !important;
+  height: 20px !important;
   border-radius: 50% !important;
   background: #fff !important;
   transform: translateY(-50%) !important;
@@ -2668,7 +2668,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
   background-color: #3b82f6 !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"]::after {
-  left: 33px !important;
+  left: 31px !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"] > span {
   color: var(--foreground) !important;
@@ -3027,4 +3027,36 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.b
   padding-left: 0 !important;
   padding-right: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* Dashboard search: fit field to its content instead of a fixed Tailwind width.
+   Constrain only the Search alongside the Dashboard heading; the field can
+   expand to fit text up to a readable cap without pushing out header actions.
+   Keep the mobile full-width search layout unchanged. */
+@media (min-width: 640px) {
+  main:has(h1[data-testid="dashboard-heading"])
+    h1[data-testid="dashboard-heading"] + div:has(input[aria-label="Search..."]) {
+    flex: 0 1 auto !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  main:has(h1[data-testid="dashboard-heading"])
+    h1[data-testid="dashboard-heading"] + div
+    > div.relative:has(> input[aria-label="Search..."]) {
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  main:has(h1[data-testid="dashboard-heading"])
+    h1[data-testid="dashboard-heading"] + div
+    > div.relative > input[aria-label="Search..."] {
+    field-sizing: content !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    min-width: 120px !important;
+    max-width: min(260px, 34vw) !important;
+  }
 }
