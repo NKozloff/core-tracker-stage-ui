@@ -2394,3 +2394,123 @@ body:has(aside.bg-sidebar nav a[href="/personal-goals"].bg-sidebar-accent)
   main h1.text-2xl + p {
   display: none !important;
 }
+
+/* Dashboard My tasks: total above legend and 9px segmented bar.
+   Left-card design preview: Active 9 + Overdue 4 + Completed 2 = 15.
+   The large white total matches the other card. The legend remains
+   one horizontal, non-stretched row and the segmented bar is LAST.
+   Half the previous bar height (18px -> 9px).
+   CSS-only sample values: app data/ARIA are not modified. */
+@media (min-width: 1024px) {
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: 20px minmax(0, 1fr) !important;
+    row-gap: 16px !important;
+    box-sizing: border-box !important;
+    height: 192px !important;
+    min-height: 192px !important;
+    padding: 24px 20px !important;
+  }
+
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-height: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* The live metric links form the middle legend; the total is a
+     separate CSS label above it, the chart lies at the bottom. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) {
+    --dash-a: 0.6 !important;
+    --dash-b: 0.266666667 !important;
+    --dash-c: 0.133333333 !important;
+    --dash-gap-b: 6px !important;
+    --dash-gap-c: 6px !important;
+    --dash-track: calc(100% - var(--dash-gap-b) - var(--dash-gap-c)) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-content: flex-start !important;
+    align-items: center !important;
+    gap: 10px 22px !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    padding: 44px 0 0 !important;
+  }
+
+  /* Large demo total directly under My tasks. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)::after {
+    content: "15" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    color: var(--foreground) !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    line-height: 28px !important;
+    letter-spacing: -0.025em !important;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none !important;
+  }
+
+  /* The three metric labels remain directly below the large number. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a {
+    position: static !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  /* Bar pseudo-elements share a single bottom-aligned horizontal track. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a::before {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+    height: 9px !important;
+    border-radius: 999px !important;
+    pointer-events: none !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a:nth-child(1) {
+    --dash-left: 0px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a:nth-child(2) {
+    --dash-left: calc(var(--dash-a) * var(--dash-track) + var(--dash-gap-b)) !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a:nth-child(3) {
+    --dash-left: calc((var(--dash-a) + var(--dash-b)) * var(--dash-track) + var(--dash-gap-b) + var(--dash-gap-c)) !important;
+  }
+
+  /* Match the 15 total rather than showing the previous 9 + 3 + 2 = 14. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) > a:nth-child(2) > span:first-child::before {
+    content: "4" !important;
+  }
+}
