@@ -2196,11 +2196,11 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
 
 }
 
-/* Dashboard donut experiment v2: text/metrics on the left, centered donut
-   in an independent right column. 3 / 8 / 4 are visual demo values.
-   Only the second summary card changes. The first My tasks card stays intact.
-   The 102px ring is vertically centered within the entire card: equal
-   top/bottom clearances at every card height, no absolute positioning. */
+/* Dashboard Available projects: compact KPI card with a centered donut.
+   Layout is exactly 150px tall: 24px top + 102px chart + 24px bottom;
+   right padding also 24px. Left content is title, total, then three
+   subtle KPI tiles. Values (3/8/4) and total (15) are demo-only CSS;
+   underlying data/ARIA counts are unchanged. My tasks is untouched. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -2208,92 +2208,128 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     box-sizing: border-box !important;
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) 102px !important;
-    grid-template-rows: auto minmax(0, 1fr) !important;
-    column-gap: 20px !important;
-    row-gap: 0 !important;
-    min-height: 200px !important;
+    grid-template-rows: 20px 28px 42px !important;
+    column-gap: 16px !important;
+    row-gap: 6px !important;
+    height: 150px !important;
+    min-height: 150px !important;
+    max-height: 150px !important;
     padding: 24px !important;
     align-items: stretch !important;
   }
 
-  /* Header belongs to the left text column, not to the chart. */
+  /* Heading occupies first left row; add a small muted descriptor beside
+     the separately rendered total on the second row. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:first-child {
+    position: relative !important;
     grid-column: 1 !important;
     grid-row: 1 !important;
-    padding: 0 !important;
+    box-sizing: border-box !important;
     min-height: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:first-child::after {
+    content: "всего задач" !important;
+    position: absolute !important;
+    top: 31px;
+    left: 43px;
+    display: block;
+    white-space: nowrap;
+    color: var(--muted-foreground) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 18px !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    pointer-events: none !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2)::before {
+    content: "15" !important;
+    display: block !important;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    justify-self: start !important;
+    align-self: center !important;
+    color: var(--foreground) !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    line-height: 28px !important;
+    letter-spacing: -0.025em !important;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none !important;
   }
 
-  /* Three big figures in ONE horizontal row with status/dot underneath. */
+  /* Three softly separated tiles: compact figures with their dots/statuses
+     underneath. The background is a 4% white lift over the card surface. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
     grid-column: 1 !important;
-    grid-row: 2 !important;
-    align-self: center !important;
+    grid-row: 3 !important;
+    align-self: stretch !important;
+    justify-self: start !important;
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-rows: auto !important;
-    /* Previous three columns spread over all available space (~286px between starts).
-       Limit the group to 420px: metric starts are ~142px apart. */
-    width: 100% !important;
-    max-width: 420px !important;
-    justify-self: start !important;
+    grid-template-rows: 42px !important;
     column-gap: 6px !important;
     row-gap: 0 !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    height: 42px !important;
     min-width: 0 !important;
     min-height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-
-  /* Clear the old inner-column donut. The outer card now owns the graphic. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)::before {
-    display: none !important;
     content: none !important;
+    display: none !important;
     background-image: none !important;
   }
-
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
     display: flex !important;
+    grid-row: 1 !important;
+    grid-column: auto !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: center !important;
-    grid-column: auto !important;
-    grid-row: auto !important;
     flex: initial !important;
-    gap: 6px !important;
-    width: auto !important;
-    height: auto !important;
+    gap: 2px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 42px !important;
+    min-height: 42px !important;
     min-width: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
+    padding: 1px 8px !important;
+    border: none !important;
+    border-radius: 10px !important;
+    background: color-mix(in srgb, var(--secondary) 96%, white 4%) !important;
+    box-shadow: none !important;
   }
-
-  /* Old segmented bar belongs only to the first card. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a::before {
-    display: none !important;
     content: none !important;
+    display: none !important;
   }
-
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
     order: 0 !important;
     display: block !important;
     flex: 0 0 auto !important;
-    width: auto !important;
-    min-height: 30px !important;
+    min-height: 22px !important;
     margin: 0 !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
@@ -2301,38 +2337,47 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
     display: block !important;
     color: var(--dash-color) !important;
-    font-size: 24px !important;
-    line-height: 30px !important;
+    font-size: 18px !important;
     font-weight: 600 !important;
+    line-height: 22px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
     order: 1 !important;
     display: inline-flex !important;
-    flex: 0 0 auto !important;
     align-items: center !important;
-    gap: 7px !important;
-    margin: 0 !important;
+    flex: 0 0 auto !important;
+    gap: 5px !important;
+    min-width: 0 !important;
     white-space: nowrap !important;
+    margin: 0 !important;
     color: var(--muted-foreground) !important;
-    font-size: 13px !important;
-    line-height: 20px !important;
+    font-size: 12px !important;
     font-weight: 400 !important;
+    line-height: 16px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child::before {
+    width: 7px !important;
+    height: 7px !important;
+    flex: 0 0 7px !important;
   }
 
-  /* The ring spans both content rows as a peer of the left content group. */
+  /* Right column spans the full 102px content area, leaving EXACTLY
+     24px above/below and to the right of the 102px ring. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2)::after {
     content: "" !important;
     display: block !important;
     grid-column: 2 !important;
-    grid-row: 1 / span 2 !important;
-    width: 102px !important;
-    height: 102px !important;
+    grid-row: 1 / 4 !important;
     align-self: center !important;
     justify-self: center !important;
+    width: 102px !important;
+    height: 102px !important;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
     background-size: contain !important;
     background-position: center !important;
@@ -2341,32 +2386,35 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   }
 }
 
-/* At the narrow two-column breakpoint, keep the horizontal metrics row
-   readable by reducing only the right-hand ring and legend typography. */
+/* Keep the three tiles legible when the dashboard becomes narrow. */
 @media (min-width: 1024px) and (max-width: 1199px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) {
-    grid-template-columns: minmax(0, 1fr) 78px !important;
-    column-gap: 12px !important;
-    padding: 20px !important;
-    min-height: 168px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2)::after {
-    width: 78px !important;
-    height: 78px !important;
+    column-gap: 10px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
-    column-gap: 6px !important;
+    column-gap: 4px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
-    font-size: 11px !important;
-    gap: 4px !important;
+    font-size: 10px !important;
+    gap: 3px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child::before {
+    width: 6px !important;
+    height: 6px !important;
+    flex-basis: 6px !important;
   }
 }
