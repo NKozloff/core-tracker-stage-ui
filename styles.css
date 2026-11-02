@@ -1777,3 +1777,20 @@ html.dark[data-theme="asana"] {
     background-color: #28292b !important;
   }
 }
+
+
+/* 63. Dashboard: remove decorative strokes without changing geometry.
+   Route scope: the Dashboard-only heading test ID; never affect Notes,
+   global navigation, other pages, or a modal rendered outside <main>.
+   Transparent borders preserve the current card/tab/table dimensions.
+   SVG icon strokes are unaffected. */
+main:has(h1[data-testid="dashboard-heading"]) :where(*) {
+  border-color: transparent !important;
+}
+
+/* Tailwind rings are box-shadows, not CSS borders. Remove decorative
+   rings (including progress-track outlines), but retain keyboard focus. */
+main:has(h1[data-testid="dashboard-heading"])
+  :where(.ring-1, .ring-2, .ring-3):not(:focus-visible) {
+  box-shadow: none !important;
+}
