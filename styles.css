@@ -3179,7 +3179,7 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.b
 @media (min-width: 1024px) {
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
-  grid-template-columns: minmax(0, 1fr) minmax(116px, 140px) minmax(105px, 118px) minmax(116px, 130px) !important;
+  grid-template-columns: minmax(0, 2fr) minmax(132px, .88fr) minmax(140px, .95fr) 120px !important;
   column-gap: clamp(12px, 1.4vw, 24px) !important;
   align-items: center !important;
 }
@@ -3209,8 +3209,10 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(3) {
   grid-column: 4 !important;
   grid-row: 1 !important;
-  justify-self: start !important;
+  justify-self: stretch !important;
+  width: 100% !important;
   min-width: 0 !important;
+  text-align: left !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) {
@@ -3486,7 +3488,7 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   /* Only consecutive rows get a full-bleed divider; no line after the
      descriptor header or after the last row. Maintain 44px border-box rows. */
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + a.dash-subrow {
-    border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent) !important;
+    border-top: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
   }
 
   /* Disable old pseudo-element dividers so the border is the only rule. */
