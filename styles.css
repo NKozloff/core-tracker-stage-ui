@@ -2679,7 +2679,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
 
 /* Dashboard analytics — content-sized composition aligned to Figma reference.
    No fixed heights on analytics frames, numeric rows, or metric pills.
-   Preserve heading 14px and total 28px; values 18px and status 14px.
+   Preserve heading 14px and total 28px; use 500 weight for totals,
+   16px/500 for status numbers and 14px for status labels.
    Title → metrics: 16px. Metrics → 18px bar: 16px.
    Reorganize only: total and 3 soft pill statuses in one row;
    three mildly rounded proportional segments on the bottom.
@@ -2780,7 +2781,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     background-image: none !important;
     color: var(--foreground) !important;
     font-size: 28px !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
     line-height: 32px !important;
     letter-spacing: -0.025em !important;
     font-variant-numeric: tabular-nums;
@@ -2793,8 +2794,8 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)::before { content: "16" !important; }
 
-  /* Existing metric links become natural-size pills without changing the
-     previously used value (20px) or label (12px) typography. */
+  /* Natural-size pills: 4px top/bottom and 12px left/right;
+     values 16px Medium, labels 14px Regular. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a {
@@ -2815,7 +2816,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     height: auto !important;
     min-height: 0 !important;
     margin: 0 !important;
-    padding: 8px 12px !important;
+    padding: 4px 12px !important;
     border: none !important;
     border-radius: 999px !important;
     background: var(--dash-kpi-highlight-surface, color-mix(in srgb, var(--secondary) 96%, white 4%)) !important;
@@ -2855,9 +2856,9 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) > div:nth-child(2) > a > span:first-child::before {
     display: inline-block !important;
     color: var(--foreground) !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     line-height: 22px !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     font-variant-numeric: tabular-nums;
   }
   main:has(h1[data-testid="dashboard-heading"])
