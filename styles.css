@@ -2196,58 +2196,49 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
 
 }
 
-/* Dashboard Available projects: compact KPI card with a centered donut.
-   Layout is exactly 150px tall: 24px top + 102px chart + 24px bottom;
-   right padding also 24px. Left content is title, total, then three
-   subtle KPI tiles. Values (3/8/4) and total (15) are demo-only CSS;
-   underlying data/ARIA counts are unchanged. My tasks is untouched. */
+/* Dashboard / Available projects: 24px vertical rhythm with horizontal metric tiles.
+   CSS-only mock values: 3 Active + 8 Overdue + 4 Completed = 15 total.
+   Layout math: 24 top + 20 header + 24 gap + 28 total + 24 gap
+   + 36 tile row + 24 bottom = 180px card height.
+   Donut outer rendered diameter: 132px = 180 - 24 - 24.
+   Crop SVG viewBox to the actual outer ring bounds so the *visible* ring,
+   not only its image element, is exactly 24px from top/right/bottom.
+   Only the second Dashboard summary card is affected. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) {
-    box-sizing: border-box !important;
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 102px !important;
-    grid-template-rows: 20px 28px 42px !important;
+    box-sizing: border-box !important;
+    grid-template-columns: minmax(0, 1fr) 132px !important;
+    grid-template-rows: 20px 28px 36px !important;
     column-gap: 16px !important;
-    row-gap: 6px !important;
-    height: 150px !important;
-    min-height: 150px !important;
-    max-height: 150px !important;
+    row-gap: 24px !important;
     padding: 24px !important;
+    height: 180px !important;
+    min-height: 180px !important;
+    max-height: 180px !important;
     align-items: stretch !important;
   }
 
-  /* Heading occupies first left row; add a small muted descriptor beside
-     the separately rendered total on the second row. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:first-child {
-    position: relative !important;
     grid-column: 1 !important;
     grid-row: 1 !important;
-    box-sizing: border-box !important;
     min-height: 20px !important;
-    padding: 0 !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
+  /* Remove the standalone "всего задач" caption completely. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:first-child::after {
-    content: "всего задач" !important;
-    position: absolute !important;
-    top: 31px;
-    left: 43px;
-    display: block;
-    white-space: nowrap;
-    color: var(--muted-foreground) !important;
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    line-height: 18px !important;
-    letter-spacing: 0 !important;
-    text-transform: none !important;
-    pointer-events: none !important;
+    content: none !important;
+    display: none !important;
   }
+
+  /* Keep the large white total as a separate 28px-tall row. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2)::before {
@@ -2255,38 +2246,37 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: block !important;
     grid-column: 1 !important;
     grid-row: 2 !important;
-    justify-self: start !important;
     align-self: center !important;
-    color: var(--foreground) !important;
+    justify-self: start !important;
     font-size: 28px !important;
-    font-weight: 700 !important;
     line-height: 28px !important;
+    font-weight: 700 !important;
     letter-spacing: -0.025em !important;
+    color: var(--foreground) !important;
     font-variant-numeric: tabular-nums;
     pointer-events: none !important;
   }
 
-  /* Three softly separated tiles: compact figures with their dots/statuses
-     underneath. The background is a 4% white lift over the card surface. */
+  /* Three evenly sized, subtly brighter cards in one horizontal row. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    display: grid !important;
     grid-column: 1 !important;
     grid-row: 3 !important;
-    align-self: stretch !important;
-    justify-self: start !important;
-    display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-template-rows: 42px !important;
+    grid-template-rows: 36px !important;
     column-gap: 6px !important;
     row-gap: 0 !important;
     width: 100% !important;
     max-width: 420px !important;
-    height: 42px !important;
+    height: 36px !important;
     min-width: 0 !important;
     min-height: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
+    justify-self: start !important;
+    align-self: stretch !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -2295,28 +2285,32 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: none !important;
     background-image: none !important;
   }
+
+  /* Each tile: dot / gray status / 16px colored number in a single line.
+     Exact internal padding: 12px horizontally and 8px vertically. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
     display: flex !important;
-    grid-row: 1 !important;
     grid-column: auto !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
+    grid-row: 1 !important;
     flex: initial !important;
-    gap: 2px !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
     box-sizing: border-box !important;
     width: 100% !important;
-    height: 42px !important;
-    min-height: 42px !important;
+    height: 36px !important;
     min-width: 0 !important;
-    padding: 1px 8px !important;
+    min-height: 36px !important;
+    padding: 8px 12px !important;
     border: none !important;
     border-radius: 10px !important;
     background: color-mix(in srgb, var(--secondary) 96%, white 4%) !important;
     box-shadow: none !important;
   }
+  /* Do not restore the former shared horizontal chart inside these tiles. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a::before {
@@ -2325,37 +2319,19 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
-    order: 0 !important;
-    display: block !important;
-    flex: 0 0 auto !important;
-    min-height: 22px !important;
-    margin: 0 !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
-    display: block !important;
-    color: var(--dash-color) !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    line-height: 22px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
-    order: 1 !important;
+    order: 0 !important;
     display: inline-flex !important;
+    flex: 0 1 auto !important;
     align-items: center !important;
-    flex: 0 0 auto !important;
-    gap: 5px !important;
     min-width: 0 !important;
-    white-space: nowrap !important;
+    gap: 5px !important;
     margin: 0 !important;
     color: var(--muted-foreground) !important;
     font-size: 12px !important;
     font-weight: 400 !important;
-    line-height: 16px !important;
+    line-height: 20px !important;
+    white-space: nowrap !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -2364,9 +2340,26 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     height: 7px !important;
     flex: 0 0 7px !important;
   }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
+    order: 1 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
+    display: inline-block !important;
+    color: var(--dash-color) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 20px !important;
+  }
 
-  /* Right column spans the full 102px content area, leaving EXACTLY
-     24px above/below and to the right of the 102px ring. */
+  /* Full-size ring at the far right, exactly 24px from three card edges. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2)::after {
@@ -2374,47 +2367,14 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: block !important;
     grid-column: 2 !important;
     grid-row: 1 / 4 !important;
-    align-self: center !important;
     justify-self: center !important;
-    width: 102px !important;
-    height: 102px !important;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
+    align-self: center !important;
+    width: 132px !important;
+    height: 132px !important;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%227.5%207.5%20105%20105%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
     background-size: contain !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     pointer-events: none !important;
-  }
-}
-
-/* Keep the three tiles legible when the dashboard becomes narrow. */
-@media (min-width: 1024px) and (max-width: 1199px) {
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) {
-    column-gap: 10px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
-    column-gap: 4px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
-    padding-left: 4px !important;
-    padding-right: 4px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
-    font-size: 10px !important;
-    gap: 3px !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child::before {
-    width: 6px !important;
-    height: 6px !important;
-    flex-basis: 6px !important;
   }
 }
