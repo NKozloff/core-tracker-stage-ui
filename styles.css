@@ -109,14 +109,14 @@ main div:has(> header input[aria-label="Search notes"])
   background-color: var(--sidebar-accent) !important;
 }
 
-/* 12. Desktop sidebar: 15% wider than previous 180px setting (207px).
-   Change the real flex item width so the Notes workspace automatically
-   receives the freed space; do not overlay or reposition content. */
+/* 12. Desktop sidebar: 20% wider than the previous 207px setting (248.4px).
+   Change the actual flex width so the main workspace naturally takes
+   the remaining space; do not overlay or reposition content. */
 @media (min-width: 1024px) {
   aside.bg-sidebar {
-    width: 207px !important;
-    min-width: 207px !important;
-    flex: 0 0 207px !important;
+    width: 248.4px !important;
+    min-width: 248.4px !important;
+    flex: 0 0 248.4px !important;
   }
 }
 
