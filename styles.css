@@ -29,6 +29,18 @@ aside.bg-sidebar nav > ul a[href="/financial-approvals"] {
   padding-right: 8px !important;
 }
 
+/* 5. Restore Teams & Projects even if the installed extension's
+   bundled fallback CSS still contains the former display:none rule.
+   Explicit high-specificity visibility wins over that stale override;
+   only the original native section and its preceding separator return.
+   Do not create a decorative copy of the section or replace its links. */
+html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]),
+html body aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* 6. Profile email: same muted tone as inactive navigation links. */
 aside.bg-sidebar button[aria-label="Profile"] p.text-muted-foreground {
   color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
