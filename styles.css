@@ -1794,3 +1794,10 @@ main:has(h1[data-testid="dashboard-heading"])
   :where(.ring-1, .ring-2, .ring-3):not(:focus-visible) {
   box-shadow: none !important;
 }
+
+
+/* 64. Dashboard heading: hide the workspace suffix only.
+   Keep the leading Dashboard icon and main title intact. */
+main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
+  display: none !important;
+}
