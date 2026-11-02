@@ -1604,9 +1604,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     width: 100% !important;
     /* Global sidebar uses a 16px horizontal content inset. */
     padding: 0 16px 6px !important;
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 36px !important;
     align-items: center !important;
-    gap: 8px !important;
+    column-gap: 8px !important;
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 {
@@ -1670,22 +1671,35 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 59. Restore the application's existing Notifications control.
-   On desktop, keep its original click/popover/badge behavior and reserve
-   a separate 36px target beside the flexible workspace card. On mobile,
-   leave the control to the application's native responsive styles. */
+/* 59. Keep just one native Notifications control in the desktop sidebar.
+   The application can render two matching notification slots in this header.
+   Retain the first (and its real unread count/popover); hide any later slot.
+   Style the actual count badge like the blue Approvals badge, without
+   inserting a hard-coded number. Mobile retains the native layout. */
 @media (min-width: 1024px) {
   aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"]) {
     display: flex !important;
+    grid-column: 2 !important;
     align-items: center !important;
     justify-content: center !important;
-    flex: 0 0 36px !important;
     width: 36px !important;
     min-width: 36px !important;
+    height: 36px !important;
+  }
+
+  /* Count only notification wrappers, not other header controls. */
+  aside.bg-sidebar > div:first-child > div:nth-child(n + 2 of :has(> button[aria-label="Notifications"])) {
+    display: none !important;
+  }
+
+  aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
   }
 
   aside.bg-sidebar > div:first-child button[aria-label="Notifications"] {
     display: inline-flex !important;
+    position: relative !important;
     align-items: center !important;
     justify-content: center !important;
     flex: 0 0 36px !important;
@@ -1693,6 +1707,25 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     height: 36px !important;
     min-width: 36px !important;
     padding: 0 !important;
+  }
+
+  /* The app supplies badge text dynamically; do not hard-code a count. */
+  aside.bg-sidebar > div:first-child button[aria-label="Notifications"] :is(span, div).absolute,
+  aside.bg-sidebar > div:first-child button[aria-label="Notifications"] > span.rounded-full {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 18px !important;
+    width: auto !important;
+    height: 18px !important;
+    padding: 0 5px !important;
+    border-radius: 9999px !important;
+    background-color: var(--primary, #2f6dd4) !important;
+    color: var(--primary-foreground, #fff) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    box-sizing: border-box !important;
   }
 }
 
