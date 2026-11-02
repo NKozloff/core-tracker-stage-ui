@@ -3061,3 +3061,113 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.b
     max-width: min(260px, 34vw) !important;
   }
 }
+
+/* Dashboard OKR: separate live Key Results column and blue metrics. */
+@media (min-width: 1024px) {
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(160px, 1fr) minmax(124px, .75fr) minmax(112px, .7fr) !important;
+    column-gap: 18px !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:first-child,
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 100px !important;
+    gap: 16px !important;
+    align-items: center !important;
+    min-width: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:first-child::after {
+    content: "KEY RESULTS" !important;
+    grid-column: 2 !important;
+    color: var(--muted-foreground) !important;
+    font: inherit !important;
+    letter-spacing: inherit !important;
+    white-space: nowrap !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child {
+    position: relative !important;
+    align-self: stretch !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span.flex-col {
+    display: contents !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span.flex-col > span:first-child {
+    grid-column: 1 !important;
+    align-self: center !important;
+    min-width: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span[aria-hidden="true"] {
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child:has(> span[aria-hidden="true"]) main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span.flex-col > span:first-child {
+    padding-left: 28px !important;
+  }
+  /* Keep the real count text; wrap after its numeric word and hide the
+     subsequent 'key results' wording rather than hardcoding any values. */
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span.flex-col > span:last-child {
+    grid-column: 2 !important;
+    justify-self: start !important;
+    display: block !important;
+    box-sizing: content-box !important;
+    width: 3.01ch !important;
+    max-width: 3.01ch !important;
+    height: 20px !important;
+    max-height: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    text-overflow: clip !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    font-variant-numeric: tabular-nums !important;
+    color: var(--foreground) !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child > span.flex-col > span:first-child > span[title],
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) > span:first-child,
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(3) [data-slot="badge"],
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(4) {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) {
+    gap: 10px !important;
+    min-width: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) > span:nth-child(2) {
+    min-width: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) span[aria-hidden="true"] > span.bg-success {
+    background-color: var(--primary, #2f6dd4) !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(3) [data-slot="badge"].text-success-ink {
+    color: var(--primary, #2f6dd4) !important;
+    background-color: color-mix(in srgb, var(--primary, #2f6dd4) 12%, transparent) !important;
+    border-color: color-mix(in srgb, var(--primary, #2f6dd4) 22%, transparent) !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3), main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
+    grid-template-columns: minmax(0, 1.9fr) minmax(145px, .95fr) minmax(107px, .65fr) minmax(92px, .58fr) !important;
+    column-gap: 12px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:first-child, main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child {
+    grid-template-columns: minmax(0, 1fr) 96px !important;
+    column-gap: 12px !important;
+  }
+}
