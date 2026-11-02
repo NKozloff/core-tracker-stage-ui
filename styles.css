@@ -2378,3 +2378,10 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     pointer-events: none !important;
   }
 }
+
+/* 66. Personal Goals: keep Create level with the page title, not the quote.
+   The title's subtitle is hidden in the Stage UI override only. */
+body:has(aside.bg-sidebar nav a[href="/personal-goals"].bg-sidebar-accent)
+  main h1.text-2xl + p {
+  display: none !important;
+}
