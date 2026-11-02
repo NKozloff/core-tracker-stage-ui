@@ -1670,7 +1670,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > span.text-sm.font-semibold::after {
     content: "Финансы";
     display: inline-block;
-    font-size: 14px !important;
+    font-size: 16px !important;
     line-height: 20px !important;
     font-weight: 600 !important;
     color: var(--sidebar-foreground) !important;
