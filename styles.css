@@ -3545,36 +3545,51 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   }
 }
 
-/* Dashboard OKR: aggregate ring beside right-side percentage; compact headers. */
-/* DOM combines quarter and percentage in one text node. The 13% arc is
-   a visual snapshot; real text is retained. */
+/* Dashboard OKR: repair single-line quarter + separator + circular 13% preview.
+   Source markup has one text node 'Q4 2026 · 13%', not separate Q4/year.
+   CSS alone cannot split that live text into independently styled elements.
+   Retain DOM text for semantics; visually reconstruct the current values.
+   A genuinely live ring and live quarter need changes in the frontend. */
 @media (min-width: 1024px) {
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1 {
-  display: inline-block !important;
+  display: inline-flex !important;
   position: relative !important;
+  align-items: center !important;
+  gap: 0 !important;
   margin-left: auto !important;
+  min-width: 0 !important;
   width: max-content !important;
+  font-size: 0 !important;
+  line-height: 20px !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
   white-space: nowrap !important;
-  word-spacing: 16px !important;
-  background: linear-gradient(to right, var(--muted-foreground) 0, var(--muted-foreground) calc(100% - 3.25ch), var(--foreground) calc(100% - 3.25ch), var(--foreground) 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
+  background: none !important;
   -webkit-text-fill-color: transparent !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1::before {
-  content: "" !important;
-  position: absolute !important;
-  right: 3.25ch !important;
-  top: 50% !important;
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 50% !important;
-  transform: translateY(-50%) !important;
-  box-sizing: border-box !important;
-  pointer-events: none !important;
-  background: conic-gradient(from -90deg, var(--primary, #2f6dd4) 0% 13%, color-mix(in srgb, var(--foreground) 26%, transparent) 13% 100%) !important;
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)) !important;
-  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)) !important;
+  content: "Q4 2026  ·" !important;
+  display: inline-block !important;
+  margin-right: 8px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: pre !important;
+  color: var(--muted-foreground) !important;
+  -webkit-text-fill-color: var(--muted-foreground) !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1::after {
+  content: "13%" !important;
+  display: inline-block !important;
+  box-sizing: content-box !important;
+  padding-left: 28px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+  color: var(--foreground) !important;
+  -webkit-text-fill-color: var(--foreground) !important;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2020%2020'%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'8.5'%20fill%3D'none'%20stroke%3D'%23616569'%20stroke-width%3D'3'%2F%3E%3Ccircle%20cx%3D'10'%20cy%3D'10'%20r%3D'8.5'%20fill%3D'none'%20stroke%3D'%233b82f6'%20stroke-width%3D'3'%20stroke-dasharray%3D'6.944%2053.407'%20transform%3D'rotate(-90%2010%2010)'%2F%3E%3C%2Fsvg%3E") left center / 20px 20px no-repeat !important;
 }
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
   min-height: 0 !important;
