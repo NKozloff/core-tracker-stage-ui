@@ -274,24 +274,10 @@ main div:has(> header input[aria-label="Search notes"]) > header + div [data-not
   display: inline !important;
 }
 
-/* 19. Note-list cards: date is already conveyed by the date-group heading.
-   Keep the timestamp on the first, pinned group; hide only the timestamp
-   at the right of each card title in subsequent date groups.
-   Do not affect date-group headers, note titles or metadata counters. */
-#notes-list-column section:not(:first-of-type)
-  > [role="button"] > div.flex.items-baseline.gap-2
-  > span.shrink-0.text-tertiary-foreground.tabular-nums {
-  display: none !important;
-}
-
-/* 20. Notes list: compact cards contain only title + optional single-line
-   subtitle. The pinned group alone retains its right-hand timestamp. */
-#notes-list-column section > div[role="button"] > div.flex.items-center.gap-1\.5 {
-  display: none !important;
-}
-#notes-list-column section:not(:first-of-type) > div[role="button"] > div.flex.items-baseline.gap-2 > span:nth-child(2) {
-  display: none !important;
-}
+/* 19–20. Restore the native Notes cards' full content.
+   Keep each note's original date and metadata row (icons, indicators,
+   and other secondary details) in all sections, including unpinned notes.
+   The financial demo title/summary overrides below remain intact. */
 #notes-list-column section > div[role="button"] > div.flex.items-baseline.gap-2 > span:first-child,
 #notes-list-column section > div[role="button"] > span.truncate.text-muted-foreground.text-xs {
   min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
