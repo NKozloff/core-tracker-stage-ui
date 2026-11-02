@@ -1844,10 +1844,11 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   display: none !important;
 }
 
-/* 65. Dashboard summary cards: donut + three-line legend.
-   Retains the live metric text and links. The ring is a CSS-only static
-   visual of the reference snapshot (14 Active, 13 Overdue, 0 Completed);
-   it cannot follow live counts without JS/app markup. */
+/* Dashboard summary cards: compact segmented bar + independent legend.
+   Preserve the original live counts and clickable metric links. Visual
+   proportions are illustrative CSS presets, not computed from counts.
+   Zero counts in aria-labels remove their segments, and the remaining
+   segments expand to fill the track (including one/all-zero cases). */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
@@ -1856,7 +1857,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     padding: 0 !important;
   }
 
-  /* Regular 14px headings match the Dashboard section title treatment. */
+  /* Same 14px/500 section-style heading as the previous compact variant. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:first-child {
@@ -1869,6 +1870,15 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:first-child::before {
+    display: block;
+    color: var(--foreground);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(1) > div:first-child::before {
     content: "My tasks";
   }
@@ -1877,76 +1887,157 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     > .rounded-xl.bg-secondary:nth-child(2) > div:first-child::before {
     content: "Available projects";
   }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:first-child::before {
-    display: block;
-    color: var(--foreground);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-  }
 
-  /* Fixed-size donut occupies a separate column, so small/zero counts
-     never squeeze the legend and all three rows remain aligned. */
+  /* Position the bars against one common track at the top of the metrics
+     wrapper. The three links form a SEPARATE equal-column legend below. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) {
+    --dash-gap-b: 6px;
+    --dash-gap-c: 6px;
+    --dash-track: calc(100% - var(--dash-gap-b) - var(--dash-gap-c));
+    position: relative !important;
     display: grid !important;
-    grid-template-columns: 112px minmax(0, 1fr) !important;
-    grid-template-rows: repeat(3, 32px) !important;
-    gap: 4px 24px !important;
-    align-items: center !important;
-    padding: 12px 20px 20px !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    align-items: center;
+    padding: 37px 20px 18px !important;
     min-width: 0;
+  }
+
+  /* Deliberately different sample compositions for visual evaluation.
+     Their shares are not percentages computed from the backend data. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) {
+    --dash-a: .64;
+    --dash-b: .24;
+    --dash-c: .12;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2)::before {
-    content: "";
-    grid-area: 1 / 1 / 4 / 2;
-    display: block;
-    width: 112px;
-    height: 112px;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%2336383b%22%20stroke-width%3D%2214%22%2F%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.4%20151.06%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22116.6%20159.86%22%20stroke-dashoffset%3D%22-142.6%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%0A%3C%2Fsvg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    --dash-a: .18;
+    --dash-b: .22;
+    --dash-c: .60;
+  }
+
+  /* If a value is zero, remove that bar and redistribute the other
+     two shares. This keeps the labels intact regardless of bar count. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(1)[aria-label$="Active: 0"]) {
+    --dash-a: 0;
+    --dash-b: .4;
+    --dash-c: .6;
+    --dash-gap-b: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(2)[aria-label$="Overdue: 0"]) {
+    --dash-a: .5;
+    --dash-b: 0;
+    --dash-c: .5;
+    --dash-gap-b: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2):has(> a:nth-child(3)[aria-label$="Completed: 0"]) {
+    --dash-a: .72;
+    --dash-b: .28;
+    --dash-c: 0;
+    --dash-gap-c: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2):has(> a:nth-child(3)[aria-label$="Completed: 0"]) {
+    --dash-a: .20;
+    --dash-b: .80;
+    --dash-c: 0;
+    --dash-gap-c: 0px;
+  }
+  /* Two zero values: the sole nonzero bar fills the full track. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(1)[aria-label$="Active: 0"]):has(> a:nth-child(2)[aria-label$="Overdue: 0"]) {
+    --dash-a: 0; --dash-b: 0; --dash-c: 1;
+    --dash-gap-b: 0px; --dash-gap-c: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(1)[aria-label$="Active: 0"]):has(> a:nth-child(3)[aria-label$="Completed: 0"]) {
+    --dash-a: 0; --dash-b: 1; --dash-c: 0;
+    --dash-gap-b: 0px; --dash-gap-c: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(2)[aria-label$="Overdue: 0"]):has(> a:nth-child(3)[aria-label$="Completed: 0"]) {
+    --dash-a: 1; --dash-b: 0; --dash-c: 0;
+    --dash-gap-b: 0px; --dash-gap-c: 0px;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2):has(> a:nth-child(1)[aria-label$="Active: 0"]):has(> a:nth-child(2)[aria-label$="Overdue: 0"]):has(> a:nth-child(3)[aria-label$="Completed: 0"]) {
+    --dash-a: 0; --dash-b: 0; --dash-c: 0;
+    --dash-gap-b: 0px; --dash-gap-c: 0px;
   }
 
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a {
-    grid-column: 2 !important;
+    position: static !important; /* segment ::before anchors to wrapper */
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 12px !important;
-    padding: 0 !important;
     min-width: 0;
-    min-height: 32px;
-    border-radius: 6px !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
     background: transparent !important;
     text-decoration: none !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(1) {
-    grid-row: 1 !important;
-    --dash-metric-color: #38bdf8;
+    --dash-color: #38bdf8;
+    --dash-left: 0px;
+    --dash-width: var(--dash-a);
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(2) {
-    grid-row: 2 !important;
-    --dash-metric-color: #f58b82;
+    --dash-color: #f58b82;
+    --dash-left: calc(var(--dash-a) * var(--dash-track) + var(--dash-gap-b));
+    --dash-width: var(--dash-b);
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(3) {
-    grid-row: 3 !important;
-    --dash-metric-color: #9ad28f;
+    --dash-color: #9ad28f;
+    --dash-left: calc((var(--dash-a) + var(--dash-b)) * var(--dash-track) + var(--dash-gap-b) + var(--dash-gap-c));
+    --dash-width: var(--dash-c);
   }
+
+  /* Smooth segments sit independently of the three legend columns. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 12px;
+    left: var(--dash-left);
+    width: calc(var(--dash-track) * var(--dash-width));
+    height: 9px;
+    border-radius: 999px;
+    background: var(--dash-color);
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) > a[aria-label$=": 0"]::before {
+    display: none !important;
+  }
+
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child {
@@ -1954,36 +2045,33 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     display: inline-flex !important;
     flex: 1 1 auto;
     align-items: center;
-    gap: 9px !important;
+    gap: 7px !important;
     min-width: 0;
-    font-size: 14px !important;
+    color: var(--muted-foreground) !important;
+    font-size: 13px !important;
     font-weight: 400 !important;
     line-height: 20px !important;
-    color: var(--muted-foreground) !important;
     white-space: nowrap;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child::before {
     content: "";
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    flex: 0 0 9px;
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
     border-radius: 50%;
-    background: var(--dash-metric-color);
+    background: var(--dash-color);
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:first-child {
     order: 1;
-    display: block;
-    flex: 0 0 auto;
     margin-left: auto;
+    color: var(--dash-color) !important;
     font-size: 18px !important;
     font-weight: 600 !important;
     line-height: 24px !important;
-    color: var(--dash-metric-color) !important;
   }
 }
 
