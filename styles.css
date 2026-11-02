@@ -1931,3 +1931,20 @@ html.dark[data-theme="asana"] body:has(
   background-color: #18191b !important;
   margin-bottom: 12px !important;
 }
+
+/* Dashboard: OKR and My tasks section headings at 18px Semibold.
+   Existing headings are 14px Medium (text-sm font-medium).
+   Keep the period/count metadata at its former small size. */
+main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href="/okr"]),
+main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actionable_only=true"]) {
+  font-size: 18px !important;
+  line-height: 24px !important;
+  font-weight: 600 !important;
+}
+
+main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href="/okr"]) span.text-muted-foreground,
+main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actionable_only=true"]) span.text-muted-foreground {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+}
