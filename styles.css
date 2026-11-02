@@ -1592,22 +1592,19 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 58. Desktop workspace switcher Home: compact card alongside Notifications.
-   Outer inset: 16px for every sidebar block; Home card padding: 12px.
-   Background uses the same var(--background) as the selected Notes
-   global navigation item (rule 28). Preserve the purple identity icon.
-   Keep the workspace dropdown functional, and dim the chevron to the
-   same 60%-foreground treatment as secondary sidebar actions. */
+/* 58. Desktop workspace switcher: unframed, zero-padding control.
+   Preserve the 16px global sidebar inset and the purple identity icon.
+   Keep exactly 8px between the icon, label and chevron; the actual
+   switcher remains interactive. Notifications share the same header row. */
 @media (min-width: 1024px) {
   aside.bg-sidebar > div:first-child {
     box-sizing: border-box !important;
     width: 100% !important;
     /* Global sidebar uses a 16px horizontal content inset. */
     padding: 0 16px 6px !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 36px !important;
+    display: flex !important;
     align-items: center !important;
-    column-gap: 8px !important;
+    gap: 8px !important;
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 {
@@ -1627,10 +1624,11 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     box-sizing: border-box !important;
     gap: 8px !important;
     margin: 0 !important;
-    padding: 12px !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: 12px !important;
-    background-color: var(--background) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
 
   /* Same 28px lilac building tile retained from the last iteration. */
@@ -1651,19 +1649,33 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > svg.lucide-chevrons-up-down {
-    margin-left: auto !important;
+    margin-left: 0 !important;
     flex: 0 0 auto !important;
     color: var(--sidebar-foreground) !important;
     opacity: 0.6 !important;
     stroke: currentColor !important;
   }
 
+  /* CSS-only visual label: the underlying workspace remains named Home.
+     Remove its own width/padding/growth so the icon-label-chevron gaps
+     are exactly the 8px imposed by the button's flex gap. */
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > span.text-sm.font-semibold {
-    flex: 1 1 auto !important;
+    flex: 0 1 auto !important;
+    width: auto !important;
     min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
     white-space: nowrap !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+  }
+
+  aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > span.text-sm.font-semibold::after {
+    content: "Финансы";
+    display: inline-block;
     font-size: 14px !important;
     line-height: 20px !important;
     font-weight: 600 !important;
@@ -1679,22 +1691,19 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 @media (min-width: 1024px) {
   aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"]) {
     display: flex !important;
-    grid-column: 2 !important;
+    flex: 0 0 36px !important;
     align-items: center !important;
     justify-content: center !important;
     width: 36px !important;
     min-width: 36px !important;
     height: 36px !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
   }
 
   /* Count only notification wrappers, not other header controls. */
   aside.bg-sidebar > div:first-child > div:nth-child(n + 2 of :has(> button[aria-label="Notifications"])) {
     display: none !important;
-  }
-
-  aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
   }
 
   aside.bg-sidebar > div:first-child button[aria-label="Notifications"] {
@@ -1769,8 +1778,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 }
 
 /* 62. Unified surface tint: original --background + 1% white.
-   Give Home's workspace card, the selected global Notes tab and
-   the Notes content the exact same subtly brighter surface.
+   Give the selected global Notes tab and the Notes content the
+   same subtly brighter surface (workspace switcher has no card).
    Keep the global sidebar (#18191b), note-writing frame (#18191b),
    selected individual note cards (#303133) and controls unchanged.
    Scoped to the Notes route for the main content: no changes to
@@ -1780,9 +1789,7 @@ html.dark[data-theme="asana"] {
 }
 
 @media (min-width: 1024px) {
-  /* Workspace identity card and active Notes tab share one surface. */
-  html.dark[data-theme="asana"] body aside.bg-sidebar > div:first-child
-    > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building),
+  /* Selected Notes tab keeps its +1% surface; the switcher is unframed. */
   html.dark[data-theme="asana"] body aside.bg-sidebar nav a[href="/notes"].bg-sidebar-accent {
     background-color: var(--core-notes-surface-plus1) !important;
   }
