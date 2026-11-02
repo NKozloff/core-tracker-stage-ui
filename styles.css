@@ -1592,7 +1592,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 58. Desktop workspace switcher Home: a full-width active-item card.
+/* 58. Desktop workspace switcher Home: compact card alongside Notifications.
    Outer inset: 16px for every sidebar block; Home card padding: 12px.
    Background uses the same var(--background) as the selected Notes
    global navigation item (rule 28). Preserve the purple identity icon.
@@ -1604,13 +1604,15 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     width: 100% !important;
     /* Global sidebar uses a 16px horizontal content inset. */
     padding: 0 16px 6px !important;
-    gap: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 {
     min-width: 0 !important;
-    width: 100% !important;
-    flex: 1 1 auto !important;
+    width: auto !important;
+    flex: 1 1 0% !important;
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) {
@@ -1656,8 +1658,11 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 
   aside.bg-sidebar > div:first-child > div.flex-1.min-w-0 > button[data-dropdown-menu-trigger]:has(> svg.lucide-building) > span.text-sm.font-semibold {
-    flex: 0 1 auto !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
     font-size: 14px !important;
     line-height: 20px !important;
     font-weight: 600 !important;
@@ -1665,12 +1670,30 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 59. Hide the sidebar Notifications control in both desktop and mobile.
-   Remove its immediate layout wrapper too, avoiding an empty flex gap.
-   Do not hide unrelated notifications elsewhere in the app. */
-aside.bg-sidebar > div:first-child button[aria-label="Notifications"],
-aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"]) {
-  display: none !important;
+/* 59. Restore the application's existing Notifications control.
+   On desktop, keep its original click/popover/badge behavior and reserve
+   a separate 36px target beside the flexible workspace card. On mobile,
+   leave the control to the application's native responsive styles. */
+@media (min-width: 1024px) {
+  aside.bg-sidebar > div:first-child > div:has(> button[aria-label="Notifications"]) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+  }
+
+  aside.bg-sidebar > div:first-child button[aria-label="Notifications"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    padding: 0 !important;
+  }
 }
 
 /* 60. One 16px outer inset on every side of the DESKTOP global sidebar.
