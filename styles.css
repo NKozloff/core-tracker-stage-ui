@@ -3535,3 +3535,41 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
     box-shadow: none !important;
   }
 }
+
+/* Dashboard OKR: aggregate ring beside right-side percentage; compact headers. */
+/* DOM combines quarter and percentage in one text node. The 13% arc is
+   a visual snapshot; real text is retained. */
+@media (min-width: 1024px) {
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1 {
+  display: inline-block !important;
+  position: relative !important;
+  margin-left: auto !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  word-spacing: 16px !important;
+  background: linear-gradient(to right, var(--muted-foreground) 0, var(--muted-foreground) calc(100% - 3.25ch), var(--foreground) calc(100% - 3.25ch), var(--foreground) 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1::before {
+  content: "" !important;
+  position: absolute !important;
+  right: 3.25ch !important;
+  top: 50% !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  transform: translateY(-50%) !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  background: conic-gradient(from -90deg, var(--primary, #2f6dd4) 0% 13%, color-mix(in srgb, var(--foreground) 26%, transparent) 13% 100%) !important;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)) !important;
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2.5px)) !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
+  min-height: 0 !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+}
