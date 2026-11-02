@@ -2199,7 +2199,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
 /* Dashboard donut experiment v2: text/metrics on the left, centered donut
    in an independent right column. 3 / 8 / 4 are visual demo values.
    Only the second summary card changes. The first My tasks card stays intact.
-   The 136px ring is vertically centered within the entire card: equal
+   The 102px ring is vertically centered within the entire card: equal
    top/bottom clearances at every card height, no absolute positioning. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
@@ -2207,7 +2207,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary:nth-child(2) {
     box-sizing: border-box !important;
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 136px !important;
+    grid-template-columns: minmax(0, 1fr) 102px !important;
     grid-template-rows: auto minmax(0, 1fr) !important;
     column-gap: 20px !important;
     row-gap: 0 !important;
@@ -2236,7 +2236,12 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     grid-template-rows: auto !important;
-    column-gap: 12px !important;
+    /* Previous three columns spread over all available space (~286px between starts).
+       Limit the group to 420px: metric starts are ~142px apart. */
+    width: 100% !important;
+    max-width: 420px !important;
+    justify-self: start !important;
+    column-gap: 6px !important;
     row-gap: 0 !important;
     min-width: 0 !important;
     min-height: 0 !important;
@@ -2324,8 +2329,8 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     display: block !important;
     grid-column: 2 !important;
     grid-row: 1 / span 2 !important;
-    width: 136px !important;
-    height: 136px !important;
+    width: 102px !important;
+    height: 102px !important;
     align-self: center !important;
     justify-self: center !important;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
@@ -2342,7 +2347,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) {
-    grid-template-columns: minmax(0, 1fr) 104px !important;
+    grid-template-columns: minmax(0, 1fr) 78px !important;
     column-gap: 12px !important;
     padding: 20px !important;
     min-height: 168px !important;
@@ -2350,8 +2355,8 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2)::after {
-    width: 104px !important;
-    height: 104px !important;
+    width: 78px !important;
+    height: 78px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
