@@ -3284,23 +3284,13 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   font-weight: 400 !important;
 }
 
-/* Exactly one fine, full-bleed divider between section heading and table. */
+/* Hide the original border-b element between OKR heading and descriptors. */
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header {
   margin-bottom: 8px !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(2) {
-  display: block !important;
-  flex: 0 0 1px !important;
-  box-sizing: border-box !important;
-  align-self: stretch !important;
-  height: 1px !important;
-  margin: 0 -24px !important;
-  width: calc(100% + 48px) !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 7%, transparent) !important;
-  background: transparent !important;
+  display: none !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
@@ -3431,6 +3421,7 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) {
     padding-top: 16px !important;
+    padding-bottom: 16px !important;
     border-bottom: 0 !important;
   }
 
@@ -3450,6 +3441,14 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
     outline: 0 !important;
     box-shadow: none !important;
     background-image: none !important;
+  }
+
+  /* Column descriptors, including the generated Key Results heading. */
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span,
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:first-child::after {
+    font-size: 12px !important;
+    line-height: 16px !important;
   }
 
   /* This block is only a row group, not an additional separator. */
