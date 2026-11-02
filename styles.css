@@ -2196,78 +2196,84 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
 
 }
 
-/* Dashboard donut experiment: right-side ring for Available projects.
-   My tasks (first card) remains the existing 18px segmented bar + legend.
-   Left side of the second card: three large color-coded demo values with
-   status labels; right side: donut showing the same 3 / 8 / 4 proportions.
-   This visual is a CSS-only snapshot, not tied to live backend counts. */
+/* Dashboard donut experiment v2: text/metrics on the left, centered donut
+   in an independent right column. 3 / 8 / 4 are visual demo values.
+   Only the second summary card changes. The first My tasks card stays intact.
+   The 136px ring is vertically centered within the entire card: equal
+   top/bottom clearances at every card height, no absolute positioning. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    > .rounded-xl.bg-secondary:nth-child(2) {
+    box-sizing: border-box !important;
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) 136px !important;
-    grid-template-rows: repeat(3, 40px) !important;
-    column-gap: 16px !important;
-    row-gap: 8px !important;
-    align-items: center !important;
-    padding: 16px 20px !important;
-    min-height: 0 !important;
-    box-sizing: border-box !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    column-gap: 20px !important;
+    row-gap: 0 !important;
+    min-height: 200px !important;
+    padding: 24px !important;
+    align-items: stretch !important;
   }
 
-  /* Draw the donut in its own grid column, vertically centered beside all
-     three metrics. Segment geometry uses 3/15, 8/15 and 4/15 shares. */
+  /* Header belongs to the left text column, not to the chart. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    padding: 0 !important;
+    min-height: 20px !important;
+  }
+
+  /* Three big figures in ONE horizontal row with status/dot underneath. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-self: center !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: auto !important;
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Clear the old inner-column donut. The outer card now owns the graphic. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)::before {
-    content: "";
-    display: block !important;
-    position: static !important;
-    grid-column: 2 !important;
-    grid-row: 1 / 4 !important;
-    width: 136px;
-    height: 136px;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    pointer-events: none;
+    display: none !important;
+    content: none !important;
+    background-image: none !important;
   }
 
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
-    grid-column: 1 !important;
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 12px !important;
-    width: 100%;
-    height: 40px;
-    min-width: 0;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    flex: initial !important;
+    gap: 6px !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
     padding: 0 !important;
-    background: transparent !important;
     border-radius: 0 !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a:nth-child(1) {
-    grid-row: 1 !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a:nth-child(2) {
-    grid-row: 2 !important;
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a:nth-child(3) {
-    grid-row: 3 !important;
+    background: transparent !important;
   }
 
-  /* Hide only the old horizontal bar on the RIGHT card. */
+  /* Old segmented bar belongs only to the first card. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a::before {
@@ -2275,19 +2281,21 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     content: none !important;
   }
 
-  /* Keep the 24px figures; show their dots/statuses immediately to the right. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
     order: 0 !important;
-    display: inline-flex !important;
-    align-items: center;
-    flex: 0 0 35px !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-height: 30px !important;
     margin: 0 !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
+    display: block !important;
+    color: var(--dash-color) !important;
     font-size: 24px !important;
     line-height: 30px !important;
     font-weight: 600 !important;
@@ -2296,9 +2304,64 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
     order: 1 !important;
+    display: inline-flex !important;
     flex: 0 0 auto !important;
-    white-space: nowrap;
+    align-items: center !important;
+    gap: 7px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    color: var(--muted-foreground) !important;
     font-size: 13px !important;
     line-height: 20px !important;
+    font-weight: 400 !important;
+  }
+
+  /* The ring spans both content rows as a peer of the left content group. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2)::after {
+    content: "" !important;
+    display: block !important;
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+    width: 136px !important;
+    height: 136px !important;
+    align-self: center !important;
+    justify-self: center !important;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23414245%22%20stroke-width%3D%2215%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2246.9487%20235.7947%22%20stroke-dashoffset%3D%220.0000%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.1964%20157.5469%22%20stroke-dashoffset%3D%22-62.9487%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2245%22%20fill%3D%22none%22%20stroke%3D%22%239ad28f%22%20stroke-width%3D%2215%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%2262.5982%20220.1451%22%20stroke-dashoffset%3D%22-204.1451%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%3C%2Fsvg%3E") !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    pointer-events: none !important;
+  }
+}
+
+/* At the narrow two-column breakpoint, keep the horizontal metrics row
+   readable by reducing only the right-hand ring and legend typography. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) {
+    grid-template-columns: minmax(0, 1fr) 104px !important;
+    column-gap: 12px !important;
+    padding: 20px !important;
+    min-height: 168px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2)::after {
+    width: 104px !important;
+    height: 104px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    column-gap: 6px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
+    font-size: 11px !important;
+    gap: 4px !important;
   }
 }
