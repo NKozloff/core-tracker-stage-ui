@@ -1902,7 +1902,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     justify-content: flex-start !important;
     gap: 10px 22px !important;
     align-items: center;
-    padding: 95px 20px 16px !important;
+    padding: 50px 20px 16px !important;
     min-width: 0;
   }
 
@@ -2027,10 +2027,10 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     content: "";
     position: absolute;
     pointer-events: none;
-    top: 12px;
+    top: 16px;
     left: var(--dash-left);
     width: calc(var(--dash-track) * var(--dash-width));
-    height: 9px;
+    height: 18px;
     border-radius: 999px;
     background: var(--dash-color);
   }
@@ -2105,56 +2105,6 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   font-size: 14px !important;
   line-height: 20px !important;
   font-weight: 400 !important;
-}
-
-/* Dashboard: prominent total-tasks value above segmented bars.
-   Visual prototype only: "14" is the current example, NOT a live
-   computed total. The three link counters remain live and unchanged. */
-@media (min-width: 1024px) {
-  /* Vertical rhythm: heading end to KPI 16px; KPI (38px) to
-     bar (9px) 16px; bar to legend 16px; legend to bottom 16px.
-     Metrics wrapper reserves 16 + 38 + 16 + 9 + 16 = 95px above
-     its in-flow legend, defined in the summary-card rule. */
-
-  /* Large white KPI: matches the reference's visual hierarchy. */
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2)::before {
-    content: "14";
-    position: absolute;
-    top: 16px;
-    left: 20px;
-    color: var(--foreground) !important;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 38px;
-    letter-spacing: -0.025em;
-    font-variant-numeric: tabular-nums;
-    pointer-events: none;
-  }
-
-  /* Small adjacent descriptor, not another section heading. */
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2)::after {
-    content: "всего задач";
-    position: absolute;
-    top: 30px;
-    left: 75px;
-    color: var(--muted-foreground) !important;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0;
-    pointer-events: none;
-  }
-
-  /* Bar remains below the KPI, above the three independent labels. */
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
-    top: 70px !important;
-  }
 }
 
 /* Dashboard demo preview: aligned chart segments, legend numbers and KPI totals.
@@ -2244,15 +2194,71 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)
     > a:nth-child(3) > span:first-child::before { content: "4"; }
 
-  /* The prominent totals match the same demo arithmetic. */
+}
+
+/* Dashboard card layouts: remove KPI and enlarge chart bars.
+   Left / My tasks: section heading -> 16px -> 18px bar -> 16px ->
+   compact inline legend -> 16px bottom.
+   Right / Available projects: heading -> 16px -> three 24px colored
+   counts with status beneath -> 16px -> 18px bar -> 16px bottom.
+   The sample count labels remain CSS-only demos and don't alter data. */
+@media (min-width: 1024px) {
+  /* Three vertical columns of large metrics in the RIGHT summary card. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)::before {
-    content: "14" !important;
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+    padding: 16px 20px 50px !important;
+    min-width: 0;
+  }
+
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+    min-width: 0;
+    padding: 0 !important;
+  }
+
+  /* The right card's three colored numbers sit ABOVE their status labels.
+     Values come from the existing demo ::before rules, not live DOM spans. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child {
+    order: 0 !important;
+    margin: 0 !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)::before {
-    content: "15" !important;
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:first-child::before {
+    display: block !important;
+    font-size: 24px !important;
+    line-height: 28px !important;
+    font-weight: 600 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a > span:last-child {
+    order: 1 !important;
+    flex: 0 0 auto !important;
+    font-size: 13px !important;
+    line-height: 20px !important;
+  }
+
+  /* The shared 18px bar is the LAST element in the right card.
+     16px (top) + 28px (value) + 6px + 20px (status)
+     + 16px (gap) = 86px from the metrics wrapper top. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a::before {
+    top: 86px !important;
   }
 }
