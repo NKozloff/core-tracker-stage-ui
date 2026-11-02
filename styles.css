@@ -3318,108 +3318,111 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 }
 
 }
-/* Rounded blue ring matches the app's live integer progress percentages. */
+/* Rounded blue ring: compact Chrome CSS nesting, live 1–100% arcs.
+   Same selectors and progress values; removes redundant 100x selector text. */
 @media (min-width: 1024px) {
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 1%;"]) { --okr-progress: 1%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 2%;"]) { --okr-progress: 2%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 3%;"]) { --okr-progress: 3%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 4%;"]) { --okr-progress: 4%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 5%;"]) { --okr-progress: 5%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 6%;"]) { --okr-progress: 6%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 7%;"]) { --okr-progress: 7%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 8%;"]) { --okr-progress: 8%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 9%;"]) { --okr-progress: 9%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 10%;"]) { --okr-progress: 10%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 11%;"]) { --okr-progress: 11%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 12%;"]) { --okr-progress: 12%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 13%;"]) { --okr-progress: 13%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 14%;"]) { --okr-progress: 14%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 15%;"]) { --okr-progress: 15%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 16%;"]) { --okr-progress: 16%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 17%;"]) { --okr-progress: 17%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 18%;"]) { --okr-progress: 18%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 19%;"]) { --okr-progress: 19%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 20%;"]) { --okr-progress: 20%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 21%;"]) { --okr-progress: 21%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 22%;"]) { --okr-progress: 22%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 23%;"]) { --okr-progress: 23%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 24%;"]) { --okr-progress: 24%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 25%;"]) { --okr-progress: 25%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 26%;"]) { --okr-progress: 26%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 27%;"]) { --okr-progress: 27%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 28%;"]) { --okr-progress: 28%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 29%;"]) { --okr-progress: 29%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 30%;"]) { --okr-progress: 30%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 31%;"]) { --okr-progress: 31%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 32%;"]) { --okr-progress: 32%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 33%;"]) { --okr-progress: 33%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 34%;"]) { --okr-progress: 34%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 35%;"]) { --okr-progress: 35%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 36%;"]) { --okr-progress: 36%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 37%;"]) { --okr-progress: 37%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 38%;"]) { --okr-progress: 38%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 39%;"]) { --okr-progress: 39%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 40%;"]) { --okr-progress: 40%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 41%;"]) { --okr-progress: 41%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 42%;"]) { --okr-progress: 42%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 43%;"]) { --okr-progress: 43%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 44%;"]) { --okr-progress: 44%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 45%;"]) { --okr-progress: 45%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 46%;"]) { --okr-progress: 46%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 47%;"]) { --okr-progress: 47%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 48%;"]) { --okr-progress: 48%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 49%;"]) { --okr-progress: 49%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 50%;"]) { --okr-progress: 50%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 51%;"]) { --okr-progress: 51%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 52%;"]) { --okr-progress: 52%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 53%;"]) { --okr-progress: 53%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 54%;"]) { --okr-progress: 54%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 55%;"]) { --okr-progress: 55%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 56%;"]) { --okr-progress: 56%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 57%;"]) { --okr-progress: 57%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 58%;"]) { --okr-progress: 58%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 59%;"]) { --okr-progress: 59%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 60%;"]) { --okr-progress: 60%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 61%;"]) { --okr-progress: 61%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 62%;"]) { --okr-progress: 62%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 63%;"]) { --okr-progress: 63%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 64%;"]) { --okr-progress: 64%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 65%;"]) { --okr-progress: 65%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 66%;"]) { --okr-progress: 66%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 67%;"]) { --okr-progress: 67%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 68%;"]) { --okr-progress: 68%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 69%;"]) { --okr-progress: 69%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 70%;"]) { --okr-progress: 70%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 71%;"]) { --okr-progress: 71%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 72%;"]) { --okr-progress: 72%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 73%;"]) { --okr-progress: 73%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 74%;"]) { --okr-progress: 74%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 75%;"]) { --okr-progress: 75%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 76%;"]) { --okr-progress: 76%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 77%;"]) { --okr-progress: 77%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 78%;"]) { --okr-progress: 78%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 79%;"]) { --okr-progress: 79%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 80%;"]) { --okr-progress: 80%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 81%;"]) { --okr-progress: 81%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 82%;"]) { --okr-progress: 82%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 83%;"]) { --okr-progress: 83%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 84%;"]) { --okr-progress: 84%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 85%;"]) { --okr-progress: 85%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 86%;"]) { --okr-progress: 86%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 87%;"]) { --okr-progress: 87%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 88%;"]) { --okr-progress: 88%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 89%;"]) { --okr-progress: 89%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 90%;"]) { --okr-progress: 90%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 91%;"]) { --okr-progress: 91%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 92%;"]) { --okr-progress: 92%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 93%;"]) { --okr-progress: 93%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 94%;"]) { --okr-progress: 94%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 95%;"]) { --okr-progress: 95%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 96%;"]) { --okr-progress: 96%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 97%;"]) { --okr-progress: 97%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 98%;"]) { --okr-progress: 98%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 99%;"]) { --okr-progress: 99%; }
-main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 100%;"]) { --okr-progress: 100%; }
+main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) {
+  &:has(span.bg-success[style*="width: 1%;"]) { --okr-progress: 1%; }
+  &:has(span.bg-success[style*="width: 2%;"]) { --okr-progress: 2%; }
+  &:has(span.bg-success[style*="width: 3%;"]) { --okr-progress: 3%; }
+  &:has(span.bg-success[style*="width: 4%;"]) { --okr-progress: 4%; }
+  &:has(span.bg-success[style*="width: 5%;"]) { --okr-progress: 5%; }
+  &:has(span.bg-success[style*="width: 6%;"]) { --okr-progress: 6%; }
+  &:has(span.bg-success[style*="width: 7%;"]) { --okr-progress: 7%; }
+  &:has(span.bg-success[style*="width: 8%;"]) { --okr-progress: 8%; }
+  &:has(span.bg-success[style*="width: 9%;"]) { --okr-progress: 9%; }
+  &:has(span.bg-success[style*="width: 10%;"]) { --okr-progress: 10%; }
+  &:has(span.bg-success[style*="width: 11%;"]) { --okr-progress: 11%; }
+  &:has(span.bg-success[style*="width: 12%;"]) { --okr-progress: 12%; }
+  &:has(span.bg-success[style*="width: 13%;"]) { --okr-progress: 13%; }
+  &:has(span.bg-success[style*="width: 14%;"]) { --okr-progress: 14%; }
+  &:has(span.bg-success[style*="width: 15%;"]) { --okr-progress: 15%; }
+  &:has(span.bg-success[style*="width: 16%;"]) { --okr-progress: 16%; }
+  &:has(span.bg-success[style*="width: 17%;"]) { --okr-progress: 17%; }
+  &:has(span.bg-success[style*="width: 18%;"]) { --okr-progress: 18%; }
+  &:has(span.bg-success[style*="width: 19%;"]) { --okr-progress: 19%; }
+  &:has(span.bg-success[style*="width: 20%;"]) { --okr-progress: 20%; }
+  &:has(span.bg-success[style*="width: 21%;"]) { --okr-progress: 21%; }
+  &:has(span.bg-success[style*="width: 22%;"]) { --okr-progress: 22%; }
+  &:has(span.bg-success[style*="width: 23%;"]) { --okr-progress: 23%; }
+  &:has(span.bg-success[style*="width: 24%;"]) { --okr-progress: 24%; }
+  &:has(span.bg-success[style*="width: 25%;"]) { --okr-progress: 25%; }
+  &:has(span.bg-success[style*="width: 26%;"]) { --okr-progress: 26%; }
+  &:has(span.bg-success[style*="width: 27%;"]) { --okr-progress: 27%; }
+  &:has(span.bg-success[style*="width: 28%;"]) { --okr-progress: 28%; }
+  &:has(span.bg-success[style*="width: 29%;"]) { --okr-progress: 29%; }
+  &:has(span.bg-success[style*="width: 30%;"]) { --okr-progress: 30%; }
+  &:has(span.bg-success[style*="width: 31%;"]) { --okr-progress: 31%; }
+  &:has(span.bg-success[style*="width: 32%;"]) { --okr-progress: 32%; }
+  &:has(span.bg-success[style*="width: 33%;"]) { --okr-progress: 33%; }
+  &:has(span.bg-success[style*="width: 34%;"]) { --okr-progress: 34%; }
+  &:has(span.bg-success[style*="width: 35%;"]) { --okr-progress: 35%; }
+  &:has(span.bg-success[style*="width: 36%;"]) { --okr-progress: 36%; }
+  &:has(span.bg-success[style*="width: 37%;"]) { --okr-progress: 37%; }
+  &:has(span.bg-success[style*="width: 38%;"]) { --okr-progress: 38%; }
+  &:has(span.bg-success[style*="width: 39%;"]) { --okr-progress: 39%; }
+  &:has(span.bg-success[style*="width: 40%;"]) { --okr-progress: 40%; }
+  &:has(span.bg-success[style*="width: 41%;"]) { --okr-progress: 41%; }
+  &:has(span.bg-success[style*="width: 42%;"]) { --okr-progress: 42%; }
+  &:has(span.bg-success[style*="width: 43%;"]) { --okr-progress: 43%; }
+  &:has(span.bg-success[style*="width: 44%;"]) { --okr-progress: 44%; }
+  &:has(span.bg-success[style*="width: 45%;"]) { --okr-progress: 45%; }
+  &:has(span.bg-success[style*="width: 46%;"]) { --okr-progress: 46%; }
+  &:has(span.bg-success[style*="width: 47%;"]) { --okr-progress: 47%; }
+  &:has(span.bg-success[style*="width: 48%;"]) { --okr-progress: 48%; }
+  &:has(span.bg-success[style*="width: 49%;"]) { --okr-progress: 49%; }
+  &:has(span.bg-success[style*="width: 50%;"]) { --okr-progress: 50%; }
+  &:has(span.bg-success[style*="width: 51%;"]) { --okr-progress: 51%; }
+  &:has(span.bg-success[style*="width: 52%;"]) { --okr-progress: 52%; }
+  &:has(span.bg-success[style*="width: 53%;"]) { --okr-progress: 53%; }
+  &:has(span.bg-success[style*="width: 54%;"]) { --okr-progress: 54%; }
+  &:has(span.bg-success[style*="width: 55%;"]) { --okr-progress: 55%; }
+  &:has(span.bg-success[style*="width: 56%;"]) { --okr-progress: 56%; }
+  &:has(span.bg-success[style*="width: 57%;"]) { --okr-progress: 57%; }
+  &:has(span.bg-success[style*="width: 58%;"]) { --okr-progress: 58%; }
+  &:has(span.bg-success[style*="width: 59%;"]) { --okr-progress: 59%; }
+  &:has(span.bg-success[style*="width: 60%;"]) { --okr-progress: 60%; }
+  &:has(span.bg-success[style*="width: 61%;"]) { --okr-progress: 61%; }
+  &:has(span.bg-success[style*="width: 62%;"]) { --okr-progress: 62%; }
+  &:has(span.bg-success[style*="width: 63%;"]) { --okr-progress: 63%; }
+  &:has(span.bg-success[style*="width: 64%;"]) { --okr-progress: 64%; }
+  &:has(span.bg-success[style*="width: 65%;"]) { --okr-progress: 65%; }
+  &:has(span.bg-success[style*="width: 66%;"]) { --okr-progress: 66%; }
+  &:has(span.bg-success[style*="width: 67%;"]) { --okr-progress: 67%; }
+  &:has(span.bg-success[style*="width: 68%;"]) { --okr-progress: 68%; }
+  &:has(span.bg-success[style*="width: 69%;"]) { --okr-progress: 69%; }
+  &:has(span.bg-success[style*="width: 70%;"]) { --okr-progress: 70%; }
+  &:has(span.bg-success[style*="width: 71%;"]) { --okr-progress: 71%; }
+  &:has(span.bg-success[style*="width: 72%;"]) { --okr-progress: 72%; }
+  &:has(span.bg-success[style*="width: 73%;"]) { --okr-progress: 73%; }
+  &:has(span.bg-success[style*="width: 74%;"]) { --okr-progress: 74%; }
+  &:has(span.bg-success[style*="width: 75%;"]) { --okr-progress: 75%; }
+  &:has(span.bg-success[style*="width: 76%;"]) { --okr-progress: 76%; }
+  &:has(span.bg-success[style*="width: 77%;"]) { --okr-progress: 77%; }
+  &:has(span.bg-success[style*="width: 78%;"]) { --okr-progress: 78%; }
+  &:has(span.bg-success[style*="width: 79%;"]) { --okr-progress: 79%; }
+  &:has(span.bg-success[style*="width: 80%;"]) { --okr-progress: 80%; }
+  &:has(span.bg-success[style*="width: 81%;"]) { --okr-progress: 81%; }
+  &:has(span.bg-success[style*="width: 82%;"]) { --okr-progress: 82%; }
+  &:has(span.bg-success[style*="width: 83%;"]) { --okr-progress: 83%; }
+  &:has(span.bg-success[style*="width: 84%;"]) { --okr-progress: 84%; }
+  &:has(span.bg-success[style*="width: 85%;"]) { --okr-progress: 85%; }
+  &:has(span.bg-success[style*="width: 86%;"]) { --okr-progress: 86%; }
+  &:has(span.bg-success[style*="width: 87%;"]) { --okr-progress: 87%; }
+  &:has(span.bg-success[style*="width: 88%;"]) { --okr-progress: 88%; }
+  &:has(span.bg-success[style*="width: 89%;"]) { --okr-progress: 89%; }
+  &:has(span.bg-success[style*="width: 90%;"]) { --okr-progress: 90%; }
+  &:has(span.bg-success[style*="width: 91%;"]) { --okr-progress: 91%; }
+  &:has(span.bg-success[style*="width: 92%;"]) { --okr-progress: 92%; }
+  &:has(span.bg-success[style*="width: 93%;"]) { --okr-progress: 93%; }
+  &:has(span.bg-success[style*="width: 94%;"]) { --okr-progress: 94%; }
+  &:has(span.bg-success[style*="width: 95%;"]) { --okr-progress: 95%; }
+  &:has(span.bg-success[style*="width: 96%;"]) { --okr-progress: 96%; }
+  &:has(span.bg-success[style*="width: 97%;"]) { --okr-progress: 97%; }
+  &:has(span.bg-success[style*="width: 98%;"]) { --okr-progress: 98%; }
+  &:has(span.bg-success[style*="width: 99%;"]) { --okr-progress: 99%; }
+  &:has(span.bg-success[style*="width: 100%;"]) { --okr-progress: 100%; }
+}
 }
 
 /* Dashboard OKR / 48px rows and low-contrast column-header band. */
