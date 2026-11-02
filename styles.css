@@ -1794,7 +1794,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
    Scope only to the Dashboard's top two summary cards. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary {
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary {
     overflow: hidden;
     padding: 0 !important;
   }
@@ -1802,7 +1802,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   /* Adopt the 14px regular section-heading style used by OKR/My tasks.
      Replace uppercase descriptors visually without altering underlying data. */
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:first-child {
     padding: 16px 16px 0 !important;
     min-height: 36px;
@@ -1813,17 +1813,17 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   }
 
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(1) > div:first-child::before {
     content: "My tasks";
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(2) > div:first-child::before {
     content: "Available projects";
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:first-child::before {
     display: block;
     color: var(--foreground);
@@ -1834,7 +1834,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
 
   /* All three bars share one horizontal track, with 6px gaps. */
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1842,7 +1842,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     padding: 10px 16px 16px !important;
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -1859,23 +1859,23 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   }
 
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(1) {
     --dash-metric-color: #38bdf8;
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(2) {
     --dash-metric-color: #f58b82;
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(3) {
     --dash-metric-color: #9ad28f;
   }
 
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
     content: "";
     grid-area: bar;
@@ -1885,7 +1885,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     background: var(--dash-metric-color);
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:first-child {
     grid-area: value;
     color: var(--dash-metric-color) !important;
@@ -1895,7 +1895,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     letter-spacing: -0.01em;
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child {
     grid-area: label;
     display: inline-flex;
@@ -1908,7 +1908,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     white-space: normal;
   }
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\\:grid-cols-2.gap-3
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child::before {
     content: "";
     display: inline-block;
