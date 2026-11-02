@@ -1811,30 +1811,29 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   display: none !important;
 }
 
-/* 65. Dashboard top metric cards: compact segmented analytics layout.
-   CSS-only presentation of existing live values and clickable task links.
-   The three segments are equal-width visual indicators, NOT percentages.
-   Scope only to the Dashboard's top two summary cards. */
+/* 65. Dashboard summary cards: donut + three-line legend.
+   Retains the live metric text and links. The ring is a CSS-only static
+   visual of the reference snapshot (14 Active, 13 Overdue, 0 Completed);
+   it cannot follow live counts without JS/app markup. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary {
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary {
     overflow: hidden;
     padding: 0 !important;
   }
 
-  /* Adopt the 14px regular section-heading style used by OKR/My tasks.
-     Replace uppercase descriptors visually without altering underlying data. */
+  /* Regular 14px headings match the Dashboard section title treatment. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:first-child {
-    padding: 16px 16px 0 !important;
+    padding: 16px 20px 0 !important;
     min-height: 36px;
     font-size: 0 !important;
     line-height: 0 !important;
     letter-spacing: 0 !important;
     text-transform: none !important;
   }
-
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary:nth-child(1) > div:first-child::before {
@@ -1855,91 +1854,103 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     line-height: 20px;
   }
 
-  /* All three bars share one horizontal track, with 6px gaps. */
+  /* Fixed-size donut occupies a separate column, so small/zero counts
+     never squeeze the legend and all three rows remain aligned. */
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px !important;
-    padding: 10px 16px 16px !important;
+    grid-template-columns: 112px minmax(0, 1fr) !important;
+    grid-template-rows: repeat(3, 32px) !important;
+    gap: 4px 24px !important;
+    align-items: center !important;
+    padding: 12px 20px 20px !important;
+    min-width: 0;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2) > a {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: 8px auto;
-    grid-template-areas: "bar bar" "label value";
-    align-items: center;
-    column-gap: 5px !important;
-    row-gap: 13px !important;
-    min-width: 0;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    text-decoration: none !important;
+    > .rounded-xl.bg-secondary > div:nth-child(2)::before {
+    content: "";
+    grid-area: 1 / 1 / 4 / 2;
+    display: block;
+    width: 112px;
+    height: 112px;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%2336383b%22%20stroke-width%3D%2214%22%2F%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22125.4%20151.06%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%0A%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22%23f58b82%22%20stroke-width%3D%2214%22%20stroke-linecap%3D%22round%22%20stroke-dasharray%3D%22116.6%20159.86%22%20stroke-dashoffset%3D%22-142.6%22%20transform%3D%22rotate(-90%2060%2060)%22%2F%3E%0A%3C%2Fsvg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) > a {
+    grid-column: 2 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    min-width: 0;
+    min-height: 32px;
+    border-radius: 6px !important;
+    background: transparent !important;
+    text-decoration: none !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(1) {
+    grid-row: 1 !important;
     --dash-metric-color: #38bdf8;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(2) {
+    grid-row: 2 !important;
     --dash-metric-color: #f58b82;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(3) {
+    grid-row: 3 !important;
     --dash-metric-color: #9ad28f;
-  }
-
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
-    content: "";
-    grid-area: bar;
-    width: 100%;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--dash-metric-color);
-  }
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:first-child {
-    grid-area: value;
-    color: var(--dash-metric-color) !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    line-height: 22px !important;
-    letter-spacing: -0.01em;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child {
-    grid-area: label;
-    display: inline-flex;
+    order: 0;
+    display: inline-flex !important;
+    flex: 1 1 auto;
     align-items: center;
-    gap: 6px;
+    gap: 9px !important;
     min-width: 0;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
     color: var(--muted-foreground) !important;
-    font-size: 12px !important;
-    line-height: 18px !important;
-    white-space: normal;
+    white-space: nowrap;
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:last-child::before {
     content: "";
     display: inline-block;
-    width: 7px;
-    height: 7px;
-    flex: 0 0 7px;
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
     border-radius: 50%;
     background: var(--dash-metric-color);
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2) > a > span:first-child {
+    order: 1;
+    display: block;
+    flex: 0 0 auto;
+    margin-left: auto;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    color: var(--dash-metric-color) !important;
   }
 }
 
