@@ -1919,3 +1919,15 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     background: var(--dash-metric-color);
   }
 }
+
+/* 65. Notes > All: give every card the same dark #18191b surface as
+   the editor's writing frame, including the selected card.
+   Cards in other Notes filters and other product pages remain unchanged.
+   The flattened date-group list has 0 gap, so each card needs its own
+   12px separation to retain an individually visible rounded frame. */
+html.dark[data-theme="asana"] body:has(
+  #notes-rail-body > button:first-of-type[aria-current="page"]
+) #notes-list-column section > [role="button"] {
+  background-color: #18191b !important;
+  margin-bottom: 12px !important;
+}
