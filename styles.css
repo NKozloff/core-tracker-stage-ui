@@ -2604,3 +2604,63 @@ main:has(h1[data-testid="dashboard-heading"])
   .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) > a {
   background-color: var(--dash-kpi-highlight-surface) !important;
 }
+
+
+/* Dashboard All spaces: render the existing switch as a proper toggle.
+   The app already provides role=switch and a real aria-checked state.
+   CSS changes its appearance only; it does not force a false data state to
+   true. The track is blue when the actual switch is ON. */
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"] {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 10px !important;
+  min-height: 32px !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  cursor: pointer !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"] > svg {
+  display: none !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::before {
+  content: "" !important;
+  display: block !important;
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  height: 18px !important;
+  border-radius: 999px !important;
+  background-color: #60636a !important;
+  transition: background-color 150ms ease !important;
+  pointer-events: none !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 13px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  transform: translateY(-50%) !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  transition: left 150ms ease !important;
+  pointer-events: none !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"]::before {
+  background-color: #3b82f6 !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"]::after {
+  left: 27px !important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"][aria-checked="true"] > span {
+  color: var(--foreground) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::before,
+  main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="All spaces"]::after {
+    transition: none !important;
+  }
+}
