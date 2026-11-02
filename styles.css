@@ -2159,3 +2159,103 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     top: 59px !important;
   }
 }
+
+/* Dashboard demo preview: aligned chart segments, legend numbers and KPI totals.
+   Static DESIGN MOCK, not a live task count: the backend data, link targets
+   and accessible aria-labels are unchanged. Replace this preview with
+   application-derived metrics when JS/source integration is available.
+   My tasks: 9 active + 3 overdue + 2 completed = 14.
+   Available projects: 3 active + 8 overdue + 4 completed = 15.
+   Segment widths exactly correspond to those same fractions. */
+@media (min-width: 1024px) {
+  /* Override the zero-state preset in the preceding dashboard rules.
+     All sample segments remain visible in BOTH design prototypes. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2) {
+    --dash-a: 0.642857 !important;
+    --dash-b: 0.214286 !important;
+    --dash-c: 0.142857 !important;
+    --dash-gap-b: 6px !important;
+    --dash-gap-c: 6px !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2) {
+    --dash-a: 0.2 !important;
+    --dash-b: 0.533333 !important;
+    --dash-c: 0.266667 !important;
+    --dash-gap-b: 6px !important;
+    --dash-gap-c: 6px !important;
+  }
+
+  /* Earlier zero-state selectors suppress colored bars based on real data.
+     Restore all three for this explicit static mockup, even if DOM says 0. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2)
+    > a[aria-label$=": 0"]::before {
+    display: block !important;
+  }
+
+  /* Keep original link structure and colors; replace only what is shown on
+     screen for the six individual demo figures. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2)
+    > a > span:first-child {
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary > div:nth-child(2)
+    > a > span:first-child::before {
+    display: inline-block;
+    color: var(--dash-color);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Card 1: active 9, overdue 3, completed 2. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)
+    > a:nth-child(1) > span:first-child::before { content: "9"; }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)
+    > a:nth-child(2) > span:first-child::before { content: "3"; }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)
+    > a:nth-child(3) > span:first-child::before { content: "2"; }
+
+  /* Card 2: active 3, overdue 8, completed 4. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)
+    > a:nth-child(1) > span:first-child::before { content: "3"; }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)
+    > a:nth-child(2) > span:first-child::before { content: "8"; }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)
+    > a:nth-child(3) > span:first-child::before { content: "4"; }
+
+  /* The prominent totals match the same demo arithmetic. */
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(1) > div:nth-child(2)::before {
+    content: "14" !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"])
+    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
+    > .rounded-xl.bg-secondary:nth-child(2) > div:nth-child(2)::before {
+    content: "15" !important;
+  }
+}
