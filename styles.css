@@ -2098,14 +2098,14 @@ html.dark[data-theme="asana"] body:has(
   margin-bottom: 12px !important;
 }
 
-/* Dashboard: OKR and My tasks section headings at 18px Semibold.
+/* Dashboard: OKR and My tasks section headings at 18px Medium.
    Existing headings are 14px Medium (text-sm font-medium).
    Keep the period/count metadata at its former small size. */
 main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href="/okr"]),
 main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actionable_only=true"]) {
   font-size: 18px !important;
   line-height: 24px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href="/okr"]) span.text-muted-foreground,
@@ -3425,12 +3425,13 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 }
 }
 
-/* Dashboard OKR / 48px rows and low-contrast column-header band. */
+/* Dashboard OKR / 44px rows and low-contrast column-header band. */
 /* Keep the section-heading divider, but remove every divider that used
    to separate objectives. Only Dashboard's OKR table is affected. */
 @media (min-width: 1024px) {
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) {
     padding-top: 16px !important;
+    border-bottom: 0 !important;
   }
 
   /* A full-width subtle surface matching the analytics metric pills.
@@ -3464,9 +3465,9 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow,
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
     box-sizing: border-box !important;
-    height: 48px !important;
-    min-height: 48px !important;
-    max-height: 48px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-top: 0 !important;
@@ -3495,5 +3496,43 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3)::after {
     content: none !important;
     display: none !important;
+  }
+}
+
+/* Dashboard OKR heading: title + 8px chevron on left; live quarter and
+   completion metadata aligned to the right. Preserve a single clickable link. */
+@media (min-width: 1024px) {
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    gap: 8px !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate {
+    display: contents !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > svg.lucide-chevron-right {
+    order: 1 !important;
+    margin-left: 0 !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > h2 > a[href="/okr"] > span.truncate > span.ms-1 {
+    order: 2 !important;
+    margin-left: auto !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header > span.ml-auto:has(button[aria-label="Hint"]) {
+    display: none !important;
+  }
+  /* Remove the outer bottom rule, not the one between the title and table. */
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:last-child {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
   }
 }
