@@ -1902,7 +1902,7 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
     justify-content: flex-start !important;
     gap: 10px 22px !important;
     align-items: center;
-    padding: 37px 20px 18px !important;
+    padding: 95px 20px 16px !important;
     min-width: 0;
   }
 
@@ -2111,13 +2111,10 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
    Visual prototype only: "14" is the current example, NOT a live
    computed total. The three link counters remain live and unchanged. */
 @media (min-width: 1024px) {
-  main:has(h1[data-testid="dashboard-heading"])
-    .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
-    > .rounded-xl.bg-secondary > div:nth-child(2) {
-    /* Reserve a separate row above the track without moving the legend
-       into independently sized bar segments. */
-    padding-top: 87px !important;
-  }
+  /* Vertical rhythm: heading end to KPI 16px; KPI (38px) to
+     bar (9px) 16px; bar to legend 16px; legend to bottom 16px.
+     Metrics wrapper reserves 16 + 38 + 16 + 9 + 16 = 95px above
+     its in-flow legend, defined in the summary-card rule. */
 
   /* Large white KPI: matches the reference's visual hierarchy. */
   main:has(h1[data-testid="dashboard-heading"])
@@ -2125,7 +2122,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary > div:nth-child(2)::before {
     content: "14";
     position: absolute;
-    top: 4px;
+    top: 16px;
     left: 20px;
     color: var(--foreground) !important;
     font-size: 28px;
@@ -2142,7 +2139,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
     > .rounded-xl.bg-secondary > div:nth-child(2)::after {
     content: "всего задач";
     position: absolute;
-    top: 18px;
+    top: 30px;
     left: 75px;
     color: var(--muted-foreground) !important;
     font-size: 13px;
@@ -2156,7 +2153,7 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a::before {
-    top: 59px !important;
+    top: 70px !important;
   }
 }
 
