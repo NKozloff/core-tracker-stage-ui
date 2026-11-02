@@ -2584,13 +2584,13 @@ body:has(aside.bg-sidebar nav a[href="/personal-goals"].bg-sidebar-accent)
    Match those exact theme-aware tokens on the period control, filter button
    and ONLY the two top analytics cards. Keep the search field's existing style.
    The selected period tab uses +4% lightness; the three analytics pills
-   in each summary card use only a 2%-opacity foreground overlay, avoiding
+   in each summary card use a 5%-opacity foreground overlay, avoiding
    double-layered translucent card backgrounds and keeping the contrast subtle.
    Scope to Dashboard so Notes, Personal Goals, etc. are not affected. */
 main:has(h1[data-testid="dashboard-heading"]) {
   --dash-header-search-surface: color-mix(in oklab, var(--muted) 50%, transparent);
   --dash-kpi-highlight-surface: color-mix(in srgb, var(--dash-header-search-surface) 96%, white 4%);
-  --dash-analytics-pill-surface: color-mix(in srgb, var(--foreground) 2%, transparent);
+  --dash-analytics-pill-surface: color-mix(in srgb, var(--foreground) 5%, transparent);
 }
 html.dark main:has(h1[data-testid="dashboard-heading"]) {
   --dash-header-search-surface: color-mix(in oklab, var(--input) 30%, transparent);
@@ -2823,7 +2823,7 @@ main:has(h1[data-testid="dashboard-heading"]) button[role="switch"][aria-label="
     padding: 4px 12px !important;
     border: none !important;
     border-radius: 999px !important;
-    background: var(--dash-analytics-pill-surface, color-mix(in srgb, var(--foreground) 2%, transparent)) !important;
+    background: var(--dash-analytics-pill-surface, color-mix(in srgb, var(--foreground) 5%, transparent)) !important;
     box-shadow: none !important;
     text-decoration: none !important;
   }
