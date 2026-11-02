@@ -3209,7 +3209,7 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(3) {
   grid-column: 4 !important;
   grid-row: 1 !important;
-  justify-self: end !important;
+  justify-self: start !important;
   min-width: 0 !important;
 }
 
@@ -3485,8 +3485,8 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   }
   /* Only consecutive rows get a full-bleed divider; no line after the
      descriptor header or after the last row. Maintain 44px border-box rows. */
-  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
-    border-top: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent) !important;
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow + a.dash-subrow {
+    border-top: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent) !important;
   }
 
   /* Disable old pseudo-element dividers so the border is the only rule. */
@@ -3596,4 +3596,12 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
   padding-top: 4px !important;
   padding-bottom: 4px !important;
 }
+}
+
+/* Dashboard OKR: zero progress uses the Updated column's secondary ink.
+   Read the real inline 0% progress width; other values stay unchanged. */
+@media (min-width: 1024px) {
+  main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2):has(span.bg-success[style*="width: 0%"]) > span:first-child {
+    color: var(--tertiary-foreground, var(--muted-foreground)) !important;
+  }
 }
