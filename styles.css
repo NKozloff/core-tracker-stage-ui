@@ -3022,43 +3022,46 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
 @media (min-width:1024px) {
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
   > div.bg-card:has(>div:first-child h2 a[href="/financial-approvals"]) {
+  box-sizing:border-box!important;
+  padding:16px 24px!important;
+  border-color:transparent!important;
+  background-color:var(--dash-header-search-surface)!important;
+   > div:first-child {padding:0!important;margin:0 0 16px!important;min-height:24px!important;}
+  > div:first-child h2 {font-size:18px!important;line-height:24px!important;font-weight:500!important;}
+  > div:first-child h2 a {gap:8px!important;}
+  > div:first-child button[aria-label="Financial approvals awaiting your decision"] {display:none!important;}
+  > div:nth-child(2) {display:none!important;}
+  > div:nth-child(3) {
     box-sizing:border-box!important;
-    padding:16px 24px!important;
-    border-color:transparent!important;
-    background-color:var(--dash-header-search-surface)!important;
-    > div:first-child {padding:0!important;margin:0 0 8px!important;min-height:24px!important;}
-    > div:first-child h2 {font-size:18px!important;line-height:24px!important;font-weight:500!important;}
-    > div:first-child h2 a {gap:8px!important;}
-    > div:first-child button[aria-label="Financial approvals awaiting your decision"] {display:none!important;}
-    > div:nth-child(2) {display:none!important;}
-    > div:nth-child(3) {
-      box-sizing:border-box!important;
-      width:calc(100% + 48px)!important;
-      margin:0 -24px!important;
-      padding:0 24px!important;
-      min-height:0!important;
-      grid-template-columns:minmax(0,2fr) repeat(3,minmax(110px,.7fr)) 120px!important;
-      grid-template-rows:24px auto!important;
-      background:linear-gradient(to bottom,var(--dash-analytics-pill-surface) 0 24px,transparent 24px)!important;
-      > div:first-child {
-        min-height:24px!important;
-        padding:4px 0!important;
-        background:transparent!important;
-        > button {font-size:12px!important;line-height:16px!important;font-weight:400!important;color:var(--muted-foreground)!important;}
-        > button:last-child {justify-self:end!important;}
-      }
-      > div:nth-child(2):not(.dash-subrow) {min-height:128px!important;padding:24px 0!important;font-size:14px!important;}
-      > .dash-subrow {
-        box-sizing:border-box!important;
-        height:44px!important;
-        min-height:44px!important;
-        padding:0!important;
-        border:0!important;
-        border-radius:0!important;
-        > * {font-size:14px!important;}
-        & + .dash-subrow {border-top:1px solid color-mix(in srgb,var(--foreground) 6%,transparent)!important;}
-      }
+    width:calc(100% + 48px)!important;
+    margin:0 -24px!important;
+    padding:0 24px!important;
+    min-height:0!important;
+    grid-template-columns:minmax(0,2fr) repeat(3,minmax(110px,.7fr)) 120px!important;
+    grid-template-rows:24px auto!important;
+    background:linear-gradient(to bottom,var(--dash-analytics-pill-surface) 0 24px,transparent 24px)!important;
+    > div:first-child {
+      min-height:24px!important;
+      padding:4px 0!important;
+      position:static!important;
+      top:auto!important;
+      z-index:auto!important;
+      background:transparent!important;
+      > button {font-size:12px!important;line-height:16px!important;font-weight:400!important;color:var(--muted-foreground)!important;}
+      > button:last-child {justify-self:end!important;}
     }
+    > div:nth-child(2):not(.dash-subrow) {min-height:128px!important;padding:24px 0!important;font-size:14px!important;}
+    > .dash-subrow {
+      box-sizing:border-box!important;
+      height:44px!important;
+      min-height:44px!important;
+      padding:0!important;
+      border:0!important;
+      border-radius:0!important;
+      > * {font-size:14px!important;}
+      & + .dash-subrow {border-top:1px solid color-mix(in srgb,var(--foreground) 6%,transparent)!important;}
+    }
+  }
   }
 }
 }
