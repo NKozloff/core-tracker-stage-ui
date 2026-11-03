@@ -3827,6 +3827,7 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
   padding-left: 12px !important;
   padding-right: 12px !important;
   font-size: 14px !important;
+  font-weight: 400 !important;
 }
 
 /* Scale each SVG graphic itself, overriding the button's 14px icon utility. */
