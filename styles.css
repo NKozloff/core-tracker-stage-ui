@@ -83,11 +83,11 @@ aside.bg-sidebar nav > ul a[href="/approvals"]::after {
 }
 
 
-/* 9. Global navigation: increase vertical space between items from 2px to 4px.
-   This overrides Tailwind's space-y-0.5 (2px) on both top-level and
-   flattened My Actions lists, without changing each row's own padding. */
+/* 9. Global navigation: no bottom margin between main menu items,
+   including the flattened My Actions list. */
 aside.bg-sidebar nav ul.space-y-0\.5 > li:not(:last-child) {
-  margin-block-end: 4px !important;
+  margin-block-end: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* 10. Notes page heading: remove its leading icon.
@@ -3732,7 +3732,7 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
    Project: role=listitem row > context-menu trigger > a[href^="/projects/"]
    The old group/project and /tasks? selectors did not match the project DOM. */
 @media (min-width: 1024px) {
-  /* Team and project ROWS: exactly 32px high + 4px bottom margin. */
+  /* Team and project ROWS: exactly 32px high, no bottom margin. */
   html body aside.bg-sidebar nav div.group\/team:has(> a[href^="/teams/"]),
   html body aside.bg-sidebar nav div[role="listitem"]:has(> div[data-slot="context-menu-trigger"] > a[href^="/projects/"]) {
     box-sizing: border-box !important;
@@ -3741,7 +3741,7 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     max-height: 32px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 0 !important;
     align-items: center !important;
   }
 
