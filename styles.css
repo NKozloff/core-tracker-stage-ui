@@ -3201,14 +3201,12 @@ main:has(h1[data-testid="dashboard-heading"]) button[aria-label="Configure block
   }
 }
 
-/* Dashboard OKR / circular progress, rightmost confidence, single divider. */
-/* Existing row percentage and bar width remain the source of truth.
-   Per-percent CSS selectors map the existing inline width to an arc;
-   no hard-coded per-objective values and no changes to app state. */
+/* OKR: fixed Objective/Confidence and three equal middle columns.
+   Objective + Key Results share two parent tracks via CSS subgrid. */
 @media (min-width: 1024px) {
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3),
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow {
-  grid-template-columns: minmax(0, 2fr) minmax(132px, .88fr) minmax(140px, .95fr) 120px !important;
+  grid-template-columns: clamp(220px, 23vw, 360px) repeat(3, minmax(0, 1fr)) 120px !important;
   column-gap: clamp(12px, 1.4vw, 24px) !important;
   align-items: center !important;
 }
@@ -3217,30 +3215,33 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
    Objective/Key Results, Progress, Updated, Confidence. */
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:first-child,
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:first-child {
-  grid-column: 1 !important;
+  grid-column: 1 / span 2 !important;
   grid-row: 1 !important;
+  grid-template-columns: subgrid !important;
+  column-gap: inherit !important;
+  row-gap: 0 !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:nth-child(2),
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(2) {
-  grid-column: 2 !important;
+  grid-column: 3 !important;
   grid-row: 1 !important;
   box-sizing: border-box !important;
-  padding-left: 48px !important;
+  padding-left: 0 !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:nth-child(4),
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(4) {
-  grid-column: 3 !important;
+  grid-column: 4 !important;
   grid-row: 1 !important;
   display: block !important;
   box-sizing: border-box !important;
-  padding-left: 24px !important;
+  padding-left: 0 !important;
 }
 
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) > span:nth-child(3),
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) > a.dash-subrow > span:nth-child(3) {
-  grid-column: 4 !important;
+  grid-column: 5 !important;
   grid-row: 1 !important;
   justify-self: end !important;
   width: max-content !important;
