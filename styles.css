@@ -4092,19 +4092,20 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   min-height: 36px !important;
   max-height: 36px !important;
   background-color: #191b1c !important;
+  padding: 4px !important;
   align-content: center !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"] {
   box-sizing: border-box !important;
-  height: 32px !important;
-  min-height: 32px !important;
-  max-height: 32px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: #393b3d !important;
+  background-color: var(--background) !important;
 }
 
 /* Match the first row: Filter, Grouping, Columns, Approve all. */
@@ -4118,6 +4119,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   padding-right: 12px !important;
   font-size: 14px !important;
   font-weight: 400 !important;
+  border: none !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto > button[data-slot] > svg,
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto > div > button[data-slot] > svg {
