@@ -5119,3 +5119,12 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     margin-top: 16px !important;
   }
 }
+
+/* Financial Approvals: 16px between Export and New request. */
+/* Existing gap-2 keeps Import–Export at 8px. An extra 8px on the final
+   action makes Export–New request 16px without changing the other gap. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.min-h-9 > div.ml-auto.flex.items-center.gap-2
+  > button[data-slot="button"]:last-child {
+  margin-left: 8px !important;
+}
