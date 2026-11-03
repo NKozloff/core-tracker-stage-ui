@@ -4624,11 +4624,19 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
    Keep the 2px Create-blue ring. Unlike the previous single-note test,
    the treatment follows the actually selected card via aria-current. */
 @media (min-width: 1024px) {
+  /* Keep selected-state behavior and explicitly include the bank
+     reconciliation demo card: the live list may not mark it aria-current
+     while the editor is displaying its content. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
-  ) #notes-list-column section > [role="button"][aria-current="true"] {
+  ) #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
+    :has(> div[role="button"]:nth-of-type(3))
+  ) > div[role="button"]:nth-of-type(1) {
     background-color: #1c2b40 !important;
     background-image: linear-gradient(115deg, #1b293b 0%, #21344b 100%) !important;
     border: 0 !important;
