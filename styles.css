@@ -4308,13 +4308,13 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: flat table descriptor band matching ordinary buttons. */
-/* #27292b matches Filter / Grouping / Columns; keep labels muted and the divider. */
+/* Financial Approvals / Requests: transparent table descriptor band. */
+/* Keep labels, sorting icons, row sizing and the existing lower divider. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  background: #27292b !important;
+  background: transparent !important;
   background-image: none !important;
   border-radius: 0 !important;
   clip-path: none !important;
