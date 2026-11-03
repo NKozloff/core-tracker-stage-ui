@@ -4541,3 +4541,12 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   td[data-slot="table-cell"]:nth-child(6) [data-slot="badge"] {
   border: 0 !important;
 }
+
+/* Financial Approvals: transparent interior for outlined request indicators. */
+/* Only the hollow normal-priority indicator; preserve its existing border.
+   Filled approved/completed indicators are intentionally untouched. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] tbody[data-slot="table-body"]
+  td[data-slot="table-cell"]:first-child .rounded-full.border-priority-normal {
+  background: transparent !important;
+}
