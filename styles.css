@@ -4069,13 +4069,18 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
 }
 
 
-/* 77. Notes selected card: restore neutral fill with 2px blue outline.
-   Native text, tags and icons retain their original colours. The inset
-   stroke does not change the card's width, height or content offsets. */
+/* 77. Notes selected card: reuse the exact Access chip surface (#303133).
+   No blue outline, coloured title, or change to existing metadata colours.
+   The more specific All selector wins over the general #27282a card fill. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"][aria-current="true"] {
-    box-shadow: inset 0 0 0 2px #79b7ff !important;
+    #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"][aria-current="true"] {
+    background-color: #303133 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
   }
 }
  
