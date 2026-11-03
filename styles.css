@@ -4439,6 +4439,8 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   text-align: right !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:nth-child(8) > button {
+  display: flex !important;
+  width: 100% !important;
   justify-content: flex-end !important;
   text-align: right !important;
 }
