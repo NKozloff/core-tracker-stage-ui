@@ -3937,3 +3937,13 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
     gap: 0 !important;
   }
 }
+
+/* 72. Hide the entire Teams and Projects navigation section. */
+/* The section container owns the heading, team rows and all nested projects.
+   Hiding it as one unit avoids blank gaps and keeps the profile unaffected.
+   Override the earlier restoration rule (#5/#67) with the same specificity,
+   later in the cascade. Hide the native separator immediately above it too. */
+html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]),
+html body aside.bg-sidebar nav > div.border-t:has(+ div > a[href="/teams-projects"]) {
+  display: none !important;
+}
