@@ -3824,7 +3824,18 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
   font-size: 14px !important;
+}
+
+/* Scale each SVG graphic itself, overriding the button's 14px icon utility. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.min-h-9 > div.ml-auto.flex.items-center.gap-2 > button[data-slot="button"] > svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  flex-shrink: 0 !important;
 }
 
 
