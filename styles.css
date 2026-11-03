@@ -3938,3 +3938,15 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
     gap: 0 !important;
   }
 }
+
+
+/* 72. Notes > All: temporarily hide the whole PINNED section.
+   Includes the descriptor and all pinned cards, without deleting data
+   or changing the dedicated Pinned filter or other date sections. */
+@media (min-width: 1024px) {
+  body:has(#notes-rail-body > button:first-of-type[aria-current="page"])
+    #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:first-of-type {
+    display: none !important;
+  }
+}
