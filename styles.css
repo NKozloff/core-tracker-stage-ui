@@ -4278,3 +4278,40 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* 80. Notes: use global sidebar surface for list cards and writing frame.
+   Match the existing global sidebar #18191b (rule 24). Remove the
+   experimental 1px outlines, including the selected-note blue ring.
+   This changes only the Notes page, without changing layout geometry. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body) {
+    --core-notes-sidebar-surface: #18191b;
+  }
+
+  /* Every note card, including All and the currently selected card. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"],
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"][aria-current="true"] {
+    background: var(--core-notes-sidebar-surface) !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* The outer editor card around the rich text and formatting toolbar.
+     Keep the inner editor and controls as they were. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col {
+    background-color: var(--core-notes-sidebar-surface) !important;
+  }
+}
