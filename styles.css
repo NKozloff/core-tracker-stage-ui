@@ -3733,12 +3733,12 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   display: none !important;
 }
 
-/* 68. Team AND project hit areas: 32px, like the main navigation.
-   Match the real task links rather than fixed intermediate class nesting. */
+/* 68. Match the native team/project ROW CLASSES, not link destinations.
+   The Stage link URLs and optional wrappers can change independently.
+   Both visual rows and click targets are exactly 32px high. */
 @media (min-width: 1024px) {
-  /* All native min-h-7 team/project rows (including nested projects). */
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    .min-h-7:has(a[href^="/tasks?"]) {
+  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7,
+  html body aside.bg-sidebar nav div.group\/project.min-h-7 {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
@@ -3750,9 +3750,9 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     margin-block-end: 0 !important;
   }
 
-  /* Anchor itself fills the full vertical hit area. */
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    a[href^="/tasks?"] {
+  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a,
+  html body aside.bg-sidebar nav div.group\/project.min-h-7 > div.flex.flex-1,
+  html body aside.bg-sidebar nav div.group\/project.min-h-7 > div.flex.flex-1 > a {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
@@ -3764,10 +3764,10 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* 70. Team titles only: regular 400. Project titles unaffected. */
+/* 70. Team names (not projects) are Regular / font-weight 400. */
 @media (min-width: 1024px) {
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    a[href^="/tasks?"][href*="team_id="]:not([href*="project_id="]) {
+  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a,
+  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a span {
     font-weight: 400 !important;
   }
 }
