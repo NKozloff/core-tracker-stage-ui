@@ -4185,7 +4185,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   div.flex.h-full.min-h-0.flex-col.gap-3
   > div.flex.min-h-0.flex-1.flex-col.transition-opacity {
   background-color: #161719 !important;
-  border-radius: 24px !important;
+  border-radius: 16px !important;
   overflow: hidden !important;
 }
 
@@ -4272,6 +4272,8 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   background-repeat: no-repeat !important;
   background-position: 4px 4px !important;
   background-size: calc(100% - 8px) calc(100% - 4px) !important;
+  /* Round the inset band without changing table-row or column geometry. */
+  clip-path: inset(4px 4px 0px 4px round 12px) !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
