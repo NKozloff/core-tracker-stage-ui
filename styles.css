@@ -3826,3 +3826,103 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
   max-height: 36px !important;
   font-size: 14px !important;
 }
+
+
+/* 71. Notes list: search on top, 16px side insets and one 12px flow.
+   Preserve the working Search input and the pinned icon. Flattening
+   date sections is already done by rule 25; all visible date headings
+   and cards now share the same spacing context. Desktop Notes only. */
+@media (min-width: 1024px) {
+  /* Search occupies the top 72px track: 24px top + 36px input + 12px
+     before the first list heading. It stays fixed while notes scroll. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"]) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: stretch !important;
+    align-self: start !important;
+    width: auto !important;
+    height: 36px !important;
+    margin: 24px 16px 12px !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+    z-index: 1 !important;
+  }
+
+  /* The 16px list insets and Search margins produce identical widths. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child {
+    grid-row: 1 / 4 !important;
+    padding: 24px 16px 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* When All is selected, scroll notes below the fixed Search track.
+     Other filters retain their existing full-height list and hide Search. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]):has(#notes-rail-body > button:first-of-type[aria-current="page"])
+    #notes-list-column > div:first-child {
+    grid-row: 2 / 4 !important;
+    padding-top: 0 !important;
+  }
+
+  /* All date labels and cards are direct flex participants, not nested
+     spaced groups. Rule 25 has display:contents on section wrappers. */
+  #notes-list-column > div:first-child > div.flex.flex-col.gap-3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section > span.uppercase.tracking-wider {
+    margin: 0 !important;
+    padding: 0 0 0 8px !important;
+  }
+
+  /* The list owns all 12px gaps; cards supply no trailing margin. */
+  #notes-list-column section > [role="button"] {
+    margin: 0 !important;
+  }
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"] {
+    margin: 0 !important;
+  }
+
+  /* Card visual reading order: title, description, then indicators.
+     Native summaries are spans; the financial demo uses ::after. */
+  #notes-list-column section > [role="button"] > div.flex.items-baseline.gap-2 {
+    order: 0 !important;
+  }
+  #notes-list-column section > [role="button"] > span.truncate.text-muted-foreground.text-xs,
+  #notes-list-column section > [role="button"]::after {
+    order: 1 !important;
+  }
+  #notes-list-column section > [role="button"] > div.flex.items-center.gap-1\.5 {
+    order: 2 !important;
+  }
+  /* Don't reserve a metadata row for a note with no visible indicators. */
+  #notes-list-column section > [role="button"]
+    > div.flex.items-center.gap-1\.5:not(:has(svg, button, a, img, span)) {
+    display: none !important;
+  }
+
+  /* Hide dates beside note titles without touching date group headers. */
+  #notes-list-column section > [role="button"]
+    > div.flex.items-baseline.gap-2 > span.tabular-nums {
+    display: none !important;
+  }
+
+  /* Pinned icon used to live in the date's ::after pseudo-element.
+     Keep the existing blue pin visible while suppressing its date text. */
+  #notes-list-column section:first-of-type > [role="button"]
+    > div.flex.items-baseline.gap-2 > span.tabular-nums {
+    display: inline-flex !important;
+    flex: 0 0 16px !important;
+    width: 16px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    gap: 0 !important;
+  }
+}
