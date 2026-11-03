@@ -4508,3 +4508,28 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(3) > div {
   align-items: flex-start !important;
 }
+
+/* Financial Approvals / Requests: 600px Purpose title/description truncation. */
+/* Width is intrinsic until the longest Purpose text reaches 600px. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) > div.flex.flex-col {
+  box-sizing: border-box !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: 600px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) > div.flex.flex-col > div.flex {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 600px !important;
+}
+/* Override the preceding all-column .truncate expansion only in Purpose. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) .truncate:not(.sr-only) {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 600px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
