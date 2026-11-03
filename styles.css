@@ -4188,7 +4188,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   }
 }
 
-/* Financial Approvals Requests: table column headings — 12px uppercase muted Medium. */
+/* Financial Approvals Requests: table column headings — 12px uppercase white Medium. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
@@ -4196,19 +4196,19 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   font-size: 12px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  color: var(--muted-foreground) !important;
+  color: #fff !important;
 }
 
-/* Sorting arrows inherit the same muted foreground as descriptors. */
+/* Sorting arrows use the same white foreground as descriptors. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
-  color: var(--muted-foreground) !important;
+  color: #fff !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button svg,
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] svg:is(.lucide-arrow-up-down, .lucide-arrow-up, .lucide-arrow-down) {
-  color: var(--muted-foreground) !important;
+  color: #fff !important;
   stroke: currentColor !important;
 }
 
