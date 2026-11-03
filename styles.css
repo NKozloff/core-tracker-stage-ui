@@ -4676,25 +4676,27 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     box-shadow: none !important;
   }
 
-  /* Full-bleed subtle divider: the editor frame has 12px inner padding,
-     so extend the rule 12px past each side of the native toolbar wrapper.
-     Position it halfway through the existing 12px toolbar-to-text gap. */
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    main div.flex.h-full.flex-col.gap-4.p-4
-    div.relative.z-20.flex.min-h-56.flex-1.flex-col
-    > div[data-note-editor] > div[data-note-panel] {
-    position: relative !important;
-  }
+  /* Full-bleed divider is anchored to the OUTER writing frame, not the
+     nested toolbar: the latter inherits extra horizontal insets.
+     12px top frame padding + 40px toolbar + 12px below = 64px.
+     Thus its horizontal edges meet the frame edges, with matching
+     12px spacing above and below the icon toolbar. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     main div.flex.h-full.flex-col.gap-4.p-4
     div.relative.z-20.flex.min-h-56.flex-1.flex-col
     > div[data-note-editor] > div[data-note-panel]::after {
+    content: none !important;
+    display: none !important;
+  }
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col::after {
     content: "";
     position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
     height: 1px;
-    left: -12px;
-    right: -12px;
-    bottom: -6px;
     background-color: rgba(255, 255, 255, 0.07);
     pointer-events: none;
   }
