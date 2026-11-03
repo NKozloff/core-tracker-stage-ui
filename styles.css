@@ -5320,3 +5320,57 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   stroke: currentColor !important;
   opacity: 1 !important;
 }
+
+/* Financial Approvals / All: compact filter controls and right-aligned view actions. */
+@media (min-width: 1440px) {
+  /* Use the existing Status control as the alignment point for Filter.
+     Both remain on the same toolbar row with a 16px gap. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.h-full.min-h-0.flex-col.gap-3
+    > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+    > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2) {
+    anchor-name: --core-approvals-status-filter;
+  }
+
+  /* Preserve the original right-hand wrapper as one compact flex group.
+     Filter is positioned separately; Grouping and Columns remain in flow. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.h-full.min-h-0.flex-col.gap-3
+    > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+    > div.ml-auto.flex.shrink-0.items-center.gap-2 {
+    display: flex !important;
+    grid-column: 6 / 8 !important;
+    grid-row: 4 !important;
+    justify-self: end !important;
+    align-self: center !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: max-content !important;
+    margin: 0 !important;
+  }
+
+  /* The first native button is Filter: place it 16px after 4 statuses. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.h-full.min-h-0.flex-col.gap-3
+    > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+    > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1) {
+    position: absolute !important;
+    position-anchor: --core-approvals-status-filter;
+    left: calc(anchor(right) + 16px) !important;
+    top: anchor(top) !important;
+    width: max-content !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  /* Remove old auto-margins that pushed Grouping and Columns apart. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.h-full.min-h-0.flex-col.gap-3
+    > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+    > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(n+2) {
+    position: static !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+}
