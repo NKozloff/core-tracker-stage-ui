@@ -3984,3 +3984,16 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
     display: none !important;
   }
 }
+
+/* Financial Approvals: square navigation tabs, Regular labels, 2px active underline. */
+main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
+  > a[href^="/financial-approvals"] {
+  font-weight: 400 !important;
+  border-radius: 0 !important;
+  border-bottom-width: 2px !important;
+}
+main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
+  > a[href^="/financial-approvals"][aria-current="page"] {
+  border-bottom-color: var(--primary) !important;
+  border-bottom-style: solid !important;
+}
