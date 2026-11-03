@@ -4176,7 +4176,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   }
 }
 
-/* Financial Approvals Requests: table column headings — 12px uppercase muted Medium. */
+/* Financial Approvals Requests: table column headings — 12px uppercase white Medium. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
@@ -4184,7 +4184,20 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   font-size: 12px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  color: var(--muted-foreground) !important;
+  color: #fff !important;
+}
+
+/* Sort arrows follow the descriptor's white foreground. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
+  color: #fff !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button svg,
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] svg:is(.lucide-arrow-up-down, .lucide-arrow-up, .lucide-arrow-down) {
+  color: #fff !important;
+  stroke: currentColor !important;
 }
 
 /* Financial Approvals / Requests: one rounded surface for headers and table content. */
@@ -4343,7 +4356,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   margin: 0 auto 16px !important;
   border: 0 !important;
   border-radius: 12px !important;
-  background-color: #1d1f21 !important;
+  background-color: #393b3d !important;
   overflow: hidden !important;
 }
 
@@ -4376,7 +4389,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   left: 0;
   top: 0;
   z-index: 1;
-  background-color: #1d1f21;
+  background-color: #393b3d;
   padding-right: 2px;
   color: inherit;
   font: inherit;
