@@ -2607,16 +2607,21 @@ main:has(h1[data-testid="dashboard-heading"]) {
   --dash-header-search-surface: color-mix(in oklab, var(--muted) 50%, transparent);
   --dash-kpi-highlight-surface: color-mix(in srgb, var(--dash-header-search-surface) 96%, white 4%);
   --dash-analytics-pill-surface: color-mix(in srgb, var(--foreground) 5%, transparent);
+  --dash-frame-outline: color-mix(in srgb, var(--foreground) 10%, transparent);
 }
 html.dark main:has(h1[data-testid="dashboard-heading"]) {
   --dash-header-search-surface: color-mix(in oklab, var(--input) 30%, transparent);
 }
 
 main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"],
-main:has(h1[data-testid="dashboard-heading"]) button[aria-label="Configure blocks"],
+main:has(h1[data-testid="dashboard-heading"]) button[aria-label="Configure blocks"] {
+  background-color: var(--dash-header-search-surface) !important;
+}
 main:has(h1[data-testid="dashboard-heading"])
   .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary {
-  background-color: var(--dash-header-search-surface) !important;
+  background: transparent !important;
+  border: 1px solid var(--dash-frame-outline) !important;
+  box-shadow: none !important;
 }
 
 /* The selection follows aria-selected when Today / Week / Month changes. */
@@ -2992,7 +2997,9 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-co
 main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) {
   box-sizing: border-box !important;
   padding: 24px !important;
-  background-color: var(--dash-header-search-surface) !important;
+  background: transparent !important;
+  border: 1px solid var(--dash-frame-outline) !important;
+  box-shadow: none !important;
 }
 
 /* The headings now sit directly on the frame's 24px inset.
@@ -3031,8 +3038,9 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
   > div.bg-card:has(>div:first-child h2 a[href="/financial-approvals"]) {
   box-sizing:border-box!important;
   padding:16px 24px!important;
-  border-color:transparent!important;
-  background-color:var(--dash-header-search-surface)!important;
+  border:1px solid var(--dash-frame-outline)!important;
+  background:transparent!important;
+  box-shadow:none!important;
    > div:first-child {padding:0!important;margin:0 0 16px!important;min-height:24px!important;}
   > div:first-child h2 {font-size:18px!important;line-height:24px!important;font-weight:500!important;}
   > div:first-child h2 a {gap:8px!important;}
