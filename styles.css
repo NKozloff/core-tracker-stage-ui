@@ -4223,3 +4223,9 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     box-shadow: inset 0 0 0 1px #3b63ba !important;
   }
 }
+
+/* Financial Approvals / Requests: 16px between toolbar and table card. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  div.flex.h-full.min-h-0.flex-col.gap-3:has(> div.flex.flex-wrap.items-center.gap-2 > [role="tablist"][aria-label="What to show"]) {
+  row-gap: 16px !important;
+}
