@@ -3985,11 +3985,11 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
   }
 }
 
-/* Financial Approvals: square navigation tabs, Regular labels, 2px active underline. */
-/* Soften the full-width baseline only; the active blue underline remains unchanged. */
+/* Financial Approvals: square navigation tabs, 16px Medium labels, 3px active underline. */
+/* Stronger tab baseline, independent of the muted full-width header divider. */
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"]) {
   gap: 24px !important;
-  border-bottom-color: color-mix(in srgb, var(--border) 35%, transparent) !important;
+  border-bottom-color: color-mix(in srgb, var(--border) 70%, transparent) !important;
 }
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   > a[href^="/financial-approvals"] {
@@ -3998,7 +3998,7 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   padding-left: 0 !important;
   padding-right: 0 !important;
   border-radius: 0 !important;
-  border-bottom-width: 2px !important;
+  border-bottom-width: 3px !important;
 }
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   > a[href^="/financial-approvals"][aria-current="page"] {
