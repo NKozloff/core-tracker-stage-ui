@@ -4629,7 +4629,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   /* Row 1: full-width divider, 24px padding on all sides of its controls. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 {
     box-sizing: border-box !important;
-    padding: 24px !important;
+    padding: 24px 24px 16px !important;
   }
 
   /* Row 2: 12px after the header divider; 24px horizontal insets. */
@@ -4642,7 +4642,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   /* Rows 3/4: 24px after primary tabs, 16px between filters and table. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 {
     box-sizing: border-box !important;
-    margin-top: 24px !important;
+    margin-top: 16px !important;
     padding: 0 24px 24px !important;
     row-gap: 16px !important;
   }
@@ -4759,8 +4759,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     display: grid !important;
-    grid-template-columns: 24px max-content 208px minmax(0, 1fr) max-content !important;
-    grid-template-rows: 36px 25px minmax(0, 1fr) !important;
+    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
+    grid-template-rows: 36px 17px minmax(0, 1fr) !important;
     column-gap: 8px !important;
     row-gap: 0 !important;
     padding: 24px !important;
@@ -4790,21 +4790,21 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     display: none !important;
   }
 
-  /* Put the 200px search 16px after the Requests title, with actions right-aligned. */
+  /* Search follows the segmented tabs, with 16px gaps between them. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
-    grid-column: 3 !important;
+    grid-column: 4 !important;
     grid-row: 1 !important;
     box-sizing: border-box !important;
     align-self: center !important;
-    justify-self: end !important;
+    justify-self: start !important;
     display: flex !important;
     flex: none !important;
-    width: 200px !important;
+    width: 240px !important;
     margin: 0 !important;
     order: 0 !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div.ml-auto.flex.items-center.gap-2 {
-    grid-column: 5 !important;
+    grid-column: 6 !important;
     grid-row: 1 !important;
     justify-self: end !important;
     align-self: center !important;
@@ -4834,7 +4834,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     min-width: 0 !important;
     min-height: 0 !important;
     padding: 0 0 0 !important;
-    margin: 24px 0 0 !important;
+    margin: 16px 0 0 !important;
     row-gap: 16px !important;
   }
 }
@@ -5058,45 +5058,64 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   }
 }
 
-/* Financial Approvals: place Pending/All by title and Search by filters. */
-/* Works without moving DOM nodes: existing tab buttons/search keep handlers. */
+
+/* Financial Approvals: title, Pending/All and search in one header row. */
+/* Header layout: Requests → 16px → Pending/All → 16px → 240px Search.
+   No markup, click handlers or filtering behavior are altered. */
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     position: relative !important;
-    grid-template-columns: 24px max-content 280px minmax(0, 1fr) max-content !important;
+    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
+    grid-template-rows: 36px 17px minmax(0, 1fr) !important;
   }
-  /* Anchor the segmented control exactly 16px to the right of Requests. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > h1 {
     anchor-name: --core-financial-requests-heading;
   }
+  /* Keep the native segmented control positioned next to the heading. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
+    box-sizing: border-box !important;
     position: absolute !important;
     position-anchor: --core-financial-requests-heading;
     top: anchor(center) !important;
     left: calc(anchor(right) + 16px) !important;
     transform: translateY(-50%) !important;
-    z-index: 5 !important;
+    width: 220px !important;
     margin: 0 !important;
+    z-index: 5 !important;
   }
-
-  /* The search occupies the former leftmost lower-toolbar slot. */
+  /* Search is the next header item, rather than a filter-row item. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
-    grid-column: 1 / span 3 !important;
-    grid-row: 3 !important;
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+    position: relative !important;
     justify-self: start !important;
-    align-self: start !important;
+    align-self: center !important;
     width: 240px !important;
-    margin: 24px 0 0 !important;
+    margin: 0 !important;
     z-index: 2 !important;
   }
-  /* Reserve 240px search + 16px between it and the first filter. */
-  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) {
-    box-sizing: border-box !important;
-    padding-left: 256px !important;
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div.ml-auto.flex.items-center.gap-2 {
+    grid-column: 6 !important;
   }
-  /* Former 16px left margin assumed the tablist preceded the filter.
-     That tablist is now in the title row, so remove the extra margin. */
+  /* Below the divider, the toolbar uses its entire horizontal row. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) {
+    padding-left: 0 !important;
+  }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] + button[data-slot="dropdown-menu-trigger"] {
     margin-left: 0 !important;
+  }
+  /* 16px below the header controls to divider; 16px divider to filters. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 {
+    margin-top: 16px !important;
+  }
+}
+/* Smaller desktop widths: keep full-width divider and tighten the same
+   header/content separation without changing the responsive control order. */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 {
+    padding-bottom: 16px !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 {
+    margin-top: 16px !important;
   }
 }
