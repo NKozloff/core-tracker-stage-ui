@@ -3997,3 +3997,54 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   border-bottom-color: var(--primary) !important;
   border-bottom-style: solid !important;
 }
+
+
+/* 74. Notes selection: gentle blue highlight shared with Pin.
+   Tint the original #27282a card surface with 7% of the Pin blue,
+   much softer than the old Pin button's 13% blue overlay. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body) {
+    --core-note-blue-ink: #79b7ff;
+    --core-note-blue-soft: color-mix(in srgb, #27282a 93%, #79b7ff 7%);
+    --core-note-blue-soft-hover: color-mix(in srgb, #27282a 89%, #79b7ff 11%);
+  }
+
+  /* All uses a high-specificity card-fill override; make selection win. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"][aria-current="true"] {
+    background-color: var(--core-note-blue-soft) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"]:hover {
+    background-color: var(--core-note-blue-soft-hover) !important;
+  }
+
+  /* Both genuine note titles and financial demo titles (in ::before)
+     receive the exact Pin icon blue; descriptions remain muted grey. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"]
+    > div.flex.items-baseline.gap-2 > span:first-child,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"]
+    > div.flex.items-baseline.gap-2 > span:first-child::before {
+    color: var(--core-note-blue-ink) !important;
+  }
+
+  /* Apply the same softened blue surface to the active Pin control. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off) {
+    background-color: var(--core-note-blue-soft) !important;
+  }
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off):hover {
+    background-color: var(--core-note-blue-soft-hover) !important;
+  }
+}
