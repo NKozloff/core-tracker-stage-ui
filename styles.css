@@ -3797,14 +3797,14 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* Financial Approvals / Requests: 200px search, 36px controls, 14px type.
+/* Financial Approvals / Requests: 240px search, 36px controls, 14px type.
    The "Search" hint is visual: the extension synchronizes CSS only,
    so the application's original placeholder/aria-label remain unchanged. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"] {
   box-sizing: border-box !important;
-  width: 200px !important;
-  min-width: 200px !important;
-  max-width: 200px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
@@ -3813,9 +3813,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
 
 /* Keep the search field wrapper as narrow as the input at every breakpoint. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]) {
-  width: 200px !important;
-  min-width: 200px !important;
-  max-width: 200px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
 }
 
 /* Mask the native hint and paint the requested short label only when empty. */
@@ -4113,7 +4113,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: #27292b !important;
+  background-color: #2d2f31 !important;
   color: #fff !important;
 }
 /* Inactive Pending approval / All tab remains neutral and unfilled. */
@@ -4270,7 +4270,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   border: 0 !important;
   font-size: 14px !important;
   font-weight: 400 !important;
-  background-color: #2e3238 !important;
+  background-color: #242a32 !important;
   color: #87b5f9 !important;
 }
 
@@ -5055,5 +5055,48 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     min-width: 0 !important;
+  }
+}
+
+/* Financial Approvals: place Pending/All by title and Search by filters. */
+/* Works without moving DOM nodes: existing tab buttons/search keep handlers. */
+@media (min-width: 1440px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
+    position: relative !important;
+    grid-template-columns: 24px max-content 280px minmax(0, 1fr) max-content !important;
+  }
+  /* Anchor the segmented control exactly 16px to the right of Requests. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > h1 {
+    anchor-name: --core-financial-requests-heading;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
+    position: absolute !important;
+    position-anchor: --core-financial-requests-heading;
+    top: anchor(center) !important;
+    left: calc(anchor(right) + 16px) !important;
+    transform: translateY(-50%) !important;
+    z-index: 5 !important;
+    margin: 0 !important;
+  }
+
+  /* The search occupies the former leftmost lower-toolbar slot. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
+    grid-column: 1 / span 3 !important;
+    grid-row: 3 !important;
+    justify-self: start !important;
+    align-self: start !important;
+    width: 240px !important;
+    margin: 24px 0 0 !important;
+    z-index: 2 !important;
+  }
+  /* Reserve 240px search + 16px between it and the first filter. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) {
+    box-sizing: border-box !important;
+    padding-left: 256px !important;
+  }
+  /* Former 16px left margin assumed the tablist preceded the filter.
+     That tablist is now in the title row, so remove the extra margin. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] + button[data-slot="dropdown-menu-trigger"] {
+    margin-left: 0 !important;
   }
 }
