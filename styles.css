@@ -3764,3 +3764,51 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     font-weight: 400 !important;
   }
 }
+
+/* Financial Approvals / Requests: 160px search, 36px controls, 14px type.
+   The "Search" hint is visual: the extension synchronizes CSS only,
+   so the application's original placeholder/aria-label remain unchanged. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"] {
+  box-sizing: border-box !important;
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  font-size: 14px !important;
+}
+
+/* Keep the search field wrapper as narrow as the input at every breakpoint. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]) {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+}
+
+/* Mask the native hint and paint the requested short label only when empty. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"]::placeholder {
+  color: transparent !important;
+}
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]:placeholder-shown)::after {
+  content: "Search";
+  position: absolute;
+  top: 50%;
+  left: 34px;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* The three header actions: Import, Export and New request. */
+body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.min-h-9 > div.ml-auto.flex.items-center.gap-2 > button[data-slot="button"] {
+  box-sizing: border-box !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  font-size: 14px !important;
+}
