@@ -3797,14 +3797,14 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* Financial Approvals / Requests: 160px search, 36px controls, 14px type.
+/* Financial Approvals / Requests: 200px search, 36px controls, 14px type.
    The "Search" hint is visual: the extension synchronizes CSS only,
    so the application's original placeholder/aria-label remain unchanged. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"] {
   box-sizing: border-box !important;
-  width: 160px !important;
-  min-width: 160px !important;
-  max-width: 160px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
@@ -3813,9 +3813,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
 
 /* Keep the search field wrapper as narrow as the input at every breakpoint. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]) {
-  width: 160px !important;
-  min-width: 160px !important;
-  max-width: 160px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
 }
 
 /* Mask the native hint and paint the requested short label only when empty. */
