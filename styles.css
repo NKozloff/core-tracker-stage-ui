@@ -4262,3 +4262,9 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > button[data-slot="dropdown-menu-trigger"] > svg.lucide-chevron-down {
   display: none !important;
 }
+
+/* Financial Approvals / Requests: match table header divider to row separators. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] > tr {
+  border-bottom-color: #28292b !important;
+}
