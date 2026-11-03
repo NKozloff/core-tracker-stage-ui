@@ -4178,3 +4178,19 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   text-transform: uppercase !important;
   color: var(--muted-foreground) !important;
 }
+
+/* Financial Approvals / Requests: one rounded surface for headers and table content. */
+/* The parent holds both the table header and its empty/data state. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  div.flex.h-full.min-h-0.flex-col.gap-3
+  > div.flex.min-h-0.flex-1.flex-col.transition-opacity {
+  background-color: #18191b !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+}
+
+/* The sticky table header must show the shared card surface, not page background. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] {
+  background-color: transparent !important;
+}
