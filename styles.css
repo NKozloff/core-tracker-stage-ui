@@ -4270,7 +4270,18 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   border: 0 !important;
   font-size: 14px !important;
   font-weight: 400 !important;
+  background-color: #2e3238 !important;
+  color: #87b5f9 !important;
 }
+
+/* Keep icon strokes and any nested label text in the same blue as Requests. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > button[data-slot="dropdown-menu-trigger"] :is(svg, span) {
+  color: #87b5f9 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > button[data-slot="dropdown-menu-trigger"] svg {
+  stroke: currentColor !important;
+}
+
 
 /* The toolbar has an 8px gap; add 16px before the first filter for 24px total. */
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] + button[data-slot="dropdown-menu-trigger"] {
