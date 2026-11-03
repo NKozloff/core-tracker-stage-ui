@@ -83,11 +83,11 @@ aside.bg-sidebar nav > ul a[href="/approvals"]::after {
 }
 
 
-/* 9. Two-pixel vertical gap between main navigation sections,
+/* 9. Four-pixel vertical gap between main navigation sections,
    including the flattened My Actions entries; team/project tree unchanged. */
 aside.bg-sidebar nav ul.space-y-0\.5 > li:not(:last-child) {
-  margin-block-end: 2px !important;
-  margin-bottom: 2px !important;
+  margin-block-end: 4px !important;
+  margin-bottom: 4px !important;
 }
 
 /* 10. Notes page heading: remove its leading icon.
