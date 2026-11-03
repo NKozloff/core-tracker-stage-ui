@@ -4085,13 +4085,13 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
 }
  
 /* Financial Approvals Requests: filter toolbar buttons and Pending/All segmented tabs. */
-/* Use the former selected-tab dark surface for the 36px segmented control. */
+/* Match the Today / Week / Month reference colors sampled from the screenshot. */
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
   box-sizing: border-box !important;
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
-  background-color: #18191b !important;
+  background-color: #27292b !important;
   padding: 4px !important;
   align-content: center !important;
 }
@@ -4105,7 +4105,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: var(--background) !important;
+  background-color: #393b3d !important;
 }
 
 /* Match the first row: Filter, Grouping, Columns, Approve all. */
