@@ -4317,3 +4317,66 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     background-color: var(--core-notes-sidebar-surface) !important;
   }
 }
+
+/* Financial Approvals / Requests: compact centered summary pill. */
+/* Center the actual footer element instead of stretching a bar edge-to-edge. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t {
+  box-sizing: border-box !important;
+  align-self: center !important;
+  width: max-content !important;
+  max-width: calc(100% - 16px) !important;
+  margin: 0 auto 4px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background-color: #1d1f21 !important;
+  overflow: hidden !important;
+}
+
+/* Use the same compact 36px control height as the surrounding toolbar. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between {
+  box-sizing: border-box !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 12px !important;
+  gap: 0 !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  white-space: nowrap !important;
+}
+/* In HTML the count precedes the total. Reorder only visually. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:first-of-type {
+  order: 2 !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:last-of-type {
+  order: 0 !important;
+  position: relative !important;
+}
+/* Visual-only insertion: the source string currently reads "Total 1,100,224 USD". */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:last-of-type::before {
+  content: "Total:";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-color: #1d1f21;
+  padding-right: 2px;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  pointer-events: none;
+}
+/* A 4px neutral dot, exactly 12px from both text groups. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm::before {
+  content: "";
+  order: 1 !important;
+  display: block;
+  flex: 0 0 4px;
+  width: 4px;
+  height: 4px;
+  margin: 0 12px !important;
+  background-color: var(--muted-foreground);
+  border-radius: 50%;
+}
