@@ -3993,7 +3993,8 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"]) {
 }
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   > a[href^="/financial-approvals"] {
-  font-weight: 400 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
   border-radius: 0 !important;
@@ -4569,4 +4570,11 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:last-child {
   padding-right: 20px !important;
+}
+
+/* Financial Approvals / Requests: 24px gap below primary navigation. */
+/* The page stack provides a 16px gap; add only 8px before the filter row. */
+main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
+  + div.flex.h-full.min-h-0.flex-col.gap-3 {
+  margin-top: 8px !important;
 }
