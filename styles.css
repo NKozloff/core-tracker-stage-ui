@@ -3677,33 +3677,34 @@ html body aside.bg-sidebar nav > div > a[href="/teams-projects"] {
   display: none !important;
 }
 
-/* The descriptor belongs to the section wrapper, not the hidden link. */
+/* An unframed, noninteractive text descriptor, not a table header bar.
+   Keep only the uppercase muted typography; no fill or inner spacing. */
 html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])::before {
   content: "Teams and Projects";
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  width: 100% !important;
-  min-height: 32px !important;
+  display: block !important;
+  box-sizing: content-box !important;
+  width: auto !important;
+  min-height: 0 !important;
+  height: auto !important;
   margin: 0 0 8px !important;
-  padding: 6px 8px !important;
-  background-color: var(--secondary) !important;
+  padding: 0 !important;
+  background: transparent !important;
   color: var(--muted-foreground) !important;
   border: 0 !important;
   border-radius: 0 !important;
+  box-shadow: none !important;
   font-size: 12px !important;
   font-weight: 500 !important;
   line-height: 20px !important;
   letter-spacing: 0.06em !important;
-  text-align: center !important;
+  text-align: left !important;
   text-transform: uppercase !important;
   pointer-events: none !important;
 }
 
-/* Match the Dashboard's subtle charcoal header surface in the Asana theme. */
+/* Preserve the existing muted grey in Asana dark mode, without a background. */
 html.dark[data-theme="asana"] body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])::before {
-  background-color: #303234 !important;
+  background: transparent !important;
   color: #a3a5a8 !important;
 }
 
