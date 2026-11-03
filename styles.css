@@ -4387,3 +4387,29 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   background-color: var(--muted-foreground);
   border-radius: 50%;
 }
+
+/* Sidebar scroll-end fade above fixed profile and settings. */
+/* The fade belongs to the scrolling NAV, not the anchored profile footer.
+   Its last 36px gradually disappear into the sidebar background, with no
+   box-shadow bleeding sideways or below the profile. Reserve enough scroll
+   padding to keep the last project fully readable at the end of the list. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body
+  aside.bg-sidebar > nav.flex-1.overflow-y-auto {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 calc(100% - 36px),
+      rgb(0 0 0 / 0.7) calc(100% - 18px),
+      transparent 100%
+    ) !important;
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 calc(100% - 36px),
+      rgb(0 0 0 / 0.7) calc(100% - 18px),
+      transparent 100%
+    ) !important;
+    padding-bottom: 36px !important;
+  }
+}
