@@ -418,7 +418,7 @@ aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
    Keep the content surface at its original --background, and give both
    the sidebar and the exposed rounded-corner gutter the same darker fill. */
 html.dark[data-theme="asana"] body aside.bg-sidebar {
-  background: #18191b !important;
+  background: #161719 !important;
   border-right: 0 !important;
   border-inline-end: 0 !important;
 }
@@ -426,7 +426,7 @@ html.dark[data-theme="asana"] body aside.bg-sidebar {
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body
   div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar) {
-    background: #18191b !important;
+    background: #161719 !important;
   }
 
   html.dark[data-theme="asana"] body
@@ -1804,7 +1804,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
 /* 62. Unified surface tint: original --background + 1% white.
    Give the selected global Notes tab and the Notes content the
    same subtly brighter surface (workspace switcher has no card).
-   Keep the global sidebar (#18191b), note-writing frame (#18191b),
+   Keep the global sidebar (#161719), note-writing frame (#18191b),
    selected individual note cards (#303133) and controls unchanged.
    Scoped to the Notes route for the main content: no changes to
    Dashboard, Calendar, Tasks or other page backgrounds. */
@@ -4184,7 +4184,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   div.flex.h-full.min-h-0.flex-col.gap-3
   > div.flex.min-h-0.flex-1.flex-col.transition-opacity {
-  background-color: #18191b !important;
+  background-color: #161719 !important;
   border-radius: 24px !important;
   overflow: hidden !important;
 }
