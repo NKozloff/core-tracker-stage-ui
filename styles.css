@@ -3731,3 +3731,19 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   > div.group\/section > div.px-1.mt-1:has(> button) {
   display: none !important;
 }
+
+/* 68. Sidebar team and project rows: match main navigation item height. */
+/* Main platform navigation links are 32px tall (rule 61). Apply the
+   same exact row box to native team headings and all project nodes,
+   including nested projects, without changing tree indentation, icons,
+   link targets, or the descriptor above them. */
+@media (min-width: 1024px) {
+  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
+    > div.group\/section :is(div.group\/team.flex.min-h-7, div.group\/project.min-h-7) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    align-items: center !important;
+  }
+}
