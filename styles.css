@@ -4099,7 +4099,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
-  background-color: #27292b !important;
+  background-color: #161719 !important;
   padding: 0 !important;
   align-content: center !important;
 }
@@ -4798,7 +4798,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     padding: 0 !important;
     margin: 0 0 0 16px !important;
     gap: 4px !important;
-    background: #27292b !important;
+    background: #161719 !important;
     border: none !important;
     border-radius: 12px !important;
     box-shadow: none !important;
