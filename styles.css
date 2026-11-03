@@ -4199,7 +4199,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   color: #fff !important;
 }
 
-/* Sorting arrows use the same white foreground as descriptors. */
+/* Sorting arrows stay secondary gray while descriptor labels remain white. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
   color: #fff !important;
@@ -4208,7 +4208,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button svg,
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] svg:is(.lucide-arrow-up-down, .lucide-arrow-up, .lucide-arrow-down) {
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
   stroke: currentColor !important;
 }
 
