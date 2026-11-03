@@ -4192,7 +4192,8 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   div.flex.h-full.min-h-0.flex-col.gap-3
   > div.flex.min-h-0.flex-1.flex-col.transition-opacity {
-  background-color: #27292b !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
   border-radius: 16px !important;
   overflow: hidden !important;
 }
