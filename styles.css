@@ -3748,3 +3748,17 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     align-items: center !important;
   }
 }
+
+/* 69. Desktop profile footer elevation. */
+/* Keep the footer surface identical to the sidebar; the shadow extends
+   upward over the scrollable team/project list to separate fixed controls.
+   Dark neutral shadow: -10px Y, 28px blur, 6px spread. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body aside.bg-sidebar > div:has(button[aria-label="Profile"]) {
+    position: relative !important;
+    z-index: 3 !important;
+    background-color: #18191b !important;
+    box-shadow: 0 -10px 28px 6px rgb(8 9 10 / 0.58) !important;
+    border-top: 0 !important;
+  }
+}
