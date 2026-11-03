@@ -4462,3 +4462,49 @@ aside.bg-sidebar button[aria-label="Profile"].py-1\.5 {
   padding-top: 8px !important;
   padding-bottom: 8px !important;
 }
+
+/* Financial Approvals / Requests: intrinsic table columns with 40px gaps. */
+/* Override native inline fixed-table dimensions and colgroup widths.
+   Each column measures the maximum of its heading and all row values. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] {
+  table-layout: auto !important;
+  width: max-content !important;
+  min-width: max-content !important;
+  max-width: none !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] colgroup col {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+/* No reserved fixed width on headings or data cells.
+   40px of trailing padding acts as the inter-column gap while retaining
+   continuous row separators and the existing table layout. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] :is(th[data-slot="table-head"], td[data-slot="table-cell"]) {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 40px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] :is(th[data-slot="table-head"], td[data-slot="table-cell"]):first-child {
+  padding-left: 16px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] :is(th[data-slot="table-head"], td[data-slot="table-cell"]):last-child {
+  padding-right: 16px !important;
+}
+
+/* Full-length values participate in intrinsic width measurement:
+   previously the truncated descriptions could contribute almost no width. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"] .truncate {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+  min-width: max-content !important;
+  max-width: none !important;
+}
+/* Amount remains aligned to the descriptor's left edge. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(3) > div {
+  align-items: flex-start !important;
+}
