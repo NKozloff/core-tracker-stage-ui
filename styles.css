@@ -3797,14 +3797,14 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* Financial Approvals / Requests: 240px search, 36px controls, 14px type.
+/* Financial Approvals / Requests: 200px search, 36px controls, 14px type.
    The "Search" hint is visual: the extension synchronizes CSS only,
    so the application's original placeholder/aria-label remain unchanged. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"] {
   box-sizing: border-box !important;
-  width: 240px !important;
-  min-width: 240px !important;
-  max-width: 240px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
@@ -3813,9 +3813,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
 
 /* Keep the search field wrapper as narrow as the input at every breakpoint. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]) {
-  width: 240px !important;
-  min-width: 240px !important;
-  max-width: 240px !important;
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
 }
 
 /* Mask the native hint and paint the requested short label only when empty. */
@@ -4759,7 +4759,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     display: grid !important;
-    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
+    grid-template-columns: 24px max-content 236px 200px minmax(0, 1fr) max-content !important;
     grid-template-rows: 36px 17px minmax(0, 1fr) !important;
     column-gap: 8px !important;
     row-gap: 0 !important;
@@ -4799,7 +4799,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     justify-self: start !important;
     display: flex !important;
     flex: none !important;
-    width: 240px !important;
+    width: 200px !important;
     margin: 0 !important;
     order: 0 !important;
   }
@@ -5065,7 +5065,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     position: relative !important;
-    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
+    grid-template-columns: 24px max-content 236px 200px minmax(0, 1fr) max-content !important;
     grid-template-rows: 36px 17px minmax(0, 1fr) !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > h1 {
@@ -5076,10 +5076,14 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     box-sizing: border-box !important;
     position: absolute !important;
     position-anchor: --core-financial-requests-heading;
-    top: anchor(center) !important;
+    top: 24px !important;
     left: calc(anchor(right) + 16px) !important;
-    transform: translateY(-50%) !important;
-    width: 220px !important;
+    transform: none !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    height: 36px !important;
+    flex-wrap: nowrap !important;
     margin: 0 !important;
     z-index: 5 !important;
   }
@@ -5090,7 +5094,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     position: relative !important;
     justify-self: start !important;
     align-self: center !important;
-    width: 240px !important;
+    width: 200px !important;
     margin: 0 !important;
     z-index: 2 !important;
   }
@@ -5127,4 +5131,39 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
   main div.flex.min-h-9 > div.ml-auto.flex.items-center.gap-2
   > button[data-slot="button"]:last-child {
   margin-left: 8px !important;
+}
+
+/* Financial Approvals: stable header tabs, grouped Filter action and descriptor divider. */
+/* The segmented tab must not split into two lines when labels change. */
+@media (min-width: 1440px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
+    flex-wrap: nowrap !important;
+    width: max-content !important;
+    min-width: max-content !important;
+    max-width: none !important;
+    height: 36px !important;
+    top: 24px !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"] {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Flatten the existing right group visually, without moving DOM nodes:
+     Filter joins Visibility/Statuses at left; Grouping/Columns stay right. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 {
+    display: contents !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:first-child {
+    margin-left: 0 !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(2) {
+    margin-left: auto !important;
+  }
+}
+/* Descriptor separator has the same one-pixel muted tone as data-row lines.
+   Do not fill or round the header strip. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr {
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: none !important;
 }
