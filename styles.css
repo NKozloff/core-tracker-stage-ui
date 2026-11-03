@@ -4595,10 +4595,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     padding: 0 !important;
   }
 
-  /* Header: 24px at top and both sides; 24px below controls before divider. */
+  /* Header: 24px top/sides; 16px bottom. Keep the tab's 8px internal padding. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 {
     box-sizing: border-box !important;
-    padding: 24px !important;
+    padding: 24px 24px 16px !important;
   }
 
   /* Requests / Cost centers / ERP stays inset as page content. */
