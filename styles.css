@@ -4093,7 +4093,7 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
 }
  
 /* Financial Approvals Requests: filter toolbar buttons and Pending/All segmented tabs. */
-/* Neutral third-level surface; blue-accented active state matches the Requests tab. */
+/* Neutral dark tab surface; selected tab matches the Filter button with white text. */
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
   box-sizing: border-box !important;
   height: 36px !important;
@@ -4113,8 +4113,8 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: #2e3238 !important;
-  color: #87b5f9 !important;
+  background-color: #27292b !important;
+  color: #fff !important;
 }
 /* Inactive Pending approval / All tab remains neutral and unfilled. */
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="false"] {
@@ -4822,8 +4822,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     white-space: nowrap !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.gap-1.border-b > a[href^="/financial-approvals"][aria-current="page"] {
-    background: #393b3d !important;
-    color: var(--foreground) !important;
+    background: #27292b !important;
+    color: #fff !important;
   }
 
   /* Search leads the right-hand action row; the three actions follow it. */
@@ -4943,12 +4943,11 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 }
 
 /* Financial Approvals: Requests active-tab colors from the reference icon button. */
-/* Screenshot sample: button fill #2e3238, icon #87b5f9.
-   Apply only to the active Requests tab; Cost centers and ERP are unchanged. */
+/* Match the active Requests tab to the neutral Filter button (#27292b) with white text. */
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
     > div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"] {
-    background: #2e3238 !important;
-    color: #87b5f9 !important;
+    background: #27292b !important;
+    color: #fff !important;
   }
 }
