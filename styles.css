@@ -4093,7 +4093,7 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
 }
  
 /* Financial Approvals Requests: filter toolbar buttons and Pending/All segmented tabs. */
-/* Match the Today / Week / Month reference colors sampled from the screenshot. */
+/* Neutral third-level surface; blue-accented active state matches the Requests tab. */
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
   box-sizing: border-box !important;
   height: 36px !important;
@@ -4113,7 +4113,13 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: #393b3d !important;
+  background-color: #2e3238 !important;
+  color: #87b5f9 !important;
+}
+/* Inactive Pending approval / All tab remains neutral and unfilled. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="false"] {
+  background-color: transparent !important;
+  color: var(--muted-foreground) !important;
 }
 
 /* Match the first row: Filter, Grouping, Columns, Approve all. */
@@ -4176,7 +4182,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   }
 }
 
-/* Financial Approvals Requests: table column headings — 12px uppercase white Medium. */
+/* Financial Approvals Requests: table column headings — 12px uppercase muted Medium. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
@@ -4184,19 +4190,19 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   font-size: 12px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
 }
 
-/* Sort arrows follow the descriptor's white foreground. */
+/* Sorting arrows inherit the same muted foreground as descriptors. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button svg,
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] svg:is(.lucide-arrow-up-down, .lucide-arrow-up, .lucide-arrow-down) {
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
   stroke: currentColor !important;
 }
 
@@ -4285,14 +4291,13 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: full-bleed table descriptors, active All surface. */
-/* Remove the former inset/rounded background strip; use a flat, full-width
-   header band flush with the outer table container. */
+/* Financial Approvals / Requests: full-bleed transparent table descriptors. */
+/* Keep a flat, full-width header band without a separate background surface. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  background: #393b3d !important;
+  background: transparent !important;
   background-image: none !important;
   border-radius: 0 !important;
   clip-path: none !important;
