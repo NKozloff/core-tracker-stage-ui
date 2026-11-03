@@ -3968,3 +3968,19 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
     display: none !important;
   }
 }
+
+
+/* 73. Notes All: collapse the microphone-only footer of the
+   "Контроль оплат на сегодня" card (first card in the Oct 30 section).
+   Removing the entire empty metadata row also removes its flex gap,
+   so the card naturally shrinks to title + description. */
+@media (min-width: 1024px) {
+  body:has(#notes-rail-body > button:first-of-type[aria-current="page"])
+    #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:nth-of-type(2) > [role="button"]:first-of-type
+    > div.flex.items-center.gap-1\.5:has(
+      button[aria-label^="Transcription state"]
+    ) {
+    display: none !important;
+  }
+}
