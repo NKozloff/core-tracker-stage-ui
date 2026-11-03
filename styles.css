@@ -4130,3 +4130,40 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   min-height: 16px !important;
   flex-shrink: 0 !important;
 }
+
+
+/* 78. Notes selected surfaces: one shared slightly brighter neutral token.
+   All, selected note card and Access previously used #303133. A small
+   +7/8 RGB increase raises their contrast against the #202123 workspace
+   and #27282a ordinary cards, without recolouring text or metadata. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body) {
+    --core-notes-selected-surface: #38393a;
+  }
+
+  /* Active All filter. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-rail-body > button:first-of-type[aria-current="page"] {
+    background-color: var(--core-notes-selected-surface) !important;
+  }
+
+  /* Selected note, including the stronger All-cards base background. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"][aria-current="true"] {
+    background-color: var(--core-notes-selected-surface) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Active Access filter in the note editor; keep its white ink. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(3) {
+    background-color: var(--core-notes-selected-surface) !important;
+  }
+}
