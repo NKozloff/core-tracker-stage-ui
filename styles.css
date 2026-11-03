@@ -3726,26 +3726,39 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   display: none !important;
 }
 
-/* 68. Match the native team/project ROW CLASSES, not link destinations.
-   The Stage link URLs and optional wrappers can change independently.
-   Both visual rows and click targets are exactly 32px high. */
+/* 68. Sidebar teams and projects: same button geometry as main sections.
+   Select the ACTUAL Stage DOM:
+   Team: .group/team row > a[href^="/teams/"]
+   Project: role=listitem row > context-menu trigger > a[href^="/projects/"]
+   The old group/project and /tasks? selectors did not match the project DOM. */
 @media (min-width: 1024px) {
-  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7,
-  html body aside.bg-sidebar nav div.group\/project.min-h-7 {
+  /* Team and project ROWS: exactly 32px high + 4px bottom margin. */
+  html body aside.bg-sidebar nav div.group\/team:has(> a[href^="/teams/"]),
+  html body aside.bg-sidebar nav div[role="listitem"]:has(> div[data-slot="context-menu-trigger"] > a[href^="/projects/"]) {
     box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
     height: 32px !important;
     min-height: 32px !important;
     max-height: 32px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    margin-block-end: 0 !important;
+    margin-bottom: 4px !important;
+    align-items: center !important;
   }
 
-  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a,
-  html body aside.bg-sidebar nav div.group\/project.min-h-7 > div.flex.flex-1,
-  html body aside.bg-sidebar nav div.group\/project.min-h-7 > div.flex.flex-1 > a {
+  /* Project-specific context-menu wrapper: stretch the REAL click area. */
+  html body aside.bg-sidebar nav div[role="listitem"]:has(> div[data-slot="context-menu-trigger"] > a[href^="/projects/"])
+    > div[data-slot="context-menu-trigger"] {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Team links and project links: 32px click targets, 8px icon/text gap. */
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"],
+  html body aside.bg-sidebar nav div[role="listitem"] > div[data-slot="context-menu-trigger"] > a[href^="/projects/"] {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
@@ -3754,13 +3767,14 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     max-height: 32px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    gap: 8px !important;
   }
 }
 
-/* 70. Team names (not projects) are Regular / font-weight 400. */
+/* 70. Team names regular weight: override native font-semibold on /teams/. */
 @media (min-width: 1024px) {
-  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a,
-  html body aside.bg-sidebar nav div.group\/team.flex.min-h-7 > a span {
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"],
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"] > span {
     font-weight: 400 !important;
   }
 }
