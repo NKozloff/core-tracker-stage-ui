@@ -4619,19 +4619,20 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 }
 
 
-/* 81. Notes All: single bank reconciliation card experiment.
-   "Сверка банковских выписок" is the first card in the existing
-   two-card demo date section (see the finance-demo-title rules).
-   Use the Notes workspace surface and the Create button's exact
-   screenshot blue (#3f6bcc); leave all other notes untouched. */
+/* 81. Notes: selected card experiment — softly blue-tinted surface.
+   Adapt the recommended navy background without its filled left indicator.
+   Keep the 2px Create-blue ring. Unlike the previous single-note test,
+   the treatment follows the actually selected card via aria-current. */
 @media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
-  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
-    :has(> div[role="button"]:nth-of-type(3))
-  ) > div[role="button"]:nth-of-type(1) {
-    background: var(--core-notes-surface-plus1, var(--background)) !important;
+  ) #notes-list-column section > [role="button"][aria-current="true"] {
+    background-color: #1c2b40 !important;
+    background-image: linear-gradient(115deg, #1b293b 0%, #21344b 100%) !important;
     border: 0 !important;
     box-shadow: inset 0 0 0 2px #3f6bcc !important;
+    outline: none !important;
   }
 }
