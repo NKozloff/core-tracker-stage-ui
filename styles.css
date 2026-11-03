@@ -4944,3 +4944,116 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     margin-left: 8px !important;
   }
 }
+
+/* Financial sidebar nested navigation (extension v1.3.0). */
+/* The native Financial navigation link remains a normal clickable link.
+   The extension adds a separate chevron and real, routable sublinks.
+   32px rows, 16px invisible icon slots, 8px text gap, and the child icon
+   begins exactly below the parent's label (12 + 16 + 8 = 36px inset).
+   The submenu is expanded by default; the chevron alone toggles it. */
+@media (min-width: 1024px) {
+  html body aside.bg-sidebar nav li.core-financial-menu-item {
+    position: relative !important;
+  }
+
+  html body aside.bg-sidebar nav li.core-financial-menu-item > a[href="/financial-approvals"] {
+    padding-right: 42px !important;
+  }
+
+  html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle {
+    position: absolute !important;
+    top: 4px !important;
+    right: 6px !important;
+    z-index: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 6px !important;
+    background: transparent !important;
+    color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
+    cursor: pointer !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle:hover {
+    color: var(--sidebar-foreground) !important;
+    background: var(--sidebar-accent) !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle:focus-visible {
+    outline: 2px solid var(--ring, var(--primary)) !important;
+    outline-offset: 1px !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle > svg {
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px !important;
+    transition: transform 150ms ease !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle[aria-expanded="false"] > svg {
+    transform: rotate(-90deg) !important;
+  }
+
+  html body aside.bg-sidebar nav li.core-financial-menu-item > div.core-financial-subnav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    margin: 4px 0 0 !important;
+    padding: 0 !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item > div.core-financial-subnav[hidden] {
+    display: none !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-subitem {
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    margin: 0 !important;
+    padding: 0 12px 0 36px !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+    color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+    transition: background-color 150ms ease, color 150ms ease !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-subitem:hover {
+    background: var(--sidebar-accent) !important;
+    color: var(--sidebar-foreground) !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-subitem[aria-current="page"] {
+    background: var(--sidebar-accent) !important;
+    color: var(--sidebar-foreground) !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-subitem:focus-visible {
+    outline: 2px solid var(--ring, var(--primary)) !important;
+    outline-offset: -2px !important;
+  }
+
+  /* Deliberately empty: save the icon's exact 16px grid cell for later. */
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-icon-slot {
+    display: block !important;
+    flex: 0 0 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    background: none !important;
+    border: 0 !important;
+  }
+  html body aside.bg-sidebar nav li.core-financial-menu-item .core-financial-label {
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    min-width: 0 !important;
+  }
+}
