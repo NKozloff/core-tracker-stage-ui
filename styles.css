@@ -2394,13 +2394,6 @@ main:has(h1[data-testid="dashboard-heading"]) h2:has(> a[href^="/actions?actiona
   }
 }
 
-/* 66. Personal Goals: keep Create level with the page title, not the quote.
-   The title's subtitle is hidden in the Stage UI override only. */
-body:has(aside.bg-sidebar nav a[href="/personal-goals"].bg-sidebar-accent)
-  main h1.text-2xl + p {
-  display: none !important;
-}
-
 /* Dashboard / My tasks: left-aligned total, right-aligned metrics, bar last.
    Demo values 9 Active + 4 Overdue + 2 Completed = 15.
    The 3 statistics are a compact horizontal group at the RIGHT edge,
