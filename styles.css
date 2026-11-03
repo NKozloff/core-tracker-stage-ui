@@ -5067,7 +5067,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 
 /* Financial Approvals: title, Pending/All and search in one header row. */
 /* One consistent 24px gap: Requests → Pending/All → Search.
-   CSS anchors follow the actual width of the tab group (no fixed spacer). */
+   Both components anchor to Requests; 180px tab width gives a stable 24px gap. */
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     position: relative !important;
@@ -5085,10 +5085,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     top: 24px !important;
     left: calc(anchor(right) + 24px) !important;
     transform: none !important;
-    anchor-name: --core-financial-requests-tabs;
-    width: max-content !important;
-    min-width: max-content !important;
-    max-width: none !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    max-width: 180px !important;
     height: 36px !important;
     flex-wrap: nowrap !important;
     margin: 0 !important;
@@ -5099,8 +5098,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     grid-column: auto !important;
     grid-row: auto !important;
     position: absolute !important;
-    position-anchor: --core-financial-requests-tabs;
-    left: calc(anchor(right) + 24px) !important;
+    position-anchor: --core-financial-requests-heading;
+    left: calc(anchor(right) + 228px) !important;
     top: anchor(center) !important;
     transform: translateY(-50%) !important;
     justify-self: auto !important;
@@ -5149,9 +5148,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
     flex-wrap: nowrap !important;
-    width: max-content !important;
-    min-width: max-content !important;
-    max-width: none !important;
+    width: 180px !important;
+    min-width: 180px !important;
+    max-width: 180px !important;
     height: 36px !important;
     top: 24px !important;
   }
