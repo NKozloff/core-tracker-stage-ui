@@ -4272,30 +4272,30 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: 8px inset header band, no bottom divider.
-   Keep the header/table geometry intact for sortable and resizable columns. */
+/* Financial Approvals / Requests: full-bleed table descriptors, active All surface. */
+/* Remove the former inset/rounded background strip; use a flat, full-width
+   header band flush with the outer table container. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
-  table[data-slot="table"] thead[data-slot="table-header"] {
-  background-color: transparent !important;
-  background-image: linear-gradient(#1d1f21, #1d1f21) !important;
-  background-repeat: no-repeat !important;
-  background-position: 8px 8px !important;
-  background-size: calc(100% - 16px) calc(100% - 8px) !important;
-  /* Round the inset band without changing table-row or column geometry. */
-  clip-path: inset(8px 8px 0px 8px round 12px) !important;
+  table[data-slot="table"] thead[data-slot="table-header"],
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] > tr {
+  background: #393b3d !important;
+  background-image: none !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
-
-/* Preserve a 36px visible header band while adding 8px of top inset. */
+/* Restore the descriptor row's natural 36px height: no extra top inset. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] {
   box-sizing: border-box !important;
-  height: 44px !important;
-  padding-top: 8px !important;
+  height: 36px !important;
+  padding-top: 0 !important;
+  border-radius: 0 !important;
 }
 
 /* 80. Notes: match Dashboard card surface for note cards and writing frame.
