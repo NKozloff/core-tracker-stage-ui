@@ -3803,14 +3803,14 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* Financial Approvals / Requests: 200px search, 36px controls, 14px type.
+/* Financial Approvals / Requests: 240px search, 36px controls, 14px type.
    The "Search" hint is visual: the extension synchronizes CSS only,
    so the application's original placeholder/aria-label remain unchanged. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main input[aria-label="Find a request…"] {
   box-sizing: border-box !important;
-  width: 200px !important;
-  min-width: 200px !important;
-  max-width: 200px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
@@ -3819,9 +3819,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
 
 /* Keep the search field wrapper as narrow as the input at every breakpoint. */
 body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.relative:has(> input[aria-label="Find a request…"]) {
-  width: 200px !important;
-  min-width: 200px !important;
-  max-width: 200px !important;
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
 }
 
 /* Mask the native hint and paint the requested short label only when empty. */
@@ -4188,7 +4188,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   }
 }
 
-/* Financial Approvals Requests: table column headings — 12px uppercase white Medium. */
+/* Financial Approvals Requests: table column headings — 12px uppercase muted gray Medium. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
@@ -4196,13 +4196,13 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   font-size: 12px !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
 }
 
-/* Sorting arrows stay secondary gray while descriptor labels remain white. */
+/* Table labels and inactive sorting arrows use secondary gray; active sort stays blue. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
-  color: #fff !important;
+  color: var(--muted-foreground) !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button svg,
@@ -4765,7 +4765,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     display: grid !important;
-    grid-template-columns: 24px max-content 236px 200px minmax(0, 1fr) max-content !important;
+    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
     grid-template-rows: 36px 17px minmax(0, 1fr) !important;
     column-gap: 8px !important;
     row-gap: 0 !important;
@@ -4805,7 +4805,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     justify-self: start !important;
     display: flex !important;
     flex: none !important;
-    width: 200px !important;
+    width: 240px !important;
     margin: 0 !important;
     order: 0 !important;
   }
@@ -5071,7 +5071,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     position: relative !important;
-    grid-template-columns: 24px max-content 236px 200px minmax(0, 1fr) max-content !important;
+    grid-template-columns: 24px max-content 236px 240px minmax(0, 1fr) max-content !important;
     grid-template-rows: 36px 17px minmax(0, 1fr) !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > h1 {
@@ -5104,7 +5104,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     transform: translateY(-50%) !important;
     justify-self: auto !important;
     align-self: auto !important;
-    width: 200px !important;
+    width: 240px !important;
     margin: 0 !important;
     z-index: 4 !important;
   }
@@ -5185,7 +5185,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     display: grid !important;
-    grid-template-columns: 24px max-content max-content 200px minmax(0, 1fr) max-content max-content !important;
+    grid-template-columns: 24px max-content max-content 240px minmax(0, 1fr) max-content max-content !important;
     grid-template-rows: 36px 17px 16px 36px 16px minmax(0, 1fr) !important;
     column-gap: 8px !important;
     row-gap: 0 !important;
@@ -5242,9 +5242,9 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    width: 200px !important;
-    min-width: 200px !important;
-    max-width: 200px !important;
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
     margin: 0 0 0 8px !important;
     z-index: auto !important;
   }
