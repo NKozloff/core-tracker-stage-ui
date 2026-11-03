@@ -4270,17 +4270,17 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: inset header band, no bottom divider.
+/* Financial Approvals / Requests: 12px inset header band, no bottom divider.
    Keep the header/table geometry intact for sortable and resizable columns. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] {
   background-color: transparent !important;
   background-image: linear-gradient(#1d1f21, #1d1f21) !important;
   background-repeat: no-repeat !important;
-  background-position: 4px 4px !important;
-  background-size: calc(100% - 8px) calc(100% - 4px) !important;
+  background-position: 12px 12px !important;
+  background-size: calc(100% - 24px) calc(100% - 12px) !important;
   /* Round the inset band without changing table-row or column geometry. */
-  clip-path: inset(4px 4px 0px 4px round 12px) !important;
+  clip-path: inset(12px 12px 0px 12px round 12px) !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
@@ -4288,6 +4288,13 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   box-shadow: none !important;
 }
 
+/* Preserve a 36px visible header band while adding 12px of top inset. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] {
+  box-sizing: border-box !important;
+  height: 48px !important;
+  padding-top: 12px !important;
+}
 
 /* 80. Notes: use global sidebar surface for list cards and writing frame.
    Match the existing global sidebar #18191b (rule 24). Remove the
@@ -4509,18 +4516,18 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   align-items: flex-start !important;
 }
 
-/* Financial Approvals / Requests: 600px Purpose title/description truncation. */
-/* Width is intrinsic until the longest Purpose text reaches 600px. */
+/* Financial Approvals / Requests: 300px Purpose title/description truncation. */
+/* Width is intrinsic until the longest Purpose text reaches 300px. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) > div.flex.flex-col {
   box-sizing: border-box !important;
   width: max-content !important;
   min-width: 0 !important;
-  max-width: 600px !important;
+  max-width: 300px !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) > div.flex.flex-col > div.flex {
   width: 100% !important;
   min-width: 0 !important;
-  max-width: 600px !important;
+  max-width: 300px !important;
 }
 /* Override the preceding all-column .truncate expansion only in Purpose. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(2) .truncate:not(.sr-only) {
@@ -4528,7 +4535,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   display: block !important;
   width: 100% !important;
   min-width: 0 !important;
-  max-width: 600px !important;
+  max-width: 300px !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
@@ -4549,4 +4556,17 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   table[data-slot="table"] tbody[data-slot="table-body"]
   td[data-slot="table-cell"]:first-child .rounded-full.border-priority-normal {
   background: transparent !important;
+}
+
+/* Financial Approvals / Requests: 12px header inset and aligned data cells. */
+/* Move row content 4px inward without changing the 40px value-to-value gap. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"] {
+  padding-left: 4px !important;
+  padding-right: 36px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:first-child {
+  padding-left: 20px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:last-child {
+  padding-right: 20px !important;
 }
