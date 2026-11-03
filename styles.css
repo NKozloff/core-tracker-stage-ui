@@ -4634,7 +4634,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   ) #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
-  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
+  ):not(:has(#notes-list-column section > [role="button"][aria-current="true"]))
+  #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
     :has(> div[role="button"]:nth-of-type(3))
   ) > div[role="button"]:nth-of-type(1) {
     background-color: #1c2b40 !important;
