@@ -4617,3 +4617,21 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     row-gap: 16px !important;
   }
 }
+
+
+/* 81. Notes All: single bank reconciliation card experiment.
+   "Сверка банковских выписок" is the first card in the existing
+   two-card demo date section (see the finance-demo-title rules).
+   Use the Notes workspace surface and the Create button's exact
+   screenshot blue (#3f6bcc); leave all other notes untouched. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
+    :has(> div[role="button"]:nth-of-type(3))
+  ) > div[role="button"]:nth-of-type(1) {
+    background: var(--core-notes-surface-plus1, var(--background)) !important;
+    border: 0 !important;
+    box-shadow: inset 0 0 0 2px #3f6bcc !important;
+  }
+}
