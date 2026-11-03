@@ -4624,15 +4624,12 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   }
 }
 
-
-/* 81. Notes: selected card experiment — softly blue-tinted surface.
-   Adapt the recommended navy background without its filled left indicator.
-   Keep the 2px Create-blue ring. Unlike the previous single-note test,
-   the treatment follows the actually selected card via aria-current. */
+/* 81. Notes selected card: exactly the active All surface.
+   Remove the experimental blue gradient, ring and filled indicator.
+   Apply to the actual selected state, and to the currently demonstrated
+   bank-reconciliation card in All (its selection state is not exposed
+   reliably by the stage markup). */
 @media (min-width: 1024px) {
-  /* Keep selected-state behavior and explicitly include the bank
-     reconciliation demo card: the live list may not mark it aria-current
-     while the editor is displaying its content. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
@@ -4640,14 +4637,13 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   ) #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
-  ):not(:has(#notes-list-column section > [role="button"][aria-current="true"]))
-  #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
+  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
     :has(> div[role="button"]:nth-of-type(3))
   ) > div[role="button"]:nth-of-type(1) {
-    background-color: #1c2b40 !important;
-    background-image: linear-gradient(115deg, #1b293b 0%, #21344b 100%) !important;
-    border: 0 !important;
-    box-shadow: inset 0 0 0 2px #3f6bcc !important;
+    background: var(--core-notes-selected-surface, #38393a) !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
     outline: none !important;
   }
 }
