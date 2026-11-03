@@ -4308,13 +4308,13 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: full-bleed transparent table descriptors. */
-/* Keep a flat, full-width header band without a separate background surface. */
+/* Financial Approvals / Requests: flat table descriptor band matching ordinary buttons. */
+/* #27292b matches Filter / Grouping / Columns; keep labels muted and the divider. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  background: transparent !important;
+  background: #27292b !important;
   background-image: none !important;
   border-radius: 0 !important;
   clip-path: none !important;
@@ -5066,8 +5066,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 
 
 /* Financial Approvals: title, Pending/All and search in one header row. */
-/* Header layout: Requests → 16px → Pending/All → 16px → 240px Search.
-   No markup, click handlers or filtering behavior are altered. */
+/* One consistent 24px gap: Requests → Pending/All → Search.
+   CSS anchors follow the actual width of the tab group (no fixed spacer). */
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     position: relative !important;
@@ -5083,8 +5083,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     position: absolute !important;
     position-anchor: --core-financial-requests-heading;
     top: 24px !important;
-    left: calc(anchor(right) + 16px) !important;
+    left: calc(anchor(right) + 24px) !important;
     transform: none !important;
+    anchor-name: --core-financial-requests-tabs;
     width: max-content !important;
     min-width: max-content !important;
     max-width: none !important;
@@ -5093,16 +5094,20 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     margin: 0 !important;
     z-index: 5 !important;
   }
-  /* Search is the next header item, rather than a filter-row item. */
+  /* Anchor the Search field to the real right edge of the tablist. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
-    grid-column: 4 !important;
-    grid-row: 1 !important;
-    position: relative !important;
-    justify-self: start !important;
-    align-self: center !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    position: absolute !important;
+    position-anchor: --core-financial-requests-tabs;
+    left: calc(anchor(right) + 24px) !important;
+    top: anchor(center) !important;
+    transform: translateY(-50%) !important;
+    justify-self: auto !important;
+    align-self: auto !important;
     width: 200px !important;
     margin: 0 !important;
-    z-index: 2 !important;
+    z-index: 4 !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div.ml-auto.flex.items-center.gap-2 {
     grid-column: 6 !important;
