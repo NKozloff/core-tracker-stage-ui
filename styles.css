@@ -4413,3 +4413,40 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     padding-bottom: 48px !important;
   }
 }
+
+/* Financial Approvals / All: normalize row type and column alignment. */
+/* Only the data rows: preserve 12px uppercase column descriptors and footer. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"],
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"] :is(div, span, button):not(.avatar):not(.sr-only) {
+  font-size: 14px !important;
+}
+
+/* Match each value with its descriptor's starting edge.
+   Month (last currently visible) and % of budget stay right-aligned. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:not(:first-child):not(:nth-child(8)):not(:last-child),
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:not(:first-child):not(:nth-child(8)):not(:last-child) {
+  text-align: left !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:not(:first-child):not(:nth-child(8)):not(:last-child) > button {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:nth-child(3) > div {
+  align-items: flex-start !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:is(:nth-child(8), :last-child),
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:is(:nth-child(8), :last-child) {
+  text-align: right !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:nth-child(8) > button {
+  justify-content: flex-end !important;
+  text-align: right !important;
+}
+
+/* Center the circular priority/completion marker on the row's height. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:first-child {
+  vertical-align: middle !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:first-child > span {
+  padding-top: 0 !important;
+}
