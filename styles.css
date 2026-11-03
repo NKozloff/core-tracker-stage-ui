@@ -4196,25 +4196,29 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 }
 
 
-/* 79. Notes list experiment: unfilled cards with a 1px divider-tone stroke.
-   Reuse the exact vertical separator token (#fff at 5% opacity) rather than
-   approximating it. Inset strokes preserve card dimensions and spacing. */
+/* 79. Notes list experiment: transparent cards and 1px divider-tone rings.
+   Explicit background-color and the All-specific selector override the
+   older #27282a All-card fill (rule 65) at matching specificity. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"] {
-    background: transparent !important;
+    #notes-list-column section > [role="button"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"] {
+    background-color: transparent !important;
+    background-image: none !important;
     border: 0 !important;
     box-shadow: inset 0 0 0 1px var(--core-notes-divider, rgba(255, 255, 255, 0.05)) !important;
   }
 
-  /* Preserve the selection indicator, also at exactly 1px.
-     Unlike the other cards it uses the Create button's blue. */
+  /* A selected note stays unfilled; only its 1px blue ring distinguishes it. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
   ) #notes-list-column section > [role="button"][aria-current="true"] {
-    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
     border: 0 !important;
     box-shadow: inset 0 0 0 1px #3b63ba !important;
   }
