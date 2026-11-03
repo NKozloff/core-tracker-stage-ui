@@ -4100,14 +4100,14 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   min-height: 36px !important;
   max-height: 36px !important;
   background-color: #27292b !important;
-  padding: 4px !important;
+  padding: 0 !important;
   align-content: center !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"] {
   box-sizing: border-box !important;
-  height: 28px !important;
-  min-height: 28px !important;
-  max-height: 28px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 20px !important;
@@ -4779,7 +4779,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     width: max-content !important;
     height: 36px !important;
     min-height: 36px !important;
-    padding: 4px !important;
+    padding: 0 !important;
     margin: 0 0 0 16px !important;
     gap: 4px !important;
     background: #27292b !important;
@@ -4792,8 +4792,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 28px !important;
-    min-height: 28px !important;
+    height: 36px !important;
+    min-height: 36px !important;
     margin: 0 !important;
     padding: 0 12px !important;
     background: transparent !important;
