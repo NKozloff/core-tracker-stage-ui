@@ -4263,8 +4263,18 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: match table header divider to row separators. */
+/* Financial Approvals / Requests: inset header band, no bottom divider.
+   Keep the header/table geometry intact for sortable and resizable columns. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] {
+  background-color: transparent !important;
+  background-image: linear-gradient(#1d1f21, #1d1f21) !important;
+  background-repeat: no-repeat !important;
+  background-position: 4px 4px !important;
+  background-size: calc(100% - 8px) calc(100% - 4px) !important;
+}
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  border-bottom-color: #28292b !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
 }
