@@ -4925,3 +4925,14 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     padding-bottom: 16px !important;
   }
 }
+
+/* Financial Approvals: Requests active-tab colors from the reference icon button. */
+/* Screenshot sample: button fill #2e3238, icon #87b5f9.
+   Apply only to the active Requests tab; Cost centers and ERP are unchanged. */
+@media (min-width: 1440px) {
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"] {
+    background: #2e3238 !important;
+    color: #87b5f9 !important;
+  }
+}
