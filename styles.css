@@ -4119,7 +4119,7 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   line-height: 20px !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="true"] {
-  background-color: #2d2f31 !important;
+  background-color: #303234 !important;
   color: #fff !important;
 }
 /* Inactive Pending approval / All tab remains neutral and unfilled. */
@@ -5167,9 +5167,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
     margin-left: auto !important;
   }
 }
-/* Descriptor separator has the same one-pixel muted tone as data-row lines.
-   Do not fill or round the header strip. */
+/* Match the divider between request rows (#232426 sampled from the existing table);
+   no changes to the existing row separators. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  border-bottom: 1px solid var(--border) !important;
+  border-bottom: 1px solid #232426 !important;
   box-shadow: none !important;
 }
