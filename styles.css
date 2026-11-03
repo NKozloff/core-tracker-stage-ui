@@ -4452,3 +4452,13 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] td[data-slot="table-cell"]:first-child > span {
   padding-top: 0 !important;
 }
+
+/* Sidebar profile button vertical padding: 6px -> 8px. */
+/* Native button uses Tailwind py-1.5 (6px). Change the clickable profile
+   component, not the fixed footer container or adjacent settings button.
+   Support both current Russian and earlier English aria labels. */
+aside.bg-sidebar button[aria-label="Профиль"].py-1\.5,
+aside.bg-sidebar button[aria-label="Profile"].py-1\.5 {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
