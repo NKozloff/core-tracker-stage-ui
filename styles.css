@@ -4132,10 +4132,9 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
 }
 
 
-/* 78. Notes selected surfaces: one shared slightly brighter neutral token.
-   All, selected note card and Access previously used #303133. A small
-   +7/8 RGB increase raises their contrast against the #202123 workspace
-   and #27282a ordinary cards, without recolouring text or metadata. */
+/* 78. Notes: All and Access use one brighter neutral selected surface.
+   Selected note cards retain the ordinary-card surface and now use
+   an inset blue ring; text and metadata remain unchanged. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body:has(#notes-rail-body) {
     --core-notes-selected-surface: #38393a;
@@ -4147,15 +4146,16 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
     background-color: var(--core-notes-selected-surface) !important;
   }
 
-  /* Selected note, including the stronger All-cards base background. */
+  /* Selected note: match the ordinary card surface, with a 2px inset
+     selection ring in the exact Create button blue sampled from Stage. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     #notes-list-column section > [role="button"][aria-current="true"],
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
   ) #notes-list-column section > [role="button"][aria-current="true"] {
-    background-color: var(--core-notes-selected-surface) !important;
+    background-color: #27282a !important;
     border-color: transparent !important;
-    box-shadow: none !important;
+    box-shadow: inset 0 0 0 2px #3b63ba !important;
   }
 
   /* Active Access filter in the note editor; keep its white ink. */
