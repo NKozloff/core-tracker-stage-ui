@@ -4572,11 +4572,11 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   padding-right: 16px !important;
 }
 
-/* Financial Approvals / Requests: 24px gap below primary navigation. */
-/* The page stack provides a 16px gap; add only 8px before the filter row. */
+/* Financial Approvals / Requests: 24px from primary tabs to filter row. */
+/* Explicit inter-row margin; the page stack itself has zero gap. */
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   + div.flex.h-full.min-h-0.flex-col.gap-3 {
-  margin-top: 8px !important;
+  margin-top: 24px !important;
 }
 
 /* Financial Approvals: 24px below page header with full-width soft divider. */
@@ -4587,29 +4587,33 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   border-bottom: 1px solid color-mix(in srgb, var(--border) 35%, transparent) !important;
 }
 
-/* Financial Approvals: edge-to-edge header divider with independent 24px insets. */
-/* Desktop: the page wrapper no longer insets the divider.  Its three
-   children own their spacing, so the header rule reaches edge to edge. */
+/* Financial Approvals: four explicit horizontal rows and independent 24px insets. */
+/* Header padding-bottom 24px; then gaps 16 / 24 / 16px.
+   No inherited page gap: every vertical interval has a single owner. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     padding: 0 !important;
+    row-gap: 0 !important;
   }
 
-  /* Header: 24px top/sides; 16px bottom. Keep the tab's 8px internal padding. */
+  /* Row 1: full-width divider, 24px padding on all sides of its controls. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 {
     box-sizing: border-box !important;
-    padding: 24px 24px 16px !important;
+    padding: 24px !important;
   }
 
-  /* Requests / Cost centers / ERP stays inset as page content. */
+  /* Row 2: 16px after the header divider; 24px horizontal insets. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.gap-1.border-b {
+    margin-top: 16px !important;
     margin-left: 24px !important;
     margin-right: 24px !important;
   }
 
-  /* Filter bar + rounded table live in the content area. */
+  /* Rows 3/4: 24px after primary tabs, 16px between filters and table. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 {
     box-sizing: border-box !important;
+    margin-top: 24px !important;
     padding: 0 24px 24px !important;
+    row-gap: 16px !important;
   }
 }
