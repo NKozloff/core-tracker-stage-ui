@@ -4167,3 +4167,14 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
     background-color: var(--core-notes-selected-surface) !important;
   }
 }
+
+/* Financial Approvals Requests: table column headings — 12px uppercase muted Regular. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"],
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] button {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  color: var(--muted-foreground) !important;
+}
