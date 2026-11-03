@@ -4050,3 +4050,35 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
     background-color: var(--core-note-blue-soft-hover) !important;
   }
 }
+
+/* 76. Sidebar team/project label contrast and section divider. */
+/* Match main navigation links' muted foreground (60% of sidebar text).
+   Only text-bearing team/project anchors are tinted; coloured team icons,
+   project dots and trailing action icons preserve their native colours. */
+@media (min-width: 1024px) {
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"],
+  html body aside.bg-sidebar nav div[role="listitem"] > div[data-slot="context-menu-trigger"] > a[href^="/projects/"] {
+    color: color-mix(in oklab, var(--sidebar-foreground) 60%, transparent) !important;
+  }
+
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"] > span.truncate,
+  html body aside.bg-sidebar nav div[role="listitem"] > div[data-slot="context-menu-trigger"]
+    > a[href^="/projects/"] > span.truncate {
+    color: inherit !important;
+  }
+
+  /* Maintain the same rollover and current-item contrast as normal nav. */
+  html body aside.bg-sidebar nav div.group\/team > a[href^="/teams/"]:is(:hover, [aria-current="page"], .bg-sidebar-accent),
+  html body aside.bg-sidebar nav div[role="listitem"] > div[data-slot="context-menu-trigger"]
+    > a[href^="/projects/"]:is(:hover, [aria-current="page"], .bg-sidebar-accent) {
+    color: var(--sidebar-foreground) !important;
+  }
+
+  /* Subtle 1px divider inside the existing sidebar's 16px insets. The
+     descriptor stays unframed; add space below the line, not a card. */
+  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"]) {
+    border-top: 1px solid rgb(255 255 255 / 0.08) !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+  }
+}
