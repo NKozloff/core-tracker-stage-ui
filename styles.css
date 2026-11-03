@@ -4588,7 +4588,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 }
 
 /* Financial Approvals: four explicit horizontal rows and independent 24px insets. */
-/* Header padding-bottom 24px; then gaps 16 / 24 / 16px.
+/* Header padding-bottom 24px; then gaps 12 / 24 / 16px.
    No inherited page gap: every vertical interval has a single owner. */
 @media (min-width: 1024px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
@@ -4602,9 +4602,9 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     padding: 24px !important;
   }
 
-  /* Row 2: 16px after the header divider; 24px horizontal insets. */
+  /* Row 2: 12px after the header divider; 24px horizontal insets. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.gap-1.border-b {
-    margin-top: 16px !important;
+    margin-top: 12px !important;
     margin-left: 24px !important;
     margin-right: 24px !important;
   }
