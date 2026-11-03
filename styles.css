@@ -4639,3 +4639,84 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     outline: none !important;
   }
 }
+
+
+/* 82. Notes active card, unframed toolbar and content-height editor.
+   All active surface is the single source of truth for selected notes. */
+@media (min-width: 1024px) {
+  /* Scope to this Notes workspace. The demo bank card has no reliable
+     aria-current in the extension's current markup, so retain its
+     original two-card group selector alongside native selection. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section > [role="button"][aria-current="true"],
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
+    :has(> div[role="button"]:nth-of-type(3))
+  ) > div[role="button"]:first-of-type {
+    background: var(--core-notes-selected-surface, #38393a) !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  /* Remove only the dark background from the full icon strip, not the
+     individual active-button state or any of the toolbar controls. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col
+    > div[data-note-editor] > div[data-note-panel]
+    > div.flex.items-center.gap-1.rounded-lg.bg-muted.p-1 {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Full-bleed subtle divider: the editor frame has 12px inner padding,
+     so extend the rule 12px past each side of the native toolbar wrapper.
+     Position it halfway through the existing 12px toolbar-to-text gap. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col
+    > div[data-note-editor] > div[data-note-panel] {
+    position: relative !important;
+  }
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col
+    > div[data-note-editor] > div[data-note-panel]::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    left: -12px;
+    right: -12px;
+    bottom: -6px;
+    background-color: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+  }
+
+  /* Without any visible image/file previews, remove the reserved 78px
+     attachment track. Keep it for notes with previews or file controls. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]):not(
+      :has(> div > div.relative.isolate > div.shrink-0.bg-background img,
+           > div > div.relative.isolate > div.shrink-0.bg-background button[aria-label^="Files"])
+    ) {
+    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) 12px !important;
+  }
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]):not(
+      :has(> div > div.relative.isolate > div.shrink-0.bg-background img,
+           > div > div.relative.isolate > div.shrink-0.bg-background button[aria-label^="Files"])
+    )
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    > div.flex.h-9\.5.items-center > div.flex.min-w-0.flex-1.items-center {
+    display: none !important;
+  }
+}
