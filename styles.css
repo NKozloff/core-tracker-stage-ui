@@ -3841,3 +3841,13 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     z-index: 1 !important;
   }
 }
+
+/* 70. Team names: regular weight only, keep project typography unchanged. */
+/* Team name links carry the native font-semibold class. Override their
+   weight without touching project links, icons, colours or the hit area. */
+@media (min-width: 1024px) {
+  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
+    > div.group\/section div.group\/team.flex.min-h-7 > a[href^="/tasks?"] {
+    font-weight: 400 !important;
+  }
+}
