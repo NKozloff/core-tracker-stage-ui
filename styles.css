@@ -3989,6 +3989,8 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) 
 main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   > a[href^="/financial-approvals"] {
   font-weight: 400 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   border-radius: 0 !important;
   border-bottom-width: 2px !important;
 }
