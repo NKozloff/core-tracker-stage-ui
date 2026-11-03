@@ -4086,3 +4086,11 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
     padding-top: 12px !important;
   }
 }
+
+/* Financial Approvals sidebar: selected item matches Dashboard's active tint. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body
+    aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent {
+    background-color: var(--core-notes-surface-plus1) !important;
+  }
+}
