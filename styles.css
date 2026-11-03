@@ -1769,17 +1769,35 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
   }
 }
 
-/* 61. Sidebar navigation item height: 28px -> 32px.
-   Target the native .min-h-7 links inside the global sidebar navigation,
-   including flattened My Actions links. Do not alter Home, Create,
-   section headers, project trees or profile controls.
-   The approved 16px outer sidebar padding remains unchanged. */
+/* 61. Global sidebar section buttons: 32px height, 12px side padding
+   and actual 16x16 Lucide SVG icons. The SVG viewBox scales the artwork
+   itself; we do not merely resize an outer wrapper or icon frame.
+   Includes flattened My Actions navigation links, but excludes team/project
+   trees and the Create, workspace, header and profile controls. */
 @media (min-width: 1024px) {
   aside.bg-sidebar > nav.flex-1.overflow-y-auto > ul a.min-h-7 {
     box-sizing: border-box !important;
     height: 32px !important;
     min-height: 32px !important;
     max-height: 32px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  aside.bg-sidebar > nav.flex-1.overflow-y-auto > ul a.min-h-7 > svg.lucide-icon {
+    box-sizing: content-box !important;
+    width: 16px !important;
+    height: 16px !important;
+    min-width: 16px !important;
+    min-height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    flex: 0 0 16px !important;
+  }
+
+  /* Keep the Approvals notification marker aligned with the new 12px inset. */
+  aside.bg-sidebar > nav.flex-1.overflow-y-auto > ul a[href="/approvals"]::after {
+    right: 12px !important;
   }
 }
 
