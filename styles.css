@@ -3733,16 +3733,12 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   display: none !important;
 }
 
-/* 68. Align the REAL team and project hit areas with 32px platform links.
-   The old 28px heights came from py-1 on team rows and py-0.5 on project
-   rows. Both the flex row and the navigable anchor must occupy 32px;
-   do not add margin outside the hit target. Keep the tree indentation. */
+/* 68. Team AND project hit areas: 32px, like the main navigation.
+   Match the real task links rather than fixed intermediate class nesting. */
 @media (min-width: 1024px) {
-  /* Native clickable team and project rows (not their outer tree wrappers). */
+  /* All native min-h-7 team/project rows (including nested projects). */
   html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/team.flex.min-h-7,
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/project.min-h-7 {
+    .min-h-7:has(a[href^="/tasks?"]) {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
@@ -3754,30 +3750,9 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
     margin-block-end: 0 !important;
   }
 
-  /* Team links are direct children of the team flex row. */
+  /* Anchor itself fills the full vertical hit area. */
   html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/team.flex.min-h-7 > a[href^="/tasks?"] {
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    height: 32px !important;
-    min-height: 32px !important;
-    max-height: 32px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  /* Project links sit inside an additional flex wrapper; stretch both
-     that wrapper and the actual anchor to the same 32px hit target. */
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/project.min-h-7 > div.flex.flex-1 {
-    height: 32px !important;
-    min-height: 32px !important;
-    max-height: 32px !important;
-    align-items: center !important;
-  }
-  html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/project.min-h-7 > div.flex.flex-1 > a[href^="/tasks?"] {
+    a[href^="/tasks?"] {
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
@@ -3789,12 +3764,10 @@ html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
   }
 }
 
-/* 70. Team names: regular weight only, keep project typography unchanged. */
-/* Team name links carry the native font-semibold class. Override their
-   weight without touching project links, icons, colours or the hit area. */
+/* 70. Team titles only: regular 400. Project titles unaffected. */
 @media (min-width: 1024px) {
   html body aside.bg-sidebar nav > div:has(> a[href="/teams-projects"])
-    > div.group\/section div.group\/team.flex.min-h-7 > a[href^="/tasks?"] {
+    a[href^="/tasks?"][href*="team_id="]:not([href*="project_id="]) {
     font-weight: 400 !important;
   }
 }
