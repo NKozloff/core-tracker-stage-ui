@@ -4578,3 +4578,11 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   + div.flex.h-full.min-h-0.flex-col.gap-3 {
   margin-top: 8px !important;
 }
+
+/* Financial Approvals: 24px below page header with full-width soft divider. */
+/* Match the muted baseline of the Requests / Cost centers / ERP tabs. */
+main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+  > div.flex.min-h-9.flex-wrap.items-center.gap-2 {
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 35%, transparent) !important;
+}
