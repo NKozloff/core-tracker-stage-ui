@@ -4006,41 +4006,13 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
 }
 
 
-/* 74. Notes selection: gentle blue highlight shared with Pin.
-   Tint the original #27282a card surface with 7% of the Pin blue,
-   much softer than the old Pin button's 13% blue overlay. */
+/* 74. Notes active Pin: gently softened blue background.
+   The selected card styling is handled separately by rule 77. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body:has(#notes-rail-body) {
     --core-note-blue-ink: #79b7ff;
     --core-note-blue-soft: color-mix(in srgb, #27282a 93%, #79b7ff 7%);
     --core-note-blue-soft-hover: color-mix(in srgb, #27282a 89%, #79b7ff 11%);
-  }
-
-  /* All uses a high-specificity card-fill override; make selection win. */
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"][aria-current="true"],
-  html.dark[data-theme="asana"] body:has(
-    #notes-rail-body > button:first-of-type[aria-current="page"]
-  ) #notes-list-column section > [role="button"][aria-current="true"] {
-    background-color: var(--core-note-blue-soft) !important;
-    border-color: transparent !important;
-    box-shadow: none !important;
-  }
-
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"][aria-current="true"]:hover {
-    background-color: var(--core-note-blue-soft-hover) !important;
-  }
-
-  /* Both genuine note titles and financial demo titles (in ::before)
-     receive the exact Pin icon blue; descriptions remain muted grey. */
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"][aria-current="true"]
-    > div.flex.items-baseline.gap-2 > span:first-child,
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    #notes-list-column section > [role="button"][aria-current="true"]
-    > div.flex.items-baseline.gap-2 > span:first-child::before {
-    color: var(--core-note-blue-ink) !important;
   }
 
   /* Apply the same softened blue surface to the active Pin control. */
@@ -4093,5 +4065,16 @@ main div.flex.gap-1.border-b:has(> a[href="/financial-approvals"])
   html.dark[data-theme="asana"] body
     aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent {
     background-color: var(--core-notes-surface-plus1) !important;
+  }
+}
+
+
+/* 77. Notes selected card: restore neutral fill with 2px blue outline.
+   Native text, tags and icons retain their original colours. The inset
+   stroke does not change the card's width, height or content offsets. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"][aria-current="true"] {
+    box-shadow: inset 0 0 0 2px #79b7ff !important;
   }
 }
