@@ -3057,36 +3057,38 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
 }
 }
 
-/* Dashboard search: fit field to its content instead of a fixed Tailwind width.
-   Constrain only the Search alongside the Dashboard heading; the field can
-   expand to fit text up to a readable cap without pushing out header actions.
-   Keep the mobile full-width search layout unchanged. */
-@media (min-width: 640px) {
-  main:has(h1[data-testid="dashboard-heading"])
-    h1[data-testid="dashboard-heading"] + div:has(input[aria-label="Search..."]) {
-    flex: 0 1 auto !important;
-    width: fit-content !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  main:has(h1[data-testid="dashboard-heading"])
-    h1[data-testid="dashboard-heading"] + div
-    > div.relative:has(> input[aria-label="Search..."]) {
-    width: fit-content !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  main:has(h1[data-testid="dashboard-heading"])
-    h1[data-testid="dashboard-heading"] + div
-    > div.relative > input[aria-label="Search..."] {
-    field-sizing: content !important;
-    box-sizing: border-box !important;
-    width: auto !important;
-    min-width: 120px !important;
-    max-width: min(260px, 34vw) !important;
-  }
+/* Dashboard: fixed 160px Search beside title (desktop/tablet). */
+@media(min-width:640px){
+main:has(h1[data-testid="dashboard-heading"]) h1[data-testid="dashboard-heading"]+div:has(input[aria-label="Search..."]),
+main:has(h1[data-testid="dashboard-heading"]) h1[data-testid="dashboard-heading"]+div>div.relative:has(>input[aria-label="Search..."]){
+  box-sizing:border-box!important;
+  flex:0 0 160px!important;
+  width:160px!important;
+  min-width:160px!important;
+  max-width:160px!important;
+}
+main:has(h1[data-testid="dashboard-heading"]) h1[data-testid="dashboard-heading"]+div>div.relative>input[aria-label="Search..."]{
+  box-sizing:border-box!important;
+  field-sizing:fixed!important;
+  width:160px!important;
+  min-width:160px!important;
+  max-width:160px!important;
+}
+}
+/* Dashboard header: 36px period tabs and 36px settings control. */
+main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"]{
+  box-sizing:border-box!important;
+  height:36px!important;
+  min-height:36px!important;
+}
+main:has(h1[data-testid="dashboard-heading"]) button[aria-label="Configure blocks"]{
+  box-sizing:border-box!important;
+  flex:0 0 36px!important;
+  width:36px!important;
+  min-width:36px!important;
+  height:36px!important;
+  min-height:36px!important;
+  padding:0!important;
 }
 
 /* Dashboard OKR: separate live Key Results column and blue metrics. */
