@@ -3073,6 +3073,12 @@ main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb {
 }
 }
 
+/* Dashboard OKR and Financial approvals: reference table fill #161719. */
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]),
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb > div.bg-card:has(> div:first-child h2 a[href="/financial-approvals"]) {
+  background-color: #161719 !important;
+}
+
 /* Dashboard: fixed 160px Search beside title (desktop/tablet). */
 @media(min-width:640px){
 main:has(h1[data-testid="dashboard-heading"]) h1[data-testid="dashboard-heading"]+div:has(input[aria-label="Search..."]),
