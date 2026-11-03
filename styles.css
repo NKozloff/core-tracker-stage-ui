@@ -4332,7 +4332,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   align-self: center !important;
   width: max-content !important;
   max-width: calc(100% - 16px) !important;
-  margin: 0 auto 4px !important;
+  margin: 0 auto 16px !important;
   border: 0 !important;
   border-radius: 12px !important;
   background-color: #1d1f21 !important;
@@ -4532,4 +4532,12 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
+}
+
+/* Financial Approvals / Requests: remove outlines from Budget status badges. */
+/* Sixth column is Budget, regardless of which filter is selected. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  table[data-slot="table"] tbody[data-slot="table-body"]
+  td[data-slot="table-cell"]:nth-child(6) [data-slot="badge"] {
+  border: 0 !important;
 }
