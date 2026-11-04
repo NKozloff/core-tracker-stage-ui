@@ -5058,10 +5058,13 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     width: 16px !important;
     height: 16px !important;
     flex: 0 0 16px !important;
+    /* ChevronDown artwork points UP while the submenu is expanded. */
+    transform: rotate(180deg) !important;
     transition: transform 150ms ease !important;
   }
   html body aside.bg-sidebar nav li.core-financial-menu-item > button.core-financial-toggle[aria-expanded="false"] > svg {
-    transform: rotate(-90deg) !important;
+    /* Collapsed submenu: chevron points down. */
+    transform: rotate(0deg) !important;
   }
 
   html body aside.bg-sidebar nav li.core-financial-menu-item > div.core-financial-subnav {
