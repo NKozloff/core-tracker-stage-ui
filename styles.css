@@ -5540,3 +5540,216 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
     display: inline-flex !important;
   }
 }
+
+
+/* Financial Approvals: move Pending / All into a functional toolbar toggle. */
+/* The native tab pair is still in the DOM and controls the real request
+   filter. Re-present that existing state as a Dashboard-style switch.
+   This repo syncs CSS only, so no fake state or inert switch is added. */
+@media (min-width: 1440px) {
+  /* Search takes the tablist's old header slot, immediately after Requests:
+     8px grid gap + 8px margin = 16px total. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    margin: 0 0 0 8px !important;
+  }
+
+  /* The filter toolbar is one real flex row, instead of contents
+     flattened into unrelated header-sized grid tracks. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) {
+    display: flex !important;
+    grid-column: 1 / -1 !important;
+    grid-row: 4 !important;
+    box-sizing: border-box !important;
+    align-self: center !important;
+    align-items: center !important;
+    flex-flow: row nowrap !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 36px !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Preserve existing order and dropdown behavior. The visual order becomes
+   Visibility, Status, Filter, Only pending approval, Grouping, Columns. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > button[data-slot="dropdown-menu-trigger"]:nth-of-type(1) {
+  position: static !important;
+  order: 1 !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2) {
+  position: static !important;
+  position-anchor: auto !important;
+  top: auto !important;
+  left: auto !important;
+  order: 2 !important;
+  flex: 0 0 auto !important;
+  width: max-content !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 {
+  display: contents !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1) {
+  position: static !important;
+  position-anchor: auto !important;
+  top: auto !important;
+  left: auto !important;
+  order: 3 !important;
+  flex: 0 0 auto !important;
+  width: max-content !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(2) {
+  position: static !important;
+  order: 5 !important;
+  flex: 0 0 auto !important;
+  margin: 0 0 0 auto !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(3) {
+  position: static !important;
+  order: 6 !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+
+/* Exact Dashboard switch proportions: 44x26 track, 20px white thumb.
+   An additional 16px margin + toolbar's 8px gap = 24px after Filter. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
+  display: inline-flex !important;
+  position: relative !important;
+  position-anchor: auto !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex: 0 0 auto !important;
+  order: 4 !important;
+  align-self: center !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+  box-sizing: border-box !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 !important;
+  margin: 0 0 0 16px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  gap: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"]::before {
+  content: "" !important;
+  display: block !important;
+  flex: 0 0 44px !important;
+  box-sizing: border-box !important;
+  width: 44px !important;
+  height: 26px !important;
+  background-color: #303234 !important;
+  border-radius: 999px !important;
+  transition: background-color 150ms ease !important;
+  pointer-events: none !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"]::after {
+  content: "Only pending approval" !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  margin-left: 8px !important;
+  color: var(--muted-foreground) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+/* Two original tabs are invisible hit targets. Only the NOT-selected tab
+   receives clicks: pressing any part of the switch or caption toggles the
+   actual Pending/All filter; native keyboard tabs remain focusable. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"]:is([aria-selected="true"],[aria-selected="false"]) {
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"][aria-selected="false"] {
+  z-index: 4 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"]:focus-visible {
+  outline: 2px solid var(--ring, #3b82f6) !important;
+  outline-offset: 1px !important;
+}
+
+/* The thumb belongs to the native Pending tab; it moves according to
+   aria-selected, with OFF = All, ON = Pending approval. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"]:first-child::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 3px !important;
+  top: 8px !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%) !important;
+  transition: left 150ms ease !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"]:has(> [role="tab"]:first-child[aria-selected="true"])::before {
+  background-color: #3b82f6 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"]:has(> [role="tab"]:first-child[aria-selected="true"])::after {
+  color: var(--foreground) !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"]:first-child[aria-selected="true"]::before {
+  left: 21px !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"]::before,
+  html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent) main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"]:first-child::before {
+    transition: none !important;
+  }
+}
