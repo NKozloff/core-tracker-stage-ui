@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "CORE Stage — Approvals All by default",
+  "version": "1.0.0",
+  "description": "Automatically selects the existing All tab when opening Financial Approvals on Stage.",
+  "content_scripts": [
+    {
+      "matches": ["https://staging-control-center.white-rock.ae/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
