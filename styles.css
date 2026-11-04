@@ -4387,7 +4387,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   margin: 0 !important;
   padding: 12px 16px !important;
   border: 0 !important;
-  border-top: 0 !important;
+  border-top: 1px solid #232426 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   background: #101113 !important;
