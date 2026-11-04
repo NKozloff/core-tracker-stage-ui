@@ -6205,3 +6205,18 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     display: none !important;
   }
 }
+
+
+/* 96. Notes CodeMirror: 16px inner left inset instead of 24px.
+   The native cm-scroller's computed left padding is 24px. Adjust only
+   this inner text scroller; preserve the frame's padding, toolbar,
+   divider, content top padding, right inset and wrapping. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col
+    .note-source .cm-editor .cm-scroller {
+    padding-left: 16px !important;
+  }
+}
