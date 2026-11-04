@@ -5454,3 +5454,47 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
     margin: 0 !important;
   }
 }
+
+
+/* 84. Notes: compact toolbar insets and restore attachment manager trigger.
+   The toolbar still uses the original live controls and retains its 40px
+   height. Match 8px above and below the row before the divider. */
+@media (min-width: 1024px) {
+  /* Frame top padding: previously 12px. Horizontal and bottom padding
+     stay at 12px; the divider remains edge-to-edge. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col {
+    padding-top: 8px !important;
+  }
+
+  /* The toolbar is 40px high. Reduce its 12px bottom gap to 8px. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col
+    > div[data-note-editor] > div[data-note-panel] {
+    margin-bottom: 8px !important;
+  }
+
+  /* 8px top + 40px icons + 8px bottom = 56px. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col::after {
+    top: 56px !important;
+  }
+
+  /* Rule 47 hid the native "Files N" button (paperclip) in the
+     attachment footer. Restore the same clickable DOM element, without
+     recreating it or affecting the toolbar's separate paperclip action.
+     Rule 57's '+N' overflow tile remains hidden as before. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    button:has(> svg.lucide-paperclip) {
+    display: inline-flex !important;
+  }
+}
