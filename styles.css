@@ -6013,3 +6013,37 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     line-height: 20px !important;
   }
 }
+
+
+/* 89. Notes workspace surface matches the Requests page background.
+   The screenshot shows #1d1f21 for the main rounded page surface,
+   distinct from the #161719 table/card surfaces. Scope this to Notes
+   only; leave the sidebar, selected navigation item, search pill,
+   note cards and writing frame untouched. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    div.flex.flex-1.min-h-0.overflow-hidden:has(> aside.bg-sidebar)
+    > div.flex.flex-1.flex-col.min-w-0 {
+    background-color: #1d1f21 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"]),
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div.flex.min-h-0.flex-1.overflow-hidden,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > nav[aria-label="Notes"],
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
+    background-color: #1d1f21 !important;
+  }
+}
