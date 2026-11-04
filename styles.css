@@ -5886,3 +5886,31 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cellipse%20cx%3D%2212%22%20cy%3D%225%22%20rx%3D%229%22%20ry%3D%223%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%205V19A9%203%200%200%200%2021%2019V5%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%2012A9%203%200%200%200%2021%2012%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
   }
 }
+
+/* Selected Financial subtree: one continuous group surface. */
+/* When Requests, Cost centers or ERP is active, fill the entire Financial
+   parent + expanded children as a single soft panel. The group uses the
+   current Financial tile's #202123 background. The active child retains its
+   existing #28292b highlight above the group background. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body aside.bg-sidebar nav
+  li.core-financial-menu-item:has(> .core-financial-subnav > .core-financial-subitem[aria-current="page"]) {
+    background-color: #202123 !important;
+    border-radius: 14px !important;
+    padding-bottom: 4px !important;
+  }
+
+  /* Ensure the parent tile merges seamlessly with the shared surface. */
+  html.dark[data-theme="asana"] body aside.bg-sidebar nav
+  li.core-financial-menu-item:has(> .core-financial-subnav > .core-financial-subitem[aria-current="page"])
+    > a[href="/financial-approvals"] {
+    background-color: transparent !important;
+  }
+
+  /* Keep the selected child visually raised against the group. */
+  html.dark[data-theme="asana"] body aside.bg-sidebar nav
+  li.core-financial-menu-item .core-financial-subitem[aria-current="page"] {
+    background-color: #28292b !important;
+    color: var(--sidebar-foreground) !important;
+  }
+}
