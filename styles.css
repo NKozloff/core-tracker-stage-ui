@@ -5321,19 +5321,79 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   opacity: 1 !important;
 }
 
-/* Financial Approvals / All: compact filter controls and right-aligned view actions. */
+/* Financial Approvals / All: 4px tab insets and uniformly spaced filters.
+   Only the desktop layout flattens the toolbar; its existing right-side
+   Grouping / Columns group remains intact and right-aligned. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > [role="tablist"][aria-label="What to show"] {
+  box-sizing: border-box !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 4px !important;
+  gap: 0 !important;
+  align-items: center !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > [role="tablist"][aria-label="What to show"] > [role="tab"] {
+  box-sizing: border-box !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  align-self: center !important;
+}
+
+/* The Stage extension synchronizes CSS only. Show the requested label
+   without changing the native status dropdown's click/selection behavior.
+   The displayed "4" is fixed until the extension can rewrite live text. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2) {
+  font-size: 0 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2) > :is(span, div) {
+  font-size: 0 !important;
+}
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2)::after {
+  content: "Status: 4";
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+  color: #87b5f9 !important;
+  white-space: nowrap !important;
+}
+
 @media (min-width: 1440px) {
-  /* Use the existing Status control as the alignment point for Filter.
-     Both remain on the same toolbar row with a 16px gap. */
+  /* Visibility is the first filter; Status and Filter follow its measured
+     right edge in one row, 8px apart regardless of header grid columns. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
+    > div.flex.h-full.min-h-0.flex-col.gap-3
+    > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+    > button[data-slot="dropdown-menu-trigger"]:nth-of-type(1) {
+    anchor-name: --core-approvals-visibility-filter;
+  }
+
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
     > div.flex.h-full.min-h-0.flex-col.gap-3
     > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
     > button[data-slot="dropdown-menu-trigger"]:nth-of-type(2) {
+    position: absolute !important;
+    position-anchor: --core-approvals-visibility-filter;
+    left: calc(anchor(right) + 8px) !important;
+    top: anchor(top) !important;
+    width: max-content !important;
+    margin: 0 !important;
+    transform: none !important;
     anchor-name: --core-approvals-status-filter;
   }
 
-  /* Preserve the original right-hand wrapper as one compact flex group.
-     Filter is positioned separately; Grouping and Columns remain in flow. */
+  /* Preserve the original compact Grouping / Columns wrapper at the right. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
     > div.flex.h-full.min-h-0.flex-col.gap-3
     > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
@@ -5350,21 +5410,21 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     margin: 0 !important;
   }
 
-  /* The first native button is Filter: place it 16px after 4 statuses. */
+  /* Filter follows Status, not the independently sized header grid. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
     > div.flex.h-full.min-h-0.flex-col.gap-3
     > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
     > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1) {
     position: absolute !important;
     position-anchor: --core-approvals-status-filter;
-    left: calc(anchor(right) + 16px) !important;
+    left: calc(anchor(right) + 8px) !important;
     top: anchor(top) !important;
     width: max-content !important;
     margin: 0 !important;
     transform: none !important;
   }
 
-  /* Remove old auto-margins that pushed Grouping and Columns apart. */
+  /* Grouping and Columns keep their natural sizes in the right-hand group. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"])
     > div.flex.h-full.min-h-0.flex-col.gap-3
     > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
