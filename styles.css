@@ -4370,68 +4370,111 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   }
 }
 
-/* Financial Approvals / Requests: compact centered summary pill. */
-/* Restore the native Total amount and request count footer; retain the existing pill styling. */
+/* Financial Approvals / Requests: full-width summary row, not a centered pill.
+   The row shares the table card, but has a subtly darker surface. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t {
   display: block !important;
+  position: static !important;
   box-sizing: border-box !important;
-  align-self: center !important;
-  width: max-content !important;
-  max-width: calc(100% - 16px) !important;
-  margin: 0 auto 16px !important;
+  flex: 0 0 56px !important;
+  align-self: stretch !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 56px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   border: 0 !important;
-  border-radius: 12px !important;
-  background-color: #393b3d !important;
-  overflow: hidden !important;
+  border-top: 1px solid #232426 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #121315 !important;
+  overflow: visible !important;
+  anchor-name: --core-approvals-summary-row;
 }
 
-/* Use the same compact 36px control height as the surrounding toolbar. */
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between {
-  box-sizing: border-box !important;
-  height: 36px !important;
-  min-height: 36px !important;
-  padding: 0 12px !important;
-  gap: 0 !important;
-}
+/* Keep all three values tied to the real row, regardless of table height. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between,
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center,
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm {
-  display: flex !important;
-  align-items: center !important;
-  gap: 0 !important;
-  white-space: nowrap !important;
+  display: contents !important;
 }
-/* In HTML the count precedes the total. Reorder only visually. */
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:first-of-type {
-  order: 2 !important;
-}
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:last-of-type {
-  order: 0 !important;
-  position: relative !important;
-}
-/* Visual-only insertion: the source string currently reads "Total 1,100,224 USD". */
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:last-of-type::before {
-  content: "Total:";
+
+/* Left label: a separate piece of text, not a chip. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t::before {
+  content: "Total";
   position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  background-color: #393b3d;
-  padding-right: 2px;
-  color: inherit;
-  font: inherit;
-  line-height: inherit;
+  left: 16px;
+  top: calc(100% - 28px);
+  top: anchor(--core-approvals-summary-row center);
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
   pointer-events: none;
 }
-/* A 4px neutral dot, exactly 12px from both text groups. */
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm::before {
-  content: "";
-  order: 1 !important;
-  display: block;
-  flex: 0 0 4px;
-  width: 4px;
-  height: 4px;
-  margin: 0 12px !important;
-  background-color: var(--muted-foreground);
-  border-radius: 50%;
+
+/* The Amount heading and the footer are inside one positioned table-card
+   container. Since the footer itself is static, its absolute text can anchor
+   to the actual third-column heading, not a percentage of the viewport. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"]:nth-child(3) {
+  anchor-name: --core-approvals-amount-heading;
+}
+
+/* Preserve the live amount from the app. Its native text is
+   "Total 1,200,439 USD"; the visual crop removes the repeated word
+   and trailing currency without hardcoding or replacing the number. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:last-of-type {
+  display: block !important;
+  position: absolute !important;
+  position-anchor: --core-approvals-amount-heading;
+  left: 33% !important;
+  left: anchor(--core-approvals-amount-heading left) !important;
+  top: calc(100% - 28px) !important;
+  top: anchor(--core-approvals-summary-row center) !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  order: initial !important;
+  width: max-content !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  text-indent: -34px !important;
+  clip-path: inset(0 31px 0 0) !important;
+  background: transparent !important;
+  color: var(--foreground) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+  pointer-events: none;
+}
+
+/* Right edge: native live count (e.g. 12 requests). */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t > div.flex.items-center.justify-between > div.flex.items-center > div.flex.items-center.text-sm > span:first-of-type {
+  display: block !important;
+  position: absolute !important;
+  right: 16px !important;
+  left: auto !important;
+  top: calc(100% - 28px) !important;
+  top: anchor(--core-approvals-summary-row center) !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+  order: initial !important;
+  width: max-content !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--muted-foreground) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+  pointer-events: none;
 }
 
 /* Sidebar scroll-end fade above fixed profile and settings. */
