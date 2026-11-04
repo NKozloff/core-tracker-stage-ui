@@ -5862,3 +5862,29 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   }
 
 }
+
+
+/* 87. Notes attachments: hide Files manager, restore native +N overflow.
+   Restore the app's real overflow count (e.g. +7), not a fixed label.
+   Keep preview thumbnails and the toolbar's separate paperclip unchanged. */
+@media (min-width: 1024px) {
+  /* Hide only the bottom attachment manager button with paperclip and
+     "Files N" label. It remains in the DOM but occupies no layout space. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    button:has(> svg.lucide-paperclip) {
+    display: none !important;
+  }
+
+  /* Rule 57 hid the original +N tile in the attachment footer.
+     Let the native component control its count and whether it exists. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    button[aria-label^="Files ·"] {
+    display: inline-flex !important;
+  }
+}
