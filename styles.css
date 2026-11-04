@@ -6047,3 +6047,52 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     background-color: #1d1f21 !important;
   }
 }
+
+
+/* 90. Notes Folder and Tags: Import/Export surface and light text.
+   The supplied reference uses #28292b and #e8e8e8. Preserve both
+   buttons' existing dimensions, spacing, rounded-pill shape, labels
+   and click handlers. The Access control is deliberately unchanged. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(1),
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(2) {
+    background-color: #28292b !important;
+    color: #e8e8e8 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(1) :is(svg, svg *),
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(2) :is(svg, svg *) {
+    color: #e8e8e8 !important;
+    stroke: currentColor !important;
+  }
+
+  /* Both visible labels were created by ::after in rule 49. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(1)::after,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(2)::after {
+    color: #e8e8e8 !important;
+  }
+}
