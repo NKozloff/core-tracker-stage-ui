@@ -4904,64 +4904,69 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 }
 
 
-/* 83. Notes: place the live Edited timestamp below the writing frame.
-   Reuse the original timestamp node, which has been promoted through the
-   footer's display:contents wrappers. No duplicate text or new handlers.
-   Grid: 4=editor, 5=Edited, 6=attachment previews (when present). */
+/* 83. Notes: align the live Edited timestamp at the bottom right,
+   opposite the attachment thumbnails and Files manager on the left.
+   Use the existing live DOM nodes (promoted by display:contents), with
+   both sides sharing a single footer row. No duplicate timestamps. */
 @media (min-width: 1024px) {
-  /* Provide a dedicated 44px Edited track and keep the attachment track
-     below it. Preserve all existing heading/toolbar grid rows. */
+  /* Row 5 is no longer a separate timestamp track. Row 6 holds the
+     attachment controls on the left and Edited on the right, aligned
+     along their bottom edges with 24px outside insets. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]) {
-    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) 44px minmax(78px, auto) !important;
+    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) 0 minmax(78px, auto) !important;
   }
 
-  /* For a note without image/file previews, do not reserve attachment
-     space. The real timestamp still occupies its own 44px row. */
+  /* Even without attached files the date remains at bottom right,
+     without reserving the old 44px row above the footer. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     main div.flex.h-full.flex-col.gap-4.p-4
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel]):not(
       :has(> div > div.relative.isolate > div.shrink-0.bg-background img,
            > div > div.relative.isolate > div.shrink-0.bg-background button[aria-label^="Files"])
     ) {
-    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) 44px 0px !important;
+    grid-template-rows: minmax(64px, auto) auto 0 minmax(0, 1fr) 0 minmax(56px, auto) !important;
   }
 
-  /* Live Edited label appears outside the editor background, aligned
-     to its left edge (24px inset). The editor itself has a 12px lower
-     margin; the label adds 4px for a 16px vertical separation. */
+  /* Real attachment preview and Files control: left half of footer. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    > div.flex.h-9\.5.items-center > div.flex.min-w-0.flex-1.items-center {
+    grid-column: 1 / 2 !important;
+    grid-row: 6 !important;
+    align-self: end !important;
+    justify-self: stretch !important;
+    min-width: 0 !important;
+    margin: 0 0 24px 24px !important;
+    padding: 0 !important;
+    overflow-x: auto;
+  }
+
+  /* Real Edited value: right edge, same vertical bottom as the files. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
     > div > div.relative.isolate > div.shrink-0.bg-background
     > div.flex.h-9\.5.items-center
     > span.shrink-0.text-xs.tabular-nums.text-tertiary-foreground {
-    grid-column: 1 / -1 !important;
-    grid-row: 5 !important;
-    align-self: start !important;
-    justify-self: start !important;
+    grid-column: 2 / 3 !important;
+    grid-row: 6 !important;
+    align-self: end !important;
+    justify-self: end !important;
     position: relative !important;
     z-index: 1 !important;
-    max-width: calc(100% - 48px) !important;
-    margin: 4px 24px 0 !important;
+    width: max-content !important;
+    max-width: none !important;
+    margin: 0 24px 24px 16px !important;
     padding: 0 !important;
     white-space: nowrap;
     pointer-events: none;
   }
 
-  /* Place the existing attachment thumbnails after Edited, rather than
-     allowing the two elements to overlap in a single grid row. */
-  html.dark[data-theme="asana"] body:has(#notes-rail-body)
-    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
-    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
-    > div > div.relative.isolate > div.shrink-0.bg-background
-    > div.flex.h-9\.5.items-center > div.flex.min-w-0.flex-1.items-center {
-    grid-row: 6 !important;
-  }
-
-  /* Edited is no longer overlaid on the text; remove the old 52px
-     bottom protection and restore the note body's 16px inner padding. */
+  /* The date no longer overlays editable text. */
   html.dark[data-theme="asana"] body:has(#notes-rail-body)
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
