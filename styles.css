@@ -5793,7 +5793,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 }
 
 /* Dashboard OKR: restore heading inside the dark table frame.
-   Descriptors use the same surface, with matching 1px rules above and below.
+   Descriptors have an unoutlined, inset surface with 8px outer margins.
    Keep existing 24px column insets, 44px rows, and live OKR interactions. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"]
@@ -5806,14 +5806,15 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
     > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
     box-sizing: border-box !important;
-    width: calc(100% + 24px) !important;
-    margin: 0 -12px !important;
-    padding: 8px 12px !important;
+    width: calc(100% + 32px) !important;
+    margin: 0 -16px !important;
+    padding: 8px 16px !important;
     background-color: #1d1f21 !important;
     background-image: none !important;
-    border-top: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
-    border-bottom: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
+    border: 0 !important;
     border-radius: 8px !important;
+    outline: 0 !important;
+    box-shadow: none !important;
   }
 
   /* Both top analytics cards: exactly the same dark fill as the OKR table;
@@ -5823,4 +5824,41 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) {
     background-color: #161719 !important;
   }
+  /* Keep existing 24px text alignment. Replace full-bleed row borders with
+     inset separators: 8px from the table's outer left and right edges. */
+  html.dark[data-theme="asana"]
+    main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
+    > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"])
+    > div:nth-child(4) > a.dash-subrow {
+    position: relative !important;
+  }
+
+  html.dark[data-theme="asana"]
+    main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
+    > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"])
+    > div:nth-child(4) > a.dash-subrow + a.dash-subrow {
+    border-top: 0 !important;
+  }
+
+  html.dark[data-theme="asana"]
+    main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
+    > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"])
+    > div:nth-child(4) > a.dash-subrow + a.dash-subrow::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: color-mix(in srgb, var(--foreground) 6%, transparent) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+  }
+
 }
