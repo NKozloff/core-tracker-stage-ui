@@ -4335,12 +4335,12 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   border-radius: 0 !important;
 }
 
-/* 80. Notes: match Dashboard card surface for note cards and writing frame.
-   Use exactly #27282a, as in the Dashboard panels. Keep card outlines
-   removed and preserve the Notes workspace layout and editor controls. */
+/* 80. Notes: match the global navigation sidebar surface for all note
+   cards and the writing frame. The sidebar's explicit dark fill (rule 24)
+   is #161719. Keep borders removed and editor geometry unchanged. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body:has(#notes-rail-body) {
-    --core-notes-dashboard-card-surface: #27282a;
+    --core-notes-card-surface: #161719;
   }
 
   /* Every note card, including All and the currently selected card. */
@@ -4354,7 +4354,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   html.dark[data-theme="asana"] body:has(
     #notes-rail-body > button:first-of-type[aria-current="page"]
   ) #notes-list-column section > [role="button"][aria-current="true"] {
-    background: var(--core-notes-dashboard-card-surface) !important;
+    background: var(--core-notes-card-surface) !important;
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
@@ -4366,7 +4366,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
     > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
     div.relative.z-20.flex.min-h-56.flex-1.flex-col {
-    background-color: var(--core-notes-dashboard-card-surface) !important;
+    background-color: var(--core-notes-card-surface) !important;
   }
 }
 
@@ -4670,7 +4670,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
     :has(> div[role="button"]:nth-of-type(3))
   ) > div[role="button"]:nth-of-type(1) {
-    background: var(--core-notes-dashboard-card-surface, #27282a) !important;
+    background: var(--core-notes-card-surface, #161719) !important;
     background-image: none !important;
     border: none !important;
     box-shadow: none !important;
@@ -4695,7 +4695,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   ) #notes-list-column section:has(> div[role="button"]:nth-of-type(2)):not(
     :has(> div[role="button"]:nth-of-type(3))
   ) > div[role="button"]:first-of-type {
-    background: var(--core-notes-selected-surface, #38393a) !important;
+    background: var(--core-notes-card-surface, #161719) !important;
     background-image: none !important;
     border: 0 !important;
     box-shadow: none !important;
