@@ -4371,9 +4371,9 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 }
 
 /* Financial Approvals / Requests: compact centered summary pill. */
-/* Temporarily hide the Total / requests footer; leave original layout styles available for restoration. */
+/* Restore the native Total amount and request count footer; retain the existing pill styling. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) div.flex.min-h-0.flex-1.flex-col.transition-opacity > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative > div.border-t {
-  display: none !important;
+  display: block !important;
   box-sizing: border-box !important;
   align-self: center !important;
   width: max-content !important;
