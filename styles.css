@@ -5655,6 +5655,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     height: 36px !important;
     margin: 0 !important;
     padding: 0 !important;
+    /* Older header styling exposed a duplicate line when display became flex. */
+    border: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > svg.lucide-dollar-sign {
     position: static !important;
