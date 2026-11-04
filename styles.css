@@ -6229,3 +6229,20 @@ aside.bg-sidebar nav > ul a[href*="proposal" i] > span.tabular-nums,
 aside.bg-sidebar nav > ul a:has(> svg:is(.lucide-brain, .lucide-brain-circuit, .lucide-brain-cog)) > span.tabular-nums {
   display: none !important;
 }
+
+
+/* 97. Notes list scroll viewport: 8px top padding.
+   Target the highlighted scroll group (#notes-list-column's first child),
+   not the cards, section headings, Search or the editor. This wins over
+   both the 24px base padding and the All-view 0px override. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child,
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child {
+    padding-top: 8px !important;
+  }
+}
