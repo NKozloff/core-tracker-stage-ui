@@ -5790,3 +5790,44 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     border-radius: 0 0 16px 16px !important;
   }
 }
+
+
+/* 86. Notes list: full-bleed row separators.
+   Remove both grid dividers beside column 2. Enlarge every card horizontally
+   into the list's 8px side padding, then compensate its content padding to
+   preserve title/description alignment. Dividers reach the rounded frame
+   edges without changing Notes search, sorting, scrolling or navigation. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::before,
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section > [role="button"] {
+    box-sizing: border-box !important;
+    width: calc(100% + 16px) !important;
+    max-width: none !important;
+    margin-left: -8px !important;
+    margin-right: -8px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background-color: #161719 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child > div.flex.flex-col.gap-3
+    > section:last-of-type > [role="button"]:last-of-type {
+    border-bottom: 0 !important;
+  }
+}
