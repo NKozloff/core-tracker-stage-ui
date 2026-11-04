@@ -5558,10 +5558,31 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
     grid-template-columns: 24px max-content 240px 0 minmax(0, 1fr) max-content max-content !important;
   }
+  /* Size the actual heading to its text, not to the shared grid column
+     (which is expanded by the long Visibility filter on the next row). */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > h1 {
+    justify-self: start !important;
+    width: max-content !important;
+    min-width: 0 !important;
+  }
+  /* Anchor Search to the real right edge of Requests at exactly 16px.
+     Avoid placing Search in grid column 3: column 2 is widened by filters. */
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-    margin-left: 8px !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    position: absolute !important;
+    position-anchor: --core-financial-requests-heading;
+    left: calc(anchor(right) + 16px) !important;
+    right: auto !important;
+    top: anchor(center) !important;
+    transform: translateY(-50%) !important;
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+    margin: 0 !important;
+    justify-self: auto !important;
+    align-self: auto !important;
+    z-index: 4 !important;
   }
 
   /* The existing Filter button is already correctly anchored 8px after
