@@ -4210,6 +4210,8 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] svg:is(.lucide-arrow-up-down, .lucide-arrow-up, .lucide-arrow-down) {
   color: var(--muted-foreground) !important;
   stroke: currentColor !important;
+  /* Override the app's opacity-30 on inactive Lucide sort icons. */
+  opacity: 1 !important;
 }
 
 /* Financial Approvals / Requests: one rounded surface for headers and table content. */
