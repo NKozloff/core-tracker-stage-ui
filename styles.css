@@ -5085,9 +5085,10 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     top: 24px !important;
     left: calc(anchor(right) + 24px) !important;
     transform: none !important;
-    width: 180px !important;
-    min-width: 180px !important;
-    max-width: 180px !important;
+    display: inline-flex !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
     height: 36px !important;
     flex-wrap: nowrap !important;
     margin: 0 !important;
@@ -5148,9 +5149,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
 @media (min-width: 1440px) {
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] {
     flex-wrap: nowrap !important;
-    width: 180px !important;
-    min-width: 180px !important;
-    max-width: 180px !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
     height: 36px !important;
     top: 24px !important;
   }
@@ -5218,18 +5219,23 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     left: auto !important;
     transform: none !important;
     box-sizing: border-box !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
     flex-wrap: nowrap !important;
     width: max-content !important;
-    min-width: max-content !important;
+    min-width: 0 !important;
     max-width: none !important;
     height: 36px !important;
-    padding: 0 !important;
+    padding: 4px !important;
     gap: 0 !important;
     margin: 0 0 0 8px !important;
     z-index: auto !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > [role="tablist"][aria-label="What to show"] > [role="tab"] {
     flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
     white-space: nowrap !important;
   }
   main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
@@ -5331,9 +5337,16 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   height: 36px !important;
   min-height: 36px !important;
   max-height: 36px !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: none !important;
   padding: 4px !important;
   gap: 0 !important;
   align-items: center !important;
+  justify-content: flex-start !important;
 }
 html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
   main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
@@ -5342,6 +5355,11 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   height: 28px !important;
   min-height: 28px !important;
   max-height: 28px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
   align-self: center !important;
 }
 
