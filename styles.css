@@ -5992,3 +5992,24 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   padding-left: 20px !important;
   border-top: 0 !important;
 }
+
+
+/* 88. Notes: overflow count typography at 14px regular.
+   Style the native dynamic +N button only, including its inner label.
+   Keep existing 42px tile sizing and behavior unchanged. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    button[aria-label^="Files ·"],
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    > div > div.relative.isolate > div.shrink-0.bg-background
+    button[aria-label^="Files ·"] :is(span, div) {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+  }
+}
