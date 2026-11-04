@@ -6220,3 +6220,12 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     padding-left: 16px !important;
   }
 }
+
+/* Brain proposals sidebar: hide the right-side numeric counter. */
+/* Keep the navigation label and brain icon intact. Match either the
+   Proposals route or Lucide Brain icon in case Stage renames the route.
+   The native counter is a trailing .tabular-nums span. */
+aside.bg-sidebar nav > ul a[href*="proposal" i] > span.tabular-nums,
+aside.bg-sidebar nav > ul a:has(> svg:is(.lucide-brain, .lucide-brain-circuit, .lucide-brain-cog)) > span.tabular-nums {
+  display: none !important;
+}
