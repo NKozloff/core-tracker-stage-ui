@@ -5978,19 +5978,17 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 }
 
 /* Financial Approvals: align flag and Total with row markers; hide Total top rule. */
-/* Shift the flag graphic by 12px without changing the first column's
-   total horizontal padding (and therefore its intrinsic table width). */
+/* Align the header flag with the request completion indicators using 20px inset. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"]
   thead[data-slot="table-header"] th[data-slot="table-head"]:first-child {
-  padding-left: 28px !important;
-  padding-right: 28px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
-/* The footer's native Total label uses the row's left padding.
-   Match its left edge to the blue completion markers (16px + 12px). */
+/* Match the Total label's left inset to the same 20px alignment. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   div.flex.min-h-0.flex-1.flex-col.transition-opacity
   > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative
   > div.border-t {
-  padding-left: 28px !important;
+  padding-left: 20px !important;
   border-top: 0 !important;
 }
