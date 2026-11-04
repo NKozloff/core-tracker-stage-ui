@@ -5700,3 +5700,93 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     align-self: center !important;
   }
 }
+
+
+/* 85. Notes list: one rounded dark frame around search and note cards.
+   Match the approved Financial Approvals table body (#161719).
+   Search is a fixed top grid item; note cards remain in their existing
+   independently scrollable grid item. Shared adjoining surfaces create a
+   continuous 16px-rounded panel without a new wrapper or broken scrolling.
+   Keep existing 16px inner content insets and 323px column width. */
+@media (min-width: 1024px) {
+  /* Upper panel: real search field and rounded outer top corners. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"]) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 16px 8px 0 !important;
+    padding: 8px 20px 12px !important;
+    border: 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    background: #161719 !important;
+    box-shadow: none !important;
+    position: relative !important;
+    isolation: isolate;
+  }
+
+  /* Restore the original muted Search pill, now inside the shared frame. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: #28292b;
+    z-index: 0;
+    pointer-events: none;
+  }
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header > div.relative:has(> input[aria-label="Search notes"])
+    > :is(svg.lucide-search, input[aria-label="Search notes"]) {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Lower panel is still the same scrollable list grid item. It joins
+     the search surface without a seam and rounds only the bottom. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child {
+    grid-column: 2 !important;
+    grid-row: 1 / 4 !important;
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 16px 8px !important;
+    padding: 16px 8px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: #161719 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* All mode has fixed Search in row 1; start the list at row 2.
+     The two halves have identical horizontal bounds and background. */
+  html.dark[data-theme="asana"] body:has(
+    #notes-rail-body > button:first-of-type[aria-current="page"]
+  ) main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    #notes-list-column > div:first-child {
+    grid-row: 2 / 4 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-radius: 0 0 16px 16px !important;
+  }
+}
