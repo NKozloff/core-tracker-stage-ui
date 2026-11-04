@@ -4199,7 +4199,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   color: var(--muted-foreground) !important;
 }
 
-/* Table labels and inactive sorting arrows use secondary gray; active sort stays blue. */
+/* Table labels and all sorting arrows use the same secondary gray. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] :is(span, button) {
   color: var(--muted-foreground) !important;
@@ -5311,12 +5311,12 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     margin: 0 !important;
   }
 }
-/* Active sort direction is blue; inactive up/down pairs remain muted gray. */
+/* All sort arrows, including the active direction, match descriptor gray. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"]
   th[data-slot="table-head"]:is([aria-sort="ascending"], [aria-sort="descending"])
   svg:is(.lucide-arrow-up, .lucide-arrow-down) {
-  color: #87b5f9 !important;
+  color: var(--muted-foreground) !important;
   stroke: currentColor !important;
   opacity: 1 !important;
 }
