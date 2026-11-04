@@ -5770,12 +5770,12 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
 /* Selected Financial subtree: one continuous group surface. */
 /* When Requests, Cost centers or ERP is active, fill the entire Financial
    parent + expanded children as a single soft panel. The group uses the
-   current Financial tile's #202123 background. The active child retains its
+   reference container's exact #1d1f21 background. The active child retains its
    existing #28292b highlight above the group background. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] body aside.bg-sidebar nav
   li.core-financial-menu-item:has(> .core-financial-subnav > .core-financial-subitem[aria-current="page"]) {
-    background-color: #202123 !important;
+    background-color: #1d1f21 !important;
     border-radius: 14px !important;
     padding-bottom: 4px !important;
   }
