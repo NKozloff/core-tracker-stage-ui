@@ -2032,21 +2032,21 @@ main h1[data-testid="dashboard-heading"] > span.text-muted-foreground {
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(1) {
-    --dash-color: #4e92b2;
+    --dash-color: #38bdf8;
     --dash-left: 20px;
     --dash-width: var(--dash-a);
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(2) {
-    --dash-color: #bf7f79;
+    --dash-color: #f58b82;
     --dash-left: calc(20px + var(--dash-a) * var(--dash-track) + var(--dash-gap-b));
     --dash-width: var(--dash-b);
   }
   main:has(h1[data-testid="dashboard-heading"])
     .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3
     > .rounded-xl.bg-secondary > div:nth-child(2) > a:nth-child(3) {
-    --dash-color: #7faa83;
+    --dash-color: #9ad28f;
     --dash-left: calc(20px + (var(--dash-a) + var(--dash-b)) * var(--dash-track) + var(--dash-gap-b) + var(--dash-gap-c));
     --dash-width: var(--dash-c);
   }
