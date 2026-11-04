@@ -4400,7 +4400,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   margin: 0 !important;
   padding: 12px 16px !important;
   border: 0 !important;
-  border-top: 1px solid #232426 !important;
+  border-top: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   background: #101113 !important;
@@ -5975,4 +5975,22 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr:not(:last-child) > td[data-slot="table-cell"]:last-child {
   background-position: left bottom !important;
   background-size: calc(100% - 20px) 1px !important;
+}
+
+/* Financial Approvals: align flag and Total with row markers; hide Total top rule. */
+/* Shift the flag graphic by 12px without changing the first column's
+   total horizontal padding (and therefore its intrinsic table width). */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"]
+  thead[data-slot="table-header"] th[data-slot="table-head"]:first-child {
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+}
+/* The footer's native Total label uses the row's left padding.
+   Match its left edge to the blue completion markers (16px + 12px). */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
+  div.flex.min-h-0.flex-1.flex-col.transition-opacity
+  > div.flex.flex-col.min-h-0.min-w-0.flex-1.overflow-hidden.relative
+  > div.border-t {
+  padding-left: 28px !important;
+  border-top: 0 !important;
 }
