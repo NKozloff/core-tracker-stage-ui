@@ -5828,7 +5828,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     background-color: #161719 !important;
   }
   /* Rows share the descriptor geometry: 8px outer inset + 16px inner
-     padding = 24px content alignment. Dividers align to the content edge. */
+     padding = 24px content alignment. Dividers use the 8px outer row inset. */
   /* The old row group was full-bleed (-24px). Inset it 8px from the
      table frame, matching the descriptor background's exact width. */
   html.dark[data-theme="asana"]
@@ -5868,8 +5868,8 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     display: block !important;
     position: absolute !important;
     top: 0 !important;
-    left: 16px !important;
-    right: 16px !important;
+    left: 0 !important;
+    right: 0 !important;
     width: auto !important;
     height: 1px !important;
     padding: 0 !important;
