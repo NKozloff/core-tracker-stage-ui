@@ -5540,3 +5540,63 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
     display: inline-flex !important;
   }
 }
+
+
+/* Financial Approvals: static client-preview layout for header and pending toggle. */
+/* Keep the previous, stable filters / Grouping / Columns layout untouched.
+   For a static screenshot only, paint the switch beside the existing Filter
+   button, rather than turning tab controls into new grid participants. */
+html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
+  main div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"])
+  > [role="tablist"][aria-label="What to show"] {
+  display: none !important;
+}
+
+@media (min-width: 1440px) {
+  /* Remove the now-hidden header tab track and put Search directly after
+     Requests. Preserve the other seven-track grid positions and right actions. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) {
+    grid-template-columns: 24px max-content 240px 0 minmax(0, 1fr) max-content max-content !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.min-h-9.flex-wrap.items-center.gap-2 > div:has(input[aria-label="Find a request…"]) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    margin-left: 8px !important;
+  }
+
+  /* The existing Filter button is already correctly anchored 8px after
+     Status in the previous CSS. Decorative artwork does not alter that. */
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1) {
+    overflow: visible !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1)::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    left: calc(100% + 24px) !important;
+    top: 50% !important;
+    width: 44px !important;
+    height: 26px !important;
+    border-radius: 999px !important;
+    transform: translateY(-50%) !important;
+    background: radial-gradient(circle at 13px 13px, #fff 0 10px, transparent 10.5px), #303234 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+  main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="/financial-approvals"]) > div.flex.h-full.min-h-0.flex-col.gap-3 > div.flex.flex-wrap.items-center.gap-2:has(> [role="tablist"][aria-label="What to show"]) > div.ml-auto.flex.shrink-0.items-center.gap-2 > button:nth-child(1)::after {
+    content: "Only pending approval" !important;
+    display: block !important;
+    position: absolute !important;
+    left: calc(100% + 76px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: var(--muted-foreground) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+}
