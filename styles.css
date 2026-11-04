@@ -5840,3 +5840,45 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
     border-bottom: 0 !important;
   }
 }
+
+/* Lucide icons for Financial sidebar subsections (CSS-only). */
+/* Use the existing 16x16 placeholder spans from extension 1.3.0.
+   CSS masks draw the actual vector shapes and inherit the anchor's text
+   color (regular / hover / selected). No local extension update needed. */
+@media (min-width: 1024px) {
+  html body aside.bg-sidebar nav li.core-financial-menu-item
+    .core-financial-subnav > .core-financial-subitem > .core-financial-icon-slot {
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px !important;
+    background: currentColor !important;
+    -webkit-mask-size: 100% 100% !important;
+    mask-size: 100% 100% !important;
+    -webkit-mask-position: center !important;
+    mask-position: center !important;
+    -webkit-mask-repeat: no-repeat !important;
+    mask-repeat: no-repeat !important;
+  }
+
+  /* Requests / FileText — official Lucide SVG path, 24px viewBox scaled to 16px. */
+  html body aside.bg-sidebar nav li.core-financial-menu-item
+    .core-financial-subnav > .core-financial-subitem:nth-child(1) > .core-financial-icon-slot {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cpath%20d%3D%22M6%2022a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2h8a2.4%202.4%200%200%201%201.704.706l3.588%203.588A2.4%202.4%200%200%201%2020%208v12a2%202%200%200%201-2%202z%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M14%202v5a1%201%200%200%200%201%201h5%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M10%209H8%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M16%2013H8%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M16%2017H8%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cpath%20d%3D%22M6%2022a2%202%200%200%201-2-2V4a2%202%200%200%201%202-2h8a2.4%202.4%200%200%201%201.704.706l3.588%203.588A2.4%202.4%200%200%201%2020%208v12a2%202%200%200%201-2%202z%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M14%202v5a1%201%200%200%200%201%201h5%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M10%209H8%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M16%2013H8%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M16%2017H8%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+  }
+
+  /* Cost centers / ChartPie — official Lucide SVG path, 24px viewBox scaled to 16px. */
+  html body aside.bg-sidebar nav li.core-financial-menu-item
+    .core-financial-subnav > .core-financial-subitem:nth-child(2) > .core-financial-icon-slot {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cpath%20d%3D%22M21%2012c.552%200%201.005-.449.95-.998a10%2010%200%200%200-8.953-8.951c-.55-.055-.998.398-.998.95v8a1%201%200%200%200%201%201z%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M21.21%2015.89A10%2010%200%201%201%208%202.83%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cpath%20d%3D%22M21%2012c.552%200%201.005-.449.95-.998a10%2010%200%200%200-8.953-8.951c-.55-.055-.998.398-.998.95v8a1%201%200%200%200%201%201z%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M21.21%2015.89A10%2010%200%201%201%208%202.83%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+  }
+
+  /* ERP / Database — official Lucide SVG path, 24px viewBox scaled to 16px. */
+  html body aside.bg-sidebar nav li.core-financial-menu-item
+    .core-financial-subnav > .core-financial-subitem:nth-child(3) > .core-financial-icon-slot {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cellipse%20cx%3D%2212%22%20cy%3D%225%22%20rx%3D%229%22%20ry%3D%223%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%205V19A9%203%200%200%200%2021%2019V5%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%2012A9%203%200%200%200%2021%2012%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+    mask-image: url("data:image/svg+xml,%3Csvg%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20width%3D%2224%22%0A%20%20height%3D%2224%22%0A%20%20viewBox%3D%220%200%2024%2024%22%0A%20%20fill%3D%22none%22%0A%20%20stroke%3D%22currentColor%22%0A%20%20stroke-width%3D%222%22%0A%20%20stroke-linecap%3D%22round%22%0A%20%20stroke-linejoin%3D%22round%22%0A%3E%0A%20%20%3Cellipse%20cx%3D%2212%22%20cy%3D%225%22%20rx%3D%229%22%20ry%3D%223%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%205V19A9%203%200%200%200%2021%2019V5%22%20%2F%3E%0A%20%20%3Cpath%20d%3D%22M3%2012A9%203%200%200%200%2021%2012%22%20%2F%3E%0A%3C%2Fsvg%3E") !important;
+  }
+}
