@@ -5805,10 +5805,15 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   html.dark[data-theme="asana"]
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
     > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
-    background-color: transparent !important;
+    box-sizing: border-box !important;
+    width: calc(100% + 24px) !important;
+    margin: 0 -12px !important;
+    padding: 8px 12px !important;
+    background-color: #1d1f21 !important;
     background-image: none !important;
     border-top: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
     border-bottom: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
+    border-radius: 8px !important;
   }
 
   /* Both top analytics cards: exactly the same dark fill as the OKR table;
