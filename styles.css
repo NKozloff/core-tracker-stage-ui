@@ -5787,64 +5787,30 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
   }
 }
 
-/* Dashboard OKR: detached heading and unfilled descriptor row (2026-11-04). */
-/* Keep the existing 24px column insets and 44px data rows.  Only the
-   table surface is dark; the OKR toolbar now sits separately above it. */
+/* Dashboard OKR: restore heading inside the dark table frame.
+   Descriptors use the same surface, with matching 1px rules above and below.
+   Keep existing 24px column insets, 44px rows, and live OKR interactions. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"]
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
     > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    box-sizing: border-box !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    background-color: #161719 !important;
   }
 
-  /* Independent title/quarter/progress toolbar, 16px above the table. */
-  html.dark[data-theme="asana"]
-    main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
-    > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > header {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    margin: 0 0 16px !important;
-    padding: 0 24px !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-
-  /* Column descriptors have no contrasting strip: same base as the rows,
-     with a single bottom divider matching the OKR row separators. */
   html.dark[data-theme="asana"]
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
     > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(3) {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    min-height: 40px !important;
-    margin: 0 !important;
-    padding: 8px 24px !important;
-    background: #161719 !important;
-    border: 0 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border-top: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
     border-bottom: 1px solid color-mix(in srgb, var(--foreground) 6%, transparent) !important;
-    border-radius: 16px 16px 0 0 !important;
-    box-shadow: none !important;
   }
 
-  /* The objective rows form the remainder of the same dark table surface. */
+  /* Both top analytics cards: exactly the same dark fill as the OKR table;
+     their metric pills and diagrams retain their own existing styling. */
   html.dark[data-theme="asana"]
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
-    > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]) > div:nth-child(4) {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 0 16px !important;
+    > .grid.lg\\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) {
     background-color: #161719 !important;
-    border: 0 !important;
-    border-radius: 0 0 16px 16px !important;
-    box-shadow: none !important;
   }
 }
