@@ -5810,7 +5810,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> div.flex.gap-1.border-b > a[href="
      their metric pills and diagrams retain their own existing styling. */
   html.dark[data-theme="asana"]
     main:has(h1[data-testid="dashboard-heading"]) .mobile-nav-fab-pb
-    > .grid.lg\\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) {
+    > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary:is(:nth-child(1), :nth-child(2)) {
     background-color: #161719 !important;
   }
 }
