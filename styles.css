@@ -2623,6 +2623,15 @@ main:has(h1[data-testid="dashboard-heading"])
 main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"] > button[role="tab"][aria-selected="true"] {
   background-color: var(--dash-kpi-highlight-surface) !important;
 }
+/* Dashboard period: match OKR surface; only selected tab keeps its fill. */
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"] {
+  background-color: #161719 !important;
+}
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"] > button[role="tab"]:not([aria-selected="true"]) {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
 
 /* Analytics pills use a softer tint; the selected Today tab keeps +4%. */
 main:has(h1[data-testid="dashboard-heading"])
