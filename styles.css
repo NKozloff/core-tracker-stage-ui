@@ -4310,13 +4310,13 @@ html.dark[data-theme="asana"] body:has(aside.bg-sidebar nav a[href="/financial-a
   display: none !important;
 }
 
-/* Financial Approvals / Requests: descriptor band matches the Total row.
-   Only the header background changes; labels and sort icons retain their styles. */
+/* Financial Approvals / Requests: transparent descriptor band with bottom divider.
+   Restore the pre-change header surface; leave labels and sorting icons untouched. */
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"],
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"])
   table[data-slot="table"] thead[data-slot="table-header"] > tr {
-  background: #121315 !important;
+  background: transparent !important;
   background-image: none !important;
   border-radius: 0 !important;
   clip-path: none !important;
@@ -4390,7 +4390,7 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   border-top: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  background: #121315 !important;
+  background: #101113 !important;
   overflow: visible !important;
   anchor-name: --core-approvals-summary-row;
 }
@@ -5217,10 +5217,9 @@ body:has(aside.bg-sidebar nav a[href="/financial-approvals"].bg-sidebar-accent)
     margin-left: auto !important;
   }
 }
-/* Descriptor strip has no bottom divider; normal request-row separators remain. */
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr,
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] {
-  border-bottom: 0 !important;
+/* Restore the subtle divider below the descriptor row. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr {
+  border-bottom: 1px solid #232426 !important;
   box-shadow: none !important;
 }
 
