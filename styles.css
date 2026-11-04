@@ -6096,3 +6096,43 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     color: #e8e8e8 !important;
   }
 }
+
+
+/* 91. Notes: selected Access matches Requests blue chips; All softer.
+   Reference screenshot sampled: chip fill #252a31 and text/icons #91b4f3.
+   Decrease only the selected All background from #38393a to #343537;
+   do not alter note-card selection, tags or Folder styling. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-rail-body > button:first-of-type[aria-current="page"] {
+    background-color: #343537 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(3) {
+    background-color: #252a31 !important;
+    color: #91b4f3 !important;
+  }
+
+  /* Match the reference blue in the existing icon and all text
+     descendants; green project/status dots retain background colors. */
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(3)
+    :is(svg, span, p, small, strong, div) {
+    color: #91b4f3 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.flex.flex-col.gap-2:has(> div.flex.flex-wrap.items-center)
+    > div.flex.flex-wrap.items-center > button:nth-of-type(3) svg {
+    stroke: currentColor !important;
+  }
+}
