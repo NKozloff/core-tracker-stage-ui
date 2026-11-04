@@ -6136,3 +6136,30 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     stroke: currentColor !important;
   }
 }
+
+
+/* 92. Notes selected Pin-off: same blue tokens as selected Access.
+   Exact parity with the approved Access selection (#252a31 / #91b4f3).
+   Only the pinned-state button is affected; preserve icon size,
+   button geometry, disabled/neutral Pin and the More action. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off),
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off):hover {
+    background-color: #252a31 !important;
+    color: #91b4f3 !important;
+  }
+
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    span.flex.h-8.shrink-0.items-center > button:has(svg.lucide-pin-off) svg.lucide-pin-off {
+    color: #91b4f3 !important;
+    stroke: currentColor !important;
+  }
+}
