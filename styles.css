@@ -5921,22 +5921,14 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr {
   position: relative !important;
   height: 44px !important; /* 8px top inset + existing 36px header */
-  background: transparent !important;
+  /* Apply background directly to the native row. A tr::before pseudo-element
+     becomes an anonymous table cell and shifts every header one column. */
+  background: #1d1f21 !important;
+  background-image: none !important;
+  clip-path: inset(8px 8px 0 round 8px) !important;
   border: 0 !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
-}
-main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] > tr::before {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  inset: 8px 8px 0 !important;
-  background: #1d1f21 !important;
-  border-radius: 8px !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
 }
 main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] thead[data-slot="table-header"] th[data-slot="table-head"] {
   position: relative !important;
