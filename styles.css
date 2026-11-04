@@ -6163,3 +6163,16 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     stroke: currentColor !important;
   }
 }
+
+
+/* 93. Notes All: match the active segmented tab surface.
+   Reuse the already-approved Requests active-tab fill #303234,
+   replacing the slightly brighter #343537 from rule 91.
+   Scope to active All only; retain its white title, muted counter,
+   padding, icon sizing and rounded geometry. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-rail-body > button:first-of-type[aria-current="page"] {
+    background-color: #303234 !important;
+  }
+}
