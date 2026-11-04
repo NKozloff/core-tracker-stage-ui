@@ -1649,7 +1649,7 @@ main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search no
     padding: 7px !important;
     border: 0 !important;
     border-radius: 8px !important;
-    background-color: #252130 !important;
+    background-color: #30283e !important;
     color: #c2b4fd !important;
     stroke: currentColor !important;
   }
