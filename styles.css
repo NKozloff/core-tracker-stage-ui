@@ -5941,3 +5941,38 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+
+/* Financial Approvals / All: inset row content and separators. */
+/* 8px inset outside each request row; 12px inside = 20px total.
+   No pseudo-elements on table rows, so columns do not shift. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr {
+  clip-path: inset(0 8px 0 8px) !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr > td[data-slot="table-cell"] {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr > td[data-slot="table-cell"]:first-child {
+  padding-left: 20px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr > td[data-slot="table-cell"]:last-child {
+  padding-right: 20px !important;
+}
+/* A continuous 1px divider, inset 20px at both ends. */
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr:not(:last-child) > td[data-slot="table-cell"] {
+  background-image: linear-gradient(#232426, #232426) !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  background-size: 100% 1px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr:not(:last-child) > td[data-slot="table-cell"]:first-child {
+  background-position: right bottom !important;
+  background-size: calc(100% - 20px) 1px !important;
+}
+main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="page"]) table[data-slot="table"] tbody[data-slot="table-body"] > tr:not(:last-child) > td[data-slot="table-cell"]:last-child {
+  background-position: left bottom !important;
+  background-size: calc(100% - 20px) 1px !important;
+}
