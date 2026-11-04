@@ -6191,3 +6191,17 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     padding-top: 16px !important;
   }
 }
+
+
+/* 95. Notes list: remove metadata third row from every note card.
+   Target the existing direct metadata row (tags, team/project, folders,
+   attachment icons and other indicators) in every Notes list filter.
+   display:none removes the flex item and its gap, naturally shrinking
+   the card while preserving the title and description. Metadata remains
+   available in the open editor; data and click behavior are untouched. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    #notes-list-column section > [role="button"] > div.flex.items-center.gap-1\.5 {
+    display: none !important;
+  }
+}
