@@ -2632,6 +2632,10 @@ html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) [dat
   background-image: none !important;
   box-shadow: none !important;
 }
+/* Dashboard active period: restrained graphite contrast against #161719. */
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) [data-testid="dashboard-period-control"] > button[role="tab"][aria-selected="true"] {
+  background-color: #323436 !important;
+}
 
 /* Analytics pills use a softer tint; the selected Today tab keeps +4%. */
 main:has(h1[data-testid="dashboard-heading"])
