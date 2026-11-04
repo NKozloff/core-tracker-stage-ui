@@ -6176,3 +6176,18 @@ main:has(div.flex.gap-1.border-b > a[href="/financial-approvals"][aria-current="
     background-color: #303234 !important;
   }
 }
+
+
+/* 94. Notes editor: 16px content inset below formatting divider.
+   The toolbar remains 8px from the frame top and 8px above the
+   full-width separator (rule 84). Increase only the editable body's
+   top inset from 8px to 16px; leave left/right/bottom, scrolling,
+   formatting controls and divider position unchanged. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] body:has(#notes-rail-body)
+    main div.flex.h-full.flex-col.gap-4.p-4:has(> header input[aria-label="Search notes"])
+    > header + div > div.flex.min-h-0.min-w-0.flex-1.flex-col:has([data-note-panel])
+    div.relative.z-20.flex.min-h-56.flex-1.flex-col .note-source {
+    padding-top: 16px !important;
+  }
+}
