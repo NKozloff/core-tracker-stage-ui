@@ -6484,3 +6484,9 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   font-weight: 400 !important;
   line-height: 20px !important;
 }
+
+/* 103. OKR quarter selector matches Wrap up button corner radius. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
+  border-radius: min(var(--radius-md, 10px), 12px) !important;
+}
