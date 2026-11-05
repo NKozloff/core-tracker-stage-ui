@@ -6490,3 +6490,56 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
   border-radius: min(var(--radius-md, 10px), 12px) !important;
 }
+
+
+/* 104. OKR summary-card spacing and typography — content-driven. */
+/*
+  The three KPI cards are the direct children of the 3-column OKR grid.
+  Each already contains the graph injected by content.js; use that marker
+  to avoid touching other 3-column layouts in the application.
+  No fixed card or row heights — sizing follows content.
+*/
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph) {
+  box-sizing: border-box !important;
+  padding: 16px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  row-gap: 0 !important;
+}
+
+/* Descriptor -> large value: 12px, large value uses Medium (500). */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph)
+  :is(.text-2xl, .text-3xl, .text-4xl) {
+  margin-top: 12px !important;
+  margin-bottom: 0 !important;
+  font-weight: 500 !important;
+}
+
+/* Large number -> graph: 12px; graph -> legend: 8px.
+   The graph's original JS styles set margins of 12px and 10px. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .core-okr-summary-graph {
+  margin-top: 12px !important;
+  margin-bottom: 8px !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Preserve colored legend dots/rings; change only text below the bars. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .core-okr-summary-graph + :is(div, p, span),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is(.core-okr-legend, .core-okr-inline-ring-wrap),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is(.core-okr-legend-item, .core-okr-inline-ring-wrap) > span:not(.core-okr-legend-dot):not(.core-okr-inline-ring) {
+  color: #f5f5f5 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
