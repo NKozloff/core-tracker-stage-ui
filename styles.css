@@ -6453,3 +6453,34 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   padding-left: 12px !important;
   padding-right: 12px !important;
 }
+
+
+/* 102. OKR summary cards — sidebar surface, no stroke, 14px descriptions. */
+/* The sidebar's actual surface is already overridden above using
+   color-mix(in oklab, var(--background) 88%, black); reuse that exact
+   expression rather than hardcoding an approximate screenshot color.
+   Scope to OKR's three-card analytics grid containing large KPIs. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(:is(.text-2xl, .text-3xl, .text-4xl)) {
+  background-color: color-mix(in oklab, var(--background) 88%, black) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Secondary text directly below the prominent KPI value: 14px Regular.
+   Leave uppercase descriptors and large numbers unchanged. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(:is(.text-2xl, .text-3xl, .text-4xl))
+  :is(.text-2xl, .text-3xl, .text-4xl) + :is(div, p, span),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(:is(.text-2xl, .text-3xl, .text-4xl))
+  :is(.text-2xl, .text-3xl, .text-4xl) ~ :is(.text-muted-foreground, .text-tertiary-foreground):last-child {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
