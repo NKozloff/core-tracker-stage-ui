@@ -6543,3 +6543,52 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   font-weight: 400 !important;
   line-height: 20px !important;
 }
+
+
+/* 105. OKR header: reference-blue Running and 32px controls (2026-11-05). */
+/* Sampled from the supplied Visibility: Mine screenshot:
+   background rgb(37,42,49) = #252A31;
+   label rgb(145,180,243) = #91B4F3.
+   Applied only to the OKR page header, not table statuses. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is(header, div):has(> h1) :is([data-slot="badge"], [data-state="running"]),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header :is([data-slot="badge"], [data-state="running"]) {
+  box-sizing: border-box !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  padding: 0 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #252a31 !important;
+  background-image: none !important;
+  color: #91b4f3 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  text-transform: capitalize !important;
+}
+
+/* Both header actions are now 32px, preserving their own styling. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button[data-core-okr-new-objective],
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-flag, .lucide-flag-triangle-right)) {
+  box-sizing: border-box !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+
+/* Period picker next to OKR title, also 32px. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
+  box-sizing: border-box !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
