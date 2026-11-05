@@ -7003,3 +7003,101 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   height: 16px !important;
   margin: 0 !important;
 }
+
+
+/* 112. OKR viewport-fit table, centered descriptors and borderless statuses. */
+/* Desktop OKR is a single-screen workspace. The header and KPI cards stay
+   in place, while the Objectives card itself becomes the scroll viewport.
+   The installed content.js already sets --core-okr-fill-height using the
+   actual distance from the card's top to the bottom of the viewport. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective]) {
+    min-height: 0 !important;
+    max-height: 100dvh !important;
+    overflow-y: hidden !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-table-host],
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-wrapper] {
+    min-height: 0 !important;
+    max-height: 100% !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] {
+    box-sizing: border-box !important;
+    height: var(--core-okr-fill-height, auto) !important;
+    min-height: 0 !important;
+    max-height: var(--core-okr-fill-height, 100%) !important;
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    overscroll-behavior-y: contain !important;
+    scrollbar-gutter: stable !important;
+  }
+
+  /* Keep the descriptors in view as only the table rows move. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] {
+    position: sticky !important;
+    top: 8px !important;
+    z-index: 5 !important;
+    box-sizing: border-box !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: center !important;
+    align-content: center !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] > * {
+    align-self: center !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    min-height: 100% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Status badges sit against the table's right inset. The header stays
+     left-aligned inside the same last column, not centered over each badge.
+     Native status cells are physical child #5 (visually grid column #7). */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(5) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    justify-self: stretch !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+    min-width: 0 !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-descriptors] [data-core-okr-status-header] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    justify-self: stretch !important;
+    text-align: left !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+  }
+
+  /* Remove the outline from ALL status badges in this table. Do not alter
+     confidence text/fill colors or buttons elsewhere in the application. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(5)
+    :is([data-slot="badge"], [class*="rounded"], [class*="border"]) {
+    border: 0 !important;
+    border-width: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+}
