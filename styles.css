@@ -6967,3 +6967,39 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   line-height: 20px !important;
   white-space: nowrap !important;
 }
+
+
+/* 111. OKR header selector gap, compact circular progress layout. */
+/* Existing heading group has 8px column-gap between h1 and Q4 selector.
+   Add an 8px margin only to this selector => 16px total separation.
+   The icon/title gap inside the h1 remains 8px. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is(header, div):has(> h1)
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
+  margin-left: 8px !important;
+}
+
+/* The script now identifies the native Progress cell and its native bar.
+   Keep the original percent, conceal only the verified bar, and place a
+   16px blue/gray ring before the number. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-progress-compact] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-progress-compact]
+  [data-core-okr-native-bar] {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-progress-compact]
+  > .core-okr-progress-ring {
+  flex: 0 0 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
