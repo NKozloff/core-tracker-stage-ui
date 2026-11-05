@@ -6667,3 +6667,101 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   border: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* 108. OKR Objectives takes remaining viewport; latest events become table columns. */
+/* These hooks are set by the updated content.js only after the native table
+   successfully receives the two additional columns. The original right feed
+   remains visible until that point, preventing the loss of event history. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-table-host] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-wrapper] {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: var(--core-okr-fill-height, auto) !important;
+    box-sizing: border-box !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-updates-wrapper] {
+    display: none !important;
+  }
+
+  /* Add Activity and Date before native Confidence — the status is last. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-table-row="grid"] {
+    display: grid !important;
+    grid-template-columns:
+      minmax(200px, 2.5fr)
+      minmax(120px, 1.1fr)
+      minmax(110px, 0.9fr)
+      minmax(175px, 1.35fr)
+      minmax(95px, 0.8fr)
+      minmax(100px, 0.8fr) !important;
+    gap: 0 !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] table:has([data-core-okr-column]) {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-column] {
+    min-width: 0 !important;
+    padding-inline: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-table-row="grid"] > :first-child {
+    min-width: 0 !important;
+  }
+
+  /* The original live feed is retained in the DOM. When Stage does not
+     expose a parent relation for a collapsed KR, do not fake a link:
+     expose unmatched updates from this small section within the table. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    .core-okr-remaining-updates {
+    margin-top: 16px;
+    color: var(--muted-foreground);
+    font-size: 14px;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    .core-okr-remaining-update {
+    padding-top: 8px;
+  }
+}
