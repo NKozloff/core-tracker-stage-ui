@@ -6427,3 +6427,18 @@ html.dark[data-theme="asana"] button[data-core-okr-new-objective] > span {
   line-height: 20px !important;
   font-weight: 400 !important;
 }
+
+
+/* 100. OKR header actions: both buttons 32px high. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button[data-core-okr-new-objective] {
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-flag, .lucide-flag-triangle-right)) {
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+}
