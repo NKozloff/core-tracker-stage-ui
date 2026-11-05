@@ -6654,3 +6654,16 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   margin: 0 !important;
   z-index: 2 !important;
 }
+
+
+/* 107. OKR KPI card surfaces match the secondary Wrap up button. */
+/* Same #27292b as the header's secondary "Wrap up the period" button.
+   Overrides earlier sidebar-surface rules only for the three KPI cards. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph) {
+  background-color: #27292b !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
