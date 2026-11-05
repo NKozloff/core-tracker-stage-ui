@@ -6592,3 +6592,65 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   min-height: 32px !important;
   max-height: 32px !important;
 }
+
+
+/* 106. OKR KPI cards: single 16px inset, neutral track and corner Info. */
+/* The extension graph is inside the native card's own padded content.
+   Our previous 16px outer-card padding stacked with that native inset.
+   Keep exactly one 16px inset at card level and clear padded content
+   wrappers rather than moving/offsetting individual text and charts. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph) {
+  position: relative !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+/* The Stage card uses nested padding utilities for its content wrapper.
+   Suppress only those wrappers in the three KPI cards. Do not reset the
+   .core-okr-summary-graph or its internal spans. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph)
+  > :is([data-slot="card-header"], [data-slot="card-content"], .p-4, .p-5, .p-6, .px-4, .px-5, .px-6),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph)
+  > div > :is([data-slot="card-header"], [data-slot="card-content"], .p-4, .p-5, .p-6, .px-4, .px-5, .px-6) {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Gray remainder of the first graph = full OKR section background. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .core-okr-summary-graph[data-kind="period"] .core-okr-summary-track {
+  background-color: #1d1f21 !important;
+  background-image: none !important;
+}
+
+/* The existing Info trigger remains clickable; pin its hit area itself
+   to the upper-right corner of the period card (not merely its SVG). */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph[data-kind="period"])
+  :is(button, [role="button"], [data-slot="tooltip-trigger"]):has(> svg.lucide-info) {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
+
+/* Some Stage builds use a non-button tooltip wrapper with the icon directly
+   inside. Position it only in that case. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> :nth-child(3):last-child)
+  > :is(div, section, article):has(.core-okr-summary-graph[data-kind="period"])
+  :is(span, div):has(> svg.lucide-info):not(:has(> button)) {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  margin: 0 !important;
+  z-index: 2 !important;
+}
