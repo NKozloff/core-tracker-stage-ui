@@ -6852,3 +6852,118 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-table-row="grid"][data-core-okr-table-cols="6"] > :nth-child(6) { grid-column: 6 !important; }
 }
+
+
+/* 110. OKR table visual cleanup: sidebar fill, inset descriptors, donuts. */
+/* Scope to the native Objectives table after its successful merger.
+   Keep JS-inserted columns, expand/collapse and source data intact. */
+
+/* 1–3: one full-size surface, no frame stroke, exact sidebar background. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] {
+  background-color: color-mix(in oklab, var(--background) 88%, black) !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Hide the native Objectives of the period / 7 heading row and its divider.
+   Do not hide the column descriptor header or table body. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-titlebar],
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-title-divider] {
+  display: none !important;
+}
+
+/* 4: 8px top and horizontal inset for the visible descriptor strip.
+   The row retains its 100% grid tracks to align labels with the body.
+   A background layer (rather than shrinking the grid width) supplies
+   the inset surface and 8px radius. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors] {
+  position: relative !important;
+  margin-top: 8px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  isolation: isolate !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors]::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 8px !important;
+  background-color: #1d1f21 !important;
+  border-radius: 8px !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors] > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 6: native horizontal progress bars are hidden only when the script
+   successfully inserts a matching percent ring in that same cell. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-native-bar] {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-progress-compact] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] .core-okr-progress-ring {
+  display: inline-block !important;
+  flex: 0 0 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  background: conic-gradient(
+    from -90deg,
+    #3b82f6 0 var(--core-okr-ring-progress, 0%),
+    #393d42 var(--core-okr-ring-progress, 0%) 100%
+  ) !important;
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #000 calc(100% - 2.5px)
+  ) !important;
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #000 calc(100% - 2.5px)
+  ) !important;
+}
+
+/* 7: keep the numeric count by the chevron; remove duplicated
+   "N key result(s)" subtitles below each Objective title. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-kr-verbose] {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-kr-arrow] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-kr-count] {
+  color: var(--muted-foreground, #aaa) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+}
