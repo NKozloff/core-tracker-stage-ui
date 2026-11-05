@@ -6374,3 +6374,56 @@ aside.bg-sidebar nav > ul a:has(> svg:is(.lucide-brain, .lucide-brain-circuit, .
     display: none !important;
   }
 }
+
+
+/* 99. OKR period selector + New objective button sizing (2026-11-05). */
+/* The first attempt anchored the period selector to a direct h1 child.
+   On Stage the selector is nested more deeply. Anchor instead to the
+   unique, working OKR New objective button injected by the extension. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
+  background-color: #303234 !important; /* Notes > All active tab */
+  background-image: none !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range))
+  svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range) {
+  color: #fff !important;
+  stroke: #fff !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range))
+  svg:is(.lucide-chevron-down, .lucide-chevrons-up-down) {
+  color: #9e9e9e !important;
+  stroke: #9e9e9e !important;
+}
+
+/* The button is created by the extension, not by the Stage app. */
+html.dark[data-theme="asana"] button[data-core-okr-new-objective] {
+  box-sizing: border-box !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  max-height: 36px !important;
+  padding: 0 12px !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+  gap: 8px !important;
+  border: 0 !important;
+}
+html.dark[data-theme="asana"] button[data-core-okr-new-objective] > svg {
+  box-sizing: border-box !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  flex: 0 0 16px !important;
+}
+html.dark[data-theme="asana"] button[data-core-okr-new-objective] > span {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 400 !important;
+}
