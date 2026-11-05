@@ -6369,7 +6369,8 @@ aside.bg-sidebar nav > ul a:has(> svg:is(.lucide-brain, .lucide-brain-circuit, .
   /* Keep the old ellipsis action in the DOM, hidden from layout. */
   html.dark[data-theme="asana"] body:has(
     aside.bg-sidebar nav a[href="/okr"].bg-sidebar-accent
-  ) main :is(header, div):has(> h1) button:has(svg.lucide-ellipsis) {
+  ) main :is(header, div):has(> h1):has(button[data-core-okr-new-objective])
+    button:has(svg.lucide-ellipsis) {
     display: none !important;
   }
 }
