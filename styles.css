@@ -8096,3 +8096,112 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     gap: 8px !important;
   }
 }
+
+
+/* 126. OKR: all three KPI cards use two rows and content-sized donut rings. */
+/* v11 content.js renders the Objective and Key Result distributions as
+   multi-color SVG donuts, matching the two-row Period Progress card.
+   The native 3-column grid defines ONE row height from its tallest card.
+   No hardcoded card height or invented values. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    .grid:has(> [data-core-okr-period-layout="compact"])
+         :has(> [data-core-okr-kpi-layout="compact"]) {
+    align-items: stretch !important;
+    grid-auto-rows: auto !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    .grid:has(> [data-core-okr-period-layout="compact"])
+         :has(> [data-core-okr-kpi-layout="compact"])
+    > :is(div,section,article):is(
+      [data-core-okr-period-layout="compact"],
+      [data-core-okr-kpi-layout="compact"]
+    ) {
+    box-sizing: border-box !important;
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* Identical 16px padding on all three compact two-row KPI cards.
+     The live ring width is calculated by the script from text height. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    .grid:has(> :nth-child(3):last-child)
+    > :is(div,section,article)[data-core-okr-kpi-layout="compact"] {
+    display: block !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    padding: 16px 16px 16px 88px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  /* The segmented ring replaces the existing thin progress bar. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    .core-okr-summary-graph:is([data-kind="objectives"],[data-kind="key-results"]) {
+    position: absolute !important;
+    display: flex !important;
+    clear: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    .core-okr-summary-graph svg[data-core-okr-categories-svg] {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Descriptor + second row: number on the left, dot legend on the right. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    :is(.text-2xl,.text-3xl,.text-4xl) {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    :is(div,p,span):has(> .core-okr-legend) {
+    position: absolute !important;
+    right: 16px !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: max-content !important;
+    max-width: calc(100% - 176px) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    white-space: nowrap !important;
+    line-height: 20px !important;
+    z-index: 1 !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    .core-okr-legend {
+    display: inline-flex !important;
+    flex-flow: row nowrap !important;
+    gap: 6px !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+
+  /* The title stays in the first row and does not inherit a bar spacer. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"]
+    :is(.core-okr-summary-track,.core-okr-summary-segments) {
+    display: none !important;
+  }
+}
