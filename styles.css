@@ -7521,3 +7521,46 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     font-variant-numeric: tabular-nums !important;
   }
 }
+
+
+/* 118. OKR table value typography: Status regular 14px, Date matches descriptors. */
+/* Native Objectives grid physical cells: #5 Confidence/Status, #7 Updated/Date.
+   CSS reorders these visually to the last and second-last columns. Apply
+   only to data rows, so KPIs and the header period status are unaffected. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card]
+  [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(5),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card]
+  [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(5) * {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+/* Make the descriptor text and native date values use precisely the same
+   token, including date spans with their own text-muted utility class. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors],
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors] > *,
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card]
+  [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(7),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card]
+  [data-core-okr-table-row="grid"]:not([data-core-okr-header-row]) > :nth-child(7) * {
+  color: var(--muted-foreground, #a3a3a3) !important;
+}
+
+/* Exact native wrap-up control marker supplied by the content script.
+   Its 32px height no longer depends on an SVG icon class, which proved
+   unstable between Stage versions. Inline !important is the final guard. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  button[data-core-okr-wrap-action] {
+  box-sizing: border-box !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  padding-block: 0 !important;
+}
