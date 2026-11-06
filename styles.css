@@ -7236,3 +7236,45 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     white-space: nowrap !important;
   }
 }
+
+
+/* 114. Fix Wrap up period height using its shared action group, not icon class. */
+/* The content script places New objective in the SAME action container as
+   the original Wrap up period button. Earlier .lucide-flag selectors did
+   not match the Stage button's icon and the 36px native height survived.
+   Target the actual shared parent of the appended action instead. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    :is(div,header):has(> button[data-core-okr-new-objective])
+    > button:not([data-core-okr-new-objective]):not(:has(svg.lucide-ellipsis)):not(:has(svg.lucide-more-horizontal)) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Also cover Stage builds that wrap the native action one level deeper
+     within the same appended-button parent. Calendar selectors are excluded. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    :is(div,header):has(> button[data-core-okr-new-objective])
+    button:not([data-core-okr-new-objective]):not(:has(svg.lucide-ellipsis)):not(:has(svg.lucide-more-horizontal)):not(:has(svg.lucide-calendar-days)):not(:has(svg.lucide-calendar)) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    button[data-core-okr-new-objective],
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    button:has(svg:is(.lucide-calendar-days, .lucide-calendar, .lucide-calendar-range)) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+  }
+}
