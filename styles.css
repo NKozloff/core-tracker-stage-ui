@@ -7365,3 +7365,88 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     }
   }
 }
+
+
+/* 116. OKR hierarchy controls: compact independent tree column. */
+/* Native grid already has separate tracks for [arrow + KR count] and the
+   Objective title. The button itself inherited a broad row-width/focus
+   surface and visually covered part of the title track. Constrain the
+   native control to content width, without changing its handlers. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]:not([data-core-okr-header-row])
+    > [data-core-okr-kr-arrow] {
+    grid-column: 1 !important;
+    box-sizing: border-box !important;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: 72px !important;
+    align-self: center !important;
+    justify-self: start !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
+    padding: 4px 8px !important;
+    margin: 0 !important;
+    background: #1d1f21 !important; /* Entire OKR section surface */
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* An inner native button may be the focused control instead of the cell. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-kr-arrow]
+    :is(button,[role="button"]) {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: #1d1f21 !important;
+  }
+
+  /* Titles always occupy the separate second grid track, independent of
+     single-digit or double-digit KR counts and button focus styling. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > :nth-child(2) {
+    grid-column: 2 !important;
+    min-width: 0 !important;
+    padding-left: 8px !important;
+  }
+
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow]:is(button,[aria-expanded="true"],[data-state="open"]) svg,
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] :is(button,[aria-expanded="true"],[data-state="open"])[aria-expanded="true"] svg,
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow]:has(svg.lucide-chevron-down) svg.lucide-chevron-down {
+    color: #fff !important;
+    stroke: #fff !important;
+  }
+
+  /* Additional expanded state for Stage versions where the indicator is
+     an inner button under the first physical cell. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] button[aria-expanded="true"] svg,
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] [data-state="open"] svg {
+    color: #fff !important;
+    stroke: #fff !important;
+  }
+}
