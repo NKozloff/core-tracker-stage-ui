@@ -8203,3 +8203,51 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     display: none !important;
   }
 }
+
+
+/* 127. OKR KPI v12 — compact figures, clean legends, muted days and brighter rings. */
+/* These rules are intentionally scoped to the compact three-donut KPI cards.
+   The table, period controls, and earlier analytics data are untouched. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  .grid:has(> [data-core-okr-period-layout="compact"])
+  > :is(div,section,article):is(
+    [data-core-okr-period-layout="compact"],
+    [data-core-okr-kpi-layout="compact"]
+  ) :is(.text-2xl,.text-3xl,.text-4xl) {
+  margin-top: 4px !important;
+}
+
+/* Hide legacy punctuation if the browser has kept an older legend subtree. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-kpi-layout="compact"] .core-okr-legend-sep {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-kpi-layout="compact"] .core-okr-legend {
+  column-gap: 14px !important;
+}
+
+/* The elapsed percentage stays bright; only the day-count is secondary. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"]
+  .core-okr-inline-ring-wrap > .core-okr-time-days {
+  color: var(--muted-foreground, #9ca3af) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"]
+  .core-okr-inline-ring-wrap {
+  column-gap: 10px !important;
+}
+
+/* #414344 approximates 12% white over the #27292b KPI card,
+   matching the existing tiny time-elapsed ring's dark remainder. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"]
+  svg[data-core-okr-period-svg] > circle:first-child,
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-kpi-layout="compact"]
+  svg[data-core-okr-categories-svg] > circle:first-child {
+  stroke: #414344 !important;
+}
