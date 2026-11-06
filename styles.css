@@ -8287,3 +8287,15 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
 }
+
+
+/* 130. OKR Objectives and Key Results: hide gray donut backing ring. */
+/* Only category-distribution charts. Their colored arcs already total
+   100%, so gaps should expose the card surface, not the gray base track.
+   Leave the Period Progress donut and tiny elapsed-time ring unchanged. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-kpi-layout="compact"]
+  svg[data-core-okr-categories-svg] > circle:first-child {
+  display: none !important;
+  stroke: none !important;
+}
