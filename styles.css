@@ -7101,3 +7101,138 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     box-shadow: none !important;
   }
 }
+
+
+/* 113. OKR table: compact descriptor row, hierarchy column, intrinsic status width. */
+/* Keep the existing seven native cells and their original event handlers.
+   Only the presentational grid geometry and text overflow change here. */
+@media (min-width: 1024px) {
+  /* 1. Descriptor strip: 32px high. Earlier rule 112 set it to 40px. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding-block: 0 !important;
+    align-content: center !important;
+    align-items: center !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] > * {
+    min-height: 0 !important;
+    height: 32px !important;
+    max-height: 32px !important;
+    align-self: center !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2,4. First physical grid column is ONLY for tree expansion + KR count.
+     Reserve room for two-digit counts; Objective titles occupy the second
+     column and can never be pushed by a changing count. The last STATUS
+     column uses intrinsic max-content rather than a wide fractional track. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"] {
+    grid-template-columns:
+      72px
+      minmax(210px, 2.8fr)
+      minmax(145px, 1.05fr)
+      minmax(130px, 1fr)
+      minmax(165px, 1.25fr)
+      minmax(100px, .75fr)
+      max-content !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > :first-child {
+    box-sizing: border-box !important;
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    padding-left: 8px !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-count] {
+    flex: 0 0 auto !important;
+    min-width: 18px !important;
+    text-align: left !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > :nth-child(2) {
+    min-width: 0 !important;
+    padding-left: 8px !important;
+  }
+
+  /* Icon above hierarchy column. Branch, not link, communicates nesting.
+     Decorative only: header still exposes the Objective descriptor. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] > :first-child {
+    justify-content: center !important;
+    padding: 0 !important;
+    color: var(--muted-foreground, #a1a1aa) !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors] > :first-child::before {
+    content: "" !important;
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px !important;
+    background-color: currentColor !important;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='3' r='2'/%3E%3Cpath d='M6 5v12'/%3E%3Ccircle cx='6' cy='19' r='2'/%3E%3Cpath d='M6 9a6 6 0 0 0 6 6h3'/%3E%3Ccircle cx='17' cy='15' r='2'/%3E%3C/svg%3E") center / 16px 16px no-repeat !important;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6' cy='3' r='2'/%3E%3Cpath d='M6 5v12'/%3E%3Ccircle cx='6' cy='19' r='2'/%3E%3Cpath d='M6 9a6 6 0 0 0 6 6h3'/%3E%3Ccircle cx='17' cy='15' r='2'/%3E%3C/svg%3E") center / 16px 16px no-repeat !important;
+  }
+
+  /* 3. Restrict the Owner's *name*, not the avatar or whole column. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > :nth-child(3) :is(span, p, div):not(:has(> *)) {
+    display: inline-block !important;
+    max-width: 150px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    vertical-align: middle !important;
+  }
+
+  /* 2. Status badges size to the text; the status cell stays at the far edge.
+     Descriptor STATUS retains left alignment from rule 112. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > :nth-child(5) {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    justify-content: flex-end !important;
+    padding-right: 8px !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > :nth-child(5) :is([data-slot="badge"], span[class*="rounded"], div[class*="rounded"]) {
+    box-sizing: border-box !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+}
