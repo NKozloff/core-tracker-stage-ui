@@ -8470,3 +8470,48 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     transform: translateX(-22px) !important;
   }
 }
+
+
+/* 133. OKR KPI v17: single elapsed chip, 24px chips, 8px row offset. */
+/* All three compact cards: second row sits 8px under its descriptor.
+   The content script sets the same value inline to ensure the
+   measurement-based positioning of SVG/legend stays in sync. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is([data-core-okr-period-layout="compact"], [data-core-okr-kpi-layout="compact"])
+  :is(.text-2xl, .text-3xl, .text-4xl) {
+  margin-top: 8px !important;
+}
+
+/* Outlined chips only — do not resize the native statuses in the OKR
+   table, the Running pill, or the large circular visualizations. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is([data-core-okr-period-layout="compact"], [data-core-okr-kpi-layout="compact"])
+  .core-okr-kpi-chip {
+  box-sizing: border-box !important;
+  height: 24px !important;
+  min-height: 24px !important;
+  max-height: 24px !important;
+  padding: 1px 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 20px !important;
+  white-space: nowrap !important;
+}
+
+/* v17 emits a SINGLE outlined time chip:
+   "40% elapsed, 37/92 days" (the actual numbers remain dynamic).
+   Hide any old small ring left over from older loaded script markup. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"]
+  .core-okr-time-elapsed-chip .core-okr-inline-ring {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"]
+  .core-okr-time-elapsed-chip .core-okr-time-elapsed {
+  color: #f5f5f5 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
