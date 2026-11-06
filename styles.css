@@ -8527,3 +8527,45 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   line-height: 28px !important;
   font-weight: 500 !important;
 }
+
+
+/* 135. OKR: show period days inside Running badge only. */
+/* The v19 extension moves the live N-of-M days text into the existing
+   status badge. The original isolated days node remains in the DOM for
+   Stage's reactive updates, but does not consume layout space. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) [data-core-okr-days-source-hidden] {
+  display: none !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) :is([data-slot="badge"],[data-state="running"])[data-core-okr-running-with-days] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  min-width: 0 !important;
+  width: max-content !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) [data-core-okr-inline-day-value] {
+  display: inline !important;
+  color: inherit !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+/* Previous header CSS inserted a decorative dot after Running.
+   When Stage already has a separator before the release note, suppress
+   the duplicate, leaving exactly one visual separator. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) :is([data-slot="badge"],[data-state="running"])[data-core-okr-native-bullet]::after {
+  display: none !important;
+  content: none !important;
+}
