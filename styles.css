@@ -7694,3 +7694,96 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     transform: translateX(-28px) !important;
   }
 }
+
+
+/* 122. OKR disclosure: constrain native background to the 28px arrow itself. */
+/* The actual native disclosure control IS the first grid cell. The KR
+   count is injected as a child span of that same control, so clearing
+   backgrounds on presumed nested buttons did not work. Make the native
+   control itself 28x28, and visually place its count outside the square
+   without shifting the next Objective-title grid column. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] {
+    box-sizing: border-box !important;
+    position: relative !important;
+    grid-column: 1 !important;
+    justify-self: start !important;
+    align-self: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    flex: 0 0 28px !important;
+    padding: 0 !important;
+    margin: 0 0 0 8px !important;
+    overflow: visible !important;
+    background: #1d1f21 !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    gap: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* The arrow glyph keeps its normal 16px size in the 28px frame. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] > svg,
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] > :is(button,span,div):has(svg) svg {
+    box-sizing: border-box !important;
+    width: 16px !important;
+    min-width: 16px !important;
+    max-width: 16px !important;
+    height: 16px !important;
+    min-height: 16px !important;
+    max-height: 16px !important;
+    flex: 0 0 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Counter is outside the 28px frame with an 8px gap. Its background
+     is fully transparent, even if a native pill wrapper style is present. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] [data-core-okr-kr-count] {
+    position: absolute !important;
+    top: 50% !important;
+    left: 36px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    color: var(--muted-foreground, #aaa) !important;
+  }
+}
