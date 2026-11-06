@@ -7427,10 +7427,10 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
 
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-objectives-card]
-    [data-core-okr-kr-arrow]:is(button,[aria-expanded="true"],[data-state="open"]) svg,
+    [data-core-okr-kr-arrow]:is(button,[role="button"])[aria-expanded="true"] svg,
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-objectives-card]
-    [data-core-okr-kr-arrow] :is(button,[aria-expanded="true"],[data-state="open"])[aria-expanded="true"] svg,
+    [data-core-okr-kr-arrow] :is(button,[role="button"])[aria-expanded="true"] svg,
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-objectives-card]
     [data-core-okr-kr-arrow]:has(svg.lucide-chevron-down) svg.lucide-chevron-down {
