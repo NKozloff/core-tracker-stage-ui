@@ -7585,3 +7585,87 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   font-weight: 400 !important;
   line-height: 20px !important;
 }
+
+
+/* 120. OKR: 28px background belongs to the chevron SVG only. */
+/* On this Stage build the native disclosure surface can itself be the
+   first grid cell (the count span is appended inside it by content.js).
+   Rules targeting its > button therefore missed the real background.
+   Remove the pill from every surrounding wrapper and apply the 28x28
+   background directly to the actual chevron SVG. This keeps the
+   number unboxed without moving the native Svelte click handler. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    padding: 0 0 0 8px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    white-space: nowrap !important;
+  }
+
+  /* Remove fill from whichever native wrapper previously spanned both
+     the arrow and the appended number. No click targets are changed. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] :is(button,div,span):not(.core-okr-progress-ring) {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Exact 28px frame around the SVG, 16px glyph centered with 6px padding. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] svg:is(.lucide-chevron-right,.lucide-chevron-down,.lucide-chevron-left,.lucide-chevron-up),
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] > svg {
+    box-sizing: border-box !important;
+    display: block !important;
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    flex: 0 0 28px !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    border-radius: 8px !important;
+    background: #1d1f21 !important;
+    background-image: none !important;
+  }
+
+  /* Number is a plain label, eight pixels to the right of the glyph frame. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] [data-core-okr-kr-count] {
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+}
