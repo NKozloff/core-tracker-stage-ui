@@ -8105,14 +8105,12 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
    No hardcoded card height or invented values. */
 @media (min-width: 1024px) {
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-    .grid:has(> [data-core-okr-period-layout="compact"])
-         :has(> [data-core-okr-kpi-layout="compact"]) {
+    .grid:has(> [data-core-okr-period-layout="compact"]):has(> [data-core-okr-kpi-layout="compact"]) {
     align-items: stretch !important;
     grid-auto-rows: auto !important;
   }
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-    .grid:has(> [data-core-okr-period-layout="compact"])
-         :has(> [data-core-okr-kpi-layout="compact"])
+    .grid:has(> [data-core-okr-period-layout="compact"]):has(> [data-core-okr-kpi-layout="compact"])
     > :is(div,section,article):is(
       [data-core-okr-period-layout="compact"],
       [data-core-okr-kpi-layout="compact"]
