@@ -8299,3 +8299,79 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   display: none !important;
   stroke: none !important;
 }
+
+
+/* 131. OKR KPI: outlined legend chips with true 16px number-to-legend spacing. */
+/* content.js v16 positions each legend from the visible glyph bounds of
+   the large number, so the gap is exactly 16px (rather than right-aligning
+   all legends or relying on an unreliable full-width number container).
+   Center vertically on the number without touching graph geometry. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is([data-core-okr-period-layout="compact"],[data-core-okr-kpi-layout="compact"])
+  .core-okr-kpi-chip {
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 3px 8px !important;
+  min-height: 28px !important;
+  height: auto !important;
+  width: max-content !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  white-space: nowrap !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
+
+/* The legend consists of separate, subtle outline chips. There are no
+   border/fill changes to the donut arcs or category colors. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-kpi-layout="compact"] .core-okr-legend {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  column-gap: 4px !important;
+  white-space: nowrap !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"] .core-okr-inline-ring-wrap {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  column-gap: 4px !important;
+  white-space: nowrap !important;
+}
+
+/* Emphasize elapsed progress but keep the day count secondary. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"] .core-okr-time-elapsed-chip,
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"] .core-okr-time-elapsed {
+  color: #f5f5f5 !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-period-layout="compact"] .core-okr-kpi-chip.core-okr-time-days {
+  color: var(--muted-foreground,#a3a3a3) !important;
+}
+
+/* When three cards are narrow, avoid increasing label font-size or chip
+   padding beyond the available row width; the v16 script caps legend width. */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-kpi-layout="compact"] .core-okr-kpi-chip,
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-period-layout="compact"] .core-okr-kpi-chip {
+    padding-inline: 5px !important;
+  }
+}
