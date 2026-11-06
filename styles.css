@@ -8375,3 +8375,98 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     padding-inline: 5px !important;
   }
 }
+
+
+/* 132. OKR header separator and hierarchy-control refinements. */
+/* 1. Running · days · release: a separator between the badge and days.
+   Reuse the existing bullet already used between the two text labels.
+   Since the native status badge uses overflow-hidden, allow its ::after
+   to render outside without changing its 32px width/height or colors. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) [data-slot="badge"] {
+  position: relative !important;
+  overflow: visible !important;
+}
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  header:has(h1) [data-slot="badge"]::after {
+  content: "·" !important;
+  position: absolute !important;
+  display: block !important;
+  top: 50% !important;
+  right: -11px !important;
+  transform: translateY(-50%) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  color: var(--muted-foreground, #8f9399) !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+}
+
+/* 2–3. The disclosure's actual clickable frame, not the entire tree
+   column, is exactly 28x28. The numeric KR count is positioned as a
+   separate label with a 4px gap (28 + 4 = 32). Grid tracks unchanged. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"]:not([data-core-okr-header-row])
+    > [data-core-okr-kr-arrow] {
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: inline-flex !important;
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    flex: 0 0 28px !important;
+    padding: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    gap: 0 !important;
+    border-radius: 8px !important;
+  }
+  /* Some Stage versions wrap the actual arrow button inside the marked
+     first cell. Keep that inner clickable surface at the same dimensions. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] > :is(button,[role="button"]):has(svg) {
+    box-sizing: border-box !important;
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] [data-core-okr-kr-count] {
+    position: absolute !important;
+    top: 50% !important;
+    left: 32px !important;
+    right: auto !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+  }
+
+  /* 4. Move ONLY the hierarchy descriptor icon 6px to the right from
+     its previous alignment. The grid column, other descriptors and
+     Objective titles remain fixed. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-descriptors] > :first-child::before {
+    transform: translateX(-22px) !important;
+  }
+}
