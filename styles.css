@@ -8515,3 +8515,15 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   font-weight: 400 !important;
   line-height: 20px !important;
 }
+
+
+/* 134. OKR KPI: return large values to 24px. */
+/* Only the three compact analytics cards: prominent Period Progress,
+   Objectives, and Key Results figures. Chips remain 14px and 24px high. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  :is([data-core-okr-period-layout="compact"], [data-core-okr-kpi-layout="compact"])
+  :is(.text-2xl, .text-3xl, .text-4xl) {
+  font-size: 24px !important;
+  line-height: 28px !important;
+  font-weight: 500 !important;
+}
