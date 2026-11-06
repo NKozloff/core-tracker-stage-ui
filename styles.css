@@ -7450,3 +7450,74 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     stroke: #fff !important;
   }
 }
+
+
+/* 117. OKR tree toggle: background only under chevron, bare count. */
+/* The tree-count cell contains the native disclosure button plus the
+   count span injected by content.js. Remove the pill from the parent;
+   give only the disclosure button a compact square surface. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-kr-arrow] {
+    width: 72px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    height: auto !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 0 8px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Apply the section surface to the existing clickable arrow only.
+     Fixed icon hit target doesn't change with 1- or 2-digit counts. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] > :is(button,[role="button"]) {
+    width: 28px !important;
+    min-width: 28px !important;
+    max-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    flex: 0 0 28px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: #1d1f21 !important;
+    box-shadow: none !important;
+  }
+
+  /* The number is separate and has no background, border or hit target. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-kr-arrow] > [data-core-okr-kr-count] {
+    display: inline-block !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--muted-foreground, #aaa) !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+}
