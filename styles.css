@@ -7564,3 +7564,24 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   max-height: 32px !important;
   padding-block: 0 !important;
 }
+
+
+/* 119. OKR table: all columns 14px Regular. */
+/* Apply one type token to descriptor cells and row content, including
+   Objective titles, KR counts, Owner names, percentages, Activity,
+   Date and Status. No changes to row geometry, progress rings,
+   badge fills, or the three KPI cards above the table. */
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-table-row="grid"],
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-table-row="grid"]
+  :is(div,span,p,a,button,small,strong,b,th,td,time,label),
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors],
+html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+  [data-core-okr-objectives-card] [data-core-okr-descriptors]
+  :is(div,span,p,a,button,small,strong,b,th,td,time,label) {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+}
