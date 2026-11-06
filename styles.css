@@ -8252,58 +8252,32 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   stroke: #414344 !important;
 }
 
-
-/* 128. OKR KPI v13: short legends, 4px spacing and rounded arcs. */
-/* Both category cards retain the original data counts and hues. The
-   content-script renders On track / Risk / Off, without modifying the
-   native Objective confidence statuses in the table below. */
+/* 129. OKR KPI: restore v12 geometry; retain safe, display-only refinements. */
+/* Do not override legend left/right coordinates. The v13 dynamic-left
+   positioning was relative to the wrong ancestor and made labels escape
+   their cards. v14 content.js uses working v12 right anchoring. */
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   [data-core-okr-kpi-layout="compact"] .core-okr-legend {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 4px !important;
+  column-gap: 4px !important;
   flex-wrap: nowrap !important;
-  white-space: nowrap !important;
 }
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   [data-core-okr-kpi-layout="compact"] .core-okr-legend-item {
-  display: inline-flex !important;
-  align-items: center !important;
   gap: 4px !important;
-  white-space: nowrap !important;
 }
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   [data-core-okr-kpi-layout="compact"] .core-okr-legend-sep {
   display: none !important;
 }
-
-/* Earlier KPI rules right-aligned the legends at right:16px. The new
-   content.js overrides this with an inline left position calculated
-   exactly 16px beyond the measured big-number right edge. */
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-  [data-core-okr-kpi-layout="compact"]
-  :is(div,p,span):has(> .core-okr-legend),
-html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-  [data-core-okr-period-layout="compact"]
-  :is(div,p,span):has(> .core-okr-inline-ring-wrap) {
-  justify-content: flex-start !important;
-}
-
-/* Keep only the days secondary; 40% elapsed remains white. */
-html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-  [data-core-okr-period-layout="compact"]
-  .core-okr-time-elapsed {
+  [data-core-okr-period-layout="compact"] .core-okr-time-elapsed {
   color: #f5f5f5 !important;
 }
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
-  [data-core-okr-period-layout="compact"]
-  .core-okr-time-days {
+  [data-core-okr-period-layout="compact"] .core-okr-time-days {
   color: var(--muted-foreground, #a3a3a3) !important;
 }
-
-/* Rounded caps on ALL active portions of the three big KPI rings.
-   Background tracks are kept whole and retain their lighter gray. */
+/* Rounded ends of colored segments only; the background track stays whole. */
 html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   [data-core-okr-period-layout="compact"]
   svg[data-core-okr-period-svg] [data-core-okr-progress-arc],
