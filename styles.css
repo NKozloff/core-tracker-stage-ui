@@ -7787,3 +7787,100 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     color: var(--muted-foreground, #aaa) !important;
   }
 }
+
+
+/* 123. OKR: inline dates within Latest Activity; remove DATE grid track. */
+/*
+  The extension's v7 content.js keeps the native Updated/Date cells in
+  the DOM for application state, but renders their actual values inside
+  the static Latest Activity cells. These hooks appear only after a
+  successful merge: earlier extension versions stay unchanged.
+*/
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]:has(> [data-core-okr-date-hidden]) {
+    display: grid !important;
+    grid-template-columns:
+      72px
+      minmax(210px, 2.8fr)
+      minmax(145px, 1.05fr)
+      minmax(130px, 1fr)
+      minmax(300px, 2fr)
+      112px !important;
+    grid-template-rows: auto !important;
+    grid-auto-flow: row !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Physical DOM order is: hierarchy, objective, owner, progress,
+     native confidence/status, new activity, native updated/date.
+     Show columns in the requested order and remove Date as a track. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]:has(> [data-core-okr-date-hidden]) > :nth-child(5) {
+    grid-column: 6 !important;
+    grid-row: 1 !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]:has(> [data-core-okr-date-hidden]) > :nth-child(6) {
+    grid-column: 5 !important;
+    grid-row: 1 !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"]
+    > [data-core-okr-date-hidden] {
+    display: none !important;
+  }
+
+  /* Activity label, separator, date share one horizontal content row. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-activity-date] {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-activity-date] .core-okr-activity-label {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 0 1 auto !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    color: #f5f5f5 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-activity-date] .core-okr-activity-separator {
+    flex: 0 0 auto !important;
+    color: var(--muted-foreground, #a3a3a3) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+  }
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card]
+    [data-core-okr-activity-date] .core-okr-activity-date {
+    flex: 0 0 auto !important;
+    color: var(--muted-foreground, #a3a3a3) !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    white-space: nowrap !important;
+  }
+}
