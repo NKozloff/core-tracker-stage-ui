@@ -7669,3 +7669,28 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     font-weight: 400 !important;
   }
 }
+
+
+/* 121. OKR descriptor labels 12px, branch icon aligned to disclosure arrow. */
+/* 1. Only table descriptor text changes: the seven data-row values
+   remain 14px Regular. Preserve the existing 32px descriptor strip. */
+@media (min-width: 1024px) {
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors],
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors]
+    :is(div,span,p,a,button,small,strong,b,th,td,time,label) {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+  }
+
+  /* 2. The tree descriptor glyph is ~28px right of the row disclosure
+     glyph on the supplied screenshot. Shift only the visual pseudo-icon,
+     not its grid track or the Objective text/column positions. */
+  html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
+    [data-core-okr-objectives-card] [data-core-okr-descriptors]
+    > :first-child::before {
+    transform: translateX(-28px) !important;
+  }
+}
