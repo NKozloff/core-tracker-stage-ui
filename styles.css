@@ -7132,7 +7132,7 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   /* 2,4. First physical grid column is ONLY for tree expansion + KR count.
      Reserve room for two-digit counts; Objective titles occupy the second
      column and can never be pushed by a changing count. The last STATUS
-     column uses intrinsic max-content rather than a wide fractional track. */
+     column uses a stable 112px track, while its badges remain intrinsic. */
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-objectives-card]
     [data-core-okr-table-row="grid"][data-core-okr-table-cols="7"] {
@@ -7143,7 +7143,7 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
       minmax(130px, 1fr)
       minmax(165px, 1.25fr)
       minmax(100px, .75fr)
-      max-content !important;
+      112px !important;
   }
   html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
     [data-core-okr-objectives-card]
