@@ -8569,3 +8569,25 @@ html.dark[data-theme="asana"] main:has(button[data-core-okr-new-objective])
   display: none !important;
   content: none !important;
 }
+
+/* Dashboard: outlined analytics cards and tables, no dark card fill (2026-11-11). */
+/* Scope strictly to Dashboard. The page surface shows through each card;
+   soft 1px strokes separate the cards without the previous #161719 fill.
+   Keep descriptor bands, internal KPI pills and row divider styles intact. */
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"]) {
+  --dash-card-outline: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .grid.lg\:grid-cols-2.gap-3 > .rounded-xl.bg-secondary,
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .flex.flex-col.gap-4 > section:has(> header h2 a[href="/okr"]),
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > div.bg-card:has(> div:first-child h2 a[href="/financial-approvals"]),
+html.dark[data-theme="asana"] main:has(h1[data-testid="dashboard-heading"])
+  .mobile-nav-fab-pb > .rounded-xl.bg-card:has(> div:first-child h2 a[href^="/actions"]) {
+  box-sizing: border-box !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 1px solid var(--dash-card-outline) !important;
+  box-shadow: none !important;
+}
